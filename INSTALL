@@ -1,0 +1,125 @@
+CodeAxe -- v2.0-preview
+===============
+
+Christopher Saunders (ctsa@u.washington.edu)
+http://www.phrap.org
+
+Last Updated: August 2007
+
+----------------------------------------------------------------------------------
+Installation:
+
+To compile CodeAxe from source requires a recent C++ compiler in
+addition to LAPACK & BLAS libraries, both with the appropriate c
+interface (clapack/cblas). I've divided the suggested build procedure
+below into 3 platform categories:
+
+- OS X
+- i686/x86_64 linux
+- other *nix
+
+The simplest method by far is to build on OS X, which ships with the
+required libraries. After looking over these build suggestions please
+don't hesitate to contact me for further help.
+
+The software can be built using either scons or make. The descriptions below assume
+the use of make.
+
+
+
+----------------------------------------------------------------------------------
+OS X Compilation:
+
+The required libraries are already supplied by the operating system in
+the veclib/accelerate framework, so compiling CodeAxe is
+straightforward.  Assuming you have unpacked the source tarball to
+directory $codeaxe_distro_dir, you need to:
+
+1) Make sure OS X developer tools are installed
+2) Go to the src directory: "cd $codeaxe_distro_dir/src"
+3) Type: "make gcc-osx"
+
+After compilation, the binary can be found in:
+$codeaxe_distro_dir/bin/CodeAxe.native
+
+This build has been tested with the system compiler (gcc 4.0.x)
+supplied with OS X 10.4.
+
+
+
+
+----------------------------------------------------------------------------------
+i686/x86_64 Linux Compilation:
+
+On linux, I've tested and have makefile targets for two BLAS/LAPACK
+library solutions.  The first is the Intel MKL, which can be obtained
+with a free non-commercial license, and the second is ATLAS/CLAPACK,
+which requires a great deal more work to setup on your system.
+
+
+-----------------------
+Using Intel MKL:
+
+1) Follow Intel's guidelines to setup the MKL on your system.
+
+2) Go to the CodeAxe src directory: "cd $codeaxe_distro_dir/src"
+
+3) Given that the mkl has been installed to directory $mkl_distro_dir,
+type, define the MKL_LIB_PATH environment variable: 
+"MKL_LIB_PATH=$mkl_distro_dir/lib/32"    OR
+"MKL_LIB_PATH=$mkl_distro_dir/lib/em64t"
+
+4) Type:
+"make gcc-linux-i686"   OR
+"make gcc-linux-x86_64"
+as appropriate for each platform
+
+5) The mkl needs to be added to your library path to run CodeAxe. In 
+bash, you can add the following line to your .bashrc or .bash_profile:
+"export LD_LIBRARY_PATH=$MKL_LIB_PATH:$LD_LIBRARY_PATH"
+...where MKL_LIB_PATH is defined as above.
+
+The compiled binary can be found in: $codeaxe_distro_dir/bin/CodeAxe.native 
+
+
+-----------------------
+Using ATLAS/CLAPACK:
+
+1) Download and install ATLAS (http://math-atlas.sourceforge.net/) and
+CLAPACK (http://www.netlib.org/clapack/) according to the distributor's
+instructions.
+
+2) Go to the CodeAxe src directory: "cd $codeaxe_distro_dir/src"
+
+3) Given that the ATLAS libraries have been installed to $atlas_lib_dir
+and CLAPACK libraries to $clapack_lib_dir, define the following
+environment variables:
+"CBLAS_LIB_PATH=$atlas_lib_dir"
+"CLAPACK_LIB_PATH=$clapack_lib_dir"
+
+4) Type:
+"make gcc-linux-i686-atlas"   OR
+"make gcc-linux-x86_64-atlas"
+as appropriate for each platform
+
+The compiled binary can be found in: $codeaxe_distro_dir/bin/CodeAxe.native
+
+
+
+
+----------------------------------------------------------------------------------
+Other *nix platform Compilation:
+
+At various points this package has been compiled on other platforms
+and architectures.  The best general *nix platform approach is to:
+
+1) use a recent version of gcc (4+)
+
+2) build/install ATLAS and CLAPACK for your system, following the
+suggestions for the linux compilation above
+
+3) alter the makefile entry for the make target closest to your system
+
+
+
+

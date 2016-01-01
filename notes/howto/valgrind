@@ -1,0 +1,4 @@
+valgrind --db-attach=yes --error-limit=no --tool=memcheck ../bin/CodeAxe.debug
+
+valgrind --error-limit=no --db-attach=yes --db-command="ddd %f %p" --tool=memcheck ../bin/CodeAxe.debug -norm -in-model test/test.model.trinuc.random >| test/test.model.trinuc.norm
+

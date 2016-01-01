@@ -1,0 +1,66 @@
+#!/bin/bash -x
+#
+# This example compares two codon model analyses of a mammalian
+# beta-globin alignment (from Z. Yang, see README file). The first is
+# a context-independent model with nonreversible mutation and using
+# a single dN/dS parameter. The second analysis is similar, but uses a
+# context-dependent model where CpG transitions and transversions are
+# represented.
+#
+
+# -- convert fasta alignment to CodeAxe codon site data format:
+#
+../bin/CodeAxe -process-seq -in-seq example_data/bglobinMam.fsa -no-window-filter -no-ambig-gap-filter -no-codon-border -site-model codon >| ex3.data.codon
+
+
+# -- create context-independent codon model with default starting parameters:
+#
+../bin/CodeAxe -create-model -site-model codon -select-model single -root-model obs-avg -tree-file example_data/bglobinMam.tree -in-data ex3.data.codon >| ex3.model.indy.start
+
+# -- train model
+#
+../bin/CodeAxe -ml -in-model ex3.model.indy.start -in-data ex3.data.codon >| ex3.model.indy.trained 2>| ex3.model.indy.stderr
+
+# -- get the likelihood & likelihood/codon of the trained model
+#
+../bin/CodeAxe -lhood -in-model ex3.model.indy.trained -in-data ex3.data.codon >| ex3.model.indy.trained.lhood
+
+# -- summarize parameters from the trained model
+#
+../bin/CodeAxe -report-model -in-model ex3.model.indy.trained >| ex3.model.indy.trained.report
+
+# -- use simulation to get more accurate branch times
+#
+../bin/CodeAxe -sim -sim-size 100000 -sim-report-time -in-model ex3.model.indy.trained 2>&1 1>&- | tail -2 | head -1 >| ex3.model.indy.trained.sim.tree
+
+
+# -- convert fasta alignment to CodeAxe "extended codon" site data format:
+#
+../bin/CodeAxe -process-seq -in-seq example_data/bglobinMam.fsa -no-window-filter -no-ambig-gap-filter -no-codon-border -site-model c4-post >| ex3.data.c4+
+
+
+# -- create CpG codon model with default starting parameters:
+#
+../bin/CodeAxe -create-model -site-model c4-post -context-model cpg-only -select-model single -root-model obs-avg -tree-file example_data/bglobinMam.tree -in-data ex3.data.c4+ >| ex3.model.cpg.start
+
+# -- train model
+#
+# note that a less stringent converge tolerance is used here to reduce example runtime
+#
+echo "The following minimization should take ~15 min. on a ca. 2005 processor (w/ BLAS)"
+../bin/CodeAxe -ml -in-model ex3.model.cpg.start -in-data ex3.data.c4+ -tol 1e-1 >| ex3.model.cpg.trained 2>| ex3.model.cpg.stderr
+
+# -- get the likelihood & likelihood/codon of the trained model
+#
+../bin/CodeAxe -lhood -in-model ex3.model.cpg.trained -in-data ex3.data.c4+ >| ex3.model.cpg.trained.lhood
+
+# -- summarize parameters from the trained model
+#
+../bin/CodeAxe -report-model -in-model ex3.model.cpg.trained >| ex3.model.cpg.trained.report
+
+# -- use simulation to get more accurate branch times 
+#
+../bin/CodeAxe -sim -sim-size 100000 -sim-report-time -in-model ex3.model.cpg.trained 2>&1 1>&- | tail -2 | head -1 >| ex3.model.cpg.trained.sim.tree 
+
+
+

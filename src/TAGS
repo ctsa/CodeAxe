@@ -1,0 +1,3701 @@
+
+audit_info.h,103
+#define __AUDIT_INFO_H33,1026
+struct audit_info 41,1154
+  audit_info(audit_info::audit_info43,1175
+
+bg_gtor.h,1666
+#define __BG_GTOR_H33,1021
+struct bg_gtor 64,1826
+  typedef param_composite base_t;bg_gtor::base_t66,1923
+  typedef bg_gtor self_t;bg_gtor::self_t67,1957
+  typedef prob_gtor ptor_t;bg_gtor::ptor_t69,1984
+  typedef prob_gtor_param ptorp_t;bg_gtor::ptorp_t70,2012
+  typedef prob_gtor_obs ptoro_t;bg_gtor::ptoro_t71,2047
+  bg_gtor(bg_gtor::bg_gtor73,2081
+  bg_gtor(bg_gtor::bg_gtor81,2270
+  ~bg_gtor(bg_gtor::~bg_gtor93,2549
+  enum ptor_type bg_gtor::ptor_type99,2673
+    PT_PARAM,bg_gtor::ptor_type::PT_PARAM100,2692
+    PT_PARAM_LINKED,bg_gtor::ptor_type::PT_PARAM_LINKED101,2706
+    PT_OBSbg_gtor::ptor_type::PT_OBS102,2727
+  state_size(bg_gtor::state_size108,2764
+  void set_pdistro(bg_gtor::set_pdistro114,2987
+  void set_distro_cat_state_pdistro(bg_gtor::set_distro_cat_state_pdistro126,3397
+  unsigned distro_cat_size(bg_gtor::distro_cat_size135,3670
+  distro_cat_state_pdistro(bg_gtor::distro_cat_state_pdistro138,3756
+  get_distro_cat_no_from_cat_no(bg_gtor::get_distro_cat_no_from_cat_no143,3909
+  cat_state_pdistro(bg_gtor::cat_state_pdistro148,4034
+  distro_cat_ptorp(bg_gtor::distro_cat_ptorp160,4328
+  distro_cat_ptorp(bg_gtor::distro_cat_ptorp165,4458
+  distro_cat_ptoro(bg_gtor::distro_cat_ptoro170,4594
+  distro_cat_ptoro(bg_gtor::distro_cat_ptoro176,4769
+  init(bg_gtor::init182,4946
+  register_param(bg_gtor::register_param194,5241
+  const cat_manager& cm(bg_gtor::cm203,5453
+  ptype(bg_gtor::ptype210,5569
+  void recieve_notifier_event(bg_gtor::recieve_notifier_event223,5872
+  post_write_param_state(bg_gtor::post_write_param_state234,6178
+  struct auto_copy bg_gtor::auto_copy240,6297
+
+bg_gtor_options.h,432
+#define __BG_GTOR_OPTIONS_H33,1037
+namespace SUBS_RATE_BG_MODEL 37,1068
+  enum index_t SUBS_RATE_BG_MODEL::index_t38,1099
+  enum index_t { OBS_AVG,SUBS_RATE_BG_MODEL::index_t::OBS_AVG38,1099
+                 FULL,SUBS_RATE_BG_MODEL::index_t::FULL39,1125
+                 CODON_DINUCSUBS_RATE_BG_MODEL::index_t::CODON_DINUC40,1148
+struct bg_gtor_options 46,1187
+  bg_gtor_options(bg_gtor_options::bg_gtor_options48,1213
+
+bioseq_report.h,34
+#define __BIOSEQ_REPORT_H33,1032
+
+bioseq_report.hh,130
+struct smc1{smc145,1180
+  smc1(smc1::smc146,1193
+  operator<(smc1::operator<51,1283
+report_sorted_nsaa_pair_values(63,1432
+
+bi_tree.h,1649
+#define __BI_TREE_H33,1020
+struct bi_tree 57,1420
+  unsigned leaf_size(bi_tree::leaf_size67,1568
+  unsigned branch_size(bi_tree::branch_size68,1633
+  unsigned node_size(bi_tree::node_size69,1714
+  const bi_tree_node* root(bi_tree::root71,1775
+  const bi_tree_node* node(bi_tree::node73,1835
+  bool is_node_label(bi_tree::is_node_label81,2127
+  const bi_tree_node* node(bi_tree::node85,2249
+  const bi_tree_node* branch_node(bi_tree::branch_node86,2327
+  const bi_tree_node* leaf_node(bi_tree::leaf_node87,2407
+  bi_tree_node* branch_node(bi_tree::branch_node89,2496
+  bi_tree_node* root(bi_tree::root93,2637
+struct bi_tree_node 116,3128
+  void set_length(bi_tree_node::set_length131,3430
+  const std::string& label(bi_tree_node::label136,3521
+  double length(bi_tree_node::length137,3580
+  bool is_length_set(bi_tree_node::is_length_set138,3629
+  short int node_id(bi_tree_node::node_id139,3690
+  short int branch_id(bi_tree_node::branch_id140,3744
+  short int leaf_id(bi_tree_node::leaf_id144,3874
+  const bi_tree_node* parent(bi_tree_node::parent146,3929
+  const bi_tree_node* child1(bi_tree_node::child1147,3986
+  const bi_tree_node* child2(bi_tree_node::child2148,4049
+  const bi_tree_node* sister(bi_tree_node::sister150,4113
+  bool is_root(bi_tree_node::is_root156,4330
+  bool is_leaf(bi_tree_node::is_leaf157,4377
+  bi_tree_node* child1(bi_tree_node::child1160,4434
+  bi_tree_node* child2(bi_tree_node::child2161,4485
+  void set_children(bi_tree_node::set_children168,4708
+  struct auto_copy bi_tree_node::auto_copy178,5017
+    auto_copy(bi_tree_node::auto_copy::auto_copy179,5038
+
+branch_time_util.h,66
+#define __BRANCH_TIME_UTIL_H33,1038
+is_zero_branch_time(45,1232
+
+cat_expression_parser.h,1243
+#define __CAT_EXPRESSION_PARSER_H33,1045
+struct cat_expression_parser 44,1162
+  typedef cat_expression_parser self_t;cat_expression_parser::self_t46,1215
+  typedef std::pair<std::string,std::string> paramcat_rule;cat_expression_parser::paramcat_rule50,1298
+  typedef std::vector<paramcat_rule> paramcat_rules;cat_expression_parser::paramcat_rules51,1358
+  typedef std::pair<std::string,paramcat_rules> paramcat;cat_expression_parser::paramcat52,1411
+  typedef std::vector<paramcat> paramcats;cat_expression_parser::paramcats53,1469
+  typedef std::pair<std::string,paramcats> modelcat;cat_expression_parser::modelcat54,1512
+  typedef std::vector<modelcat> assigned_cat_expression;cat_expression_parser::assigned_cat_expression55,1565
+  typedef std::vector<std::string> datacat_labels;cat_expression_parser::datacat_labels56,1622
+  typedef std::pair<std::string,datacat_labels> assigned_cat_data;cat_expression_parser::assigned_cat_data57,1673
+  typedef std::pair<assigned_cat_data,assigned_cat_expression> assigned_cat;cat_expression_parser::assigned_cat58,1740
+  typedef std::vector<assigned_cat> cat_expression;cat_expression_parser::cat_expression59,1817
+  const cat_expression& ce(cat_expression_parser::ce61,1870
+
+cat_info.h,29
+#define __CAT_INFO_H33,1022
+
+cat_manager.h,2840
+#define __CAT_MANAGER_H33,1029
+struct cat_manager_options 57,1475
+  cat_manager_options(cat_manager_options::cat_manager_options58,1504
+typedef std::map<std::string,std::string68,1644
+typedef std::map<std::string,unsigned> data_class_label_assignment_map_type;68,1644
+struct cat_manager 72,1724
+  typedef param_composite base_t;cat_manager::base_t74,1771
+  typedef cat_manager self_t;cat_manager::self_t75,1805
+  cat_manager(cat_manager::cat_manager83,2016
+  typed_cat_no_from_cat_no(cat_manager::typed_cat_no_from_cat_no95,2272
+  typed_cat_no_from_cat_no_y_branch_cat_set(cat_manager::typed_cat_no_from_cat_no_y_branch_cat_set110,2864
+  typed_cat_no_from_cat_no_y_branch_id(cat_manager::typed_cat_no_from_cat_no_y_branch_id119,3373
+  typed_cat_no_from_branch_typed_cat_no_y_branch_id(cat_manager::typed_cat_no_from_branch_typed_cat_no_y_branch_id134,4111
+  typed_cat_size(cat_manager::typed_cat_size144,4540
+  group_cat_size(cat_manager::group_cat_size156,4988
+  group_cat_no(cat_manager::group_cat_no161,5071
+  cat_size(cat_manager::cat_size166,5172
+  assigned_data_set_size(cat_manager::assigned_data_set_size171,5247
+  is_adset_using_cat(cat_manager::is_adset_using_cat193,5833
+  data_class_label_assignment_map(cat_manager::data_class_label_assignment_map203,6078
+  cat_pdistro(cat_manager::cat_pdistro209,6266
+  adset_cat_pdistro(cat_manager::adset_cat_pdistro222,6597
+  group_cat_pdistro(cat_manager::group_cat_pdistro230,6774
+  adset_group_cat_pdistro(cat_manager::adset_group_cat_pdistro249,7237
+  typed_cat_pdistro(cat_manager::typed_cat_pdistro258,7498
+  set_cat_pdistro(cat_manager::set_cat_pdistro287,8451
+  mut_model_norm_set_size(cat_manager::mut_model_norm_set_size292,8529
+  mut_model_norm_set_from_mut_model_cat(cat_manager::mut_model_norm_set_from_mut_model_cat298,8763
+  mut_rate_norm_set_size(cat_manager::mut_rate_norm_set_size303,8886
+  mut_rate_norm_set_from_mut_rate_cat(cat_manager::mut_rate_norm_set_from_mut_rate_cat309,9153
+  sel_strength_norm_set_size(cat_manager::sel_strength_norm_set_size314,9306
+  sel_strength_norm_set_from_sel_strength_cat(cat_manager::sel_strength_norm_set_from_sel_strength_cat320,9593
+  mut_model_norm_set_from_time_cat(cat_manager::mut_model_norm_set_from_time_cat326,9768
+  unsigned branch_cat_set_size(cat_manager::branch_cat_set_size342,10283
+  unsigned get_branch_cat_set(cat_manager::get_branch_cat_set346,10414
+  typed_cat_no_from_cat_no_y_branch_id(cat_manager::typed_cat_no_from_cat_no_y_branch_id356,10655
+  prob_gtor_param& ptor(cat_manager::ptor375,11308
+  const prob_gtor_param& ptor(cat_manager::ptor376,11353
+  is_branch_cat_param_type(cat_manager::is_branch_cat_param_type379,11418
+  struct auto_copy cat_manager::auto_copy390,11687
+    auto_copy(cat_manager::auto_copy::auto_copy391,11708
+
+cat_post_prob.h,34
+#define __CAT_POST_PROB_H33,1033
+
+cat_post_prob_mode.h,216
+#define __CAT_POST_PROB_MODE_H33,1042
+namespace CPPM 35,1074
+  enum index_t CPPM::index_t36,1091
+    NONE,CPPM::index_t::NONE37,1108
+    SITE,CPPM::index_t::SITE38,1118
+    GROUPCPPM::index_t::GROUP39,1128
+
+cat_type.h,1106
+#define __CAT_TYPE_H33,1023
+namespace CAT_PARAM_TYPE 38,1065
+  enum index_t CAT_PARAM_TYPE::index_t39,1092
+    MUT_RATE,CAT_PARAM_TYPE::index_t::MUT_RATE40,1109
+    MUT_MODEL,CAT_PARAM_TYPE::index_t::MUT_MODEL41,1123
+    SEL_STRENGTH,CAT_PARAM_TYPE::index_t::SEL_STRENGTH42,1138
+    SEL_MATRIX,CAT_PARAM_TYPE::index_t::SEL_MATRIX43,1156
+    ROOT,CAT_PARAM_TYPE::index_t::ROOT44,1172
+    TIME,CAT_PARAM_TYPE::index_t::TIME45,1182
+    OBS,CAT_PARAM_TYPE::index_t::OBS46,1192
+    SUBS_RATE_BG,CAT_PARAM_TYPE::index_t::SUBS_RATE_BG47,1201
+    SIZE}CAT_PARAM_TYPE::index_t::SIZE48,1219
+namespace CAT_MIX_TYPE 58,1380
+  enum index_t CAT_MIX_TYPE::index_t59,1405
+    EITHER=CAT_MIX_TYPE::index_t::EITHER60,1422
+    SITE,CAT_MIX_TYPE::index_t::SITE61,1437
+    GROUP,CAT_MIX_TYPE::index_t::GROUP62,1447
+    SIZECAT_MIX_TYPE::index_t::SIZE63,1458
+enum { CAT_TYPE_SIZE=::CAT_TYPE_SIZE71,1549
+enum { CAT_TYPE_SIZE=CAT_PARAM_TYPE::SIZE*::CAT_PARAM_TYPE::SIZE71,1549
+enum { CAT_TYPE_SIZE=CAT_PARAM_TYPE::SIZE*CAT_MIX_TYPE::SIZE ::CAT_MIX_TYPE::SIZE71,1549
+typed_cat_index(77,1632
+
+color_graph.h,665
+#define __COLOR_GRAPH_H33,1029
+struct color_vertex 44,1148
+  color_vertex(color_vertex::color_vertex46,1192
+  add_edge(color_vertex::add_edge49,1250
+  color_connected(color_vertex::color_connected52,1315
+class color_graph 70,1645
+  typedef std::map<I,color_vertex*> vlup_t;color_graph::vlup_t72,1695
+  color_graph(color_graph::color_graph74,1747
+  ~color_graph(color_graph::~color_graph76,1767
+  add_edge(color_graph::add_edge83,1942
+  vertex_is_colored(color_graph::vertex_is_colored94,2135
+  vertex_color(color_graph::vertex_color97,2216
+  color_connected(color_graph::color_connected100,2283
+  get_vertex(color_graph::get_vertex106,2400
+
+condition_func_dinuc.h,416
+#define __CONDITION_FUNC_DINUC_H33,1047
+struct condition_func_dinuc 41,1222
+  void get_leaf_leg(condition_func_dinuc::get_leaf_leg44,1308
+  unsigned conditioning_state_size(condition_func_dinuc::conditioning_state_size62,1911
+  unsigned conditioned_state_size(condition_func_dinuc::conditioned_state_size65,1987
+  unsigned state_2_conditioning_state(condition_func_dinuc::state_2_conditioning_state68,2062
+
+condition_func.h,481
+#define __CONDITION_FUNC_H33,1035
+struct condition_func 45,1215
+  virtual ~condition_func(condition_func::~condition_func47,1261
+  data_init(condition_func::data_init53,1378
+  condition_site_prob(condition_func::condition_site_prob59,1526
+  tprob_init(condition_func::tprob_init70,1867
+  root_update(condition_func::root_update76,1986
+  condition_site_prob_prep(condition_func::condition_site_prob_prep82,2119
+  transform_prob(condition_func::transform_prob87,2239
+
+condition_func_nsc4_bidir.h,780
+#define __CONDITION_FUNC_NSC4_BIDIR_H33,1057
+struct condition_func_nsc4_bidir 45,1340
+  typedef condition_func_overlap_base base_t;condition_func_nsc4_bidir::base_t47,1413
+  condition_func_nsc4_bidir(condition_func_nsc4_bidir::condition_func_nsc4_bidir50,1471
+  virtual bool is_bidirectional(condition_func_nsc4_bidir::is_bidirectional58,1686
+  void get_leaf_leg(condition_func_nsc4_bidir::get_leaf_leg62,1760
+  unsigned state_size(condition_func_nsc4_bidir::state_size95,2698
+  unsigned conditioning_state_size(condition_func_nsc4_bidir::conditioning_state_size98,2762
+  unsigned conditioned_state_size(condition_func_nsc4_bidir::conditioned_state_size101,2838
+  unsigned state_2_conditioning_state(condition_func_nsc4_bidir::state_2_conditioning_state104,2916
+
+condition_func_nsc4.h,626
+#define __CONDITION_FUNC_NSC4_H33,1045
+struct condition_func_nsc4 44,1231
+  typedef condition_func_overlap_base base_t;condition_func_nsc4::base_t46,1298
+  condition_func_nsc4(condition_func_nsc4::condition_func_nsc449,1356
+  transform_prob(condition_func_nsc4::transform_prob53,1472
+  void get_leaf_leg(condition_func_nsc4::get_leaf_leg64,1777
+  unsigned conditioning_state_size(condition_func_nsc4::conditioning_state_size82,2398
+  unsigned conditioned_state_size(condition_func_nsc4::conditioned_state_size85,2474
+  unsigned state_2_conditioning_state(condition_func_nsc4::state_2_conditioning_state88,2553
+
+condition_func_nsc4_joint1.h,522
+#define __CONDITION_FUNC_NSC4_JOINT1_H33,1059
+struct condition_func_nsc4_joint1 43,1295
+  void get_leaf_leg(condition_func_nsc4_joint1::get_leaf_leg46,1387
+  unsigned state_size(condition_func_nsc4_joint1::state_size70,2207
+  unsigned conditioning_state_size(condition_func_nsc4_joint1::conditioning_state_size73,2271
+  unsigned conditioned_state_size(condition_func_nsc4_joint1::conditioned_state_size76,2349
+  unsigned state_2_conditioning_state(condition_func_nsc4_joint1::state_2_conditioning_state79,2426
+
+condition_func_nsc4_joint2.h,522
+#define __CONDITION_FUNC_NSC4_JOINT2_H33,1059
+struct condition_func_nsc4_joint2 42,1295
+  void get_leaf_leg(condition_func_nsc4_joint2::get_leaf_leg45,1387
+  unsigned state_size(condition_func_nsc4_joint2::state_size62,1945
+  unsigned conditioning_state_size(condition_func_nsc4_joint2::conditioning_state_size65,2009
+  unsigned conditioned_state_size(condition_func_nsc4_joint2::conditioned_state_size68,2089
+  unsigned state_2_conditioning_state(condition_func_nsc4_joint2::state_2_conditioning_state71,2164
+
+condition_func_nsc5_center.h,522
+#define __CONDITION_FUNC_NSC5_CENTER_H33,1059
+struct condition_func_nsc5_center 45,1373
+  void get_leaf_leg(condition_func_nsc5_center::get_leaf_leg48,1465
+  unsigned state_size(condition_func_nsc5_center::state_size72,2388
+  unsigned conditioning_state_size(condition_func_nsc5_center::conditioning_state_size75,2452
+  unsigned conditioned_state_size(condition_func_nsc5_center::conditioned_state_size78,2530
+  unsigned state_2_conditioning_state(condition_func_nsc5_center::state_2_conditioning_state81,2609
+
+condition_func_nsc5.h,473
+#define __CONDITION_FUNC_NSC5_H33,1045
+struct condition_func_nsc5 46,1379
+  void get_leaf_leg(condition_func_nsc5::get_leaf_leg50,1465
+  unsigned state_size(condition_func_nsc5::state_size69,2206
+  unsigned conditioning_state_size(condition_func_nsc5::conditioning_state_size72,2270
+  unsigned conditioned_state_size(condition_func_nsc5::conditioned_state_size75,2348
+  unsigned state_2_conditioning_state(condition_func_nsc5::state_2_conditioning_state78,2427
+
+condition_func_overlap_base.h,409
+#define __CONDITION_FUNC_OVERLAP_BASE_H33,1061
+struct condition_func_overlap_base 45,1293
+  condition_func_overlap_base(condition_func_overlap_base::condition_func_overlap_base47,1355
+  unsigned state_size(condition_func_overlap_base::state_size69,1786
+  virtual bool is_bidirectional(condition_func_overlap_base::is_bidirectional74,1895
+  struct cf_data condition_func_overlap_base::cf_data89,2406
+
+condition_func_trinuc.h,422
+#define __CONDITION_FUNC_TRINUC_H33,1049
+struct condition_func_trinuc 42,1230
+  void get_leaf_leg(condition_func_trinuc::get_leaf_leg50,1485
+  unsigned conditioning_state_size(condition_func_trinuc::conditioning_state_size68,2234
+  unsigned conditioned_state_size(condition_func_trinuc::conditioned_state_size71,2312
+  unsigned state_2_conditioning_state(condition_func_trinuc::state_2_conditioning_state74,2387
+
+context_group.h,415
+#define __CONTEXT_GROUP_H33,1032
+namespace CONTEXT_GROUP 37,1095
+  enum index_t CONTEXT_GROUP::index_t38,1121
+  enum index_t {NONE,CONTEXT_GROUP::index_t::NONE38,1121
+  enum index_t {NONE,ONLY_PRE,CONTEXT_GROUP::index_t::ONLY_PRE38,1121
+  enum index_t {NONE,ONLY_PRE,ONLY_POST,CONTEXT_GROUP::index_t::ONLY_POST38,1121
+  enum index_t {NONE,ONLY_PRE,ONLY_POST,TWOWAY}CONTEXT_GROUP::index_t::TWOWAY38,1121
+
+data_class_assignment_util.h,478
+#define __DATA_CLASS_ASSIGNMENT_UTIL_H39,1327
+struct data_class_id_assignment_map 51,1459
+  data_class_id_assignment_map(data_class_id_assignment_map::data_class_id_assignment_map58,1703
+  is_data_class_assigned(data_class_id_assignment_map::is_data_class_assigned64,1893
+  get_data_class_assigned_data_set_id(data_class_id_assignment_map::get_data_class_assigned_data_set_id73,2184
+  assigned_data_set_size(data_class_id_assignment_map::assigned_data_set_size82,2512
+
+estep_dat_t.h,158
+#define __ESTEP_DAT_T_H33,1028
+struct estep_dat_t 41,1250
+  estep_dat_t(estep_dat_t::estep_dat_t43,1272
+  ~estep_dat_t(estep_dat_t::~estep_dat_t55,1659
+
+lhood_model_em_baz.h,39
+#define __LHOOD_MODEL_EM_BAZ_H33,1043
+
+lhood_model_em.h,35
+#define __LHOOD_MODEL_EM_H33,1035
+
+lhood_model_em_pprob.h,41
+#define __LHOOD_MODEL_EM_PPROB_H33,1047
+
+lhood_model.h,32
+#define __LHOOD_MODEL_H33,1029
+
+lhood_model_prep_group.h,138
+#define __LHOOD_MODEL_PREP_GROUP_H33,1054
+namespace PVL 41,1175
+struct group_data 49,1227
+  group_data(group_data::group_data51,1279
+
+lhood_model_prep.h,455
+#define __LHOOD_MODEL_PREP_H33,1039
+struct lhood_model_prep_cat_site_prob 56,1464
+  condition_func& cf(lhood_model_prep_cat_site_prob::cf63,1688
+  submodel_manager& sm(lhood_model_prep_cat_site_prob::sm64,1728
+  tree_probs& tprob(lhood_model_prep_cat_site_prob::tprob65,1770
+struct lhood_model_prep 86,2380
+  group_data& gd(lhood_model_prep::gd93,2548
+  const prob_t * const * prob_adset_on_group(lhood_model_prep::prob_adset_on_group95,2585
+
+lhood_model_prep_submodel.h,329
+#define __LHOOD_MODEL_PREP_SUBMODEL_H33,1057
+struct submodel_data 50,1341
+  submodel_data(submodel_data::submodel_data52,1386
+struct submodel_manager 70,1764
+  condition_func& cf(submodel_manager::cf75,1913
+  submodel_data& submodel(submodel_manager::submodel77,1967
+  tree_probs& tprob(submodel_manager::tprob78,2030
+
+lhood_model_root.h,37
+#define __LHOOD_MODEL_ROOT_H35,1114
+
+lhood_site_cached_estep_baz.h,48
+#define __LHOOD_SITE_CACHED_ESTEP_BAZ_H33,1060
+
+lhood_site_cached_estep.h,44
+#define __LHOOD_SITE_CACHED_ESTEP_H33,1053
+
+lhood_site_cached_estep_pprob.h,50
+#define __LHOOD_SITE_CACHED_ESTEP_PPROB_H33,1064
+
+lhood_site_cached_estep_shared.h,282
+#define __LHOOD_SITE_CACHED_ESTEP_SHARED_H33,1066
+struct tree_walk_cache_estep_base 42,1256
+  tree_walk_cache_estep_base(tree_walk_cache_estep_base::tree_walk_cache_estep_base44,1328
+  ~tree_walk_cache_estep_base(tree_walk_cache_estep_base::~tree_walk_cache_estep_base49,1461
+
+lhood_site_cached.h,65
+#define __LHOOD_SITE_CACHED_H33,1040
+lhood_site_cached(53,1513
+
+lhood_site_cached_optorder.h,47
+#define __LHOOD_SITE_CACHED_OPTORDER_H33,1058
+
+lhood_site_cached_shared.h,425
+#define LHOOD_SITE_CACHED_SHARED_H35,1139
+struct tree_lhood_cache 42,1276
+  tree_lhood_cache(tree_lhood_cache::tree_lhood_cache43,1302
+struct tree_walk_cache 57,1684
+  tree_walk_cache(tree_walk_cache::tree_walk_cache59,1710
+  ~tree_walk_cache(tree_walk_cache::~tree_walk_cache65,1922
+struct tree_walk_cache_estep_top 86,2512
+  tree_walk_cache_estep_top(tree_walk_cache_estep_top::tree_walk_cache_estep_top88,2548
+
+lhood_site_cached_tree_lhood_info.h,128
+#define __TREE_LHOOD_INFO_H33,1054
+struct tree_lhood_info 40,1178
+  tree_lhood_info(tree_lhood_info::tree_lhood_info41,1203
+
+lhood_site.h,31
+#define __LHOOD_SITE_H35,1087
+
+name_id_lup.h,204
+#define __NAME_ID_LUP_H33,1028
+struct name_id_lup{name_id_lup41,1156
+  name_id_lup(name_id_lup::name_id_lup43,1177
+  unsigned size(name_id_lup::size57,1575
+  void clear(name_id_lup::clear59,1626
+
+newick_tree_parser.h,479
+#define __NEWICK_TREE_PARSER_H33,1043
+struct newick_tree_parser 60,1653
+  const newick_tree_node* root(newick_tree_parser::root64,1751
+struct newick_tree_node 76,1971
+  newick_tree_node(newick_tree_node::newick_tree_node78,1998
+  ~newick_tree_node(newick_tree_node::~newick_tree_node80,2056
+  unsigned child_size(newick_tree_node::child_size90,2298
+  const newick_tree_node* child(newick_tree_node::child92,2355
+  void add_child(newick_tree_node::add_child94,2434
+
+nsaa_maps.h,3132
+#define __NSAA_MAPS_H33,1024
+namespace NSAA_MAPS 37,1082
+  namespace LEHNINGER NSAA_MAPS::LEHNINGER39,1105
+    enum index_t NSAA_MAPS::LEHNINGER::index_t40,1129
+      ALIPHATIC,NSAA_MAPS::LEHNINGER::index_t::ALIPHATIC41,1148
+      AROMATIC,NSAA_MAPS::LEHNINGER::index_t::AROMATIC42,1165
+      POLAR,NSAA_MAPS::LEHNINGER::index_t::POLAR43,1181
+      POSITIVE,NSAA_MAPS::LEHNINGER::index_t::POSITIVE44,1194
+      NEGATIVE,NSAA_MAPS::LEHNINGER::index_t::NEGATIVE45,1210
+      SIZENSAA_MAPS::LEHNINGER::index_t::SIZE46,1226
+  namespace LANGE NSAA_MAPS::LANGE55,1330
+    enum index_t NSAA_MAPS::LANGE::index_t56,1350
+      NONPOLAR,NSAA_MAPS::LANGE::index_t::NONPOLAR57,1369
+      POSITIVE,NSAA_MAPS::LANGE::index_t::POSITIVE58,1385
+      NEGATIVE,NSAA_MAPS::LANGE::index_t::NEGATIVE59,1401
+      CYS,NSAA_MAPS::LANGE::index_t::CYS60,1417
+      SIZENSAA_MAPS::LANGE::index_t::SIZE61,1428
+  namespace HP NSAA_MAPS::HP70,1532
+    enum index_t NSAA_MAPS::HP::index_t71,1549
+      H,NSAA_MAPS::HP::index_t::H72,1568
+      P,NSAA_MAPS::HP::index_t::P73,1577
+      SIZENSAA_MAPS::HP::index_t::SIZE74,1586
+  namespace HPO NSAA_MAPS::HPO83,1692
+    enum index_t NSAA_MAPS::HPO::index_t84,1710
+      H,NSAA_MAPS::HPO::index_t::H85,1729
+      P,NSAA_MAPS::HPO::index_t::P86,1738
+      O,NSAA_MAPS::HPO::index_t::O87,1747
+      SIZENSAA_MAPS::HPO::index_t::SIZE88,1756
+  namespace BETA_BRANCH NSAA_MAPS::BETA_BRANCH97,1862
+    enum index_t NSAA_MAPS::BETA_BRANCH::index_t98,1888
+      OTHER,NSAA_MAPS::BETA_BRANCH::index_t::OTHER99,1907
+      BETA_BRANCH,NSAA_MAPS::BETA_BRANCH::index_t::BETA_BRANCH100,1920
+      SIZENSAA_MAPS::BETA_BRANCH::index_t::SIZE101,1939
+  namespace HELIX_FORM NSAA_MAPS::HELIX_FORM110,2043
+    enum index_t NSAA_MAPS::HELIX_FORM::index_t111,2068
+      OTHER,NSAA_MAPS::HELIX_FORM::index_t::OTHER112,2087
+      HELIX_FORM,NSAA_MAPS::HELIX_FORM::index_t::HELIX_FORM113,2100
+      SIZENSAA_MAPS::HELIX_FORM::index_t::SIZE114,2118
+  namespace AROMATIC NSAA_MAPS::AROMATIC123,2222
+    enum index_t NSAA_MAPS::AROMATIC::index_t124,2245
+      OTHER,NSAA_MAPS::AROMATIC::index_t::OTHER125,2264
+      AROMATIC,NSAA_MAPS::AROMATIC::index_t::AROMATIC126,2277
+      SIZENSAA_MAPS::AROMATIC::index_t::SIZE127,2293
+  namespace CYS NSAA_MAPS::CYS136,2397
+    enum index_t NSAA_MAPS::CYS::index_t137,2415
+      OTHER,NSAA_MAPS::CYS::index_t::OTHER138,2434
+      CYS,NSAA_MAPS::CYS::index_t::CYS139,2447
+      SIZENSAA_MAPS::CYS::index_t::SIZE140,2458
+  namespace GLY NSAA_MAPS::GLY149,2562
+    enum index_t NSAA_MAPS::GLY::index_t150,2580
+      OTHER,NSAA_MAPS::GLY::index_t::OTHER151,2599
+      GLY,NSAA_MAPS::GLY::index_t::GLY152,2612
+      SIZENSAA_MAPS::GLY::index_t::SIZE153,2623
+  namespace PRO NSAA_MAPS::PRO163,2728
+    enum index_t NSAA_MAPS::PRO::index_t164,2746
+      OTHER,NSAA_MAPS::PRO::index_t::OTHER165,2765
+      PRO,NSAA_MAPS::PRO::index_t::PRO166,2778
+      SIZENSAA_MAPS::PRO::index_t::SIZE167,2789
+  struct converter NSAA_MAPS::converter177,2894
+    aa_to_hp(NSAA_MAPS::converter::aa_to_hp181,2943
+
+nuc_seq_data.h,582
+#define __NUC_SEQ_DATA_H33,1031
+struct align_col_t 46,1220
+  typedef unsigned char cat_type;align_col_t::cat_type48,1242
+  align_col_t(align_col_t::align_col_t50,1277
+struct align_dat_t 58,1486
+  typedef std::vector<align_col_t> info_type;align_dat_t::info_type59,1507
+  typedef simple_init_matrix<NUC::index_t> seq_type;align_dat_t::seq_type60,1553
+struct nuc_seq_data 75,1895
+  nuc_seq_data(nuc_seq_data::nuc_seq_data77,1918
+  nuc_seq_data(nuc_seq_data::nuc_seq_data80,1958
+  unsigned n_seqs(nuc_seq_data::n_seqs82,2009
+  void clear(nuc_seq_data::clear90,2173
+
+observer.h,776
+#define __OBSERVER_H33,1023
+namespace EVENT_TYPE 40,1064
+  enum index_t EVENT_TYPE::index_t41,1087
+    PDISTRO_CHANGEEVENT_TYPE::index_t::PDISTRO_CHANGE42,1104
+struct observer 52,1153
+  typedef observer self_t;observer::self_t55,1198
+  observer(observer::observer57,1226
+  observer(observer::observer59,1243
+  typedef std::set<const notifier*> nots_t;observer::nots_t74,1565
+struct notifier 81,1640
+  typedef notifier self_t;notifier::self_t84,1685
+  notifier(notifier::notifier86,1713
+  notifier(notifier::notifier88,1730
+  virtual ~notifier(notifier::~notifier90,1789
+  register_observer(notifier::register_observer96,1868
+  unregister_observer(notifier::unregister_observer99,1936
+  typedef std::set<observer*> obss_t;notifier::obss_t109,2153
+
+obs_info.h,790
+#define __OBS_INFO_H33,1023
+struct obs_info 44,1219
+  enum source_type obs_info::source_type46,1256
+    NONE,obs_info::source_type::NONE47,1277
+    COUNTS,obs_info::source_type::COUNTS48,1287
+    DISTROobs_info::source_type::DISTRO49,1299
+  obs_info(obs_info::obs_info52,1316
+  obs_info(obs_info::obs_info57,1483
+  const prob_t * const * seq_state_distro(obs_info::seq_state_distro71,1891
+  const prob_t * state_distro(obs_info::state_distro76,2003
+  const prob_t * const * const * seq_state_distro_obs_cat(obs_info::seq_state_distro_obs_cat81,2099
+  const prob_t * const * state_distro_obs_cat(obs_info::state_distro_obs_cat86,2235
+  ucheck(obs_info::ucheck103,2584
+  struct obs_data obs_info::obs_data108,2705
+    obs_data(obs_info::obs_data::obs_data110,2726
+
+param_composite.h,944
+#define __PARAM_COMPOSITE_H33,1037
+struct param_composite 43,1153
+  typedef param_object_base base_t;param_composite::base_t45,1206
+  typedef param_composite self_t;param_composite::self_t46,1242
+  param_composite(param_composite::param_composite48,1277
+  param_composite(param_composite::param_composite50,1312
+  param_state(param_composite::param_state58,1475
+  set_param_state(param_composite::set_param_state70,1731
+  set_param_state(param_composite::set_param_state83,2018
+  is_train_param_state(param_composite::is_train_param_state94,2218
+  set_is_train_param_state(param_composite::set_is_train_param_state105,2419
+  attach_ci(param_composite::attach_ci120,2692
+  param_variance(param_composite::param_variance131,2872
+  clear_register(param_composite::clear_register143,3186
+  register_param(param_composite::register_param148,3236
+  post_write_param_state(param_composite::post_write_param_state155,3331
+
+param_init_type.h,250
+#define __PARAM_INIT_TYPE_H33,1036
+namespace PARAM_INIT_TYPE 36,1066
+  enum index_t PARAM_INIT_TYPE::index_t37,1094
+  enum index_t { START,PARAM_INIT_TYPE::index_t::START37,1094
+                 RANDOM PARAM_INIT_TYPE::index_t::RANDOM38,1118
+
+param_object_base.h,218
+#define __PARAM_OBJECT_BASE_H33,1041
+struct param_object_base 39,1125
+  typedef param_object_base self_t;param_object_base::self_t41,1153
+  virtual ~param_object_base(param_object_base::~param_object_base43,1190
+
+param_object.h,1003
+#define __PARAM_OBJECT_H33,1031
+struct param_object 46,1329
+  typedef param_object_base base_t;param_object::base_t48,1379
+  typedef param_object self_t;param_object::self_t49,1415
+  param_object(param_object::param_object52,1458
+  param_object(param_object::param_object60,1768
+  is_train_param_state(param_object::is_train_param_state87,2462
+  set_is_train_param_state(param_object::set_is_train_param_state98,2664
+  set_is_train_param_state(param_object::set_is_train_param_state109,2863
+  attach_ci(param_object::attach_ci116,3032
+  param_variance(param_object::param_variance136,3398
+  pseudo_param_size(param_object::pseudo_param_size148,3586
+  trainable_param_transform(param_object::trainable_param_transform152,3650
+  trainable_param_untransform(param_object::trainable_param_untransform158,3748
+  set_pseudo_param(param_object::set_pseudo_param165,3887
+  resize(param_object::resize173,4069
+  post_write_param_state(param_object::post_write_param_state184,4309
+
+param_util.h,106
+#define __PARAM_UTIL_H87,2994
+dependent_to_independent_param_block(99,3182
+set_indy_min_param(155,4737
+
+param_view.h,319
+#define __PARAM_VIEW_H33,1026
+namespace PARAM_VIEW 36,1051
+  enum index_t PARAM_VIEW::index_t38,1075
+    ALL,PARAM_VIEW::index_t::ALL39,1092
+    TRAINABLE,PARAM_VIEW::index_t::TRAINABLE40,1101
+    MIN_PARAM,PARAM_VIEW::index_t::MIN_PARAM41,1153
+    INDY_MIN_PARAM PARAM_VIEW::index_t::INDY_MIN_PARAM42,1230
+
+pprob_cache.h,85
+#define __PPROB_CACHE_H33,1028
+typedef simple_matrix3d<prob_t> pprob_cache;40,1108
+
+pprob_site.h,31
+#define __PPROB_SITE_H33,1027
+
+prob_gtor.h,417
+#define __PROB_GTOR_H33,1025
+struct prob_gtor 42,1180
+  typedef prob_gtor self_t;prob_gtor::self_t44,1200
+  prob_gtor(prob_gtor::prob_gtor47,1240
+  virtual ~prob_gtor(prob_gtor::~prob_gtor49,1315
+  const prob_t* pdistro(prob_gtor::pdistro57,1407
+  unsigned state_size(prob_gtor::state_size59,1466
+  prob_t* pdistro(prob_gtor::pdistro63,1536
+  prob_t* pdistro_mutable(prob_gtor::pdistro_mutable64,1581
+
+prob_gtor_obs_derived.h,2260
+#define __PROB_GTOR_OBS_DERIVED_H33,1049
+struct prob_gtor_obs_state_avg 40,1172
+  typedef prob_gtor_obs_state_avg self_t;prob_gtor_obs_state_avg::self_t42,1229
+  typedef prob_gtor_obs base_t;prob_gtor_obs_state_avg::base_t43,1271
+  prob_gtor_obs_state_avg(prob_gtor_obs_state_avg::prob_gtor_obs_state_avg45,1304
+  prob_gtor_obs_state_avg(prob_gtor_obs_state_avg::prob_gtor_obs_state_avg49,1446
+  virtual self_t* clone(prob_gtor_obs_state_avg::clone53,1577
+  virtual void eval_pdistro_update(prob_gtor_obs_state_avg::eval_pdistro_update56,1689
+struct prob_gtor_obs_state_time_avg 64,1878
+  typedef prob_gtor_obs_state_time_avg self_t;prob_gtor_obs_state_time_avg::self_t66,1940
+  typedef prob_gtor_obs base_t;prob_gtor_obs_state_time_avg::base_t67,1987
+  prob_gtor_obs_state_time_avg(prob_gtor_obs_state_time_avg::prob_gtor_obs_state_time_avg69,2020
+  prob_gtor_obs_state_time_avg(prob_gtor_obs_state_time_avg::prob_gtor_obs_state_time_avg73,2172
+  virtual self_t* clone(prob_gtor_obs_state_time_avg::clone77,2313
+  virtual void eval_pdistro_update(prob_gtor_obs_state_time_avg::eval_pdistro_update80,2425
+struct prob_gtor_obs_root_lsprob 88,2598
+  typedef prob_gtor_obs_root_lsprob self_t;prob_gtor_obs_root_lsprob::self_t90,2657
+  typedef prob_gtor_obs base_t;prob_gtor_obs_root_lsprob::base_t91,2701
+  prob_gtor_obs_root_lsprob(prob_gtor_obs_root_lsprob::prob_gtor_obs_root_lsprob93,2734
+  prob_gtor_obs_root_lsprob(prob_gtor_obs_root_lsprob::prob_gtor_obs_root_lsprob97,2880
+  virtual self_t* clone(prob_gtor_obs_root_lsprob::clone101,3015
+  virtual void eval_pdistro_update(prob_gtor_obs_root_lsprob::eval_pdistro_update104,3127
+struct prob_gtor_root_lsprob 112,3266
+  typedef prob_gtor_root_lsprob self_t;prob_gtor_root_lsprob::self_t114,3321
+  typedef prob_gtor_obs base_t;prob_gtor_root_lsprob::base_t115,3361
+  prob_gtor_root_lsprob(prob_gtor_root_lsprob::prob_gtor_root_lsprob118,3405
+  prob_gtor_root_lsprob(prob_gtor_root_lsprob::prob_gtor_root_lsprob121,3548
+  virtual self_t* clone(prob_gtor_root_lsprob::clone125,3712
+  const prob_t* const * node_state_prob(prob_gtor_root_lsprob::node_state_prob127,3815
+  virtual void eval_pdistro_update(prob_gtor_root_lsprob::eval_pdistro_update132,3912
+
+prob_gtor_obs.h,486
+#define __PROB_GTOR_OBS_H33,1033
+struct prob_gtor_obs 43,1156
+  typedef prob_gtor_obs self_t;prob_gtor_obs::self_t45,1216
+  typedef prob_gtor base_t;prob_gtor_obs::base_t46,1248
+  prob_gtor_obs(prob_gtor_obs::prob_gtor_obs48,1277
+  prob_gtor_obs(prob_gtor_obs::prob_gtor_obs54,1509
+  const prob_t* pdistro(prob_gtor_obs::pdistro66,1783
+  void pdistro_update(prob_gtor_obs::pdistro_update78,2081
+  void recieve_notifier_event(prob_gtor_obs::recieve_notifier_event84,2194
+
+prob_gtor_param_gc_shifter.h,1257
+#define __PROB_GTOR_PARAM_GC_SHIFTER_H33,1059
+smlfloat sigm(45,1213
+smlfloat inv_sigm(48,1286
+struct prob_gtor_param_gc_shifter 56,1447
+  typedef prob_gtor_param_gc_shifter self_t;prob_gtor_param_gc_shifter::self_t58,1526
+  typedef prob_gtor_param base_t;prob_gtor_param_gc_shifter::base_t59,1571
+  prob_gtor_param_gc_shifter(prob_gtor_param_gc_shifter::prob_gtor_param_gc_shifter61,1606
+  prob_gtor_param_gc_shifter(prob_gtor_param_gc_shifter::prob_gtor_param_gc_shifter90,2490
+  virtual self_t* clone(prob_gtor_param_gc_shifter::clone102,2922
+  void get_param_from_pdistro(prob_gtor_param_gc_shifter::get_param_from_pdistro107,3092
+  get_pgdat_from_pgdistro(prob_gtor_param_gc_shifter::get_pgdat_from_pgdistro124,3642
+  void get_pdistro_from_param(prob_gtor_param_gc_shifter::get_pdistro_from_param152,4408
+  void param_norm(prob_gtor_param_gc_shifter::param_norm164,4704
+  void recieve_notifier_event(prob_gtor_param_gc_shifter::recieve_notifier_event167,4738
+  smlfloat p_to_param(prob_gtor_param_gc_shifter::p_to_param175,4954
+  prob_t param_to_p(prob_gtor_param_gc_shifter::param_to_p178,5020
+  struct pgdat_t prob_gtor_param_gc_shifter::pgdat_t181,5074
+    pgdat_t(prob_gtor_param_gc_shifter::pgdat_t::pgdat_t183,5094
+
+prob_gtor_param.h,696
+#define __PROB_GTOR_PARAM_H33,1037
+struct prob_gtor_param 46,1221
+  typedef param_object obase_t;prob_gtor_param::obase_t48,1305
+  typedef prob_gtor pbase_t;prob_gtor_param::pbase_t49,1337
+  typedef notifier nbase_t;prob_gtor_param::nbase_t50,1366
+  typedef prob_gtor_param self_t;prob_gtor_param::self_t51,1394
+  prob_gtor_param(prob_gtor_param::prob_gtor_param53,1429
+  prob_gtor_param(prob_gtor_param::prob_gtor_param60,1747
+  set_pdistro(prob_gtor_param::set_pdistro66,1913
+  update_from_new_param(prob_gtor_param::update_from_new_param82,2271
+  void param_norm(prob_gtor_param::param_norm92,2459
+  post_write_param_state(prob_gtor_param::post_write_param_state103,2691
+
+prob_gtor_param_simple.h,551
+#define __PROB_GTOR_PARAM_SIMPLE_H33,1051
+struct prob_gtor_param_simple 41,1188
+  typedef prob_gtor_param_simple self_t;prob_gtor_param_simple::self_t43,1246
+  typedef prob_gtor_param base_t;prob_gtor_param_simple::base_t44,1287
+  prob_gtor_param_simple(prob_gtor_param_simple::prob_gtor_param_simple47,1333
+  virtual self_t* clone(prob_gtor_param_simple::clone50,1440
+  void get_param_from_pdistro(prob_gtor_param_simple::get_param_from_pdistro54,1522
+  void get_pdistro_from_param(prob_gtor_param_simple::get_pdistro_from_param60,1665
+
+prob_gtor_param_state_conversion.h,8074
+#define __PROB_GTOR_PARAM_STATE_CONVERSION_H33,1071
+struct prob_gtor_param_bio_pdistro_builder 44,1298
+  typedef prob_param_gtor base_t;prob_gtor_param_bio_pdistro_builder::base_t46,1369
+  typedef prob_gtor_bio_pdistro_builder self_t;prob_gtor_param_bio_pdistro_builder::self_t47,1403
+  prob_gtor_bio_pdistro_builder(prob_gtor_param_bio_pdistro_builder::prob_gtor_bio_pdistro_builder49,1452
+  virtual base_t* clone(prob_gtor_param_bio_pdistro_builder::clone54,1717
+  void get_param_from_pdistro(prob_gtor_param_bio_pdistro_builder::get_param_from_pdistro58,1799
+  void pdistro_norm(prob_gtor_param_bio_pdistro_builder::pdistro_norm63,1937
+  void get_pdistro_from_param(prob_gtor_param_bio_pdistro_builder::get_pdistro_from_param70,2085
+struct prob_gtor_param_dinuc_from_nuc 81,2319
+  typedef prob_gtor_param base_t;prob_gtor_param_dinuc_from_nuc::base_t83,2385
+  typedef prob_gtor_param_dinuc_from_nuc self_t;prob_gtor_param_dinuc_from_nuc::self_t84,2419
+  prob_gtor_param_dinuc_from_nuc(prob_gtor_param_dinuc_from_nuc::prob_gtor_param_dinuc_from_nuc86,2469
+  virtual base_t* clone(prob_gtor_param_dinuc_from_nuc::clone88,2540
+  void get_param_from_pdistro(prob_gtor_param_dinuc_from_nuc::get_param_from_pdistro92,2622
+  void get_pdistro_from_param(prob_gtor_param_dinuc_from_nuc::get_pdistro_from_param97,2727
+struct prob_gtor_param_nsc4_seq_stat 108,2977
+  typedef prob_gtor_param base_t;prob_gtor_param_nsc4_seq_stat::base_t110,3042
+  typedef prob_gtor_param_nsc4_seq_stat self_t;prob_gtor_param_nsc4_seq_stat::self_t111,3076
+  virtual base_t* clone(prob_gtor_param_nsc4_seq_stat::clone116,3192
+struct prob_gtor_param_nsc4_seq_stat_nx2n 137,3781
+  typedef prob_gtor_param base_t;prob_gtor_param_nsc4_seq_stat_nx2n::base_t139,3851
+  typedef prob_gtor_param_nsc4_seq_stat_nx2n self_t;prob_gtor_param_nsc4_seq_stat_nx2n::self_t140,3885
+  virtual base_t* clone(prob_gtor_param_nsc4_seq_stat_nx2n::clone145,4011
+  struct dinuc_ns_count prob_gtor_param_nsc4_seq_stat_nx2n::dinuc_ns_count154,4197
+    unsigned get_count(prob_gtor_param_nsc4_seq_stat_nx2n::dinuc_ns_count::get_count158,4247
+    unsigned get_offset(prob_gtor_param_nsc4_seq_stat_nx2n::dinuc_ns_count::get_offset164,4439
+    unsigned get_index(prob_gtor_param_nsc4_seq_stat_nx2n::dinuc_ns_count::get_index170,4635
+struct prob_gtor_param_nsc4_seq_stat_nx1n 197,5527
+  typedef prob_gtor_param base_t;prob_gtor_param_nsc4_seq_stat_nx1n::base_t199,5597
+  typedef prob_gtor_param_nsc4_seq_stat_nx1n self_t;prob_gtor_param_nsc4_seq_stat_nx1n::self_t200,5631
+  virtual base_t* clone(prob_gtor_param_nsc4_seq_stat_nx1n::clone205,5757
+  struct nuc_ns_count prob_gtor_param_nsc4_seq_stat_nx1n::nuc_ns_count214,5943
+    unsigned get_count(prob_gtor_param_nsc4_seq_stat_nx1n::nuc_ns_count::get_count218,5989
+    unsigned get_offset(prob_gtor_param_nsc4_seq_stat_nx1n::nuc_ns_count::get_offset224,6179
+    unsigned get_index(prob_gtor_param_nsc4_seq_stat_nx1n::nuc_ns_count::get_index230,6373
+struct prob_gtor_param_nsc4_from_nscodon 253,6933
+  typedef prob_gtor_param base_t;prob_gtor_param_nsc4_from_nscodon::base_t255,7002
+  typedef prob_gtor_param_nsc4_from_nscodon self_t;prob_gtor_param_nsc4_from_nscodon::self_t256,7036
+  prob_gtor_param_nsc4_from_nscodon(prob_gtor_param_nsc4_from_nscodon::prob_gtor_param_nsc4_from_nscodon259,7100
+  virtual base_t* clone(prob_gtor_param_nsc4_from_nscodon::clone262,7224
+  void get_param_from_pdistro(prob_gtor_param_nsc4_from_nscodon::get_param_from_pdistro266,7306
+  void get_pdistro_from_param(prob_gtor_param_nsc4_from_nscodon::get_pdistro_from_param271,7409
+struct prob_gtor_param_nsc4_from_nuc_pos 287,7694
+  typedef prob_gtor_param base_t;prob_gtor_param_nsc4_from_nuc_pos::base_t289,7763
+  typedef prob_gtor_param_nsc4_from_nuc_pos self_t;prob_gtor_param_nsc4_from_nuc_pos::self_t290,7797
+  prob_gtor_param_nsc4_from_nuc_pos(prob_gtor_param_nsc4_from_nuc_pos::prob_gtor_param_nsc4_from_nuc_pos293,7861
+  virtual base_t* clone(prob_gtor_param_nsc4_from_nuc_pos::clone301,8135
+  void get_param_from_pdistro(prob_gtor_param_nsc4_from_nuc_pos::get_param_from_pdistro305,8217
+  void param_norm(prob_gtor_param_nsc4_from_nuc_pos::param_norm310,8324
+  void get_pdistro_from_param(prob_gtor_param_nsc4_from_nuc_pos::get_pdistro_from_param319,8602
+  enum { PARAM_SIZE prob_gtor_param_nsc4_from_nuc_pos::PARAM_SIZE327,8809
+  enum { PARAM_SIZE = NUC::SIZE*prob_gtor_param_nsc4_from_nuc_pos::NUC::SIZE327,8809
+  enum { PARAM_SIZE = NUC::SIZE*CODON::BASE_SIZE prob_gtor_param_nsc4_from_nuc_pos::CODON::BASE_SIZE327,8809
+struct prob_gtor_param_nsc4_from_nuc 337,8951
+  typedef prob_gtor_param base_t;prob_gtor_param_nsc4_from_nuc::base_t339,9016
+  typedef prob_gtor_param_nsc4_from_nuc self_t;prob_gtor_param_nsc4_from_nuc::self_t340,9050
+  prob_gtor_param_nsc4_from_nuc(prob_gtor_param_nsc4_from_nuc::prob_gtor_param_nsc4_from_nuc342,9099
+  virtual base_t* clone(prob_gtor_param_nsc4_from_nuc::clone344,9168
+  void get_param_from_pdistro(prob_gtor_param_nsc4_from_nuc::get_param_from_pdistro348,9250
+  void get_pdistro_from_param(prob_gtor_param_nsc4_from_nuc::get_pdistro_from_param353,9349
+struct prob_gtor_param_nsc5_from_nscodon 363,9530
+  typedef prob_gtor_param base_t;prob_gtor_param_nsc5_from_nscodon::base_t365,9599
+  typedef prob_gtor_param_nsc5_from_nscodon self_t;prob_gtor_param_nsc5_from_nscodon::self_t366,9633
+  prob_gtor_param_nsc5_from_nscodon(prob_gtor_param_nsc5_from_nscodon::prob_gtor_param_nsc5_from_nscodon368,9686
+  virtual base_t* clone(prob_gtor_param_nsc5_from_nscodon::clone370,9763
+  void get_param_from_pdistro(prob_gtor_param_nsc5_from_nscodon::get_param_from_pdistro374,9845
+  void get_pdistro_from_param(prob_gtor_param_nsc5_from_nscodon::get_pdistro_from_param379,9948
+struct prob_gtor_param_nscodon_from_nuc 390,10148
+  typedef prob_gtor_param base_t;prob_gtor_param_nscodon_from_nuc::base_t392,10216
+  typedef prob_gtor_param_nscodon_from_nuc self_t;prob_gtor_param_nscodon_from_nuc::self_t393,10250
+  prob_gtor_param_nscodon_from_nuc(prob_gtor_param_nscodon_from_nuc::prob_gtor_param_nscodon_from_nuc395,10302
+  virtual base_t* clone(prob_gtor_param_nscodon_from_nuc::clone397,10377
+  void get_param_from_pdistro(prob_gtor_param_nscodon_from_nuc::get_param_from_pdistro401,10459
+  void get_pdistro_from_param(prob_gtor_param_nscodon_from_nuc::get_pdistro_from_param406,10561
+struct prob_gtor_param_nscodon_from_nuc_pos 417,10760
+  typedef prob_gtor_param base_t;prob_gtor_param_nscodon_from_nuc_pos::base_t419,10832
+  typedef prob_gtor_param_nscodon_from_nuc_pos self_t;prob_gtor_param_nscodon_from_nuc_pos::self_t420,10866
+  prob_gtor_param_nscodon_from_nuc_pos(prob_gtor_param_nscodon_from_nuc_pos::prob_gtor_param_nscodon_from_nuc_pos422,10922
+  virtual base_t* clone(prob_gtor_param_nscodon_from_nuc_pos::clone429,11155
+  void get_param_from_pdistro(prob_gtor_param_nscodon_from_nuc_pos::get_param_from_pdistro433,11237
+  void param_norm(prob_gtor_param_nscodon_from_nuc_pos::param_norm438,11347
+  void get_pdistro_from_param(prob_gtor_param_nscodon_from_nuc_pos::get_pdistro_from_param447,11625
+  enum { PARAM_SIZE prob_gtor_param_nscodon_from_nuc_pos::PARAM_SIZE451,11725
+  enum { PARAM_SIZE = NUC::SIZE*prob_gtor_param_nscodon_from_nuc_pos::NUC::SIZE451,11725
+  enum { PARAM_SIZE = NUC::SIZE*CODON::BASE_SIZE prob_gtor_param_nscodon_from_nuc_pos::CODON::BASE_SIZE451,11725
+struct prob_gtor_param_trinuc_from_nuc 456,11783
+  typedef prob_gtor_param base_t;prob_gtor_param_trinuc_from_nuc::base_t458,11850
+  typedef prob_gtor_param_trinuc_from_nuc self_t;prob_gtor_param_trinuc_from_nuc::self_t460,11885
+  prob_gtor_param_trinuc_from_nuc(prob_gtor_param_trinuc_from_nuc::prob_gtor_param_trinuc_from_nuc462,11936
+  virtual base_t* clone(prob_gtor_param_trinuc_from_nuc::clone464,12009
+  void get_param_from_pdistro(prob_gtor_param_trinuc_from_nuc::get_param_from_pdistro468,12091
+  void get_pdistro_from_param(prob_gtor_param_trinuc_from_nuc::get_pdistro_from_param473,12198
+
+process_fsa.h,136
+#define __PROCESS_FSA_H33,1028
+struct seq_filter_options 39,1082
+  seq_filter_options(seq_filter_options::seq_filter_options40,1110
+
+rate_gtor_binary.h,776
+#define __RATE_GTOR_BINARY_H33,1039
+struct rate_gtor_binary 46,1299
+  typedef rate_gtor base_t;rate_gtor_binary::base_t47,1344
+  typedef rate_gtor_binary self_t;rate_gtor_binary::self_t48,1372
+  enum bogus_t rate_gtor_binary::bogus_t50,1408
+  enum bogus_t { RSIZE rate_gtor_binary::bogus_t::RSIZE50,1408
+  rate_gtor_binary(rate_gtor_binary::rate_gtor_binary52,1439
+  rate_gtor_binary(rate_gtor_binary::rate_gtor_binary57,1582
+  rate_gtor* clone(rate_gtor_binary::clone61,1701
+  store_state(rate_gtor_binary::store_state65,1811
+  load_state(rate_gtor_binary::load_state72,1994
+  rates(rate_gtor_binary::rates86,2219
+  rate_scale(rate_gtor_binary::rate_scale95,2393
+  report(rate_gtor_binary::report101,2538
+  report(rate_gtor_binary::report114,2837
+
+rate_gtor_dinuc.h,547
+#define __RATE_GTOR_DINUC_H33,1037
+struct rate_gtor_dinuc 42,1228
+  typedef rate_gtor_nuc_base base_t;rate_gtor_dinuc::base_t44,1282
+  typedef rate_gtor_dinuc self_t;rate_gtor_dinuc::self_t45,1319
+  rate_gtor_dinuc(rate_gtor_dinuc::rate_gtor_dinuc47,1354
+  rate_gtor_dinuc(rate_gtor_dinuc::rate_gtor_dinuc52,1540
+  rate_gtor* clone(rate_gtor_dinuc::clone56,1657
+  unsigned state_size_conditioned(rate_gtor_dinuc::state_size_conditioned59,1761
+  condition_func* condition_func_factory(rate_gtor_dinuc::condition_func_factory62,1836
+
+rate_gtor_factory.h,38
+#define __RATE_GTOR_FACTORY_H33,1041
+
+rate_gtor.h,2270
+#define __RATE_GTOR_H33,1025
+struct rate_gtor 58,1464
+  typedef param_object base_t;rate_gtor::base_t60,1543
+  typedef rate_gtor self_t;rate_gtor::self_t61,1574
+  rate_gtor(rate_gtor::rate_gtor63,1603
+  rate_gtor(rate_gtor::rate_gtor70,1819
+  RATE_GTOR_MODEL::index_t model_type(rate_gtor::model_type79,2108
+  unsigned state_size(rate_gtor::state_size81,2191
+  unsigned state_size_conditioned(rate_gtor::state_size_conditioned84,2263
+  unsigned submodel_size(rate_gtor::submodel_size87,2341
+  unsigned submodel_state_size(rate_gtor::submodel_state_size90,2399
+  condition_func* submodel_condition_func_factory(rate_gtor::submodel_condition_func_factory93,2516
+  void submodel_pdistro_reduction(rate_gtor::submodel_pdistro_reduction99,2713
+  void submodel_fuse_pdistros(rate_gtor::submodel_fuse_pdistros105,2916
+  void submodel_state_reduction_map(rate_gtor::submodel_state_reduction_map112,3144
+  void submodel_adjust_p(rate_gtor::submodel_adjust_p121,3398
+  SITE_MODEL::index_t site_model(rate_gtor::site_model123,3457
+  virtual void store_state(rate_gtor::store_state129,3664
+  void reset_param(rate_gtor::reset_param148,4081
+  smlfloat param_penalty(rate_gtor::param_penalty156,4261
+  const prob_t* bg_pdistro_cat(rate_gtor::bg_pdistro_cat158,4309
+  virtual void bg_pdistro_update_internal(rate_gtor::bg_pdistro_update_internal174,4809
+  virtual void load_state_internal(rate_gtor::load_state_internal176,4857
+  virtual void fix_input_param_internal(rate_gtor::fix_input_param_internal178,4911
+  virtual void param_update_from_new_bg_pdistro_internal(rate_gtor::param_update_from_new_bg_pdistro_internal180,4957
+  unsigned bg_cat_size(rate_gtor::bg_cat_size182,5020
+  unsigned bg_cat_no_from_cat_no(rate_gtor::bg_cat_no_from_cat_no186,5090
+  const prob_t* bg_pdistro_bg_cat(rate_gtor::bg_pdistro_bg_cat190,5207
+  param_end(rate_gtor::param_end195,5344
+  const cat_manager& cm(rate_gtor::cm197,5379
+  set_uniform_param_state(rate_gtor::set_uniform_param_state203,5557
+  void param_update_from_new_bg_pdistro(rate_gtor::param_update_from_new_bg_pdistro210,5679
+  void bg_pdistro_update(rate_gtor::bg_pdistro_update217,5830
+  virtual void recieve_notifier_event(rate_gtor::recieve_notifier_event222,5938
+
+rate_gtor_nsc4.h,537
+#define __RATE_GTOR_NSC4_H33,1035
+struct rate_gtor_nsc4 46,1287
+  typedef rate_gtor_nscodon_base base_t;rate_gtor_nsc4::base_t48,1344
+  typedef rate_gtor_nsc4 self_t;rate_gtor_nsc4::self_t49,1385
+  rate_gtor_nsc4(rate_gtor_nsc4::rate_gtor_nsc451,1419
+  rate_gtor_nsc4(rate_gtor_nsc4::rate_gtor_nsc457,1663
+  rate_gtor* clone(rate_gtor_nsc4::clone64,1867
+  unsigned state_size_conditioned(rate_gtor_nsc4::state_size_conditioned67,1971
+  condition_func* condition_func_factory(rate_gtor_nsc4::condition_func_factory70,2050
+
+rate_gtor_nsc5.h,856
+#define __RATE_GTOR_NSC5_H33,1035
+struct rate_gtor_nsc5 46,1323
+  typedef rate_gtor_nscodon_base base_t;rate_gtor_nsc5::base_t48,1380
+  typedef rate_gtor_nsc5 self_t;rate_gtor_nsc5::self_t49,1421
+  rate_gtor_nsc5(rate_gtor_nsc5::rate_gtor_nsc551,1455
+  rate_gtor_nsc5(rate_gtor_nsc5::rate_gtor_nsc562,1898
+  rate_gtor* clone(rate_gtor_nsc5::clone70,2120
+  unsigned state_size_conditioned(rate_gtor_nsc5::state_size_conditioned73,2224
+  condition_func* condition_func_factory(rate_gtor_nsc5::condition_func_factory84,2514
+  unsigned submodel_size(rate_gtor_nsc5::submodel_size100,2903
+  unsigned submodel_state_size(rate_gtor_nsc5::submodel_state_size106,3067
+  void submodel_adjust_p(rate_gtor_nsc5::submodel_adjust_p113,3299
+  condition_func* submodel_condition_func_factory(rate_gtor_nsc5::submodel_condition_func_factory120,3493
+
+rate_gtor_nscodon_base.h,3107
+#define __RATE_GTOR_NSCODON_BASE_H33,1051
+namespace AA_PARAM 42,1198
+  enum index_t AA_PARAM::index_t43,1219
+    normal,AA_PARAM::index_t::normal44,1236
+    zero,AA_PARAM::index_t::zero45,1248
+    one AA_PARAM::index_t::one46,1258
+struct rate_gtor_nscodon_base 51,1340
+  typedef rate_gtor_nuc_base base_t;rate_gtor_nscodon_base::base_t53,1401
+  typedef rate_gtor_nscodon_base self_t;rate_gtor_nscodon_base::self_t54,1438
+  rate_gtor_nscodon_base(rate_gtor_nscodon_base::rate_gtor_nscodon_base56,1480
+  rate_gtor_nscodon_base(rate_gtor_nscodon_base::rate_gtor_nscodon_base66,1845
+  is_codon_bias(rate_gtor_nscodon_base::is_codon_bias96,2657
+  const prob_t* bg_pdistro_nuc_pos_cat(rate_gtor_nscodon_base::bg_pdistro_nuc_pos_cat101,2763
+  bg_pdistro_nuc_pos_conditioned_on_5p_cat(rate_gtor_nscodon_base::bg_pdistro_nuc_pos_conditioned_on_5p_cat108,3010
+  bg_pdistro_nuc_pos_conditioned_on_3p_cat(rate_gtor_nscodon_base::bg_pdistro_nuc_pos_conditioned_on_3p_cat116,3397
+  const prob_t* bg_pdistro_nscodon_cat(rate_gtor_nscodon_base::bg_pdistro_nscodon_cat123,3768
+  param_size_aa(rate_gtor_nscodon_base::param_size_aa133,4060
+  param_start_aa(rate_gtor_nscodon_base::param_start_aa138,4141
+  param_end(rate_gtor_nscodon_base::param_end165,4993
+  enum paramset_t rate_gtor_nscodon_base::paramset_t191,5838
+    PARAMSET_SITE_SELECT_CATS rate_gtor_nscodon_base::paramset_t::PARAMSET_SITE_SELECT_CATS192,5858
+    PARAMSET_SITE_SELECT_CATS = base_t::PARAMSET_END,rate_gtor_nscodon_base::paramset_t::base_t::PARAMSET_END192,5858
+    PARAMSET_GROUP_SELECT_CATS,rate_gtor_nscodon_base::paramset_t::PARAMSET_GROUP_SELECT_CATS193,5912
+    PARAMSET_AA,rate_gtor_nscodon_base::paramset_t::PARAMSET_AA194,5944
+    PARAMSET_CODON_BIAS,rate_gtor_nscodon_base::paramset_t::PARAMSET_CODON_BIAS195,5961
+    PARAMSET_ENDrate_gtor_nscodon_base::paramset_t::PARAMSET_END196,5986
+  void bg_pdistro_nscodon_update(rate_gtor_nscodon_base::bg_pdistro_nscodon_update217,6548
+  SELECT_MODEL::index_t select_model(rate_gtor_nscodon_base::select_model245,7360
+  site_select_cats_expect(rate_gtor_nscodon_base::site_select_cats_expect259,7888
+  group_select_cats_expect(rate_gtor_nscodon_base::group_select_cats_expect273,8264
+  paramset_aa_select_matrix_cat_size(rate_gtor_nscodon_base::paramset_aa_select_matrix_cat_size300,8926
+  paramset_aa_select_matrix_cat_start(rate_gtor_nscodon_base::paramset_aa_select_matrix_cat_start305,9067
+  prob_t* bg_pdistro_nscodon_bg_cat(rate_gtor_nscodon_base::bg_pdistro_nscodon_bg_cat315,9301
+  prob_t* bg_pdistro_nuc_pos_cat(rate_gtor_nscodon_base::bg_pdistro_nuc_pos_cat319,9425
+  prob_t* bg_pdistro_nuc_pos_bg_cat(rate_gtor_nscodon_base::bg_pdistro_nuc_pos_bg_cat324,9613
+  void bg_check(rate_gtor_nscodon_base::bg_check329,9797
+  struct auto_copy rate_gtor_nscodon_base::auto_copy334,9940
+    auto_copy(rate_gtor_nscodon_base::auto_copy::auto_copy335,9961
+  struct aa_exchange_param_info rate_gtor_nscodon_base::aa_exchange_param_info351,10390
+  struct aa_codon_map_info rate_gtor_nscodon_base::aa_codon_map_info363,10769
+
+rate_gtor_nscodon_base_util.h,79
+#define __RATE_GTOR_NSCODON_BASE_UTIL_H33,1061
+rates_nscodon_context(73,2455
+
+rate_gtor_nscodon_base_util.hh,69
+nscodon_flux_no_aa_selection(41,1251
+rates_nscodon_context(59,1895
+
+rate_gtor_nscodon.h,402
+#define __RATE_GTOR_NSCODON_H33,1041
+struct rate_gtor_nscodon 44,1277
+  typedef rate_gtor_nscodon_base base_t;rate_gtor_nscodon::base_t46,1337
+  typedef rate_gtor_nscodon self_t;rate_gtor_nscodon::self_t47,1378
+  rate_gtor_nscodon(rate_gtor_nscodon::rate_gtor_nscodon49,1415
+  rate_gtor_nscodon(rate_gtor_nscodon::rate_gtor_nscodon55,1671
+  rate_gtor* clone(rate_gtor_nscodon::clone61,1879
+
+rate_gtor_nscodon_options.h,2265
+#define __RATE_GTOR_NSCODON_OPTIONS_H33,1057
+namespace SELECT_MODEL 41,1156
+  enum index_t SELECT_MODEL::index_t42,1181
+  enum index_t { NONE,SELECT_MODEL::index_t::NONE42,1181
+                 SINGLE,SELECT_MODEL::index_t::SINGLE43,1204
+                 SYMM,SELECT_MODEL::index_t::SYMM44,1229
+                 ASYMM,SELECT_MODEL::index_t::ASYMM45,1252
+                 FROM,SELECT_MODEL::index_t::FROM46,1276
+                 TO,SELECT_MODEL::index_t::TO47,1299
+                 FROM_TO,SELECT_MODEL::index_t::FROM_TO48,1320
+                 FROM_SYMM,SELECT_MODEL::index_t::FROM_SYMM49,1346
+                 SYMM_TO,SELECT_MODEL::index_t::SYMM_TO50,1374
+                 FROM_SYMM_TO,SELECT_MODEL::index_t::FROM_SYMM_TO51,1400
+                 HP SELECT_MODEL::index_t::HP52,1431
+namespace CODON_BIAS_MODEL 55,1457
+  enum index_t CODON_BIAS_MODEL::index_t56,1486
+  enum index_t { NONE,CODON_BIAS_MODEL::index_t::NONE56,1486
+                 SYNON_RATIO,CODON_BIAS_MODEL::index_t::SYNON_RATIO57,1509
+                 SYNON_NORM_RATIO,CODON_BIAS_MODEL::index_t::SYNON_NORM_RATIO58,1539
+                 SYNON_NORM_ABS CODON_BIAS_MODEL::index_t::SYNON_NORM_ABS59,1574
+struct rate_gtor_nscodon_options_base 68,1837
+  rate_gtor_nscodon_options_base(rate_gtor_nscodon_options_base::rate_gtor_nscodon_options_base70,1878
+  void set_n_select_matrix_cats(rate_gtor_nscodon_options_base::set_n_select_matrix_cats74,2005
+  SELECT_MODEL::index_t select_model(rate_gtor_nscodon_options_base::select_model78,2112
+  void set_select_model(rate_gtor_nscodon_options_base::set_select_model82,2209
+  void set_all_select_model(rate_gtor_nscodon_options_base::set_all_select_model87,2340
+struct rate_gtor_nscodon_lock_options 98,2581
+  rate_gtor_nscodon_lock_options(rate_gtor_nscodon_lock_options::rate_gtor_nscodon_lock_options99,2621
+struct rate_gtor_nscodon_options 110,2863
+  rate_gtor_nscodon_options(rate_gtor_nscodon_options::rate_gtor_nscodon_options111,2938
+namespace C5_APPROX 121,3080
+  enum index_t C5_APPROX::index_t122,3102
+  enum index_t { NONE,C5_APPROX::index_t::NONE122,3102
+                 C4_JOINT,C5_APPROX::index_t::C4_JOINT123,3125
+                 C4_GMEAN C5_APPROX::index_t::C4_GMEAN124,3152
+
+rate_gtor_nuc_base.h,4227
+#define __RATE_GTOR_NUC_BASE_H33,1043
+struct rate_gtor_nuc_base 50,1399
+  typedef rate_gtor base_t;rate_gtor_nuc_base::base_t51,1446
+  typedef rate_gtor_nuc_base self_t;rate_gtor_nuc_base::self_t52,1474
+  rate_gtor_nuc_base(rate_gtor_nuc_base::rate_gtor_nuc_base54,1512
+  rate_gtor_nuc_base(rate_gtor_nuc_base::rate_gtor_nuc_base64,1864
+  const prob_t* bg_pdistro_nuc_cat(rate_gtor_nuc_base::bg_pdistro_nuc_cat89,2694
+  bg_pdistro_nuc_conditioned_on_5p_cat(rate_gtor_nuc_base::bg_pdistro_nuc_conditioned_on_5p_cat95,2869
+  bg_pdistro_nuc_conditioned_on_3p_cat(rate_gtor_nuc_base::bg_pdistro_nuc_conditioned_on_3p_cat102,3176
+  context_model_nuc(rate_gtor_nuc_base::context_model_nuc109,3496
+  is_use_edge_correction(rate_gtor_nuc_base::is_use_edge_correction115,3676
+  edge_strength_pre(rate_gtor_nuc_base::edge_strength_pre118,3767
+  edge_strength_post(rate_gtor_nuc_base::edge_strength_post121,3836
+  edge_strength_pre2(rate_gtor_nuc_base::edge_strength_pre2124,3911
+  edge_strength_post2(rate_gtor_nuc_base::edge_strength_post2127,3981
+  param_size_mut(rate_gtor_nuc_base::param_size_mut131,4059
+  param_start_mut(rate_gtor_nuc_base::param_start_mut136,4142
+  edge_strength(rate_gtor_nuc_base::edge_strength154,4583
+  param_end(rate_gtor_nuc_base::param_end161,4801
+  cat_size_site_rate(rate_gtor_nuc_base::cat_size_site_rate165,4895
+  cat_size_mutation_model(rate_gtor_nuc_base::cat_size_mutation_model168,5013
+  cat_size_group_rate(rate_gtor_nuc_base::cat_size_group_rate171,5118
+  trainable_param_transform(rate_gtor_nuc_base::trainable_param_transform183,5503
+  trainable_param_untransform(rate_gtor_nuc_base::trainable_param_untransform198,5905
+  enum paramset_t rate_gtor_nuc_base::paramset_t213,6359
+    PARAMSET_SITE_RATE_CATS,rate_gtor_nuc_base::paramset_t::PARAMSET_SITE_RATE_CATS214,6379
+    PARAMSET_GROUP_RATE_CATS,rate_gtor_nuc_base::paramset_t::PARAMSET_GROUP_RATE_CATS215,6408
+    PARAMSET_NUC,rate_gtor_nuc_base::paramset_t::PARAMSET_NUC216,6438
+    PARAMSET_EDGE_STRENGTH,rate_gtor_nuc_base::paramset_t::PARAMSET_EDGE_STRENGTH217,6456
+    PARAMSET_ENDrate_gtor_nuc_base::paramset_t::PARAMSET_END218,6484
+  paramset_start(rate_gtor_nuc_base::paramset_start226,6576
+  set_paramset_dependent_block(rate_gtor_nuc_base::set_paramset_dependent_block233,6724
+  set_paramset_val(rate_gtor_nuc_base::set_paramset_val243,6961
+  set_paramset_slope(rate_gtor_nuc_base::set_paramset_slope255,7381
+  set_paramset_train(rate_gtor_nuc_base::set_paramset_train267,7708
+  get_paramset_member(rate_gtor_nuc_base::get_paramset_member275,7936
+  rate_model_nuc(rate_gtor_nuc_base::rate_model_nuc283,8185
+  scale_nuc_mut_rate_trainable_param(rate_gtor_nuc_base::scale_nuc_mut_rate_trainable_param311,9225
+  struct trainable_mode rate_gtor_nuc_base::trainable_mode319,9665
+    enum index_t rate_gtor_nuc_base::trainable_mode::index_t320,9691
+    enum index_t { NONE,rate_gtor_nuc_base::trainable_mode::index_t::NONE320,9691
+    enum index_t { NONE, FULL,rate_gtor_nuc_base::trainable_mode::index_t::FULL320,9691
+    enum index_t { NONE, FULL, HALF_JOINT rate_gtor_nuc_base::trainable_mode::index_t::HALF_JOINT320,9691
+    trainable_mode(rate_gtor_nuc_base::trainable_mode::trainable_mode322,9747
+  enum joint_param_t rate_gtor_nuc_base::joint_param_t340,10389
+  enum joint_param_t { JOINT1,rate_gtor_nuc_base::joint_param_t::JOINT1340,10389
+  enum joint_param_t { JOINT1, JOINT2 rate_gtor_nuc_base::joint_param_t::JOINT2340,10389
+  paramset_mutation_model_cat_size(rate_gtor_nuc_base::paramset_mutation_model_cat_size409,12841
+  paramset_mutation_model_cat_start(rate_gtor_nuc_base::paramset_mutation_model_cat_start415,13065
+  prob_t* bg_pdistro_nuc_cat(rate_gtor_nuc_base::bg_pdistro_nuc_cat427,13332
+  prob_t* bg_pdistro_nuc_bg_cat(rate_gtor_nuc_base::bg_pdistro_nuc_bg_cat431,13456
+  bg_pdistro_nuc_update(rate_gtor_nuc_base::bg_pdistro_nuc_update436,13579
+  void bg_check(rate_gtor_nuc_base::bg_check446,13871
+  lock_full_edge_correction(rate_gtor_nuc_base::lock_full_edge_correction453,14026
+  struct auto_copy rate_gtor_nuc_base::auto_copy463,14334
+    auto_copy(rate_gtor_nuc_base::auto_copy::auto_copy464,14355
+
+rate_gtor_nuc_base_util.h,44
+#define __RATE_GTOR_NUC_BASE_UTIL_H33,1052
+
+rate_gtor_nuc.h,439
+#define __RATE_GTOR_NUC_H33,1033
+struct rate_gtor_nuc 43,1191
+  typedef rate_gtor_nuc_base base_t;rate_gtor_nuc::base_t45,1243
+  typedef rate_gtor_nuc self_t;rate_gtor_nuc::self_t46,1280
+  rate_gtor_nuc(rate_gtor_nuc::rate_gtor_nuc48,1313
+  rate_gtor_nuc(rate_gtor_nuc::rate_gtor_nuc53,1493
+  rate_gtor* clone(rate_gtor_nuc::clone57,1606
+  void state_pdistro_to_nuc_pdistro(rate_gtor_nuc::state_pdistro_to_nuc_pdistro61,1718
+
+rate_gtor_nuc_options.h,2381
+#define __RATE_GTOR_NUC_OPTIONS_H33,1048
+namespace RATE_MODEL_NUC 39,1104
+  enum index_t RATE_MODEL_NUC::index_t40,1131
+  enum index_t { JC69,RATE_MODEL_NUC::index_t::JC6940,1131
+                 K80,RATE_MODEL_NUC::index_t::K8041,1154
+                 REV,RATE_MODEL_NUC::index_t::REV42,1176
+                 NONREV,RATE_MODEL_NUC::index_t::NONREV43,1198
+                 F81,RATE_MODEL_NUC::index_t::F8144,1223
+                 HKY85,RATE_MODEL_NUC::index_t::HKY8545,1245
+                 GY94}RATE_MODEL_NUC::index_t::GY9446,1269
+namespace CONTEXT_MODEL_NUC 49,1296
+  enum index_t CONTEXT_MODEL_NUC::index_t50,1326
+  enum index_t { INDY,CONTEXT_MODEL_NUC::index_t::INDY50,1326
+                 PRE_DOUBLET,CONTEXT_MODEL_NUC::index_t::PRE_DOUBLET51,1349
+                 POST_DOUBLET,CONTEXT_MODEL_NUC::index_t::POST_DOUBLET52,1379
+                 FACTORED_TRIPLET,CONTEXT_MODEL_NUC::index_t::FACTORED_TRIPLET53,1410
+                 TRIPLET,CONTEXT_MODEL_NUC::index_t::TRIPLET54,1445
+                 CPG_ONLY,CONTEXT_MODEL_NUC::index_t::CPG_ONLY55,1471
+                 TPA_ONLY,CONTEXT_MODEL_NUC::index_t::TPA_ONLY56,1498
+                 CPG_2TI,CONTEXT_MODEL_NUC::index_t::CPG_2TI57,1525
+                 CPG_NONREV,CONTEXT_MODEL_NUC::index_t::CPG_NONREV58,1551
+                 CPG_1TI}CONTEXT_MODEL_NUC::index_t::CPG_1TI59,1580
+struct rate_gtor_nuc_options_base 68,1830
+  rate_gtor_nuc_options_base(rate_gtor_nuc_options_base::rate_gtor_nuc_options_base70,1867
+  void set_n_site_mutation_model_cats(rate_gtor_nuc_options_base::set_n_site_mutation_model_cats75,2027
+  RATE_MODEL_NUC::index_t rate_model(rate_gtor_nuc_options_base::rate_model80,2188
+  CONTEXT_MODEL_NUC::index_t context_model(rate_gtor_nuc_options_base::context_model84,2283
+  void set_rate_model(rate_gtor_nuc_options_base::set_rate_model88,2387
+  void set_context_model(rate_gtor_nuc_options_base::set_context_model93,2514
+  void set_all_rate_model(rate_gtor_nuc_options_base::set_all_rate_model98,2653
+  void set_all_context_model(rate_gtor_nuc_options_base::set_all_context_model102,2777
+struct rate_gtor_nuc_lock_options 115,3070
+  rate_gtor_nuc_lock_options(rate_gtor_nuc_lock_options::rate_gtor_nuc_lock_options116,3106
+struct rate_gtor_nuc_options 127,3332
+  rate_gtor_nuc_options(rate_gtor_nuc_options::rate_gtor_nuc_options128,3399
+
+rate_gtor_options.h,1373
+#define __RATE_GTOR_OPTIONS_H33,1041
+namespace RATE_GTOR_MODEL 41,1195
+  enum index_t RATE_GTOR_MODEL::index_t42,1223
+  enum index_t { NONE,RATE_GTOR_MODEL::index_t::NONE42,1223
+                 BINARY,RATE_GTOR_MODEL::index_t::BINARY43,1246
+                 NUC,RATE_GTOR_MODEL::index_t::NUC44,1271
+                 CODON,RATE_GTOR_MODEL::index_t::CODON45,1293
+                 C4PRE,RATE_GTOR_MODEL::index_t::C4PRE46,1317
+                 C4POST,RATE_GTOR_MODEL::index_t::C4POST47,1341
+                 DINUC,RATE_GTOR_MODEL::index_t::DINUC48,1366
+                 TRINUC,RATE_GTOR_MODEL::index_t::TRINUC49,1390
+                 C5,RATE_GTOR_MODEL::index_t::C550,1415
+                 C5PRE,RATE_GTOR_MODEL::index_t::C5PRE51,1436
+                 C5POST}RATE_GTOR_MODEL::index_t::C5POST52,1460
+  convert_to_site_model(RATE_GTOR_MODEL::convert_to_site_model56,1518
+  base_size(RATE_GTOR_MODEL::base_size74,2074
+  state_size(RATE_GTOR_MODEL::state_size80,2189
+  base_size_conditioned(RATE_GTOR_MODEL::base_size_conditioned86,2306
+  base_overlap_size(RATE_GTOR_MODEL::base_overlap_size101,2614
+  base_size_repeat_offset(RATE_GTOR_MODEL::base_size_repeat_offset110,2846
+  base_overlap_left(RATE_GTOR_MODEL::base_overlap_left124,3065
+  base_overlap_right(RATE_GTOR_MODEL::base_overlap_right130,3168
+struct rate_gtor_options 137,3287
+
+rate_gtor_trinuc.h,561
+#define __RATE_GTOR_TRINUC_H33,1039
+struct rate_gtor_trinuc 42,1228
+  typedef rate_gtor_nuc_base base_t;rate_gtor_trinuc::base_t44,1283
+  typedef rate_gtor_trinuc self_t;rate_gtor_trinuc::self_t45,1320
+  rate_gtor_trinuc(rate_gtor_trinuc::rate_gtor_trinuc47,1356
+  rate_gtor_trinuc(rate_gtor_trinuc::rate_gtor_trinuc52,1545
+  rate_gtor* clone(rate_gtor_trinuc::clone57,1665
+  unsigned state_size_conditioned(rate_gtor_trinuc::state_size_conditioned60,1769
+  condition_func* condition_func_factory(rate_gtor_trinuc::condition_func_factory63,1844
+
+rate_gtor_util.h,35
+#define __RATE_GTOR_UTIL_H33,1034
+
+rates_func_options.h,344
+#define __RATES_FUNC_OPTIONS_H33,1043
+struct rates_func_options_base 39,1105
+  rates_func_options_base(rates_func_options_base::rates_func_options_base41,1149
+struct rates_func_options 69,2135
+  typedef rates_func_options_base base_t;rates_func_options::base_t71,2197
+  rates_func_options(rates_func_options::rates_func_options73,2240
+
+report_util.h,32
+#define __REPORT_UTIL_H33,1028
+
+report_util.hh,30
+report_time_instance(39,1104
+
+root_gtor.h,1784
+#define __ROOT_GTOR_H33,1025
+struct root_gtor 71,2289
+  typedef param_composite base_t;root_gtor::base_t73,2354
+  typedef root_gtor self_t;root_gtor::self_t74,2388
+  typedef prob_gtor ptor_t;root_gtor::ptor_t76,2417
+  typedef prob_gtor_param ptorp_t;root_gtor::ptorp_t77,2445
+  typedef prob_gtor_obs ptoro_t;root_gtor::ptoro_t78,2480
+  root_gtor(root_gtor::root_gtor80,2514
+  root_gtor(root_gtor::root_gtor87,2656
+  ~root_gtor(root_gtor::~root_gtor98,2906
+  enum ptor_type root_gtor::ptor_type104,3032
+    PT_PARAM,root_gtor::ptor_type::PT_PARAM105,3051
+    PT_PARAM_LINKED,root_gtor::ptor_type::PT_PARAM_LINKED106,3065
+    PT_OBSroot_gtor::ptor_type::PT_OBS107,3086
+  state_size(root_gtor::state_size113,3123
+  void set_pdistro(root_gtor::set_pdistro119,3356
+  void set_distro_cat_state_pdistro(root_gtor::set_distro_cat_state_pdistro129,3716
+  unsigned distro_cat_size(root_gtor::distro_cat_size137,3981
+  distro_cat_state_pdistro(root_gtor::distro_cat_state_pdistro140,4067
+  get_distro_cat_no_from_cat_no(root_gtor::get_distro_cat_no_from_cat_no149,4290
+  cat_state_pdistro(root_gtor::cat_state_pdistro154,4415
+  cat_param_object(root_gtor::cat_param_object161,4627
+  cat_param_object(root_gtor::cat_param_object167,4829
+  void parent_model_update(root_gtor::parent_model_update181,5325
+  distro_cat_ptorp(root_gtor::distro_cat_ptorp191,5563
+  distro_cat_ptorp(root_gtor::distro_cat_ptorp196,5693
+  distro_cat_ptoro(root_gtor::distro_cat_ptoro201,5829
+  distro_cat_ptoro(root_gtor::distro_cat_ptoro207,6004
+  init(root_gtor::init213,6181
+  register_param(root_gtor::register_param225,6477
+  const cat_manager& cm(root_gtor::cm234,6689
+  ptype(root_gtor::ptype241,6805
+  struct auto_copy root_gtor::auto_copy256,7208
+
+root_gtor_options.h,822
+#define __ROOT_GTOR_OPTIONS_H33,1033
+namespace ROOT_GTOR_MODEL 36,1065
+  enum index_t ROOT_GTOR_MODEL::index_t37,1093
+  enum index_t { FULL,ROOT_GTOR_MODEL::index_t::FULL37,1093
+                 CODON,ROOT_GTOR_MODEL::index_t::CODON38,1116
+                 NUC,ROOT_GTOR_MODEL::index_t::NUC39,1140
+                 CODON_DINUC,ROOT_GTOR_MODEL::index_t::CODON_DINUC40,1162
+                 NUC_POS,ROOT_GTOR_MODEL::index_t::NUC_POS41,1192
+                 OBS_TIME_AVG,ROOT_GTOR_MODEL::index_t::OBS_TIME_AVG42,1218
+                 LSPROB,ROOT_GTOR_MODEL::index_t::LSPROB43,1249
+                 OBS_AVG,ROOT_GTOR_MODEL::index_t::OBS_AVG44,1274
+                 CODON_TRINUC,ROOT_GTOR_MODEL::index_t::CODON_TRINUC45,1300
+                 FULL_GC_SHIFT}ROOT_GTOR_MODEL::index_t::FULL_GC_SHIFT46,1331
+
+sim_context_continuous.h,43
+#define __SIM_CONTEXT_CONTINUOUS_H33,1051
+
+sim_context_discrete.h,41
+#define __SIM_CONTEXT_DISCRETE_H33,1047
+
+sim_context.h,32
+#define __SIM_CONTEXT_H33,1029
+
+sim_context_shared.h,66
+#define __SIM_CONTEXT_SHARED_H33,1042
+struct sst_struct 40,1150
+
+sim_discrete.h,33
+#define __SIM_DISCRETE_H33,1031
+
+sim.h,24
+#define __SIM_H33,1013
+
+sim_iss.h,28
+#define __SIM_ISS_H33,1021
+
+sim_options.h,366
+#define __SIM_OPTIONS_H33,1029
+namespace SIM_MODEL 39,1114
+  enum index_t SIM_MODEL::index_t40,1136
+  enum index_t { CONTINUOUS,SIM_MODEL::index_t::CONTINUOUS40,1136
+                 DISCRETE,SIM_MODEL::index_t::DISCRETE41,1165
+                 ISS SIM_MODEL::index_t::ISS42,1192
+struct sim_options 46,1220
+  sim_options(sim_options::sim_options47,1241
+
+simple_util.h,4006
+#define __SIMPLE_UTIL_H33,1029
+off_diag_size(39,1092
+encode_nmer(46,1170
+decode_nmer(57,1359
+periodic_decrement(73,1611
+periodic_increment(82,1769
+struct simple_array_base 91,1925
+  simple_array_base(simple_array_base::simple_array_base93,1963
+  simple_array_base(simple_array_base::simple_array_base95,2028
+  ~simple_array_base(simple_array_base::~simple_array_base101,2182
+  unsigned dim1(simple_array_base::dim1104,2228
+  void set_val(simple_array_base::set_val109,2390
+  T* ptr(simple_array_base::ptr111,2449
+  const T * ptr(simple_array_base::ptr112,2476
+  unsigned size(simple_array_base::size114,2517
+  T* begin(simple_array_base::begin116,2561
+  const T * begin(simple_array_base::begin117,2590
+  T* end(simple_array_base::end118,2632
+  const T * end(simple_array_base::end119,2666
+  void clear(simple_array_base::clear121,2714
+  void alloc(simple_array_base::alloc124,2765
+  void dealloc(simple_array_base::dealloc126,2814
+struct simple_array 134,2924
+  typedef simple_array_base<T> base_t;simple_array::base_t135,2976
+  simple_array(simple_array::simple_array137,3016
+  simple_array(simple_array::simple_array139,3085
+struct simple_init_array 152,3304
+  typedef simple_array_base<T> base_t;simple_init_array::base_t153,3361
+  simple_init_array& operator=(simple_init_array::operator=155,3401
+  void init(simple_init_array::init160,3527
+  void init(simple_init_array::init167,3683
+  void deep_copy(simple_init_array::deep_copy174,3804
+struct simple_matrix_base 182,3973
+  simple_matrix_base(simple_matrix_base::simple_matrix_base184,4012
+  simple_matrix_base(simple_matrix_base::simple_matrix_base188,4135
+  ~simple_matrix_base(simple_matrix_base::~simple_matrix_base194,4319
+  unsigned dim1(simple_matrix_base::dim1197,4366
+  unsigned dim2(simple_matrix_base::dim2198,4408
+  void set_val(simple_matrix_base::set_val203,4572
+  T** ptr(simple_matrix_base::ptr205,4643
+  const T * const * ptr(simple_matrix_base::ptr206,4671
+  void clear(simple_matrix_base::clear208,4720
+  unsigned size(simple_matrix_base::size211,4778
+  void alloc(simple_matrix_base::alloc214,4840
+  void dealloc(simple_matrix_base::dealloc224,5035
+struct simple_matrix 241,5239
+  typedef simple_matrix_base<T> base_t;simple_matrix::base_t242,5293
+  simple_matrix(simple_matrix::simple_matrix244,5334
+  simple_matrix(simple_matrix::simple_matrix248,5446
+struct simple_init_matrix 260,5701
+  typedef simple_matrix_base<T> base_t;simple_init_matrix::base_t261,5753
+  simple_init_matrix& operator=(simple_init_matrix::operator=263,5794
+  void init(simple_init_matrix::init268,5922
+  void init(simple_init_matrix::init277,6157
+  void deep_copy(simple_init_matrix::deep_copy285,6305
+struct simple_matrix3d_base 294,6504
+  simple_matrix3d_base(simple_matrix3d_base::simple_matrix3d_base296,6545
+  simple_matrix3d_base(simple_matrix3d_base::simple_matrix3d_base301,6731
+  ~simple_matrix3d_base(simple_matrix3d_base::~simple_matrix3d_base307,6947
+  unsigned dim1(simple_matrix3d_base::dim1313,7073
+  unsigned dim2(simple_matrix3d_base::dim2314,7115
+  unsigned dim3(simple_matrix3d_base::dim3315,7157
+  void set_val(simple_matrix3d_base::set_val320,7329
+  T*** ptr(simple_matrix3d_base::ptr322,7411
+  const T * const * const * ptr(simple_matrix3d_base::ptr323,7440
+  void clear(simple_matrix3d_base::clear325,7497
+  unsigned size(simple_matrix3d_base::size328,7564
+  void alloc(simple_matrix3d_base::alloc331,7633
+  void dealloc(simple_matrix3d_base::dealloc349,8014
+struct simple_matrix3d 371,8299
+  typedef simple_matrix3d_base<T> base_t;simple_matrix3d::base_t373,8358
+  simple_matrix3d(simple_matrix3d::simple_matrix3d375,8401
+  simple_matrix3d(simple_matrix3d::simple_matrix3d380,8557
+struct simple_init_matrix3d 390,8795
+  typedef simple_matrix3d_base<T> base_t;simple_init_matrix3d::base_t392,8859
+  void init(simple_init_matrix3d::init394,8902
+  void init(simple_init_matrix3d::init405,9214
+
+sim_util.h,105
+#define __SIM_UTIL_H33,1023
+struct group_range 84,2283
+  group_range(group_range::group_range86,2305
+
+site_code.h,1052
+#define __SITE_CODE_H33,1024
+struct site_code 43,1137
+  typedef site_code self_t;site_code::self_t44,1156
+  typedef unsigned short index_type;site_code::index_type45,1184
+  site_code(site_code::site_code47,1222
+  site_code(site_code::site_code50,1303
+  self_t& operator=(site_code::operator=56,1448
+  ~site_code(site_code::~site_code63,1637
+  set_ntaxa(site_code::set_ntaxa66,1673
+  index_type get_ntaxa(site_code::get_ntaxa74,1801
+  set_taxid(site_code::set_taxid77,1859
+  get_taxid(site_code::get_taxid83,1982
+  check_init(site_code::check_init89,2077
+  operator==(site_code::operator==99,2270
+  operator<(site_code::operator<108,2486
+  void clear(site_code::clear117,2793
+  void init(site_code::init118,2849
+struct cat_site_code 132,3028
+  typedef unsigned char cat_type;cat_site_code::cat_type134,3052
+  operator<(cat_site_code::operator<137,3094
+struct multi_site 156,3315
+  multi_site(multi_site::multi_site157,3335
+  multi_site(multi_site::multi_site159,3354
+  operator<(multi_site::operator<164,3479
+
+site_data_code.h,384
+#define __SITE_DATA_CODE_H33,1035
+struct site_data_code 45,1276
+  typedef unsigned short group_id_type;site_data_code::group_id_type47,1301
+  typedef unsigned char data_class_id_type;site_data_code::data_class_id_type48,1341
+  site_data_code(site_data_code::site_data_code51,1397
+  operator==(site_data_code::operator==61,1792
+  operator<(site_data_code::operator<68,1987
+
+site_data_fastlup_code.h,470
+#define __SITE_DATA_FASTLUP_CODE_H33,1051
+struct site_data_fastlup_code 45,1309
+  typedef unsigned short group_id_type;site_data_fastlup_code::group_id_type47,1342
+  typedef unsigned char assigned_data_set_id_type;site_data_fastlup_code::assigned_data_set_id_type48,1382
+  site_data_fastlup_code(site_data_fastlup_code::site_data_fastlup_code51,1445
+  operator==(site_data_fastlup_code::operator==61,1879
+  operator<(site_data_fastlup_code::operator<68,2096
+
+site_data_fastlup_core.h,644
+#define __SITE_DATA_FASTLUP_CORE_H33,1051
+struct site_data_fastlup_cell_core 40,1131
+  typedef site_code::index_type index_type;site_data_fastlup_cell_core::index_type42,1169
+struct cell_compare_func 48,1240
+  cell_compare_func(cell_compare_func::cell_compare_func51,1279
+  bool operator()(cell_compare_func::operator()53,1346
+struct site_data_fastlup_core 77,1939
+  typedef site_data_fastlup_cell_core::index_type index_type;site_data_fastlup_core::index_type82,2046
+  site_data_fastlup_core(site_data_fastlup_core::site_data_fastlup_core84,2109
+  ~site_data_fastlup_core(site_data_fastlup_core::~site_data_fastlup_core88,2247
+
+site_data_fastlup_core_util.h,124
+#define __SITE_DATA_FASTLUP_CORE_UTIL_H33,1060
+template <typename RandomAccessIterator,42,1366
+map_superset_data(56,1945
+
+site_data_fastlup_core_util.hh,174
+template <typename RandomAccessIterator,37,1075
+map_translated_index_superset_data(40,1156
+  typedef const site_data_fastlup_cell_core*site_data_fastlup_cell_core46,1503
+
+site_data_fastlup.h,540
+#define __SITE_DATA_FASTLUP_H33,1041
+struct site_data_fastlup_cell 45,1266
+  typedef std::vector<std::pair<site_data_fastlup_code,unsigned> > group_assigned_data_set_vector;site_data_fastlup_cell::group_assigned_data_set_vector47,1336
+struct site_data_fastlup 57,1632
+  typedef site_data_fastlup_core base_t;site_data_fastlup::base_t59,1711
+  site_data_fastlup(site_data_fastlup::site_data_fastlup61,1753
+  ~site_data_fastlup(site_data_fastlup::~site_data_fastlup65,1891
+  ads_site_mask(site_data_fastlup::ads_site_mask80,2324
+
+site_data_fastlup_util.h,43
+#define __SITE_DATA_FASTLUP_UTIL_H33,1051
+
+site_data.h,976
+#define __SITE_DATA_H37,1076
+typedef std::pair<const site_data_code,51,1306
+typedef std::pair<const site_data_code,unsigned> site_count_pair;51,1306
+typedef __gnu_cxx::__pool_alloc<site_count_pair> site_count_alloc;56,1452
+typedef std::allocator<site_count_pair> site_count_alloc;58,1525
+typedef boost::fast_pool_allocator<site_count_pair> site_count_alloc;62,1633
+typedef std::map<site_data_code,site_data_code65,1711
+typedef std::map<site_data_code,unsigned,65,1711
+typedef std::map<site_data_code,unsigned,std::less<std::less65,1711
+typedef std::map<site_data_code,unsigned,std::less<site_data_code>, site_count_alloc> site_count_data_type;65,1711
+typedef std::map<site_code,site_code67,1820
+typedef std::map<site_code,site_count_data_type> site_count_map;67,1820
+struct site_data 74,1963
+  site_data(site_data::site_data76,1983
+  site_data(site_data::site_data79,2042
+  unsigned n_taxa(site_data::n_taxa81,2112
+  void clear(site_data::clear95,2409
+
+site_data_report.h,37
+#define __SITE_DATA_REPORT_H33,1039
+
+site_data_state_remap.h,42
+#define __SITE_DATA_STATE_REMAP_H33,1048
+
+site_data_stats.h,36
+#define __SITE_DATA_STATS_H33,1037
+
+site_data_util.h,35
+#define __SITE_DATA_UTIL_H33,1035
+
+site_prob_maker.h,486
+#define __SITE_PROB_MAKER_H33,1033
+struct site_prob_maker 43,1193
+  virtual ~site_prob_maker(site_prob_maker::~site_prob_maker45,1219
+struct site_prob_maker_full 56,1433
+  site_prob_maker_full(site_prob_maker_full::site_prob_maker_full59,1500
+struct site_prob_maker_root 74,1832
+  site_prob_maker_root(site_prob_maker_root::site_prob_maker_root76,1888
+struct site_prob_maker_rootcat 95,2470
+  site_prob_maker_rootcat(site_prob_maker_rootcat::site_prob_maker_rootcat97,2529
+
+stationary_pdistro.h,39
+#define __STATIONARY_PDISTRO_H37,1149
+
+subs_ml_confidence.h,119
+#define __SUBS_ML_CONFIDENCE_H33,1043
+struct conf_options 46,1211
+  conf_options(conf_options::conf_options48,1234
+
+subs_ml_fisher.h,35
+#define __SUBS_ML_FISHER_H33,1034
+
+subs_ml_minfunc.h,1121
+#define __SUBS_ML_MINFUNC_H33,1037
+struct subs_ml_minfunc_base 51,1384
+  subs_ml_minfunc_base(subs_ml_minfunc_base::subs_ml_minfunc_base53,1481
+  unsigned dim(subs_ml_minfunc_base::dim58,1606
+  void min_p_to_param(subs_ml_minfunc_base::min_p_to_param60,1663
+  void param_to_min_p(subs_ml_minfunc_base::param_to_min_p64,1741
+  po_from_mdl(subs_ml_minfunc_base::po_from_mdl80,2020
+  po_from_mdl(subs_ml_minfunc_base::po_from_mdl84,2110
+  void min_p_to_param_x(subs_ml_minfunc_base::min_p_to_param_x88,2207
+  virtual bool is_inner_step(subs_ml_minfunc_base::is_inner_step94,2367
+  param_object_base& po(subs_ml_minfunc_base::po109,2889
+  const param_object_base& po(subs_ml_minfunc_base::po110,2946
+  subs_ml_model& mdl(subs_ml_minfunc_base::mdl112,3016
+  const subs_ml_model& mdl(subs_ml_minfunc_base::mdl113,3056
+struct subs_ml_minfunc 122,3205
+struct subs_ml_minfunc_em 145,3791
+  subs_ml_minfunc_em(subs_ml_minfunc_em::subs_ml_minfunc_em147,3850
+  bool is_inner_step(subs_ml_minfunc_em::is_inner_step154,4055
+struct subs_ml_root_minfunc 169,4390
+struct subs_ml_rootcat_minfunc 205,5272
+
+subs_ml_minimize.h,37
+#define __SUBS_ML_MINIMIZE_H33,1039
+
+subs_ml_model_ci_info.h,387
+#define __SUBS_ML_MODEL_CI_INFO_H33,1048
+struct param_ci_info 43,1191
+  param_ci_info(param_ci_info::param_ci_info44,1214
+  void reset(param_ci_info::reset47,1321
+bool operator<(69,1773
+struct subs_ml_model_ci_info 77,1895
+  subs_ml_model_ci_info(subs_ml_model_ci_info::subs_ml_model_ci_info79,1927
+  subs_ml_model_ci_info(subs_ml_model_ci_info::subs_ml_model_ci_info82,1976
+
+subs_ml_model_comex.h,1992
+#define __SUBS_ML_MODEL_COMEX_H33,1045
+struct subs_ml_model_comex 51,1439
+  typedef subs_ml_model_comex self_t;subs_ml_model_comex::self_t52,1468
+  subs_ml_model_comex(subs_ml_model_comex::subs_ml_model_comex54,1507
+struct cat_manager_sml_share 64,1666
+  typedef subs_ml_model_comex base_t;cat_manager_sml_share::base_t65,1726
+  cat_manager_sml_share(cat_manager_sml_share::cat_manager_sml_share67,1765
+struct tr_gtor_sml_share 73,1871
+  typedef subs_ml_model_comex base_t;tr_gtor_sml_share::base_t74,1927
+  tr_gtor_sml_share(tr_gtor_sml_share::tr_gtor_sml_share76,1966
+struct time_gtor_sml_share 82,2083
+  typedef tr_gtor_sml_share base_t;time_gtor_sml_share::base_t83,2139
+  time_gtor_sml_share(time_gtor_sml_share::time_gtor_sml_share85,2176
+struct r_gtor_sml_share 95,2367
+  typedef tr_gtor_sml_share base_t;r_gtor_sml_share::base_t96,2420
+  r_gtor_sml_share(r_gtor_sml_share::r_gtor_sml_share98,2457
+struct rate_gtor_sml_share 104,2609
+  typedef r_gtor_sml_share base_t;rate_gtor_sml_share::base_t105,2664
+  rate_gtor_sml_share(rate_gtor_sml_share::rate_gtor_sml_share107,2700
+struct prob_gtor_obs_sml_share 120,2993
+  typedef subs_ml_model_comex base_t;prob_gtor_obs_sml_share::base_t121,3055
+  prob_gtor_obs_sml_share(prob_gtor_obs_sml_share::prob_gtor_obs_sml_share123,3094
+struct multi_prob_gtor_sml_share 149,3853
+  typedef r_gtor_sml_share base_t;multi_prob_gtor_sml_share::base_t150,3914
+  multi_prob_gtor_sml_share(multi_prob_gtor_sml_share::multi_prob_gtor_sml_share152,3950
+  const prob_gtor_obs_sml_share& get_pgoss(multi_prob_gtor_sml_share::get_pgoss155,4042
+struct root_gtor_sml_share 163,4168
+  typedef multi_prob_gtor_sml_share base_t;root_gtor_sml_share::base_t164,4232
+  root_gtor_sml_share(root_gtor_sml_share::root_gtor_sml_share166,4277
+struct bg_gtor_sml_share 173,4418
+  typedef multi_prob_gtor_sml_share base_t;bg_gtor_sml_share::base_t174,4480
+  bg_gtor_sml_share(bg_gtor_sml_share::bg_gtor_sml_share178,4575
+
+subs_ml_model.h,1912
+#define __SUBS_ML_MODEL_H33,1033
+struct subs_ml_model 65,1602
+  typedef param_composite base_t;subs_ml_model::base_t67,1651
+  typedef subs_ml_model self_t;subs_ml_model::self_t68,1685
+  RATE_GTOR_MODEL::index_t rate_gtor_model(subs_ml_model::rate_gtor_model84,1974
+  const time_gtor& get_time_gtor(subs_ml_model::get_time_gtor86,2049
+  const rate_gtor& get_rate_gtor(subs_ml_model::get_rate_gtor87,2114
+  const bg_gtor& get_bg_gtor(subs_ml_model::get_bg_gtor88,2179
+  const root_gtor& get_root_gtor(subs_ml_model::get_root_gtor89,2238
+  const cat_manager& get_cat_manager(subs_ml_model::get_cat_manager90,2303
+  const bi_tree& tree(subs_ml_model::tree91,2365
+  subs_ml_model_min_options& opt(subs_ml_model::opt93,2415
+  const subs_ml_model_min_options& opt(subs_ml_model::opt94,2466
+  const audit_info& get_audit_info(subs_ml_model::get_audit_info115,3006
+  bool is_gcp(subs_ml_model::is_gcp155,4301
+  const prob_t* const * get_gcp(subs_ml_model::get_gcp159,4380
+  std::vector<std::string>::const_iterator get_glabel(subs_ml_model::get_glabel164,4477
+  bool& is_cat_mstep(subs_ml_model::is_cat_mstep169,4637
+  bool is_cat_mstep(subs_ml_model::is_cat_mstep170,4691
+  root_gtor& get_root_gtor_nonconst(subs_ml_model::get_root_gtor_nonconst173,4796
+  time_gtor& get_time_gtor_nonconst(subs_ml_model::get_time_gtor_nonconst176,4867
+  rate_gtor& get_rate_gtor_nonconst(subs_ml_model::get_rate_gtor_nonconst177,4928
+  bg_gtor& get_bg_gtor_nonconst(subs_ml_model::get_bg_gtor_nonconst178,4989
+  cat_manager& get_cat_manager_nonconst(subs_ml_model::get_cat_manager_nonconst179,5045
+  obs_info& obs_nonconst(subs_ml_model::obs_nonconst181,5105
+  const obs_info& obs(subs_ml_model::obs182,5150
+  bi_tree& tree_nonconst(subs_ml_model::tree_nonconst184,5199
+  struct auto_copy subs_ml_model::auto_copy207,5854
+    auto_copy(subs_ml_model::auto_copy::auto_copy208,5875
+
+subs_ml_model_init_options.h,183
+#define __SUBS_ML_MODEL_INIT_OPTIONS_H33,1059
+struct subs_ml_model_init_options 54,1444
+  subs_ml_model_init_options(subs_ml_model_init_options::subs_ml_model_init_options56,1502
+
+subs_ml_model_min_options.h,861
+#define __SUBS_ML_MODEL_MIN_OPTIONS_H33,1057
+namespace MIN 41,1162
+  enum index_t MIN::index_t42,1178
+  enum index_t { CONJ_DIR,MIN::index_t::CONJ_DIR42,1178
+                 CONJ_GRAD,MIN::index_t::CONJ_GRAD43,1205
+                 CG_CD_HYBRID,MIN::index_t::CG_CD_HYBRID44,1233
+                 PRAXIS,MIN::index_t::PRAXIS45,1264
+                 CG_PRAXIS_HYBRID,MIN::index_t::CG_PRAXIS_HYBRID46,1289
+                 EM}MIN::index_t::EM47,1324
+namespace OBS_UPDATE_MODE 50,1349
+  enum index_t OBS_UPDATE_MODE::index_t51,1377
+  enum index_t { MAXML,OBS_UPDATE_MODE::index_t::MAXML51,1377
+                 EQUIL}OBS_UPDATE_MODE::index_t::EQUIL52,1401
+struct subs_ml_model_min_options 60,1534
+  subs_ml_model_min_options(subs_ml_model_min_options::subs_ml_model_min_options61,1569
+  void init(subs_ml_model_min_options::init69,1725
+
+subs_ml_model_root_from_obs.h,48
+#define __SUBS_ML_MODEL_ROOT_FROM_OBS_H36,1147
+
+subs_ml_model_train.h,40
+#define __SUBS_ML_MODEL_TRAIN_H33,1045
+
+subs_ml_print_util.h,191
+#define __SUBS_ML_PRINT_UTIL_H33,1042
+enum { SUBS_ML_PRINT_MODEL_PRECISION ::SUBS_ML_PRINT_MODEL_PRECISION39,1121
+enum { SUBS_ML_PRINT_LNP_PRECISION ::SUBS_ML_PRINT_LNP_PRECISION40,1166
+
+subs_ml_ptol.h,33
+#define __SUBS_ML_PTOL_H33,1030
+
+subs_ml_types.h,100
+#define __SUBS_ML_TYPES_H33,1032
+typedef double smlfloat;35,1059
+typedef smlfloat prob_t;36,1084
+
+subs_prob_util_core.h,40
+#define __SUBS_PROB_UTIL_CORE_H33,1045
+
+subs_prob_util_core.hh,23
+get_subs_prob(46,1384
+
+subs_prob_util.h,69
+#define __SUBS_PROB_UTIL_H33,1035
+get_all_branch_subs_prob(57,1638
+
+substk_exception.h,248
+#define __SUBSTK_EXCEPTION_H33,1038
+class substk_exception 41,1140
+  substk_exception(substk_exception::substk_exception43,1198
+  ~substk_exception(substk_exception::~substk_exception49,1294
+  const char* what(substk_exception::what51,1329
+
+tang_ei.h,28
+#define __TANG_EI_H33,1020
+
+time_gtor.h,1270
+#define __TIME_GTOR_H33,1025
+struct time_gtor_options 50,1323
+  time_gtor_options(time_gtor_options::time_gtor_options52,1351
+struct time_gtor 59,1428
+  typedef param_object base_t;time_gtor::base_t61,1490
+  typedef time_gtor self_t;time_gtor::self_t62,1521
+  time_gtor(time_gtor::time_gtor67,1627
+  time_gtor(time_gtor::time_gtor76,1854
+  branch_time(time_gtor::branch_time83,2016
+  time_cat_branch_time(time_gtor::time_cat_branch_time89,2143
+  std::vector<smlfloat>::const_iterator branch_times(time_gtor::branch_times103,2526
+  const irv_t<smlfloat> branch_time_variance(time_gtor::branch_time_variance107,2656
+  const irv_t<smlfloat> time_cat_branch_time_variance(time_gtor::time_cat_branch_time_variance113,2906
+  const smlfloat& param_penalty(time_gtor::param_penalty132,3529
+  time_cat_time_scale(time_gtor::time_cat_time_scale146,3859
+  const bi_tree& tree(time_gtor::tree154,4088
+  bi_tree& tree_nonconst(time_gtor::tree_nonconst155,4143
+  void set_reversible_time_param(time_gtor::set_reversible_time_param159,4268
+  cat_index(time_gtor::cat_index173,4636
+  cm(time_gtor::cm183,4875
+  unsigned pseudo_param_size(time_gtor::pseudo_param_size188,4941
+  void check_pseudoparam_num(time_gtor::check_pseudoparam_num212,5454
+
+tree_probs.h,587
+#define __TREE_PROBS_H33,1027
+struct tree_probs 46,1252
+  typedef tree_probs self_t;tree_probs::self_t48,1273
+  tree_probs(tree_probs::tree_probs50,1303
+  init_probs(tree_probs::init_probs57,1547
+  prob_t* root_prob(tree_probs::root_prob80,2183
+  prob_t const * root_prob(tree_probs::root_prob81,2234
+  prob_t* branch_prob(tree_probs::branch_prob83,2299
+  prob_t const * branch_prob(tree_probs::branch_prob84,2367
+  bool& is_branch_tprob_identity(tree_probs::is_branch_tprob_identity86,2449
+  bool is_branch_tprob_identity(tree_probs::is_branch_tprob_identity90,2547
+
+audit_info.cc,145
+const char section_id[section_id40,1104
+const char end_label[end_label41,1144
+store_state(47,1225
+skip_advance(61,1592
+skip_state(71,1729
+
+bg_gtor.cc,250
+bg_gtor(48,1302
+reset_param(67,1829
+const char* const section_id 95,2702
+const char* const end_label 96,2744
+store_state(104,2829
+load_state(123,3268
+setup_distro_cats(161,4251
+prob_gtor_param_factory(195,5055
+prob_gtor_obs_factory(227,5946
+
+bi_tree.cc,255
+bi_tree_node(43,1142
+bi_tree_node(65,1734
+clear_length(77,1991
+make_index(93,2266
+bi_tree(117,2817
+bi_tree(125,2962
+std::ostream& operator<<(133,3067
+std::ostream& operator<<(148,3358
+ctor_setup_tree_index(157,3497
+clear_branch_lengths(169,3686
+
+cat_expression_parser.cc,1960
+struct ce_parser_internal 42,1203
+  typedef cat_expression_parser cep;ce_parser_internal::cep44,1232
+  ce_parser_internal(ce_parser_internal::ce_parser_internal47,1271
+  parse_error(ce_parser_internal::parse_error62,1516
+  next_token(ce_parser_internal::next_token71,1872
+  enum ce_syntax ce_parser_internal::ce_syntax77,1936
+    paramcat_label_split=ce_parser_internal::ce_syntax::paramcat_label_split78,1955
+    paramcat_rule_delimit=ce_parser_internal::ce_syntax::paramcat_rule_delimit79,1985
+    paramcat_open=ce_parser_internal::ce_syntax::paramcat_open80,2016
+    paramcat_close=ce_parser_internal::ce_syntax::paramcat_close81,2039
+    modelcat_open=ce_parser_internal::ce_syntax::modelcat_open82,2063
+    modelcat_close=ce_parser_internal::ce_syntax::modelcat_close83,2086
+    datacat_delimit=ce_parser_internal::ce_syntax::datacat_delimit84,2110
+    datacat_open=ce_parser_internal::ce_syntax::datacat_open85,2135
+    datacat_close=ce_parser_internal::ce_syntax::datacat_close86,2157
+    assigned_cat_open=ce_parser_internal::ce_syntax::assigned_cat_open87,2180
+    assigned_cat_close=ce_parser_internal::ce_syntax::assigned_cat_close88,2207
+  is_symbol(ce_parser_internal::is_symbol94,2257
+  parse_label(ce_parser_internal::parse_label108,2543
+  parse_paramcat_rule(ce_parser_internal::parse_paramcat_rule120,2869
+  parse_paramcat_rules(ce_parser_internal::parse_paramcat_rules130,3052
+  parse_paramcat(ce_parser_internal::parse_paramcat143,3460
+  parse_paramcats(ce_parser_internal::parse_paramcats151,3675
+  parse_modelcat(ce_parser_internal::parse_modelcat164,4044
+  parse_assigned_cat_expression(ce_parser_internal::parse_assigned_cat_expression171,4153
+  parse_datacats(ce_parser_internal::parse_datacats182,4391
+  parse_assigned_cat_data(ce_parser_internal::parse_assigned_cat_data199,4799
+  parse_assigned_cat(ce_parser_internal::parse_assigned_cat215,5190
+cat_expression_parser(229,5400
+
+cat_info.cc,48
+const char* const UNASSIGNED_CAT_LABEL 35,1062
+
+cat_manager.cc,1081
+is_same_group(53,1420
+parse_cattype_param(71,1947
+parse_cattype_mix(90,2325
+namespace MDS_BOGUS 98,2523
+  enum cat_g_t MDS_BOGUS::cat_g_t99,2603
+  enum cat_g_t { DEP,MDS_BOGUS::cat_g_t::DEP99,2603
+  enum cat_g_t { DEP, INDEP MDS_BOGUS::cat_g_t::INDEP99,2603
+make_dep_set(107,2758
+struct cat_sorter 155,4327
+  cat_sorter(cat_sorter::cat_sorter157,4434
+  bool operator()(cat_sorter::operator()159,4486
+is_same_branch_paramcat(192,5435
+init_cat_info(202,5639
+cascade_typed_cat_no(295,8714
+parse_cat_expression(315,9235
+  typedef cat_expression_parser cep_t;317,9285
+cat_manager(485,15078
+const char* const section_id 507,15689
+const char* const data_class_label_assignment_map_label 508,15735
+const char* const end_label 509,15827
+store_state(517,15916
+cat_manager(575,18002
+branch_typed_cat_pdistro(686,21072
+typed_cat_label(709,21706
+cat_label(731,22386
+reset_param(738,22487
+is_missing_obs_partition(765,23151
+branch_size(779,23425
+branch_label(787,23522
+branch_cat_set_label(795,23648
+add_paramcat(818,24168
+is_missing_obs_partition(843,24937
+
+cat_post_prob.cc,58
+make_cat_post_prob(46,1164
+cat_post_prob_report(80,2172
+
+cat_type.cc,342
+const char* CAT_PARAM_TYPE::syms[CAT_PARAM_TYPE::syms38,1077
+const char* CAT_PARAM_TYPE::short_syms[CAT_PARAM_TYPE::short_syms40,1205
+const bool CAT_PARAM_TYPE::is_mixable[CAT_PARAM_TYPE::is_mixable43,1294
+const char* CAT_MIX_TYPE::syms[CAT_MIX_TYPE::syms46,1397
+const char* CAT_MIX_TYPE::short_syms[CAT_MIX_TYPE::short_syms47,1450
+
+CodeAxe.cc,2385
+using boost::lexical_cast;74,2052
+const char stdstream_tag[stdstream_tag78,2118
+string binname;81,2187
+namespace MODE 90,2413
+  enum index_t MODE::index_t91,2430
+    NONE,MODE::index_t::NONE92,2447
+    PROCESS,MODE::index_t::PROCESS93,2457
+    TRAIN,MODE::index_t::TRAIN94,2470
+    LHOOD,MODE::index_t::LHOOD95,2481
+    SIM,MODE::index_t::SIM96,2492
+    CREATE_MODEL,MODE::index_t::CREATE_MODEL97,2501
+    NORM,MODE::index_t::NORM98,2519
+    REPORT_MODEL,MODE::index_t::REPORT_MODEL99,2529
+    REPORT_SEQ,MODE::index_t::REPORT_SEQ100,2547
+    REPORT_DATA,MODE::index_t::REPORT_DATA101,2563
+    CONVERT_DATA,MODE::index_t::CONVERT_DATA102,2580
+    CONFIDENCE,MODE::index_t::CONFIDENCE103,2598
+    SITE_CAT_POSTP,MODE::index_t::SITE_CAT_POSTP104,2614
+    GROUP_CAT_POSTP,MODE::index_t::GROUP_CAT_POSTP105,2634
+    EI,MODE::index_t::EI106,2655
+    SPLIT_DATAMODE::index_t::SPLIT_DATA107,2663
+version_string(115,2707
+usage_error(127,2961
+get_file_buffer(454,22251
+codeaxe_sdf_init(471,22578
+is_eq(504,23492
+unknown_arg_error(511,23624
+mode_arg(519,23769
+site_model_arg(544,24858
+min_arg(565,25528
+rate_model_arg(582,25991
+context_model_arg(600,26455
+select_model_arg(621,27205
+root_model_arg(647,28108
+subs_rate_bg_model_arg(667,28941
+struct mode_data 678,29265
+  mode_data(mode_data::mode_data680,29285
+  finalize_args(mode_data::finalize_args695,29678
+  need_model_data(mode_data::need_model_data702,29829
+  std::istream& model_is(mode_data::model_is710,30191
+  std::istream& data_is(mode_data::data_is711,30241
+  std::ostream& os(mode_data::os712,30290
+get_site_model_arg(729,30551
+codeaxe_norm(753,31046
+codeaxe_postp(768,31235
+codeaxe_convert(795,31941
+codeaxe_report_model(837,33064
+codeaxe_report_data(875,33837
+codeaxe_cat_split_data(903,34341
+codeaxe_ei(918,34573
+codeaxe_sim(952,35272
+codeaxe_handle_seq(1046,38027
+codeaxe_confidence(1158,41168
+codeaxe_lhood(1291,45169
+codeaxe_create(1380,47659
+  enum tree_input_type 1392,47962
+    TPT_NONE,tree_input_type::TPT_NONE1393,47987
+    TPT_STR,tree_input_type::TPT_STR1394,48001
+    TPT_FILEtree_input_type::TPT_FILE1395,48014
+  enum cme_input_type 1400,48085
+    CME_NONE,cme_input_type::CME_NONE1401,48109
+    CME_STR,cme_input_type::CME_STR1402,48123
+    CME_FILEcme_input_type::CME_FILE1403,48136
+try_main(1571,53823
+main(1716,57694
+
+condition_func_overlap_base.cc,204
+data_init_cfd(50,1383
+data_init(101,3058
+update_condition_prob(117,3347
+tprob_init_cfd(132,3725
+tprob_init(172,5049
+root_update_cfd(193,5495
+root_update(204,5683
+condition_site_prob_prep(214,5846
+
+context_group.cc,29
+context_model_group(37,1089
+
+data_class_assignment_util.cc,38
+data_class_id_assignment_map(45,1231
+
+lhood_model.cc,206
+namespace PVL 49,1455
+get_lnp_norm(58,1516
+typedef site_data_fastlup_cell::group_assigned_data_set_vector::const_iterator gavi;68,1774
+get_lnprob_from_param_prep(74,1893
+get_lnprob_from_param(295,8826
+
+lhood_model_em_baz.cc,27
+update_etrans_baz(46,1328
+
+lhood_model_em.cc,102
+get_mstep_lhood(58,1518
+get_lnp_norm(78,1972
+get_lnprob_from_param(93,2298
+update_etrans(148,3939
+
+lhood_model_em_pprob.cc,22
+update_pprob(43,1206
+
+lhood_model_prep.cc,250
+lhood_model_prep_cat_site_prob(45,1310
+~lhood_model_prep_cat_site_prob(93,2696
+lhood_model_prep(100,2778
+  typedef site_data_fastlup_cell::group_assigned_data_set_vector::const_iterator gavi;104,2893
+lhood_model_prep::~lhood_model_prep(151,4462
+
+lhood_model_prep_submodel.cc,40
+init(48,1369
+submodel_manager(97,2756
+
+lhood_model_root.cc,123
+get_root_node_site_partial_prob_cat(45,1276
+get_root_node_site_partial_prob(73,2255
+get_site_prob_from_root_spp(88,2691
+
+lhood_site_cached.cc,72
+eval_last_leaf(49,1260
+eval_leaf(124,3874
+lhood_site_cached(208,7230
+
+lhood_site_cached_estep_baz.cc,1242
+struct baz_prob 47,1356
+  baz_prob(baz_prob::baz_prob48,1374
+  increment(baz_prob::increment51,1452
+  report(baz_prob::report64,1880
+enum bp_types 81,2422
+  BP_BASIC,bp_types::BP_BASIC82,2438
+  BP_BASIC, BP_13,bp_types::BP_1382,2438
+  BP_BASIC, BP_13, BP_AR,bp_types::BP_AR82,2438
+  BP_BASIC, BP_13, BP_AR, BP_AI,bp_types::BP_AI82,2438
+  BP_AN,bp_types::BP_AN83,2471
+  BP_AN,    BP_HP,bp_types::BP_HP83,2471
+  BP_AN,    BP_HP, BP_HH,bp_types::BP_HH83,2471
+  BP_AN,    BP_HP, BP_HH, BP_PP,bp_types::BP_PP83,2471
+  BP_SIZEbp_types::BP_SIZE84,2504
+struct baz_counts 88,2519
+  baz_counts(baz_counts::baz_counts89,2539
+  ~baz_counts(baz_counts::~baz_counts144,3779
+is_hphobic(202,5122
+is_polar(225,5364
+struct tree_walk_cache_estep_baz 245,6021
+  typedef tree_walk_cache_estep_base base_t;tree_walk_cache_estep_baz::base_t247,6093
+  tree_walk_cache_estep_baz(tree_walk_cache_estep_baz::tree_walk_cache_estep_baz249,6139
+  increment_site_stats(tree_walk_cache_estep_baz::increment_site_stats257,6376
+local_increment_site_stats(276,6801
+report_nsaa_grouping(612,20331
+dump_groupings(642,21142
+dump_doublemut_aa_paths(687,22725
+lhood_site_cached_estep_baz(796,26900
+lhood_site_cached_estep_baz(804,27171
+
+lhood_site_cached_estep.cc,349
+local_increment_site_stats(47,1442
+struct tree_walk_cache_estep 108,3562
+  typedef tree_walk_cache_estep_base base_t;tree_walk_cache_estep::base_t110,3630
+  tree_walk_cache_estep(tree_walk_cache_estep::tree_walk_cache_estep112,3676
+  increment_site_stats(tree_walk_cache_estep::increment_site_stats119,3864
+lhood_site_cached_estep(133,4216
+
+lhood_site_cached_estep_pprob.cc,350
+struct tree_walk_cache_estep_pprob 39,1192
+  typedef tree_walk_cache_estep_base base_t;tree_walk_cache_estep_pprob::base_t41,1266
+  tree_walk_cache_estep_pprob(tree_walk_cache_estep_pprob::tree_walk_cache_estep_pprob43,1312
+  increment_site_stats(tree_walk_cache_estep_pprob::increment_site_stats51,1549
+lhood_site_cached_estep_pprob(69,2049
+
+lhood_site_cached_estep_shared.cc,33
+lhood_site_cached_estep(46,1279
+
+lhood_site_cached_optorder.cc,328
+struct tree_lhood_info_optorder 46,1227
+lhood_org_order_score_combine_branches(56,1355
+struct minfo 144,4175
+  minfo(minfo::minfo145,4190
+struct minfo2 153,4339
+  minfo2(minfo2::minfo2154,4355
+struct minfo3 170,4684
+lhood_org_order_score(180,4819
+lhood_org_order_score(353,11090
+lhood_site_cached_optorder(369,11537
+
+lhood_site_cached_shared.cc,72
+eval_branch_lhood(44,1247
+lhood_site_cached_combine_branches(125,3852
+
+lhood_site.cc,182
+tree_branch_down_prob(42,1193
+get_site_root_partial_prob_single_cat_prep(86,2673
+get_site_prob_single_cat_prep(115,3712
+get_site_prob_single_cat(142,4545
+get_site_prob(156,4922
+
+name_id_lup.cc,65
+assignid(42,1137
+testid(58,1421
+getid(67,1589
+getstr(77,1841
+
+newick_tree_parser.cc,728
+namespace NEWICK_PARSER 39,1087
+  parse_error(NEWICK_PARSER::parse_error43,1130
+    START=NEWICK_PARSER::START55,1548
+    STOP=NEWICK_PARSER::STOP56,1563
+    JOIN=NEWICK_PARSER::JOIN57,1577
+    LABELD=NEWICK_PARSER::LABELD58,1591
+    END=NEWICK_PARSER::END59,1607
+  is_symbol(NEWICK_PARSER::is_symbol67,1652
+  next_token(NEWICK_PARSER::next_token83,1863
+  parse_label(NEWICK_PARSER::parse_label92,1958
+  parse_value(NEWICK_PARSER::parse_value111,2431
+  parse_label_value(NEWICK_PARSER::parse_label_value123,2745
+  parse_subtree(NEWICK_PARSER::parse_subtree134,3005
+  parse(NEWICK_PARSER::parse155,3443
+newick_tree_parser(167,3777
+std::ostream& operator<<(173,3879
+std::ostream& operator<<(194,4251
+
+nsaa_maps.cc,952
+const char NSAA_MAPS::LEHNINGER::syms[NSAA_MAPS::LEHNINGER::syms34,1027
+const char NSAA_MAPS::LANGE::syms[NSAA_MAPS::LANGE::syms35,1092
+const char NSAA_MAPS::HP::syms[NSAA_MAPS::HP::syms36,1149
+const char NSAA_MAPS::HPO::syms[NSAA_MAPS::HPO::syms37,1195
+const char NSAA_MAPS::BETA_BRANCH::syms[NSAA_MAPS::BETA_BRANCH::syms38,1246
+const char NSAA_MAPS::HELIX_FORM::syms[NSAA_MAPS::HELIX_FORM::syms39,1301
+const char NSAA_MAPS::AROMATIC::syms[NSAA_MAPS::AROMATIC::syms40,1355
+const char NSAA_MAPS::CYS::syms[NSAA_MAPS::CYS::syms41,1407
+const char NSAA_MAPS::GLY::syms[NSAA_MAPS::GLY::syms42,1454
+const char NSAA_MAPS::PRO::syms[NSAA_MAPS::PRO::syms43,1501
+get_reduction_map(48,1589
+get_reduction_map(87,2565
+get_reduction_map(127,3651
+get_reduction_map(171,4726
+get_reduction_map(211,5581
+get_reduction_map(230,5982
+get_reduction_map(252,6421
+get_reduction_map(272,6807
+get_reduction_map(290,7110
+get_reduction_map(308,7413
+
+nuc_seq_data.cc,170
+nuc_seq_data_report(50,1288
+max_cat(83,2234
+const char* const version_tag 98,2534
+store_state(103,2612
+load_die(154,3754
+load_advance(171,4098
+load_state(182,4297
+
+observer.cc,71
+~observer(38,1040
+observe_notifier(47,1185
+notify_observers(56,1293
+
+obs_info.cc,318
+update_distros(48,1299
+set_obs_cat_seq_state_int(97,2693
+set_obs_cat_seq_state_distro(117,3194
+set_obs_cat_seq_state_counts(128,3411
+const char* const section_id 135,3532
+const char end_label[end_label136,3575
+const char* const oss_tag 137,3607
+store_state(145,3704
+reset_param(167,4377
+load_state(192,5118
+
+param_composite.cc,54
+param_size(37,1068
+set_is_train_param_state(49,1272
+
+param_object.cc,131
+param_size(40,1114
+param_state(77,2114
+set_param_state(134,3589
+    typedef smlfloat InputT;157,4253
+set_param_state(203,5352
+
+param_util.cc,46
+independent_to_dependent_param_block(35,1034
+
+pprob_site.cc,180
+tree_branch_down_prob(47,1241
+tree_branch_up_prob(102,3037
+get_site_pprob_from_branch_prob(145,4512
+get_site_pprob_single_cat_prep(207,6311
+get_site_pprob_single_cat(245,8015
+
+prob_gtor_param.cc,21
+store_state(41,1136
+
+prob_gtor_param_state_conversion.cc,815
+prob_gtor_param_nsc4_seq_stat(38,1140
+get_param_from_pdistro(50,1453
+param_norm(61,1715
+get_pdistro_from_param(73,2008
+template <typename RAI,102,2866
+nsc4_pdf_2_conditional_adj_dinuc_pdf(104,2909
+prob_gtor_param_nsc4_seq_stat_nx2n(128,3719
+get_param_from_pdistro(147,4297
+param_norm(207,6273
+get_pdistro_from_param(227,6910
+const prob_gtor_param_nsc4_seq_stat_nx2n::dinuc_ns_count prob_gtor_param_nsc4_seq_stat_nx2n::_dnc;275,8488
+dinuc_ns_count(281,8644
+template <typename RAI,360,10741
+nsc4_pdf_2_conditional_adj_nuc_pdf(362,10784
+prob_gtor_param_nsc4_seq_stat_nx1n(385,11518
+get_param_from_pdistro(405,12146
+param_norm(464,14013
+get_pdistro_from_param(486,14699
+const prob_gtor_param_nsc4_seq_stat_nx1n::nuc_ns_count prob_gtor_param_nsc4_seq_stat_nx1n::_nnc;532,16163
+nuc_ns_count(538,16315
+
+process_fsa.cc,416
+const char UNASSIGNED_CAT_LABEL[UNASSIGNED_CAT_LABEL58,1486
+typedef std::vector<simple_init_array<char> > tmp_seq_type;62,1573
+no_filter(70,1722
+check_codon_site(95,2267
+check_stop_codon(113,2700
+check_gap_codon(123,2899
+check_ambi_codon(132,3042
+codon_filter(148,3456
+harvest_fsa_file(267,6779
+harvest_cat_file(387,9381
+harvest_catlabel(454,10995
+harvest_file_set(488,11892
+process_seq_data(524,12738
+
+rate_gtor.cc,145
+dump(55,1481
+check_param(68,1716
+reset_param_internal(83,2046
+load_state(111,2705
+fix_input_param(122,2861
+condition_func_factory(133,2991
+
+rate_gtor_dinuc.cc,38
+state_pdistro_to_nuc_pdistro(37,1112
+
+rate_gtor_factory.cc,27
+rate_gtor_factory(45,1290
+
+rate_gtor_nsc5.cc,225
+#define NSC5_DEBUG42,1241
+store_state(47,1290
+load_state_internal(57,1442
+rates(69,1646
+rates_variance(86,2072
+submodel_pdistro_reduction(103,2523
+submodel_fuse_pdistros(117,2883
+submodel_state_reduction_map(180,4686
+
+rate_gtor_nscodon_base.cc,1433
+const rate_gtor_nscodon_base::aa_exchange_param_info rate_gtor_nscodon_base::_aaex;56,1552
+const rate_gtor_nscodon_base::aa_codon_map_info rate_gtor_nscodon_base::_aacodon;57,1636
+aa_exchange_param_info(63,1771
+aa_codon_map_info(103,2871
+is_sm_scaled(134,3746
+paramsize_select_model_unscaled(146,3950
+paramsize_select_model(169,4568
+init_class_storage(178,4762
+init_param_locks(216,5892
+rates(265,7532
+rates_variance(273,7673
+state_pdistro_to_nscodon_pdistro(281,7839
+is_cbias_pseudo_param(290,8144
+pseudo_param_size(303,8396
+set_pseudo_param(325,8954
+nsaa_selection_matrix(378,10706
+fix_input_param_internal(400,11412
+paramset_size(436,12793
+get_aa_param_index_name(472,13818
+paramset_label(511,15151
+const char* const section_id 564,16477
+const char* const end_label 565,16534
+store_state(573,16634
+load_state_internal(603,17484
+NSAA_MAPS::converter aacon;638,18446
+nsaa_param_index(644,18609
+nsaa_param(685,20046
+cat_nsaa_param(745,22478
+codon_bias_factor(782,24175
+codon_bias(816,25444
+param_penalty(839,26010
+state_pdistro_to_nuc_pdistro(858,26480
+state_pdistro_to_nsaa_pdistro(868,26792
+bg_pdistro_nuc_pos_update(878,27109
+bg_pdistro_nuc_pos_conditioned_update(893,27460
+bg_pdistro_nuc_pos_conditioned_update(948,29059
+stat_pdistro_nscodon(1002,30882
+stat_pdistro_nsaa(1014,31162
+reset_param_internal(1026,31427
+bg_pdistro_update_internal(1121,34826
+cat_nuc_context_mut_rate(1133,35066
+
+rate_gtor_nscodon_base_report.cc,1102
+pdistro_row_write(60,1589
+struct smc2{smc280,2071
+  smc2(smc2::smc281,2084
+  operator<(smc2::operator<97,2397
+struct smc3{smc3109,2579
+  smc3(smc3::smc3110,2592
+  operator<(smc3::operator<117,2765
+report_sorted_nsaa_exchange_parameters(133,2967
+report_paired_aa_pdistro(197,4876
+report_nsaa_exchange_averages(287,7538
+report_nsaa_exchange_sums(326,8656
+report_nsaa_matrix_full(355,9457
+report_nsaa_grouping(369,9768
+aaset_dfs(400,10645
+is_aaset_connected(422,11061
+get_Nset_selavg(440,11429
+struct aaset_selavg_score 461,12068
+  score(aaset_selavg_score::score464,12115
+get_Nset_dn_ds(477,12373
+struct aaset_dn_ds_score 496,12901
+  score(aaset_dn_ds_score::score499,12947
+score_aaset(512,13216
+score_aaset_start(542,14016
+report_nsaa_sets(562,14523
+  for(unsigned i(0);i<i585,15167
+print_section_divider(667,17722
+print_branch_cat_sel_matrix_header(675,17864
+struct sel_cat_data 685,18304
+  sel_cat_data(sel_cat_data::sel_cat_data686,18326
+  sel_cat_data(sel_cat_data::sel_cat_data689,18387
+  bool operator<(sel_cat_data::operator<694,18519
+report(705,18698
+
+rate_gtor_nscodon_base_util.cc,33
+average_codon_selection(37,1075
+
+rate_gtor_nuc_base.cc,1544
+get_rate_model_param_size(58,1649
+context_adjust_nuc_param_size(78,2018
+get_rate_context_model_param_size(102,2634
+init_class_storage(112,2927
+lock_1param_norm_sets(185,5068
+init_param_locks(211,5783
+rates(297,8890
+rate_scale_cat_no_y_branch_id(306,9027
+stat_pdistro_nuc(334,9869
+fix_input_param_cat_branch_paramset(346,10128
+normalize_mut_rate_params(406,12090
+fix_input_param_internal(511,15538
+param_update_from_new_bg_pdistro_internal(534,16344
+paramset_size(543,16510
+paramset_label(570,17244
+const char* const section_id 629,18658
+const char* const end_label 630,18711
+store_state(637,18806
+load_state_internal(669,19756
+set_ts_tv_ratio_nhood(717,21001
+set_ts_tv_ratio(745,22091
+symm_matrix_nodiag_index(806,23741
+symm_matrix_nodiag_index_inverse(817,24009
+square_matrix_nodiag_index(838,24406
+square_matrix_nodiag_index_inverse(848,24641
+get_nuc_param_index_name_nocontext(863,24956
+get_nuc_param_index_name(897,25870
+get_rate_model_nuc_mut_rate_param_index(978,29161
+nuc_context_mut_rate_param_index(1007,29926
+nuc_context_mut_rate_param(1094,33417
+nuc_context_mut_rate(1147,35517
+cat_nuc_context_mut_rate(1199,37532
+reset_param_internal(1231,38928
+bg_pdistro_nuc_conditioned_update(1283,40669
+bg_pdistro_nuc_conditioned_update(1301,41429
+report_rate_set(1319,42050
+print_section_divider(1394,44389
+print_branch_cat_mut_model_header(1402,44531
+report_rate_cats(1414,44984
+report(1450,46189
+bg_pdistro_update_internal(1705,55025
+set_mutation_model_slope(1716,55218
+context_model_nuc(1734,55739
+
+rate_gtor_nuc_base_util.cc,27
+rates_nuc_context(40,1220
+
+rate_gtor_trinuc.cc,38
+state_pdistro_to_nuc_pdistro(38,1116
+
+rate_gtor_util.cc,32
+get_stationary_pdistro(45,1228
+
+root_gtor.cc,254
+root_gtor(49,1348
+reset_param(74,2130
+const char* const section_id 111,3396
+const char* const end_label 112,3440
+store_state(120,3527
+load_state(139,3965
+setup_distro_cats(175,4914
+prob_gtor_param_factory(245,7126
+prob_gtor_obs_factory(322,9966
+
+root_gtor_report.cc,286
+format_root_header(46,1261
+report_nuc_distro_from_nscodon(57,1512
+report_nuc_distro_from_nscodon_pos(73,1847
+report_nsaa_distro_from_nscodon(90,2302
+report_root_dot_re(105,2645
+pdistro_row_write(128,3194
+report_compare_sec(150,3709
+print_seq_stat_root(187,4740
+report(249,6491
+
+sim.cc,52
+test_indy_nuc_model(45,1185
+simulate_data(61,1611
+
+sim_context.cc,1089
+nuc_mut_prob_context_from_single_context(66,1720
+nuc_mut_prob_context_from_all_contexts(94,2650
+nuc_mut_prob_context(131,4020
+struct ancestral_seq_callinfo 174,5638
+get_ancestral_seq_nsc4(189,5926
+  struct nsc4_root_cdf 194,6163
+    nsc4_root_cdf(nsc4_root_cdf::nsc4_root_cdf195,6188
+get_ancestral_seq_nsc5_prepost(271,8459
+  struct nsc5pp_root_cdf 276,8726
+    nsc5pp_root_cdf(nsc5pp_root_cdf::nsc5pp_root_cdf277,8753
+get_ancestral_seq_nsc5(360,11338
+  struct nsc5_root_cdf 364,11512
+    nsc5_root_cdf(nsc5_root_cdf::nsc5_root_cdf365,11537
+get_ancestral_seq_dinuc(443,13850
+  struct dinuc_root_cdf 447,14027
+    dinuc_root_cdf(dinuc_root_cdf::dinuc_root_cdf448,14053
+get_ancestral_seq_trinuc(513,15847
+  struct trinuc_root_cdf 517,16027
+sim_data_nuc_to_nuc_seq_data(599,18758
+accumulate_simulated_seq_group_nuc(643,20224
+codon_mut_prob_context_position_type(715,22677
+codon_mut_prob_context_position(766,24490
+codon_mut_prob_context(829,26596
+sim_data_codon_to_nuc_seq_data(885,28650
+accumulate_simulated_seq_group(935,30417
+simulate_data_context(1002,32746
+
+sim_context_continuous.cc,200
+update_codon_pos_rates(49,1325
+update_codon_pos(80,2264
+struct upcf_type 103,3081
+update_codon_pos_full(122,3518
+simulate_branch_codon(152,4502
+simulate_continuous_time_branch_context(367,11777
+
+sim_context_discrete.cc,107
+simulate_steps_nuc(49,1332
+simulate_steps_codon(133,4359
+simulate_discrete_time_branch_context(244,8398
+
+sim_discrete.cc,305
+rate_to_discrete_time_anysub_prob(58,1464
+rate_to_discrete_time_anysub_cdf(70,1801
+setup_anysub_rates(88,2308
+rates_diag_mutonly(122,3373
+setup_anysub_neutral_rates(140,3844
+struct sim_info_t 169,4854
+simulate_steps(181,5054
+simulate_discrete_time_branch(225,6365
+simulate_data_discrete(248,7215
+
+sim_iss.cc,41
+simulate_data_indy_site_sampler(57,1536
+
+sim_util.cc,190
+get_ancestral_seq(52,1388
+get_sim_group_seq(76,2006
+get_sim_cat_seq(98,2718
+sim_site_data_init(148,4205
+sim_seq_data_init(168,4680
+get_gbounds(196,5300
+report_sim_tree_times(219,5710
+
+site_code.cc,34
+std::ostream& operator<<(37,1048
+
+site_data.cc,180
+peek(56,1387
+data_class_size(76,1752
+finish_data_class_line(97,2154
+store_state(124,2920
+get_site_code(198,4761
+load_die(225,5200
+load_advance(242,5526
+load_state(255,5714
+
+site_data_fastlup.cc,137
+init(41,1123
+clear(64,1614
+fix(74,1770
+  typedef site_data_fastlup_cell::group_assigned_data_set_vector::const_iterator gavi;75,1777
+
+site_data_fastlup_core.cc,72
+operator=(operator=40,1156
+init(64,1752
+clear(91,2295
+fix(109,2522
+
+site_data_fastlup_util.cc,121
+site_data_to_site_data_fastlup(50,1368
+mdl_site_data_fastlup_init(160,5255
+site_data_fastlup_state_reduction(175,5672
+
+site_data_report.cc,435
+report_nscodon_distro(50,1316
+dump_sites(68,1728
+report_distro_set(104,2463
+site_data_synonymous_site_count(132,3102
+site_data_group_count(176,4204
+site_data_write_counts(200,4709
+report_nscodon_pdf_set(235,5841
+analyze_aa_from_nscodon_pdf(274,7248
+state_pdistro_to_nscodon_pdistro(327,8820
+analyze_nscodon_pdf(338,9173
+site_data_report(368,10097
+site_data_2_single_class_site_data(613,17885
+site_data_cat_split(650,18994
+
+site_data_state_remap.cc,547
+site_data_state_compressor(41,1205
+struct nsc5_to_nsc4pre 73,1845
+  unsigned operator()(nsc5_to_nsc4pre::operator()74,1870
+struct nsc5_to_nsc4post 82,2073
+  unsigned operator()(nsc5_to_nsc4post::operator()83,2099
+struct nsc5_to_nscodon 91,2303
+  unsigned operator()(nsc5_to_nscodon::operator()92,2328
+struct nsc4_to_nscodon 97,2442
+  unsigned operator()(nsc4_to_nscodon::operator()98,2467
+site_data_nsc5_to_nsc4pre(105,2587
+site_data_nsc5_to_nsc4post(111,2690
+site_data_nsc5_to_nscodon(117,2795
+site_data_nsc4_to_nscodon(123,2898
+
+site_data_stats.cc,362
+site_data_2_state_pdf(44,1233
+site_data_2_taxa_state_count_internal(72,1942
+site_data_2_taxa_state_count(105,3154
+site_data_2_taxa_state_pdf(118,3668
+site_data_2_data_class_state_count_internal(135,4064
+site_data_2_data_class_state_count(164,5076
+site_data_2_data_class_state_pdf(177,5563
+site_data_2_data_class_count(192,5995
+site_data_counts(212,6600
+
+site_data_util.cc,167
+make_gc_include_map(47,1246
+check_codon_category(81,2170
+store_site_info(99,2757
+process_site(119,3210
+process_4fold_site(144,3868
+nuc_seq_to_site_data(165,4359
+
+site_prob_maker.cc,119
+get_cached_site_prob_array(50,1418
+get_cat_site_prob(69,1998
+get_cat_site_prob(107,3418
+get_cat_site_prob(123,3969
+
+stationary_pdistro.cc,112
+get_matrix_LU(62,1583
+get_stationary_pdistro_from_rates(89,2105
+get_stationary_pdistro_from_pmatrix(183,4435
+
+subs_ml_confidence.cc,118
+calc_param_ci(53,1505
+#define CI_DEBUG66,1951
+sml_conf_interval(214,6532
+get_subs_ml_model_conf_interval(338,9484
+
+subs_ml_fisher.cc,365
+struct subs_ml_param_func 40,1148
+  subs_ml_param_func(subs_ml_param_func::subs_ml_param_func42,1177
+  smlfloat operator()(subs_ml_param_func::operator()47,1400
+struct subs_ml_2param_func 81,2084
+  subs_ml_2param_func(subs_ml_2param_func::subs_ml_2param_func83,2114
+  smlfloat operator()(subs_ml_2param_func::operator()90,2429
+get_fisher_matrix(129,3281
+
+subs_ml_minfunc.cc,661
+#define MINFUNC_DEBUG59,1648
+xminfunc_count_check(74,1873
+is_val_computable(109,2900
+is_current_val_computable(119,3031
+dval(143,3486
+val(206,5098
+get_deriv_estimate(240,5832
+check_p(295,7480
+subs_ml_minfunc(312,7903
+subs_ml_minfunc::~subs_ml_minfunc(323,8158
+get_lnprob(329,8223
+get_lnprob(339,8457
+subs_ml_root_minfunc::~subs_ml_root_minfunc(348,8630
+subs_ml_root_minfunc(353,8705
+reset(375,9373
+get_lnprob(384,9518
+po_from_mdl(403,10052
+po_from_mdl(411,10180
+subs_ml_rootcat_minfunc::~subs_ml_rootcat_minfunc(418,10258
+subs_ml_rootcat_minfunc(423,10342
+reset(441,10924
+get_lnprob(475,11700
+po_from_mdl(491,12145
+po_from_mdl(499,12302
+
+#subs_ml_minimize.cc#,178
+run_conj_dir_minimizer(54,1494
+run_conj_grad_minimizer(106,3019
+sml_fullstep_min_tol(145,3982
+sml_fullstep_min(207,5797
+sml_root_cycle_min(221,6178
+sml_mstep_min(357,10390
+
+subs_ml_minimize.cc,178
+run_conj_dir_minimizer(54,1494
+run_conj_grad_minimizer(106,3015
+sml_fullstep_min_tol(145,3978
+sml_fullstep_min(207,5793
+sml_root_cycle_min(221,6174
+sml_mstep_min(357,10386
+
+subs_ml_model.cc,863
+const char* const section_id 55,1521
+const char* const end_label 56,1569
+const char* const gcp_label 58,1607
+store_state(64,1679
+load_die(107,2898
+load_advance(123,3228
+load_advance_gcp(135,3493
+subs_ml_model(149,3781
+subs_ml_model(176,4675
+subs_ml_model(202,5699
+~subs_ml_model(314,8662
+reset_param(320,8706
+report_time(337,9225
+report(358,9790
+set_obs_cat_seq_state_counts(374,10127
+set_obs_cat_seq_state_distro(382,10269
+obs_seq_state_distro_cat(390,10427
+check_obs_cat_no(398,10611
+obs_seq_state_distro_obs_cat(414,11060
+obs_state_distro_cat(423,11265
+obs_state_distro_obs_cat(431,11460
+post_write_param_state(440,11647
+param_penalty(449,11856
+register_param(457,11980
+set_rate_gtor_model(470,12304
+state_size(478,12516
+submodel_size(484,12622
+submodel_state_size(490,12716
+obs_info_notifier(496,12840
+bg_gtor_notifier(502,12919
+
+subs_ml_model_ci_info.cc,225
+const char * const section_id 50,1309
+const char * const version_id 52,1367
+load_die(64,1562
+load_advance(79,1905
+store_state(97,2185
+load_state(121,2739
+store_state(154,3307
+check_state(175,3801
+load_state(189,4057
+
+subs_ml_model_comex.cc,512
+tree(41,1178
+get_cat_manager(47,1258
+tree(53,1358
+tree_nonconst(57,1428
+rate_gtor_model(64,1535
+state_size(68,1624
+get_bg_gtor_notifier(74,1715
+bg_cat_size(80,1815
+bg_cat_no_from_cat_no(86,1918
+bg_state_pdistro_bg_cat(92,2078
+state_size(100,2242
+get_obs_state_avg_root(105,2325
+get_obs_state_time_avg_root(117,2703
+get_root_node_prob(124,2918
+branch_size(132,3144
+get_root_node_prob_nspround(138,3236
+get_obs_info_notifier(149,3595
+obs_state_distro_cat(155,3702
+get_obs_info_notifier(161,3838
+
+subs_ml_model_min_options.cc,288
+const char* const section_id 48,1305
+const char* const converge_label 50,1366
+const char* const min_label 51,1423
+const char* const expm_label 52,1471
+const char* const obs_up_label 53,1525
+const char* const end_label 55,1578
+store_state(61,1651
+subs_ml_model_min_options(73,2067
+
+subs_ml_model_root_from_obs.cc,2079
+tree_branch_down_obs_state_time_avg(78,1973
+subs_ml_model_obs_state_time_avg_root(138,3996
+struct parent_prob_leastsq_minfunc_base 162,4722
+  typedef parent_prob_leastsq_minfunc_base self_t;parent_prob_leastsq_minfunc_base::self_t164,4811
+  parent_prob_leastsq_minfunc_base(parent_prob_leastsq_minfunc_base::parent_prob_leastsq_minfunc_base166,4863
+  virtual smlfloat val(parent_prob_leastsq_minfunc_base::val186,5504
+  smlfloat val_int(parent_prob_leastsq_minfunc_base::val_int197,5749
+  smlfloat dval(parent_prob_leastsq_minfunc_base::dval223,6357
+  smlfloat cost_scale_factor(parent_prob_leastsq_minfunc_base::cost_scale_factor248,7027
+struct parent_prob_leastsq_minfunc 262,7306
+  typedef parent_prob_leastsq_minfunc_base base_t;parent_prob_leastsq_minfunc::base_t264,7386
+  parent_prob_leastsq_minfunc(parent_prob_leastsq_minfunc::parent_prob_leastsq_minfunc266,7438
+  unsigned dim(parent_prob_leastsq_minfunc::dim272,7672
+  p_to_parent_prob(parent_prob_leastsq_minfunc::p_to_parent_prob276,7735
+  parent_prob_to_p(parent_prob_leastsq_minfunc::parent_prob_to_p289,8011
+struct parent_prob_leastsq_minfunc_indy 300,8195
+  typedef parent_prob_leastsq_minfunc_base base_t;parent_prob_leastsq_minfunc_indy::base_t302,8280
+  parent_prob_leastsq_minfunc_indy(parent_prob_leastsq_minfunc_indy::parent_prob_leastsq_minfunc_indy304,8332
+  unsigned dim(parent_prob_leastsq_minfunc_indy::dim310,8597
+  p_to_parent_prob(parent_prob_leastsq_minfunc_indy::p_to_parent_prob314,8662
+  parent_prob_to_p(parent_prob_leastsq_minfunc_indy::parent_prob_to_p329,9016
+  smlfloat dval(parent_prob_leastsq_minfunc_indy::dval343,9292
+  static double DIV_ZERO_PROTECT_OFFSET(parent_prob_leastsq_minfunc_indy::DIV_ZERO_PROTECT_OFFSET479,13460
+struct tbdp_info 489,13584
+  tbdp_info(tbdp_info::tbdp_info490,13603
+get_parent_down_prob(526,14701
+tree_branch_down_prob(693,19664
+subs_ml_model_root_node_prob_branch_tprob(740,20995
+subs_ml_model_root_node_prob(815,23504
+subs_ml_model_root_node_prob_nspround(915,26809
+subs_ml_model_root_node_prob(967,28532
+
+subs_ml_model_train.cc,270
+sml_estep(60,1582
+check_edat(84,2072
+sml_em_min(108,2654
+clear_post_prob_data(178,4356
+check_cat_post_prob_data_match(188,4561
+update_model_obs_distro(216,5131
+update_model_cat_expectation(267,6802
+sml_cat_postp_cycle_min(365,9880
+train_subs_ml_model(435,11926
+
+subs_ml_model_util.cc,98
+init_trained_data_dependencies(50,1414
+init_untrained_data_dependencies(109,3391
+norm(193,6024
+
+subs_ml_print_util.cc,25
+lnp_line_report(38,1089
+
+subs_prob_util.cc,71
+get_all_branch_subs_prob(41,1147
+get_single_branch_subs_prob(66,1927
+
+tang_ei.cc,16
+get_ei(41,1163
+
+time_gtor.cc,608
+set_pseudo_param(50,1376
+trainable_param_transform(68,1812
+trainable_param_untransform(84,2315
+post_write_param_state(95,2538
+adjust_time(109,2746
+const char* const section_id 122,3104
+const char* const end_label 123,3148
+store_state(131,3235
+time_gtor(152,3781
+reset_param(185,4412
+check_param(248,6325
+dump(273,6938
+set_reversible_time_param(288,7268
+set_time_cat_slope(316,7946
+is_zero_time(335,8374
+time_cat_index(348,8613
+setup_param(359,8823
+time_cat_size(371,9014
+time_cat_pdistro(379,9112
+time_cat_no(387,9226
+cat_averaged_branch_time(395,9358
+cat_expected_branch_time(409,9601
+
+tree_probs.cc,77
+alloc(52,1443
+update_root(68,1732
+init_probs(81,1963
+self_check(179,5045
+
+util/bio/bioseq_util_flux_rate_conversions.h,210
+#define __BIOSEQ_UTIL_FLUX_RATE_CONVERSIONS_H53,1496
+template <typename FloatType1,59,1640
+template <typename FloatType1,67,1875
+template <typename FloatType1,75,2096
+template <typename FloatType1,82,2311
+
+util/bio/bioseq_util_flux_rate_conversions.hh,585
+template <typename FloatType1,41,1198
+get_ws_ratio(44,1271
+template <typename FloatType1,77,2164
+get_si_sv(80,2231
+template <typename FloatType1,117,3224
+rates_to_flux_inplace(120,3291
+template <typename FloatType1,134,3594
+flux_to_rates_inplace(137,3661
+site_model_flux_to_nscodon_flux(154,4037
+nscodon_flux_to_nsaa_flux(181,4847
+neutral_nscodon_flux_to_nsaa_flux(206,5681
+nscodon_flux_to_nsaa_rate(222,6238
+neutral_nsaa_flux_to_dn_ds(247,7019
+neutral_nscodon_flux_to_dn_ds(276,7767
+neutral_nsaa_flux_to_nsaa_dn_ds(292,8190
+neutral_nscodon_flux_to_nsaa_dn_ds(339,9597
+
+util/bio/bioseq_util.h,22099
+#define __BIOSEQ_UTIL_H35,1088
+namespace NUC 44,1202
+  enum index_t NUC::index_t45,1218
+  enum index_t { A,NUC::index_t::A45,1218
+  enum index_t { A,C,NUC::index_t::C45,1218
+  enum index_t { A,C,G,NUC::index_t::G45,1218
+  enum index_t { A,C,G,T,NUC::index_t::T45,1218
+  enum index_t { A,C,G,T,N NUC::index_t::N45,1218
+  is_transition(NUC::is_transition53,1365
+  remap(NUC::remap60,1544
+namespace DINUC 69,1706
+  typedef unsigned index_t;DINUC::index_t70,1724
+  enum size_t DINUC::size_t71,1752
+  enum size_t { SIZE=DINUC::size_t::SIZE71,1752
+  enum size_t { SIZE=NUC::SIZE*DINUC::size_t::NUC::SIZE71,1752
+  enum size_t { SIZE=NUC::SIZE*NUC::SIZE DINUC::size_t::NUC::SIZE71,1752
+  decode_nx(DINUC::decode_nx76,1857
+  decode_n0(DINUC::decode_n080,1956
+  encode(DINUC::encode84,2050
+  class print DINUC::print89,2160
+    print(DINUC::print::print92,2202
+namespace AA 102,2353
+  enum index_t AA::index_t103,2368
+  enum index_t { A,AA::index_t::A103,2368
+  enum index_t { A,C,AA::index_t::C103,2368
+  enum index_t { A,C,D,AA::index_t::D103,2368
+  enum index_t { A,C,D,E,AA::index_t::E103,2368
+  enum index_t { A,C,D,E,F,AA::index_t::F103,2368
+  enum index_t { A,C,D,E,F,G,AA::index_t::G103,2368
+  enum index_t { A,C,D,E,F,G,H,AA::index_t::H103,2368
+  enum index_t { A,C,D,E,F,G,H,I,AA::index_t::I103,2368
+  enum index_t { A,C,D,E,F,G,H,I,K,AA::index_t::K103,2368
+  enum index_t { A,C,D,E,F,G,H,I,K,L,AA::index_t::L103,2368
+  enum index_t { A,C,D,E,F,G,H,I,K,L,M,AA::index_t::M103,2368
+  enum index_t { A,C,D,E,F,G,H,I,K,L,M,N,AA::index_t::N103,2368
+  enum index_t { A,C,D,E,F,G,H,I,K,L,M,N,P,AA::index_t::P103,2368
+  enum index_t { A,C,D,E,F,G,H,I,K,L,M,N,P,Q,AA::index_t::Q103,2368
+  enum index_t { A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,AA::index_t::R103,2368
+  enum index_t { A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,S,AA::index_t::S103,2368
+  enum index_t { A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,S,T,AA::index_t::T103,2368
+  enum index_t { A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,S,T,V,AA::index_t::V103,2368
+  enum index_t { A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,S,T,V,W,AA::index_t::W103,2368
+  enum index_t { A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,S,T,V,W,Y,AA::index_t::Y103,2368
+  enum index_t { A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,S,T,V,W,Y,STOP,AA::index_t::STOP103,2368
+  enum index_t { A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,S,T,V,W,Y,STOP,X AA::index_t::X103,2368
+  enum size_t AA::size_t104,2435
+  enum size_t { SIZE=AA::size_t::SIZE104,2435
+  enum size_t { SIZE=X AA::size_t::X104,2435
+namespace NSAA 110,2575
+  enum index_t NSAA::index_t111,2592
+  enum index_t { A,NSAA::index_t::A111,2592
+  enum index_t { A,C,NSAA::index_t::C111,2592
+  enum index_t { A,C,D,NSAA::index_t::D111,2592
+  enum index_t { A,C,D,E,NSAA::index_t::E111,2592
+  enum index_t { A,C,D,E,F,NSAA::index_t::F111,2592
+  enum index_t { A,C,D,E,F,G,NSAA::index_t::G111,2592
+  enum index_t { A,C,D,E,F,G,H,NSAA::index_t::H111,2592
+  enum index_t { A,C,D,E,F,G,H,I,NSAA::index_t::I111,2592
+  enum index_t { A,C,D,E,F,G,H,I,K,NSAA::index_t::K111,2592
+  enum index_t { A,C,D,E,F,G,H,I,K,L,NSAA::index_t::L111,2592
+  enum index_t { A,C,D,E,F,G,H,I,K,L,M,NSAA::index_t::M111,2592
+  enum index_t { A,C,D,E,F,G,H,I,K,L,M,N,NSAA::index_t::N111,2592
+  enum index_t { A,C,D,E,F,G,H,I,K,L,M,N,P,NSAA::index_t::P111,2592
+  enum index_t { A,C,D,E,F,G,H,I,K,L,M,N,P,Q,NSAA::index_t::Q111,2592
+  enum index_t { A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,NSAA::index_t::R111,2592
+  enum index_t { A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,S,NSAA::index_t::S111,2592
+  enum index_t { A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,S,T,NSAA::index_t::T111,2592
+  enum index_t { A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,S,T,V,NSAA::index_t::V111,2592
+  enum index_t { A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,S,T,V,W,NSAA::index_t::W111,2592
+  enum index_t { A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,S,T,V,W,Y,NSAA::index_t::Y111,2592
+  enum index_t { A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,S,T,V,W,Y,X NSAA::index_t::X111,2592
+  enum size_t NSAA::size_t112,2654
+  enum size_t { SIZE=NSAA::size_t::SIZE112,2654
+  enum size_t { SIZE=X NSAA::size_t::X112,2654
+  convert_aa_to_nsaa(NSAA::convert_aa_to_nsaa118,2769
+  convert_nsaa_to_aa(NSAA::convert_nsaa_to_aa125,2921
+namespace CODON 131,3035
+  enum index_t CODON::index_t135,3137
+    AAA,CODON::index_t::AAA136,3154
+    AAA,CAA,CODON::index_t::CAA136,3154
+    AAA,CAA,GAA,CODON::index_t::GAA136,3154
+    AAA,CAA,GAA,TAA,CODON::index_t::TAA136,3154
+    AAA,CAA,GAA,TAA, ACA,CODON::index_t::ACA136,3154
+    AAA,CAA,GAA,TAA, ACA,CCA,CODON::index_t::CCA136,3154
+    AAA,CAA,GAA,TAA, ACA,CCA,GCA,CODON::index_t::GCA136,3154
+    AAA,CAA,GAA,TAA, ACA,CCA,GCA,TCA,CODON::index_t::TCA136,3154
+    AAA,CAA,GAA,TAA, ACA,CCA,GCA,TCA, AGA,CODON::index_t::AGA136,3154
+    AAA,CAA,GAA,TAA, ACA,CCA,GCA,TCA, AGA,CGA,CODON::index_t::CGA136,3154
+    AAA,CAA,GAA,TAA, ACA,CCA,GCA,TCA, AGA,CGA,GGA,CODON::index_t::GGA136,3154
+    AAA,CAA,GAA,TAA, ACA,CCA,GCA,TCA, AGA,CGA,GGA,TGA,CODON::index_t::TGA136,3154
+    AAA,CAA,GAA,TAA, ACA,CCA,GCA,TCA, AGA,CGA,GGA,TGA, ATA,CODON::index_t::ATA136,3154
+    AAA,CAA,GAA,TAA, ACA,CCA,GCA,TCA, AGA,CGA,GGA,TGA, ATA,CTA,CODON::index_t::CTA136,3154
+    AAA,CAA,GAA,TAA, ACA,CCA,GCA,TCA, AGA,CGA,GGA,TGA, ATA,CTA,GTA,CODON::index_t::GTA136,3154
+    AAA,CAA,GAA,TAA, ACA,CCA,GCA,TCA, AGA,CGA,GGA,TGA, ATA,CTA,GTA,TTA,CODON::index_t::TTA136,3154
+    AAC,CODON::index_t::AAC137,3226
+    AAC,CAC,CODON::index_t::CAC137,3226
+    AAC,CAC,GAC,CODON::index_t::GAC137,3226
+    AAC,CAC,GAC,TAC,CODON::index_t::TAC137,3226
+    AAC,CAC,GAC,TAC, ACC,CODON::index_t::ACC137,3226
+    AAC,CAC,GAC,TAC, ACC,CCC,CODON::index_t::CCC137,3226
+    AAC,CAC,GAC,TAC, ACC,CCC,GCC,CODON::index_t::GCC137,3226
+    AAC,CAC,GAC,TAC, ACC,CCC,GCC,TCC,CODON::index_t::TCC137,3226
+    AAC,CAC,GAC,TAC, ACC,CCC,GCC,TCC, AGC,CODON::index_t::AGC137,3226
+    AAC,CAC,GAC,TAC, ACC,CCC,GCC,TCC, AGC,CGC,CODON::index_t::CGC137,3226
+    AAC,CAC,GAC,TAC, ACC,CCC,GCC,TCC, AGC,CGC,GGC,CODON::index_t::GGC137,3226
+    AAC,CAC,GAC,TAC, ACC,CCC,GCC,TCC, AGC,CGC,GGC,TGC,CODON::index_t::TGC137,3226
+    AAC,CAC,GAC,TAC, ACC,CCC,GCC,TCC, AGC,CGC,GGC,TGC, ATC,CODON::index_t::ATC137,3226
+    AAC,CAC,GAC,TAC, ACC,CCC,GCC,TCC, AGC,CGC,GGC,TGC, ATC,CTC,CODON::index_t::CTC137,3226
+    AAC,CAC,GAC,TAC, ACC,CCC,GCC,TCC, AGC,CGC,GGC,TGC, ATC,CTC,GTC,CODON::index_t::GTC137,3226
+    AAC,CAC,GAC,TAC, ACC,CCC,GCC,TCC, AGC,CGC,GGC,TGC, ATC,CTC,GTC,TTC,CODON::index_t::TTC137,3226
+    AAG,CODON::index_t::AAG138,3298
+    AAG,CAG,CODON::index_t::CAG138,3298
+    AAG,CAG,GAG,CODON::index_t::GAG138,3298
+    AAG,CAG,GAG,TAG,CODON::index_t::TAG138,3298
+    AAG,CAG,GAG,TAG, ACG,CODON::index_t::ACG138,3298
+    AAG,CAG,GAG,TAG, ACG,CCG,CODON::index_t::CCG138,3298
+    AAG,CAG,GAG,TAG, ACG,CCG,GCG,CODON::index_t::GCG138,3298
+    AAG,CAG,GAG,TAG, ACG,CCG,GCG,TCG,CODON::index_t::TCG138,3298
+    AAG,CAG,GAG,TAG, ACG,CCG,GCG,TCG, AGG,CODON::index_t::AGG138,3298
+    AAG,CAG,GAG,TAG, ACG,CCG,GCG,TCG, AGG,CGG,CODON::index_t::CGG138,3298
+    AAG,CAG,GAG,TAG, ACG,CCG,GCG,TCG, AGG,CGG,GGG,CODON::index_t::GGG138,3298
+    AAG,CAG,GAG,TAG, ACG,CCG,GCG,TCG, AGG,CGG,GGG,TGG,CODON::index_t::TGG138,3298
+    AAG,CAG,GAG,TAG, ACG,CCG,GCG,TCG, AGG,CGG,GGG,TGG, ATG,CODON::index_t::ATG138,3298
+    AAG,CAG,GAG,TAG, ACG,CCG,GCG,TCG, AGG,CGG,GGG,TGG, ATG,CTG,CODON::index_t::CTG138,3298
+    AAG,CAG,GAG,TAG, ACG,CCG,GCG,TCG, AGG,CGG,GGG,TGG, ATG,CTG,GTG,CODON::index_t::GTG138,3298
+    AAG,CAG,GAG,TAG, ACG,CCG,GCG,TCG, AGG,CGG,GGG,TGG, ATG,CTG,GTG,TTG,CODON::index_t::TTG138,3298
+    AAT,CODON::index_t::AAT139,3370
+    AAT,CAT,CODON::index_t::CAT139,3370
+    AAT,CAT,GAT,CODON::index_t::GAT139,3370
+    AAT,CAT,GAT,TAT,CODON::index_t::TAT139,3370
+    AAT,CAT,GAT,TAT, ACT,CODON::index_t::ACT139,3370
+    AAT,CAT,GAT,TAT, ACT,CCT,CODON::index_t::CCT139,3370
+    AAT,CAT,GAT,TAT, ACT,CCT,GCT,CODON::index_t::GCT139,3370
+    AAT,CAT,GAT,TAT, ACT,CCT,GCT,TCT,CODON::index_t::TCT139,3370
+    AAT,CAT,GAT,TAT, ACT,CCT,GCT,TCT, AGT,CODON::index_t::AGT139,3370
+    AAT,CAT,GAT,TAT, ACT,CCT,GCT,TCT, AGT,CGT,CODON::index_t::CGT139,3370
+    AAT,CAT,GAT,TAT, ACT,CCT,GCT,TCT, AGT,CGT,GGT,CODON::index_t::GGT139,3370
+    AAT,CAT,GAT,TAT, ACT,CCT,GCT,TCT, AGT,CGT,GGT,TGT,CODON::index_t::TGT139,3370
+    AAT,CAT,GAT,TAT, ACT,CCT,GCT,TCT, AGT,CGT,GGT,TGT, ATT,CODON::index_t::ATT139,3370
+    AAT,CAT,GAT,TAT, ACT,CCT,GCT,TCT, AGT,CGT,GGT,TGT, ATT,CTT,CODON::index_t::CTT139,3370
+    AAT,CAT,GAT,TAT, ACT,CCT,GCT,TCT, AGT,CGT,GGT,TGT, ATT,CTT,GTT,CODON::index_t::GTT139,3370
+    AAT,CAT,GAT,TAT, ACT,CCT,GCT,TCT, AGT,CGT,GGT,TGT, ATT,CTT,GTT,TTT,CODON::index_t::TTT139,3370
+    AAT,CAT,GAT,TAT, ACT,CCT,GCT,TCT, AGT,CGT,GGT,TGT, ATT,CTT,GTT,TTT, NNN CODON::index_t::NNN139,3370
+  encode(CODON::encode147,3540
+  encode(CODON::encode160,3849
+  decode(CODON::decode166,3939
+  decode(CODON::decode183,4323
+  decode_nuc3(CODON::decode_nuc3191,4441
+  class print CODON::print197,4576
+    print(CODON::print::print201,4640
+namespace TRINUC 214,4929
+namespace NSCODON 219,5004
+  enum index_t NSCODON::index_t221,5048
+    AAA,NSCODON::index_t::AAA222,5065
+    AAA,CAA,NSCODON::index_t::CAA222,5065
+    AAA,CAA,GAA,NSCODON::index_t::GAA222,5065
+    AAA,CAA,GAA,TAA,NSCODON::index_t::TAA222,5065
+    AAA,CAA,GAA,TAA, ACA,NSCODON::index_t::ACA222,5065
+    AAA,CAA,GAA,TAA, ACA,CCA,NSCODON::index_t::CCA222,5065
+    AAA,CAA,GAA,TAA, ACA,CCA,GCA,NSCODON::index_t::GCA222,5065
+    AAA,CAA,GAA,TAA, ACA,CCA,GCA,TCA,NSCODON::index_t::TCA222,5065
+    AAA,CAA,GAA,TAA, ACA,CCA,GCA,TCA, AGA,NSCODON::index_t::AGA222,5065
+    AAA,CAA,GAA,TAA, ACA,CCA,GCA,TCA, AGA,CGA,NSCODON::index_t::CGA222,5065
+    AAA,CAA,GAA,TAA, ACA,CCA,GCA,TCA, AGA,CGA,GGA,NSCODON::index_t::GGA222,5065
+    AAA,CAA,GAA,TAA, ACA,CCA,GCA,TCA, AGA,CGA,GGA,TGA,NSCODON::index_t::TGA222,5065
+    AAA,CAA,GAA,TAA, ACA,CCA,GCA,TCA, AGA,CGA,GGA,TGA, ATA,NSCODON::index_t::ATA222,5065
+    AAA,CAA,GAA,TAA, ACA,CCA,GCA,TCA, AGA,CGA,GGA,TGA, ATA,CTA,NSCODON::index_t::CTA222,5065
+    AAA,CAA,GAA,TAA, ACA,CCA,GCA,TCA, AGA,CGA,GGA,TGA, ATA,CTA,GTA,NSCODON::index_t::GTA222,5065
+    AAA,CAA,GAA,TAA, ACA,CCA,GCA,TCA, AGA,CGA,GGA,TGA, ATA,CTA,GTA,TTA,NSCODON::index_t::TTA222,5065
+    AAC,NSCODON::index_t::AAC223,5137
+    AAC,CAC,NSCODON::index_t::CAC223,5137
+    AAC,CAC,GAC,NSCODON::index_t::GAC223,5137
+    AAC,CAC,GAC,TAC,NSCODON::index_t::TAC223,5137
+    AAC,CAC,GAC,TAC, ACC,NSCODON::index_t::ACC223,5137
+    AAC,CAC,GAC,TAC, ACC,CCC,NSCODON::index_t::CCC223,5137
+    AAC,CAC,GAC,TAC, ACC,CCC,GCC,NSCODON::index_t::GCC223,5137
+    AAC,CAC,GAC,TAC, ACC,CCC,GCC,TCC,NSCODON::index_t::TCC223,5137
+    AAC,CAC,GAC,TAC, ACC,CCC,GCC,TCC, AGC,NSCODON::index_t::AGC223,5137
+    AAC,CAC,GAC,TAC, ACC,CCC,GCC,TCC, AGC,CGC,NSCODON::index_t::CGC223,5137
+    AAC,CAC,GAC,TAC, ACC,CCC,GCC,TCC, AGC,CGC,GGC,NSCODON::index_t::GGC223,5137
+    AAC,CAC,GAC,TAC, ACC,CCC,GCC,TCC, AGC,CGC,GGC,TGC,NSCODON::index_t::TGC223,5137
+    AAC,CAC,GAC,TAC, ACC,CCC,GCC,TCC, AGC,CGC,GGC,TGC, ATC,NSCODON::index_t::ATC223,5137
+    AAC,CAC,GAC,TAC, ACC,CCC,GCC,TCC, AGC,CGC,GGC,TGC, ATC,CTC,NSCODON::index_t::CTC223,5137
+    AAC,CAC,GAC,TAC, ACC,CCC,GCC,TCC, AGC,CGC,GGC,TGC, ATC,CTC,GTC,NSCODON::index_t::GTC223,5137
+    AAC,CAC,GAC,TAC, ACC,CCC,GCC,TCC, AGC,CGC,GGC,TGC, ATC,CTC,GTC,TTC,NSCODON::index_t::TTC223,5137
+    AAG,NSCODON::index_t::AAG224,5209
+    AAG,CAG,NSCODON::index_t::CAG224,5209
+    AAG,CAG,GAG,NSCODON::index_t::GAG224,5209
+    AAG,CAG,GAG,TAG,NSCODON::index_t::TAG224,5209
+    AAG,CAG,GAG,TAG, ACG,NSCODON::index_t::ACG224,5209
+    AAG,CAG,GAG,TAG, ACG,CCG,NSCODON::index_t::CCG224,5209
+    AAG,CAG,GAG,TAG, ACG,CCG,GCG,NSCODON::index_t::GCG224,5209
+    AAG,CAG,GAG,TAG, ACG,CCG,GCG,TCG,NSCODON::index_t::TCG224,5209
+    AAG,CAG,GAG,TAG, ACG,CCG,GCG,TCG, AGG,NSCODON::index_t::AGG224,5209
+    AAG,CAG,GAG,TAG, ACG,CCG,GCG,TCG, AGG,CGG,NSCODON::index_t::CGG224,5209
+    AAG,CAG,GAG,TAG, ACG,CCG,GCG,TCG, AGG,CGG,GGG,NSCODON::index_t::GGG224,5209
+    AAG,CAG,GAG,TAG, ACG,CCG,GCG,TCG, AGG,CGG,GGG,TGG,NSCODON::index_t::TGG224,5209
+    AAG,CAG,GAG,TAG, ACG,CCG,GCG,TCG, AGG,CGG,GGG,TGG, ATG,NSCODON::index_t::ATG224,5209
+    AAG,CAG,GAG,TAG, ACG,CCG,GCG,TCG, AGG,CGG,GGG,TGG, ATG,CTG,NSCODON::index_t::CTG224,5209
+    AAG,CAG,GAG,TAG, ACG,CCG,GCG,TCG, AGG,CGG,GGG,TGG, ATG,CTG,GTG,NSCODON::index_t::GTG224,5209
+    AAG,CAG,GAG,TAG, ACG,CCG,GCG,TCG, AGG,CGG,GGG,TGG, ATG,CTG,GTG,TTG,NSCODON::index_t::TTG224,5209
+    AAT,NSCODON::index_t::AAT225,5281
+    AAT,CAT,NSCODON::index_t::CAT225,5281
+    AAT,CAT,GAT,NSCODON::index_t::GAT225,5281
+    AAT,CAT,GAT,TAT,NSCODON::index_t::TAT225,5281
+    AAT,CAT,GAT,TAT, ACT,NSCODON::index_t::ACT225,5281
+    AAT,CAT,GAT,TAT, ACT,CCT,NSCODON::index_t::CCT225,5281
+    AAT,CAT,GAT,TAT, ACT,CCT,GCT,NSCODON::index_t::GCT225,5281
+    AAT,CAT,GAT,TAT, ACT,CCT,GCT,TCT,NSCODON::index_t::TCT225,5281
+    AAT,CAT,GAT,TAT, ACT,CCT,GCT,TCT, AGT,NSCODON::index_t::AGT225,5281
+    AAT,CAT,GAT,TAT, ACT,CCT,GCT,TCT, AGT,CGT,NSCODON::index_t::CGT225,5281
+    AAT,CAT,GAT,TAT, ACT,CCT,GCT,TCT, AGT,CGT,GGT,NSCODON::index_t::GGT225,5281
+    AAT,CAT,GAT,TAT, ACT,CCT,GCT,TCT, AGT,CGT,GGT,TGT,NSCODON::index_t::TGT225,5281
+    AAT,CAT,GAT,TAT, ACT,CCT,GCT,TCT, AGT,CGT,GGT,TGT, ATT,NSCODON::index_t::ATT225,5281
+    AAT,CAT,GAT,TAT, ACT,CCT,GCT,TCT, AGT,CGT,GGT,TGT, ATT,CTT,NSCODON::index_t::CTT225,5281
+    AAT,CAT,GAT,TAT, ACT,CCT,GCT,TCT, AGT,CGT,GGT,TGT, ATT,CTT,GTT,NSCODON::index_t::GTT225,5281
+    AAT,CAT,GAT,TAT, ACT,CCT,GCT,TCT, AGT,CGT,GGT,TGT, ATT,CTT,GTT,TTT,NSCODON::index_t::TTT225,5281
+    AAT,CAT,GAT,TAT, ACT,CCT,GCT,TCT, AGT,CGT,GGT,TGT, ATT,CTT,GTT,TTT, NNN NSCODON::index_t::NNN225,5281
+  enum index_t NSCODON::index_t227,5366
+    AAA,NSCODON::index_t::AAA228,5383
+    AAA,CAA,NSCODON::index_t::CAA228,5383
+    AAA,CAA,GAA,NSCODON::index_t::GAA228,5383
+    AAA,CAA,GAA,     ACA,NSCODON::index_t::ACA228,5383
+    AAA,CAA,GAA,     ACA,CCA,NSCODON::index_t::CCA228,5383
+    AAA,CAA,GAA,     ACA,CCA,GCA,NSCODON::index_t::GCA228,5383
+    AAA,CAA,GAA,     ACA,CCA,GCA,TCA,NSCODON::index_t::TCA228,5383
+    AAA,CAA,GAA,     ACA,CCA,GCA,TCA, AGA,NSCODON::index_t::AGA228,5383
+    AAA,CAA,GAA,     ACA,CCA,GCA,TCA, AGA,CGA,NSCODON::index_t::CGA228,5383
+    AAA,CAA,GAA,     ACA,CCA,GCA,TCA, AGA,CGA,GGA,NSCODON::index_t::GGA228,5383
+    AAA,CAA,GAA,     ACA,CCA,GCA,TCA, AGA,CGA,GGA,     ATA,NSCODON::index_t::ATA228,5383
+    AAA,CAA,GAA,     ACA,CCA,GCA,TCA, AGA,CGA,GGA,     ATA,CTA,NSCODON::index_t::CTA228,5383
+    AAA,CAA,GAA,     ACA,CCA,GCA,TCA, AGA,CGA,GGA,     ATA,CTA,GTA,NSCODON::index_t::GTA228,5383
+    AAA,CAA,GAA,     ACA,CCA,GCA,TCA, AGA,CGA,GGA,     ATA,CTA,GTA,TTA,NSCODON::index_t::TTA228,5383
+    AAC,NSCODON::index_t::AAC229,5455
+    AAC,CAC,NSCODON::index_t::CAC229,5455
+    AAC,CAC,GAC,NSCODON::index_t::GAC229,5455
+    AAC,CAC,GAC,TAC,NSCODON::index_t::TAC229,5455
+    AAC,CAC,GAC,TAC, ACC,NSCODON::index_t::ACC229,5455
+    AAC,CAC,GAC,TAC, ACC,CCC,NSCODON::index_t::CCC229,5455
+    AAC,CAC,GAC,TAC, ACC,CCC,GCC,NSCODON::index_t::GCC229,5455
+    AAC,CAC,GAC,TAC, ACC,CCC,GCC,TCC,NSCODON::index_t::TCC229,5455
+    AAC,CAC,GAC,TAC, ACC,CCC,GCC,TCC, AGC,NSCODON::index_t::AGC229,5455
+    AAC,CAC,GAC,TAC, ACC,CCC,GCC,TCC, AGC,CGC,NSCODON::index_t::CGC229,5455
+    AAC,CAC,GAC,TAC, ACC,CCC,GCC,TCC, AGC,CGC,GGC,NSCODON::index_t::GGC229,5455
+    AAC,CAC,GAC,TAC, ACC,CCC,GCC,TCC, AGC,CGC,GGC,TGC,NSCODON::index_t::TGC229,5455
+    AAC,CAC,GAC,TAC, ACC,CCC,GCC,TCC, AGC,CGC,GGC,TGC, ATC,NSCODON::index_t::ATC229,5455
+    AAC,CAC,GAC,TAC, ACC,CCC,GCC,TCC, AGC,CGC,GGC,TGC, ATC,CTC,NSCODON::index_t::CTC229,5455
+    AAC,CAC,GAC,TAC, ACC,CCC,GCC,TCC, AGC,CGC,GGC,TGC, ATC,CTC,GTC,NSCODON::index_t::GTC229,5455
+    AAC,CAC,GAC,TAC, ACC,CCC,GCC,TCC, AGC,CGC,GGC,TGC, ATC,CTC,GTC,TTC,NSCODON::index_t::TTC229,5455
+    AAG,NSCODON::index_t::AAG230,5527
+    AAG,CAG,NSCODON::index_t::CAG230,5527
+    AAG,CAG,GAG,NSCODON::index_t::GAG230,5527
+    AAG,CAG,GAG,     ACG,NSCODON::index_t::ACG230,5527
+    AAG,CAG,GAG,     ACG,CCG,NSCODON::index_t::CCG230,5527
+    AAG,CAG,GAG,     ACG,CCG,GCG,NSCODON::index_t::GCG230,5527
+    AAG,CAG,GAG,     ACG,CCG,GCG,TCG,NSCODON::index_t::TCG230,5527
+    AAG,CAG,GAG,     ACG,CCG,GCG,TCG, AGG,NSCODON::index_t::AGG230,5527
+    AAG,CAG,GAG,     ACG,CCG,GCG,TCG, AGG,CGG,NSCODON::index_t::CGG230,5527
+    AAG,CAG,GAG,     ACG,CCG,GCG,TCG, AGG,CGG,GGG,NSCODON::index_t::GGG230,5527
+    AAG,CAG,GAG,     ACG,CCG,GCG,TCG, AGG,CGG,GGG,TGG,NSCODON::index_t::TGG230,5527
+    AAG,CAG,GAG,     ACG,CCG,GCG,TCG, AGG,CGG,GGG,TGG, ATG,NSCODON::index_t::ATG230,5527
+    AAG,CAG,GAG,     ACG,CCG,GCG,TCG, AGG,CGG,GGG,TGG, ATG,CTG,NSCODON::index_t::CTG230,5527
+    AAG,CAG,GAG,     ACG,CCG,GCG,TCG, AGG,CGG,GGG,TGG, ATG,CTG,GTG,NSCODON::index_t::GTG230,5527
+    AAG,CAG,GAG,     ACG,CCG,GCG,TCG, AGG,CGG,GGG,TGG, ATG,CTG,GTG,TTG,NSCODON::index_t::TTG230,5527
+    AAT,NSCODON::index_t::AAT231,5599
+    AAT,CAT,NSCODON::index_t::CAT231,5599
+    AAT,CAT,GAT,NSCODON::index_t::GAT231,5599
+    AAT,CAT,GAT,TAT,NSCODON::index_t::TAT231,5599
+    AAT,CAT,GAT,TAT, ACT,NSCODON::index_t::ACT231,5599
+    AAT,CAT,GAT,TAT, ACT,CCT,NSCODON::index_t::CCT231,5599
+    AAT,CAT,GAT,TAT, ACT,CCT,GCT,NSCODON::index_t::GCT231,5599
+    AAT,CAT,GAT,TAT, ACT,CCT,GCT,TCT,NSCODON::index_t::TCT231,5599
+    AAT,CAT,GAT,TAT, ACT,CCT,GCT,TCT, AGT,NSCODON::index_t::AGT231,5599
+    AAT,CAT,GAT,TAT, ACT,CCT,GCT,TCT, AGT,CGT,NSCODON::index_t::CGT231,5599
+    AAT,CAT,GAT,TAT, ACT,CCT,GCT,TCT, AGT,CGT,GGT,NSCODON::index_t::GGT231,5599
+    AAT,CAT,GAT,TAT, ACT,CCT,GCT,TCT, AGT,CGT,GGT,TGT,NSCODON::index_t::TGT231,5599
+    AAT,CAT,GAT,TAT, ACT,CCT,GCT,TCT, AGT,CGT,GGT,TGT, ATT,NSCODON::index_t::ATT231,5599
+    AAT,CAT,GAT,TAT, ACT,CCT,GCT,TCT, AGT,CGT,GGT,TGT, ATT,CTT,NSCODON::index_t::CTT231,5599
+    AAT,CAT,GAT,TAT, ACT,CCT,GCT,TCT, AGT,CGT,GGT,TGT, ATT,CTT,GTT,NSCODON::index_t::GTT231,5599
+    AAT,CAT,GAT,TAT, ACT,CCT,GCT,TCT, AGT,CGT,GGT,TGT, ATT,CTT,GTT,TTT,NSCODON::index_t::TTT231,5599
+    AAT,CAT,GAT,TAT, ACT,CCT,GCT,TCT, AGT,CGT,GGT,TGT, ATT,CTT,GTT,TTT, NNN NSCODON::index_t::NNN231,5599
+  convert_codon_to_nscodon(NSCODON::convert_codon_to_nscodon239,5798
+  convert_nscodon_to_codon(NSCODON::convert_nscodon_to_codon249,6011
+  convert_codon_to_nscodon(NSCODON::convert_codon_to_nscodon259,6220
+  convert_nscodon_to_codon(NSCODON::convert_nscodon_to_codon276,6749
+  encode(NSCODON::encode292,7127
+  encode(NSCODON::encode300,7344
+  decode(NSCODON::decode306,7434
+  decode(NSCODON::decode315,7614
+  decode_nuc3(NSCODON::decode_nuc3323,7732
+  class print NSCODON::print329,7864
+    print(NSCODON::print::print333,7928
+namespace NSC4 349,8227
+  typedef unsigned index_t;NSC4::index_t350,8244
+  decode_nuc(NSC4::decode_nuc357,8388
+  decode_nscodon(NSC4::decode_nscodon367,8567
+  decode(NSC4::decode377,8748
+  encode(NSC4::encode387,8906
+  get_nscodon_offset(NSC4::get_nscodon_offset399,9164
+namespace NSC5 408,9276
+  typedef unsigned index_t;NSC5::index_t409,9293
+  decode_nuc1(NSC5::decode_nuc1416,9434
+  decode_nuc2(NSC5::decode_nuc2426,9622
+  decode_nscodon(NSC5::decode_nscodon436,9814
+  decode(NSC5::decode446,9995
+  encode(NSC5::encode457,10207
+  get_nscodon_offset(NSC5::get_nscodon_offset470,10543
+namespace SITE_MODEL 479,10749
+  enum index_t SITE_MODEL::index_t480,10772
+  enum index_t { NONE,SITE_MODEL::index_t::NONE480,10772
+  enum index_t { NONE, NUC,SITE_MODEL::index_t::NUC480,10772
+  enum index_t { NONE, NUC, DINUC,SITE_MODEL::index_t::DINUC480,10772
+  enum index_t { NONE, NUC, DINUC, TRINUC,SITE_MODEL::index_t::TRINUC480,10772
+  enum index_t { NONE, NUC, DINUC, TRINUC, CODON,SITE_MODEL::index_t::CODON480,10772
+  enum index_t { NONE, NUC, DINUC, TRINUC, CODON, NSCODON,SITE_MODEL::index_t::NSCODON480,10772
+  enum index_t { NONE, NUC, DINUC, TRINUC, CODON, NSCODON, AA,SITE_MODEL::index_t::AA480,10772
+  enum index_t { NONE, NUC, DINUC, TRINUC, CODON, NSCODON, AA, NSAA,SITE_MODEL::index_t::NSAA480,10772
+  enum index_t { NONE, NUC, DINUC, TRINUC, CODON, NSCODON, AA, NSAA, NSC4PRE,SITE_MODEL::index_t::NSC4PRE480,10772
+  enum index_t { NONE, NUC, DINUC, TRINUC, CODON, NSCODON, AA, NSAA, NSC4PRE, NSC4POST,SITE_MODEL::index_t::NSC4POST480,10772
+  enum index_t { NONE, NUC, DINUC, TRINUC, CODON, NSCODON, AA, NSAA, NSC4PRE, NSC4POST, NSC5,SITE_MODEL::index_t::NSC5480,10772
+  enum index_t { NONE, NUC, DINUC, TRINUC, CODON, NSCODON, AA, NSAA, NSC4PRE, NSC4POST, NSC5, NSC5PRE,SITE_MODEL::index_t::NSC5PRE480,10772
+  enum index_t { NONE, NUC, DINUC, TRINUC, CODON, NSCODON, AA, NSAA, NSC4PRE, NSC4POST, NSC5, NSC5PRE, NSC5POST,SITE_MODEL::index_t::NSC5POST480,10772
+  enum index_t { NONE, NUC, DINUC, TRINUC, CODON, NSCODON, AA, NSAA, NSC4PRE, NSC4POST, NSC5, NSC5PRE, NSC5POST, BINARY SITE_MODEL::index_t::BINARY480,10772
+  base_size(SITE_MODEL::base_size484,10916
+  state_size(SITE_MODEL::state_size502,11315
+  is_coding(SITE_MODEL::is_coding521,11784
+  ambig_state(SITE_MODEL::ambig_state536,12033
+  enum { MAX_BASE_SIZE=SITE_MODEL::MAX_BASE_SIZE555,12631
+  enum { MAX_BASE_SIZE=CODON::BASE_SIZE+SITE_MODEL::CODON::BASE_SIZE555,12631
+  codon_position(SITE_MODEL::codon_position559,12693
+  is_partial_codon(SITE_MODEL::is_partial_codon583,13196
+  encode_nuc(SITE_MODEL::encode_nuc604,13740
+  decode_nuc(SITE_MODEL::decode_nuc636,14610
+  decode_nscodon(SITE_MODEL::decode_nscodon685,15970
+  decode_codon(SITE_MODEL::decode_codon701,16531
+  label(SITE_MODEL::label717,16942
+  struct print SITE_MODEL::print735,17444
+    print(SITE_MODEL::print::print736,17461
+struct nuc_index_complement 761,17969
+  NUC::index_t operator()(nuc_index_complement::operator()762,18055
+struct nscodon_pair 809,18945
+  nscodon_pair(nscodon_pair::nscodon_pair810,18967
+
+util/bio/bioseq_util_io.h,68
+#define __BIOSEQ_UTIL_IO_H33,1040
+print_site_model_distro(43,1151
+
+util/bio/bioseq_util_pdf_conversions.h,3197
+#define __BIOSEQ_UTIL_PDF_CONVERSIONS_H33,1067
+namespace BIO_PDISTRO 39,1163
+  enum index_t BIO_PDISTRO::index_t40,1187
+  enum index_t { NONE,BIO_PDISTRO::index_t::NONE40,1187
+  enum index_t { NONE, NUC,BIO_PDISTRO::index_t::NUC40,1187
+  enum index_t { NONE, NUC, DINUC,BIO_PDISTRO::index_t::DINUC40,1187
+  enum index_t { NONE, NUC, DINUC, TRINUC,BIO_PDISTRO::index_t::TRINUC40,1187
+  enum index_t { NONE, NUC, DINUC, TRINUC, CODON,BIO_PDISTRO::index_t::CODON40,1187
+  enum index_t { NONE, NUC, DINUC, TRINUC, CODON, NSCODON,BIO_PDISTRO::index_t::NSCODON40,1187
+  enum index_t { NONE, NUC, DINUC, TRINUC, CODON, NSCODON, AA,BIO_PDISTRO::index_t::AA40,1187
+  enum index_t { NONE, NUC, DINUC, TRINUC, CODON, NSCODON, AA, NSAA,BIO_PDISTRO::index_t::NSAA40,1187
+  enum index_t { NONE, NUC, DINUC, TRINUC, CODON, NSCODON, AA, NSAA, NSC4PRE,BIO_PDISTRO::index_t::NSC4PRE40,1187
+  enum index_t { NONE, NUC, DINUC, TRINUC, CODON, NSCODON, AA, NSAA, NSC4PRE, NSC4POST,BIO_PDISTRO::index_t::NSC4POST40,1187
+  enum index_t { NONE, NUC, DINUC, TRINUC, CODON, NSCODON, AA, NSAA, NSC4PRE, NSC4POST, NSC5,BIO_PDISTRO::index_t::NSC540,1187
+                 NSC5PRE,BIO_PDISTRO::index_t::NSC5PRE41,1281
+                 NSC5PRE, NSC5POST,BIO_PDISTRO::index_t::NSC5POST41,1281
+                 NSCODON_DINUC,BIO_PDISTRO::index_t::NSCODON_DINUC42,1317
+                 NSCODON_DINUC, NUC_CODON_POS BIO_PDISTRO::index_t::NUC_CODON_POS42,1317
+  convert_from_site_model(BIO_PDISTRO::convert_from_site_model46,1386
+  convert_to_site_model(BIO_PDISTRO::convert_to_site_model66,2035
+  param_size(BIO_PDISTRO::param_size87,2732
+template <typename RAI,107,3241
+template <typename RAI,115,3486
+template <typename RAI,121,3648
+template <typename RAI,126,3802
+nuc_pdf_2_trinuc_pdf(128,3845
+template <typename RAI,133,4004
+template <typename RAI,138,4163
+template <typename RAI,143,4310
+template <typename RAI,148,4494
+template <typename RAI,153,4686
+template <typename RAI,158,4874
+template <typename RAI,163,5064
+template <typename RAI,168,5215
+template <typename RAI,173,5376
+template <typename RAI,178,5573
+template <typename RAI,184,5869
+template <typename RAI,190,6072
+trinuc_pdf_2_nuc_pdf_pos(192,6115
+template <typename RAI,198,6333
+template <typename RAI,203,6517
+template <typename RAI,208,6676
+template <typename RAI,214,6889
+template <typename RAI,225,7368
+template <typename RAI,230,7531
+template <typename RAI,typename RAI2,230,7531
+template <typename RAI,236,7789
+template <typename RAI,241,7966
+template <typename RAI,246,8137
+template <typename RAI,251,8310
+template <typename RAI,257,8575
+template <typename RAI,263,8843
+template <typename RAI,268,9006
+template <typename RAI,typename RAI2,268,9006
+template <typename RAI,274,9274
+template <typename RAI,279,9421
+template <typename RAI,284,9601
+template <typename RAI,289,9764
+template <typename RAI,295,10009
+template <typename RAI,301,10252
+template <typename RAI,306,10415
+template <typename RAI,312,10608
+template <typename RAI,319,10795
+template <typename RAI,326,11096
+template <typename RAI,334,11523
+template <typename RAI,343,12025
+template <typename RAI,349,12316
+
+util/bio/bioseq_util_pdf_conversions.hh,4664
+template <typename RAI,38,1124
+bio_pdistro_convert(41,1178
+bioseq_util_pdistro_check(123,3893
+bioseq_util_pdistro_check(129,4071
+template <typename RAI,136,4163
+nuc_pdf_2_dinuc_pdf(139,4217
+template <typename RAI,154,4512
+nuc_pdf_2_codon_pdf(157,4566
+template <typename RAI,172,4914
+nuc_pdf_2_nscodon_pdf(175,4968
+template <typename RAI,192,5410
+nuc_pdf_2_nsc4_pdf(195,5464
+  typedef typename std::iterator_traits<std::iterator_traits197,5537
+template <typename RAI,207,5746
+nuc_pdf_all_pos_2_codon_pdf(210,5800
+template <typename RAI,226,6220
+nuc_pdf_all_pos_2_nscodon_pdf(229,6274
+  typedef typename std::iterator_traits<std::iterator_traits236,6592
+template <typename RAI,262,7517
+nuc_pdf_all_pos_2_nsc4_pdf_pos(264,7560
+  typedef typename std::iterator_traits<std::iterator_traits267,7708
+template <typename RAI,277,7939
+nuc_pdf_all_pos_2_nsc4_pre_pdf(279,7982
+template <typename RAI,287,8139
+nuc_pdf_all_pos_2_nsc4_post_pdf(289,8182
+template <typename RAI,297,8341
+dinuc_pdf_2_nuc_pdf(299,8384
+template <typename RAI,317,8770
+dinuc_pdf_2_nuc_pdf_pos1(319,8813
+template <typename RAI,335,9127
+dinuc_pdf_2_conditioned_dinuc_pdf(337,9175
+dinuc_pdf_2_conditioned_dinuc_pdf_inplace(364,9958
+  typedef typename std::iterator_traits<std::iterator_traits367,10094
+template <typename RAI,391,10693
+dinuc_pdf_2_conditioned_dinuc_pdf(393,10736
+template <typename RAI,404,11085
+codon_pdf_2_nuc_pdf_pos(406,11128
+template <typename RAI,429,11650
+codon_pdf_2_nuc_pdf_all_pos(431,11693
+template <typename RAI,452,12227
+nscodon_pdf_2_nuc_pdf(454,12270
+  typedef typename std::iterator_traits<std::iterator_traits456,12352
+template <typename RAI,474,12820
+nscodon_pdf_2_nuc_pdf_pos(476,12863
+template <typename RAI,498,13400
+nscodon_pdf_2_nuc_pdf_all_pos(500,13443
+nscodon_pdf_2_dinuc_pdfs_conditioned_on_pos(522,14025
+template <typename RAI,563,15297
+nscodon_pdf_2_nsaa_pdf(565,15340
+  typedef typename std::iterator_traits<std::iterator_traits567,15425
+template <typename RAI,585,15794
+template <typename RAI,typename RAI2,585,15794
+nscodon_pdf_nuc_pdf_2_nsc4_pdf(587,15851
+template <typename RAI,604,16324
+nscodon_pdf_2_nsc4_pdf_allnuc(606,16367
+  typedef typename std::iterator_traits<std::iterator_traits608,16466
+template <typename RAI,618,16667
+nscodon_pdf_2_nsc4_pdf_pos(620,16710
+  typedef typename std::iterator_traits<std::iterator_traits623,16850
+template <typename RAI,633,17059
+nscodon_pdf_2_nsc4_pre_pdf(635,17102
+template <typename RAI,643,17255
+nscodon_pdf_2_nsc4_post_pdf(645,17298
+template <typename RAI,653,17452
+nscodon_pdf_2_nsc5_pdf(655,17495
+  typedef typename std::iterator_traits<std::iterator_traits657,17580
+template <typename FloatType,677,18092
+template <typename FloatType,typename RAI,677,18092
+nscodon_pdf_conditioned_dinuc_pdf_2_nsc4_pdf_pos(679,18154
+template <typename RAI,699,18874
+nscodon_pdf_dinuc_pdf_2_nsc4_pre_pdf(701,18917
+  typedef typename std::iterator_traits<std::iterator_traits704,19088
+template <typename RAI,715,19374
+nscodon_pdf_dinuc_pdf_2_nsc4_post_pdf(717,19417
+  typedef typename std::iterator_traits<std::iterator_traits720,19591
+template <typename RAI,731,19877
+template <typename RAI,typename RAI2,731,19877
+nscodon_pdf_dinuc_pdf_2_nsc5_pdf(733,19934
+  typedef typename std::iterator_traits<std::iterator_traits736,20094
+template <typename RAI,762,20899
+nsc4_pdf_2_nuc_pdf(764,20942
+  typedef typename std::iterator_traits<std::iterator_traits766,21015
+template <typename RAI,776,21208
+nsc4_pdf_2_nuc_pdf_all_pos(778,21251
+  typedef typename std::iterator_traits<std::iterator_traits780,21340
+template <typename RAI,790,21541
+nsc4_pdf_2_nscodon_pdf(792,21584
+template <typename RAI,807,21965
+nsc4_pdf_2_conditional_nscodon_pdf(809,22008
+template <typename RAI,827,22566
+nsc4_pdf_2_codon_boundary_dinuc_pdf(829,22609
+template <typename RAI,854,23255
+nsc5_pdf_2_nscodon_pdf(856,23298
+template <typename RAI,872,23680
+nsc5_pdf_2_nsc4_pdf(874,23723
+template <typename RAI,895,24233
+nsc5_pdf_2_codon_boundary_dinuc_pdf(897,24276
+template <typename RAI,919,24911
+get_nuc_pos_distro_from_site_model_distro(921,24954
+template <typename RAI,943,25537
+get_dependent_nuc_pos_distro_from_site_model_distro(945,25580
+template <typename RAI,971,26365
+get_dependent_nuc_pos_distro_from_site_model_distro(973,26408
+template <typename RAI,990,27110
+get_nuc_distro_conditioned_from_site_model_distro(992,27153
+template <typename RAI,1029,28432
+get_nuc_distro_conditioned_on_5p_from_site_model_distro(1031,28475
+template <typename RAI,1038,28769
+get_nuc_distro_conditioned_on_3p_from_site_model_distro(1040,28812
+
+util/bio/fasta_seq.h,133
+#define __FASTA_SEQ_H33,1030
+struct FastaSeq 41,1173
+  FastaSeq(FastaSeq::FastaSeq42,1191
+  FastaSeq(FastaSeq::FastaSeq43,1225
+
+util/bio/seq_util.h,386
+#define __SEQ_UTIL_H37,1141
+void count_seq_members(49,1327
+void count_seq_triplets(57,1578
+  typedef typename std::iterator_traits<std::iterator_traits60,1710
+struct base_complement 80,2150
+  char operator()(base_complement::operator()81,2215
+void reverse_complement(94,2435
+  typedef typename std::iterator_traits<std::iterator_traits96,2513
+void write_codon_info(106,2772
+
+util/bio/bioseq_util.cc,852
+const char NUC::syms[NUC::syms41,1100
+const char AA::syms[AA::syms43,1149
+const char NSAA::syms[NSAA::syms46,1291
+namespace DINUC{DINUC52,1436
+  operator<<(DINUC::operator<<54,1469
+namespace CODON{CODON65,1695
+  operator<<(CODON::operator<<67,1728
+namespace NSCODON{NSCODON78,2012
+  operator<<(NSCODON::operator<<80,2047
+namespace SITE_MODEL{SITE_MODEL91,2342
+  operator<<(SITE_MODEL::operator<<93,2380
+is_4fold_codon(125,3083
+is_4fold_codon(136,3382
+struct codon_table 149,3646
+  codon_table(codon_table::codon_table151,3668
+  AA::index_t translate(codon_table::translate153,3698
+init(171,3946
+codon_table ctab;203,4874
+codon_trans_known(210,4979
+aa_reverse_trans(217,5060
+codon_trans_known(231,5425
+aa_reverse_trans(237,5565
+get_codon_paths(251,6001
+get_first_nuc_diff(295,7204
+make_reachable_aa_matrix(325,7853
+
+util/bio/fasta_seq.cc,58
+istream& operator>>(40,1097
+ostream& operator<<(56,1377
+
+util/bio/seq_util.cc,369
+struct ltstr 46,1147
+  bool operator()(ltstr::operator()47,1162
+struct ltstr_codon 54,1262
+  bool operator()(ltstr_codon::operator()55,1283
+is_4fold_codon(65,1440
+bool is_4fold_codon(74,1677
+char codon_trans(83,1797
+  typedef map<char,const char*> amg_map;85,1830
+char codon_trans_known(145,3262
+  typedef map<const char*,char,ltstr_codon> lup_map;146,3300
+
+util/general/die.h,24
+#define __DIE_H33,1017
+
+util/general/io_util.h,84
+#define __IO_UTIL_H33,1026
+struct iliner 55,1475
+  iliner(iliner::iliner57,1492
+
+util/general/lock_util.h,156
+#define __LOCK_UTIL_H33,1030
+struct file_locker 50,1272
+  file_locker(file_locker::file_locker51,1314
+  ~file_locker(file_locker::~file_locker54,1388
+
+util/general/log.h,24
+#define __LOG_H33,1017
+
+util/general/metatags.h,143
+#define __METATAGS_H33,1027
+#define UNUSED_TAG37,1072
+#define NORETURN_TAG38,1091
+#define UNUSED_TAG 40,1118
+#define NORETURN_TAG 41,1161
+
+util/general/string_util.h,20
+void strip(37,1069
+
+util/general/uncopyable.h,150
+#define __UNCOPYABLE_H33,1030
+struct uncopyable 36,1055
+  uncopyable(uncopyable::uncopyable38,1086
+  ~uncopyable(uncopyable::~uncopyable39,1104
+
+util/general/workspace.h,267
+#define __WORKSPACE_H33,1030
+struct workspace 40,1102
+  workspace(workspace::workspace43,1154
+  ~workspace(workspace::~workspace47,1236
+  resize(workspace::resize50,1288
+  resize_with_data(workspace::resize_with_data59,1424
+  T* ptr(workspace::ptr69,1628
+
+util/general/die.cc,49
+die(41,1083
+pass_away(48,1170
+warning(55,1274
+
+util/general/io_util.cc,139
+check_nonempty_istream(42,1132
+clear_whitespace_line(61,1559
+clear_line(73,1749
+read_int(83,1858
+iliner_die(99,2064
+advance(115,2403
+
+util/general/lock_util.cc,48
+set_file_lock(41,1136
+unset_file_lock(62,1666
+
+util/math/array_util.h,948
+#define __ARRAY_UTIL_H37,1070
+namespace ESSL 44,1160
+#define sdot 46,1190
+#define ddot 47,1216
+template <typename ForwardIterator,64,1566
+          typename InputIterator,65,1602
+template <typename ForwardIterator1,79,2132
+          typename InputIterator,80,2169
+          typename ForwardIterator2,81,2203
+array_abs_max(94,2628
+array_dot(106,2914
+array_dot(121,3136
+array_dot(135,3408
+array_zero(153,3730
+array_sum(161,3886
+template <typename FloatType1,169,4019
+array_scale(173,4093
+array_scale_plus_vector(182,4274
+array_scale_plus_vector(192,4530
+array_scale_plus_vector(208,4927
+array_norm2(226,5361
+array_norm2(237,5557
+array_norm2(251,5800
+normalized_dot(267,6074
+array_log(277,6295
+array_log_lowres(285,6445
+array_log(300,6721
+array_log(308,6812
+array_sqrt(318,6930
+array_sqrt(332,7177
+array_sqrt(340,7272
+array_set_min(351,7433
+array_scale_sum(360,7636
+array_scale_sum(371,7870
+array_scale_sum(388,8210
+
+util/math/array_util.hh,298
+template <typename ForwardIterator,40,1170
+          typename InputIterator,41,1206
+array_scale_expectation(44,1264
+template <typename ForwardIterator1,71,1920
+          typename InputIterator,72,1957
+          typename ForwardIterator2,73,1991
+array_scale_expectation_selected_only(76,2052
+
+util/math/chi_sqr.h,27
+#define __CHI_SQR_H15,225
+
+util/math/clapack_util.h,152
+#define __CLAPACK_UTIL_H33,1030
+namespace CLAPACK 35,1056
+typedef __CLPK_integer integer;40,1113
+typedef __CLPK_doublecomplex doublecomplex;41,1145
+
+util/math/deriv_util.h,330
+#define __DERIVE_UTIL_H33,1028
+template <typename FloatType,39,1073
+forward_deriv_estimate(42,1138
+template <typename FloatType,58,1520
+centered_deriv_estimate(61,1585
+template <typename FloatType,82,2017
+centered_2partial_deriv_estimate(85,2082
+template <typename FloatType,110,2958
+centered_2nd_deriv_estimate(113,3023
+
+util/math/indy_random_var.h,767
+#define __INDY_RANDOM_VAR_H33,1036
+struct irv_t 40,1224
+  typedef irv_t<T> self_t;irv_t::self_t41,1239
+  irv_t(irv_t::irv_t43,1267
+  const self_t operator+(irv_t::operator+47,1335
+  const self_t operator-(irv_t::operator-51,1428
+  const self_t operator*(irv_t::operator*55,1521
+  const self_t operator/(irv_t::operator/60,1678
+  const self_t operator+=(irv_t::operator+=65,1861
+  const self_t operator-=(irv_t::operator-=70,1953
+  const self_t operator*=(irv_t::operator*=75,2045
+  const self_t operator/=(irv_t::operator/=80,2137
+  operator T(irv_t::operator T85,2229
+const irv_t<T> operator+(94,2328
+const irv_t<T> operator+(100,2475
+const irv_t<T> operator*(106,2604
+const irv_t<T> operator*(112,2759
+const irv_t<T> operator/(118,2888
+
+util/math/indy_random_var_io.h,39
+#define __INDY_RANDOM_VAR_IO_H33,1042
+
+util/math/indy_random_var_io.hh,20
+operator<<(44,1165
+
+util/math/linear_solver.h,34
+#define __LINEAR_SOLVER_H33,1032
+
+util/math/math_util_exception.h,275
+#define __MATH_UTIL_EXCEPTION_H33,1044
+class math_util_exception 41,1147
+  math_util_exception(math_util_exception::math_util_exception43,1208
+  ~math_util_exception(math_util_exception::~math_util_exception48,1306
+  const char* what(math_util_exception::what50,1344
+
+util/math/matrix_exp_diag_float_thresh.h,240
+#define __MATRIX_EXP_DIAG_FLOAT_THRESH_H33,1062
+const double MATRIX_EXP_NEG_THRESH 39,1201
+const double MATRIX_EXP_ZERO_THRESH 42,1312
+const double MATRIX_EXP_SAME_EVAL_THRESH 45,1417
+const double MATRIX_EXP_SAME_RETURN_THRESH 48,1528
+
+util/math/matrix_exp_diag.h,253
+#define __MATRIX_EXP_DIAG_H36,1105
+struct matrix_exp_diag_prepdata 79,2224
+  matrix_exp_diag_prepdata(matrix_exp_diag_prepdata::matrix_exp_diag_prepdata81,2259
+  ~matrix_exp_diag_prepdata(matrix_exp_diag_prepdata::~matrix_exp_diag_prepdata90,2525
+
+util/math/matrix_exp_diag.hh,25
+matrix_exp_diag(36,1098
+
+util/math/matrix_exp_series.h,378
+#define __MATRIX_EXP_SERIES_H36,1110
+struct matrix_exp_series_prepdata 85,2592
+  struct iter_info matrix_exp_series_prepdata::iter_info87,2629
+  matrix_exp_series_prepdata(matrix_exp_series_prepdata::matrix_exp_series_prepdata92,2693
+  enum { CHUNK_SIZE matrix_exp_series_prepdata::CHUNK_SIZE110,3172
+  enum { SERIES_MAX matrix_exp_series_prepdata::SERIES_MAX113,3263
+
+util/math/matrix_exp_series.hh,108
+grow(49,1254
+matrix_exp_series(78,1937
+matrix_exp_series_prep(144,3945
+matrix_exp_series_scale(185,4963
+
+util/math/matrix_invert.h,34
+#define __MATRIX_INVERT_H33,1032
+
+util/math/matrix_invert.hh,287
+namespace CLAPACK 37,1087
+  cpp_getrf(CLAPACK::cpp_getrf41,1165
+  cpp_getrf(CLAPACK::cpp_getrf52,1376
+  cpp_getri(CLAPACK::cpp_getri63,1635
+  cpp_getri(CLAPACK::cpp_getri75,1885
+  realsize(CLAPACK::realsize88,2246
+  realsize(CLAPACK::realsize92,2306
+matrix_invert(100,2439
+
+util/math/matrix_util.h,876
+#define __MATRIX_UTIL_H36,1065
+matrix_is_symm(52,1262
+matrix_zero(66,1587
+matrix_identity(77,1751
+matrix_balance_diagonal(90,2067
+matrix_copy(108,2455
+matrix_transpose_inplace(118,2627
+matrix_transpose_copy(130,2910
+template <typename FloatType1,139,3130
+matrix_scale(143,3204
+matrix_sum(155,3405
+matrix_scale_sum(166,3617
+matrix_mult(177,3843
+scale_matrix_mult(190,4143
+scale_matrix_mult(211,4648
+scale_matrix_mult(240,5626
+scale_matrix_mult(269,6615
+matrix_vector_mult_sum(307,8009
+matrix_vector_mult_sum(321,8357
+matrix_vector_mult_sum(341,8889
+transposed_matrix_vector_mult_sum(365,9499
+transposed_matrix_vector_mult_sum(379,9899
+transposed_matrix_vector_mult_sum(394,10294
+matrix_square(411,10718
+template <unsigned N,418,10854
+matrix_mult_inplace(421,10907
+matrix_net_asym(434,11151
+matrix_relative_asym(450,11526
+matrix_l2lr_asym(470,12040
+
+util/math/matrix_util.hh,32
+matrix_state_reduction(34,1040
+
+util/math/matrix_util_io.h,142
+#define __MATRIX_UTIL_IO_H41,1197
+enum mutil_bogus_t 46,1245
+enum mutil_bogus_t { MAX_MATRIX_PRINT mutil_bogus_t::MAX_MATRIX_PRINT46,1245
+
+util/math/matrix_util_io.hh,44
+matrix_report(38,1103
+matrix_dump(96,2400
+
+util/math/minfunc_interface.h,474
+#define __MINFUNC_INTERFACE_H33,1041
+struct minfunc_1d_interface 38,1160
+  virtual ~minfunc_1d_interface(minfunc_1d_interface::~minfunc_1d_interface39,1190
+  virtual bool is_val_computable(minfunc_1d_interface::is_val_computable43,1284
+struct minfunc_interface 50,1462
+  virtual ~minfunc_interface(minfunc_interface::~minfunc_interface51,1489
+  virtual bool is_val_computable(minfunc_interface::is_val_computable61,1819
+struct minfunc_gradient_interface 66,1922
+
+util/math/minimize_1d.h,70
+#define __MINIMIZE_1D_H33,1028
+template <typename FloatType,72,2379
+
+util/math/minimize_1d.hh,298
+#define MIN_1D_DEBUG44,1202
+template <typename FloatType,54,1286
+get_computable_projection(57,1349
+template <typename FloatType,95,2540
+bracket_minimum(98,2603
+template <typename FloatType,238,6704
+brent_line_minimizer(241,6767
+template <typename FloatType,376,11178
+minimize_1d(379,11241
+
+util/math/minimize_conj_direction.h,82
+#define __MINIMIZE_CONJ_DIRECTION_H33,1053
+template <typename FloatType,71,2438
+
+util/math/minimize_conj_direction.hh,71
+template <typename FloatType,49,1260
+minimize_conj_direction(52,1323
+
+util/math/minimize_conj_gradient.h,81
+#define __MINIMIZE_CONJ_GRADIENT_H33,1051
+template <typename FloatType,57,1825
+
+util/math/minimize_conj_gradient.hh,70
+template <typename FloatType,42,1156
+minimize_conj_gradient(45,1219
+
+util/math/minimize_line.h,72
+#define __MINIMIZE_LINE_H33,1032
+template <typename FloatType,59,1814
+
+util/math/minimize_line.hh,360
+template <typename FloatType,46,1278
+struct minfunc_1d_wrapper 48,1336
+  minfunc_1d_wrapper(minfunc_1d_wrapper::minfunc_1d_wrapper50,1406
+  is_val_computable(minfunc_1d_wrapper::is_val_computable59,1789
+  val(minfunc_1d_wrapper::val65,1910
+  setup_vt(minfunc_1d_wrapper::setup_vt87,2327
+template <typename FloatType,105,2691
+minimize_line(108,2754
+
+util/math/minimize_praxis.h,74
+#define __MINIMIZE_PRAXIS_H15,241
+template <typename FloatType,145,8355
+
+util/math/minimize_praxis.hh,331
+namespace PRAXIS 27,425
+sort(PRAXIS::sort34,520
+matprint(60,921
+vecprint(77,1237
+print(92,1530
+template <typename FloatType,110,2115
+flin(113,2183
+template <typename FloatType,154,3607
+min(157,3670
+template <typename FloatType,270,6658
+quad_min(273,6721
+template <typename FloatType,319,7925
+minimize_praxis(322,7993
+
+util/math/minimize_praxis_minfit.h,67
+#define __MINIMIZE_PRAXIS_MINFIT_C15,255
+namespace PRAXIS 17,291
+
+util/math/minimize_praxis_minfit.hh,55
+namespace PRAXIS 20,310
+minfit(PRAXIS::minfit30,657
+
+util/math/nnls.h,24
+#define __NNLS_H15,219
+
+util/math/polynom_util.h,58
+#define __POLYNOM_UTIL_H33,1031
+solve_quadratic(48,1291
+
+util/math/prob_util.h,272
+#define __PROB_UTIL_H37,1089
+pdistro_norm_safe(58,1550
+template <typename ForwardIterator1,66,1807
+pdistro_to_cdf(91,2500
+pdistro_to_cdf_inplace(101,2728
+pdistro_to_cdf_inplace(115,2997
+pdistro_from_cdf(124,3213
+pdistro_from_cdf_inplace(134,3449
+rel_ent(143,3673
+
+util/math/prob_util.hh,358
+pdistro_norm(47,1232
+  typedef typename std::iterator_traits<std::iterator_traits51,1348
+template <typename ForwardIterator1,68,1711
+pdistro_norm_free_param(71,1790
+  typedef typename std::iterator_traits<std::iterator_traits88,2183
+pdistro_check(128,3188
+pdistro_unif(153,3698
+  typedef typename std::iterator_traits<std::iterator_traits155,3775
+
+util/math/prob_util_io.h,71
+#define __PROB_UTIL_IO_H36,1095
+template <typename FloatType,52,1379
+
+util/math/prob_util_io.hh,154
+pdistro_dump(43,1169
+template <typename FloatType,61,1553
+pdistro_report(64,1616
+report_transition_prob(80,2014
+report_transition_prob_flux(103,2639
+
+util/math/random_util.h,671
+#define __RANDOM_UTIL_H33,1029
+#define USE_BOOST_RANDOM35,1054
+typedef boost::mt19937 base_generator_type;52,1370
+typedef boost::variate_generator<base_generator_type&, boost::uniform_real<> > br_uni_func_type;53,1414
+random_uniform(62,1613
+random_exponential(72,1729
+random_cdf_variate(82,1932
+random_scaled_cdf_variate(97,2406
+random_subset_cdf_variate(108,2666
+struct random_scaled_pdistro_variate_cached 131,3408
+  unsigned get_random_draw(random_scaled_pdistro_variate_cached::get_random_draw139,3703
+  void update(random_scaled_pdistro_variate_cached::update155,4265
+  static unsigned div_ceil(random_scaled_pdistro_variate_cached::div_ceil174,4957
+
+util/math/random_util.hh,93
+random_scaled_pdistro_variate_cached(34,1085
+~random_scaled_pdistro_variate_cached(91,2858
+
+util/math/test_float.h,145
+#define __TEST_FLOAT_H36,1083
+is_float_nan(48,1348
+is_float_inf(52,1428
+is_float_nan(60,1567
+is_float_inf(64,1649
+is_float_invalid(71,1740
+
+util/math/chi_sqr.cc,100
+lngamma(29,530
+ppnd(77,1996
+alnorm(121,3220
+gammad(175,4590
+ppchi2(285,7262
+chi_sqr(406,11459
+
+util/math/linear_solver.cc,54
+linear_solver(41,1120
+linear_solver_refined(72,1721
+
+util/math/matrix_exp_diag.cc,160
+matrix_exp_diag_get_evec(55,1405
+matrix_exp_diag_prep(141,3758
+matrix_exp_diag_scale(157,4058
+matrix_exp_diag_prep(174,4567
+matrix_exp_diag_scale(272,7240
+
+util/math/nnls.cc,246
+#define nnls_max(44,1363
+#define nnls_abs(45,1410
+typedef int integer;47,1455
+typedef double doublereal;48,1476
+double d_sign(51,1511
+int c__1 60,1650
+int c__0 61,1664
+int c__2 62,1678
+int g1(81,2375
+int h12(156,5262
+int nnls(295,8037
+
+util/math/prob_util.cc,64
+pdistro_check_fail_val(42,1120
+pdistro_check_fail_sum(53,1332
+
+util/math/random_util.cc,21
+random_init(52,1382
+
+util/general/log.cc,0
+
+sim_context_shared.cc,0
+
+branch_time_util.cc,0

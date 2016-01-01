@@ -1,0 +1,15 @@
+This directory contains example CodeAxe command sequences to analyze
+real and simulated data. Each command sequence is formated so that
+it can either be copied and pasted individually onto the command 
+line, or the entire file can be run as a shell script.
+
+Examples 2 and 3 use mammalian beta-globin tree topologies and
+alignments derived from Ziheng Yang's supporting data for:
+
+Yang, Nielsen, Goldman, and Pedersen. 2000. Codon-substitution models
+for heterogeneous selection pressure at amino acid sites. Genetics
+155:431-449
+
+The file 'bglobinMam.tree' has been slightly modified from the
+original to be rooted between marsupial and the other mammals.
+

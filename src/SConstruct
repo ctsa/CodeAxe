@@ -1,0 +1,193 @@
+#
+# scons build script for CodeAxe/SubsTK, this is still in-progress, so the 
+# makefile is the last word on building for the time being
+#
+
+import os
+import sys
+
+
+#
+#
+# usage comes down to four options
+# 
+# 1. Compiler: gcc/icc/xlc [auto?]
+# 2. OS: Linux/osx/AIX [auto]
+# 3. Arch: ix86/x86_64/powerpc [auto]
+# 4. Sub-Arch: itanium/p4/prescott [auto?] (optional -- just optimizes more -- ignored with -debug flag)
+# 5. Other: debug/profile (implies no arch-opt?)
+#
+# & binary flags:
+#
+# -debug [implies all optimizations are turned off]
+# -profile 
+#
+#
+# & maybe a flag or two to express the prefered lapack source:
+#
+#
+#
+
+
+this_dir=os.getcwd()
+head_dir=os.path.dirname(this_dir)
+
+build_dir_base=os.path.join(head_dir,"build")
+bin_dir=os.path.join(head_dir,"bin")
+bin_name='CodeAxe'
+
+def_inc_path = "default_include"
+boost_inc_path = os.path.join(def_inc_path,"boost-1.33.1-modified.subset")
+
+
+
+def is_source(fn) :
+  suffix=".cc"
+  return fn.rfind(suffix) == len(fn)-len(suffix) and \
+         (not fn[0] in ['#','~','.'])
+
+
+
+def usage() :
+  print "Valid targets are:"
+  print ""
+  print "gcc-linux-debug"
+  print "gcc-linux-x86_64"
+  print ""
+  sys.exit()
+
+
+
+def get_gcc_version() :
+  ifp = os.popen("gcc --version")
+  v=ifp.readline().strip().split()[2]
+  ifp.close()
+  vv=v.split('.')
+  return (int(vv[0]),int(vv[1]))
+
+
+
+util_dir="util"
+
+
+ccfiles = [ s for s in os.listdir(this_dir) if is_source(s) ]
+for f in "math general bio".split() :
+  bdir=os.path.join(util_dir,f)
+  ccfiles += [ os.path.join(bdir,s) for s in os.listdir(bdir) if is_source(s) ]
+
+
+include_paths = [ def_inc_path , boost_inc_path ]
+
+
+cc_base_flags = "-DUSE_BLAS -DUSE_LAPACK"
+
+gcc_debug_flags_base="-fno-inline -DDEBUG -D_GLIBCXX_DEBUG -DKILL_EXCEPTIONS"
+gcc_debug_flags="-ggdb "+gcc_debug_flags_base
+
+gcc_warn_flags="-Wall -Wextra -Wshadow -Wredundant-decls -Wnon-virtual-dtor -Woverloaded-virtual -Winit-self" 
+gcc_4_3_warn_flags="-Wlogical-op -Wmissing-declarations"
+gcc_extrawarn_flags="-O1"
+gcc_fast_flags="-O3 -DNDEBUG -finline-limit=6000 -fno-math-errno"
+gcc_fast_flags_non_prof="-fomit-frame-pointer"
+gcc_fast_flags_32bit="-malign-double"
+gcc_fast_flags_p4="-march=pentium4 -msse -msse2 -mfpmath=sse"
+
+gcc_profile_flags="-pg"
+
+
+icc_warn_flags="-Wall -w1 -wd411"
+
+osx_defs="-DDARWIN_HACK"
+
+# different versions of lapack/blas:
+#
+atlas_libpath = os.environ.get("CBLAS_LIB_PATH")
+atlas_lib=[ 'lapack' , 'cblaswr' , 'cblas' , 'atlas' , 'F77' ]
+
+mkl_libpath = os.environ.get("MKL_LIB_PATH")
+mkl_lib = [ 'mkl_lapack' , 'mkl' , 'guide' , 'pthread' , 'vml' ]
+
+
+env = Environment(ENV = os.environ, CXXFLAGS=cc_base_flags, CPPPATH=include_paths)
+
+
+if len(COMMAND_LINE_TARGETS) != 1 : usage()
+
+build_label = COMMAND_LINE_TARGETS.pop()
+
+tname_short=os.path.join(bin_dir,bin_name)
+tname=tname_short+"."+build_label
+
+
+env['debug'] = build_label.find("debug") != -1
+
+env['gcc'] = build_label[:3] == "gcc"
+
+env['linux'] = build_label.find("linux") != -1
+env['osx'] = build_label.find("osx") != -1
+
+env['profile'] = build_label.find("profile") != -1
+
+env['i686'] = build_label.find("i686") != -1
+env['p4'] = build_label.find("p4") != -1
+
+# strip non-debug builds, and use shortname:
+#
+if not env['debug'] : 
+  env.Append(LINKFLAGS = " -s")
+  env.Alias(build_label, [tname,tname_short])
+  # do it this way for copy:
+  env.InstallAs(tname_short,tname)
+  # or this way for link:
+  #bld = Builder(action = 'ln $SOURCE $TARGET')
+  #env.Append(BUILDERS = {'Lns' : bld})
+  #env.Lns(tname_short, tname)
+
+else :
+  debug_name=tname_short+".debug"
+  env.Alias(build_label, [tname,debug_name])
+  env.InstallAs(debug_name,tname)
+
+if env['gcc'] :
+  env.Append(CXXFLAGS = " "+gcc_warn_flags)
+  (majorv,minorv)=get_gcc_version()
+  if majorv > 4 or (majorv == 4 and minorv >= 3) :
+    env.Append(CXXFLAGS = " "+gcc_4_3_warn_flags)
+
+  if env['debug'] :
+    env.Append(CXXFLAGS = " "+gcc_debug_flags)
+  else :
+    env.Append(CXXFLAGS = " "+gcc_fast_flags)
+    if not env['profile'] :
+      env.Append(CXXFLAGS = " "+gcc_fast_flags_non_prof)
+    if env['i686'] or env['p4'] :
+      env.Append(CXXFLAGS = " "+gcc_fast_flags_32bit)
+    if env['p4'] :
+      env.Append(CXXFLAGS = " "+gcc_fast_flags_p4)
+
+  if env['profile'] :
+    env.Append(CXXFLAGS = " "+gcc_profile_flags)
+
+if env['linux'] :
+  if env['debug'] :
+    env.Append(LIBS = atlas_lib)
+    env.Append(LIBPATH = atlas_libpath)
+  else :
+    env.Append(LIBS = mkl_lib)
+    env.Append(LIBPATH = mkl_libpath)
+    env.Append(CXXFLAGS = " -DUSE_VML")
+
+elif env['osx'] :
+  env.Append(CXXFLAGS = " "+osx_defs)
+  env.Append(FRAMEWORKS = "veclib")
+
+
+build_dir=os.path.join(build_dir_base,build_label)
+BuildDir(build_dir, this_dir, duplicate=0)
+
+bin = env.Program(target=tname,source=[os.path.join(build_dir,x) for x in ccfiles])
+
+env.NoClean(bin)
+
+#Default(None)
+

@@ -1,0 +1,7 @@
+
+lock policy:
+0) lock is (obviously) absolute for independent params
+1) lock is absolute for non-independent params during minimization update
+2) if all params in a non-independent set are locked, they may be adjusted to 
+normalization conditions. if one param is free, then this param must be used
+to meet norm requirements

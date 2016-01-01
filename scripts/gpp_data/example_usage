@@ -1,0 +1,20 @@
+
+example of make catdir from gpp:
+
+~/devel/subs_ml/v91/scripts/gpp_data/make_gpp_split_catdir.py \
+  -model-file ~/proj/subs_ml/het_paper/trial_runs.v91/codon_division_test/model.hs_mac_pt_v2.cpgi_mask.codon.nonrev.indy.single.full.win15.5mo.trained \
+  -data-file ~/proj/subs_ml/data/v3/data.hs_mac_pt_v2.cpgi_mask.codon.win15 \
+  -cat-dir ~/proj/subs_ml/genome_alignment/data/mammal/hs_mac_pt_v2/clustal_rna_tuples_cats/codon_g5mo_pprob_v91_p95 \
+  -min-maxp 0.95
+
+
+
+catifying: (adding category info as col 1 to list of info with align ids as col 1)
+
+cat ../make_genomic_location/hs_mac_pt_v2.id.gi.rsp.chrom.start.stop |\
+~/devel/subs_ml/v91/scripts/gpp_data/make_gpp_cat_annotation_for_id_list.py \
+  -model-file ~/proj/subs_ml/het_paper/trial_runs.v91/codon_division_test/model.hs_mac_pt_v2.cpgi_mask.codon.nonrev.indy.single.full.win15.5mo.trained \
+  -data-file ~/proj/subs_ml/data/v3/data.hs_mac_pt_v2.cpgi_mask.codon.win15 \
+  -min-maxp 0.95 >|\
+hs_mac_pt_v2.cat_codon_g5mo_pprob_v91_p95.id.gi.rsp.chrom.start.stop
+

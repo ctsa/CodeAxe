@@ -1,0 +1,5 @@
+sensible unit tests:
+
+1) sml_model copy ctor:
+copy the subs_ml_model, make sure the initial copy is equivilent,
+  then change everything in one copy and check that nothing was accidentally left as a reference

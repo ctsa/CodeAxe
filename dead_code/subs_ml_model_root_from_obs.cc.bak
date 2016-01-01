@@ -1,0 +1,675 @@
+// -*- mode: c++; indent-tabs-mode: nil; -*-
+
+/// \file subs_ml_model_root_from_obs.cc
+///
+
+#include "simple_util.h"
+#include "subs_ml_model_root_from_obs.h"
+#include "subs_prob_util.h"
+#include "util/math/array_util.h"
+#include "util/math/linear_solver.h"
+#include "util/math/matrix_util.h"
+#include "util/math/minimize_conj_direction.h"
+#include "util/math/minimize_conj_gradient.h"
+#include "util/math/minfunc_interface.h"
+#include "util/math/prob_util.h"
+
+#include <iomanip>
+#include <iostream>
+
+
+//#define DEBUG_BGR
+
+
+static
+void
+tree_branch_down_obs_state_time_avg(const bi_tree_node* b,
+                                    const prob_t*& branch_distro,
+                                    prob_t** down_distro_tmp,
+                                    const time_gtor& tgm,
+                                    const unsigned n_states,
+                                    const prob_t* const * leaf_distro){
+
+  const bi_tree_sml_type& tree(tgm.tree());
+
+  if(b==0){
+    die("tree_branch_down_obs_state_time_avg: null tree node");
+
+  } else if(b->child1==0 && b->child2==0){  // leaf node
+    const unsigned leaf_id(tree.get_leaf_index(b));
+    branch_distro = leaf_distro[leaf_id];
+
+  } else  if(b->child1==0 || b->child2==0){
+    die("tree_branch_down_obs_state_time_avg: Invalid tree graph");
+
+  } else {  // assume child2 exists
+    const prob_t* child1_distro(0);
+    const prob_t* child2_distro(0);
+
+    tree_branch_down_obs_state_time_avg(b->child1,child1_distro,down_distro_tmp,
+                                        tgm,n_states,leaf_distro);
+    tree_branch_down_obs_state_time_avg(b->child2,child2_distro,down_distro_tmp,
+                                        tgm,n_states,leaf_distro);
+
+    const smlfloat c1time(tgm.branch_time(tree.get_branch_index(b->child1)));
+    const smlfloat c2time(tgm.branch_time(tree.get_branch_index(b->child2)));
+    const smlfloat c1ntime(c1time/(c1time+c2time));
+    const smlfloat c2ntime(c2time/(c1time+c2time));
+
+    const unsigned node_id(tree.get_node_index(b));
+    prob_t* branch_distro_tmp(down_distro_tmp[node_id]);
+    branch_distro = branch_distro_tmp;
+    for(unsigned i(0);i<n_states;++i){
+      branch_distro_tmp[i] = child1_distro[i]*c1ntime + child2_distro[i]*c2ntime;
+    }
+  }
+}
+
+
+
+void
+subs_ml_model_obs_state_time_avg_root(const subs_ml_model& mdl,
+                                      prob_t* root_down_prob){
+
+  const time_gtor& tgm(mdl.get_time_gtor());
+  const bi_tree_sml_type& tree(mdl.tree());
+  const unsigned n_states(mdl.state_size());
+  const prob_t* const * leaf_distro(mdl.obs_seq_state_distro());
+
+  simple_matrix<prob_t> down_distro_tmp(tree.n_nodes(),n_states);
+
+  const prob_t* root_distro(0);
+  tree_branch_down_obs_state_time_avg(tree.root,root_distro,down_distro_tmp.val,
+                                      tgm,n_states,leaf_distro);
+
+  for(unsigned i(0);i<n_states;++i){ root_down_prob[i] = root_distro[i]; }
+}
+
+
+
+
+
+
+struct parent_prob_leastsq_minfunc_base : public minfunc_gradient_interface<smlfloat> {
+
+  parent_prob_leastsq_minfunc_base(const prob_t * const tprob,
+                                   const prob_t * const child_distro,
+                                   const unsigned n_states)
+    : _tprob(tprob), _child_distro(child_distro), _n_states(n_states),
+      _parent_prob(_n_states), _tmp_store(_n_states) {}
+
+  virtual
+  void p_to_parent_prob(const smlfloat* p,
+                        prob_t* parent_prob) = 0;
+
+  virtual
+  void parent_prob_to_p(const prob_t* parent_prob,
+                        smlfloat* p) = 0;
+
+  virtual smlfloat val(const smlfloat* p){
+    return val_int(p);
+  }
+
+  smlfloat val_int(const smlfloat* p,
+                   smlfloat* tval = 0) {
+
+    p_to_parent_prob(p,_parent_prob.val);
+
+    //    for(unsigned i(0);i<3;++i){
+      //      std::cerr << "val_root_prob: i,p(i): " << i << " " << _root_prob.val[i] << "\n";
+    //    }
+
+    smlfloat cost(0.);
+    smlfloat* tval_int(0);
+
+    if(tval) tval_int=tval;
+    else     tval_int=_tmp_store.val;
+
+    //      std::fill(_tmp_store,_tmp_store+_n_states,0.);
+    //      matrix_vector_mult_sum(_leaf_tprob[i],_root_prob,_tmp_store,_n_states,_n_states);
+    for(unsigned i_node(0);i_node<_n_states;++i_node){
+      tval_int[i_node] = array_dot(_parent_prob.val,_tprob+i_node*_n_states,_n_states);
+    }
+
+    // make up for numeric imprecision:
+    //    pdistro_norm(tval_int,tval_int+_n_states);
+
+    //      cost -= array_dot(tval_int,_leaf_child_distro[i],_n_states)/
+    //  (array_norm2(tval_int,_n_states)*array_norm2(_leaf_child_distro[i],_n_states));
+
+    for(unsigned j(0);j<_n_states;++j){
+      tval_int[j] -=_child_distro[j];
+      cost += tval_int[j]*tval_int[j];
+    }
+
+    cost *= cost_scale_factor();
+    //    std::cerr << "val report cost: " << cost << "\n";
+    return std::log(cost);
+  }
+
+  // double sided numerical approx derivative:
+  virtual
+  smlfloat dval(const smlfloat* p,
+                smlfloat* dp){
+
+    static const smlfloat delta(1e-5);
+    static const smlfloat deltamin(1e-7);
+
+    const unsigned ndim(dim());
+
+    const smlfloat start_cost(val(p));
+
+    simple_array<smlfloat> vcopy(_n_states-1);
+    std::copy(p,p+ndim,vcopy.val);
+    for(unsigned i(0);i<ndim;++i){
+      const smlfloat delchunk(std::max(std::fabs(vcopy.val[i]*delta),deltamin));
+      vcopy.val[i] = p[i]+delchunk;
+      const smlfloat pluscost(val(vcopy.val));
+      vcopy.val[i] = p[i]-delchunk;
+      const smlfloat minuscost(val(vcopy.val));
+      dp[i] = (pluscost-minuscost)/(delchunk*2.);
+      //      std::cerr << "i,+cost,-cost,dp: " << i << " " << pluscost << " " 
+      //          << minuscost << " " << dp[i] << "\n";
+    }
+
+    return start_cost;
+  }
+
+protected:
+  smlfloat cost_scale_factor() const {
+    static const smlfloat s(1);
+    return s/(_n_states);
+  }
+
+  const prob_t * const _tprob;
+  const prob_t * const _child_distro;
+  const unsigned _n_states;
+  simple_array<prob_t> _parent_prob;
+  simple_array<prob_t> _tmp_store;
+};
+
+
+
+struct parent_prob_leastsq_minfunc : public parent_prob_leastsq_minfunc_base {
+
+  typedef parent_prob_leastsq_minfunc_base base_t;
+
+  parent_prob_leastsq_minfunc(const prob_t * const tprob,
+                              const prob_t * const child_distro,
+                              const unsigned n_states)
+    : base_t(tprob,child_distro,n_states) {}
+
+  virtual
+  unsigned dim() const { return _n_states; }
+
+  virtual
+  void
+  p_to_parent_prob(const smlfloat* p,
+                   prob_t* parent_prob) {
+
+    const unsigned ndim(dim());
+
+    for(unsigned i(0);i<ndim;++i){
+      parent_prob[i] = std::fabs(p[i]);
+    }
+    pdistro_norm(parent_prob,parent_prob+_n_states);
+  }
+
+  virtual
+  void
+  parent_prob_to_p(const prob_t* parent_prob,
+                   smlfloat* p) {
+
+    const unsigned ndim(dim());
+
+    for(unsigned i(0);i<ndim;++i){ p[i] = parent_prob[i]; }
+  }
+};
+
+
+
+struct parent_prob_leastsq_minfunc_indy : public parent_prob_leastsq_minfunc_base {
+
+  typedef parent_prob_leastsq_minfunc_base base_t;
+
+  parent_prob_leastsq_minfunc_indy(const prob_t * const tprob,
+                                   const prob_t * const child_distro,
+                                   const unsigned n_states)
+    : base_t(tprob,child_distro,n_states), _parent_key(0), _penalty_factor(0) {}
+
+  virtual
+  unsigned dim() const { return _n_states-1; }
+
+  virtual
+  void
+  p_to_parent_prob(const smlfloat* p,
+                   prob_t* parent_prob) {
+
+    const unsigned ndim(dim());
+
+    smlfloat sum(0.);
+    for(unsigned i(0);i<ndim;++i){
+      parent_prob[i] = std::fabs(p[i]);
+      sum += parent_prob[i];
+    }
+    if(sum <= 1.){
+      parent_prob[ndim] = 1.-sum;
+      _penalty_factor=0.;
+    } else {
+      std::cerr << "Psum: " << sum << "\n";
+      parent_prob[ndim] = 0.;
+      pdistro_norm(parent_prob,parent_prob+_n_states);
+      _penalty_factor=sum*10.;
+    }
+  }
+
+
+  virtual
+  void
+  parent_prob_to_p(const prob_t* parent_prob,
+                   smlfloat* p) {
+    
+    const unsigned ndim(dim());
+    
+    for(unsigned i(0);i<ndim;++i){
+      p[i] = parent_prob[i];
+    }
+  }
+
+  virtual
+  smlfloat val(const smlfloat* p){
+    const smlfloat cost(base_t::val(p));
+    return cost+_penalty_factor;
+  }
+#if 0
+  virtual
+  smlfloat dval(const smlfloat* p,
+                smlfloat* dp){
+
+    // analytical derivative:
+    //
+    // intermediate notes:
+    //
+    // dtval[leaf,j]_dparent[i] = _leaf_tprob[leaf][j][i];
+    // dcost_dtval[leaf,j] = 2*tval[leaf,j]*dtval[leaf,j];
+    // dcost_dparent[i] = 2 * sum_leaf( sum_state( tval[leaf,j]*_leaf_tprob[leaf][j]);
+    // parent[i](p[i]) = p[i]/(p[i]+A)
+    // parent[!i](p[i]) = p[!i]/(p[i]+A)
+    //
+    //
+    // solution:
+    //
+    // i=parent_state
+    // j=leaf_state
+    // A = sum(p[!i])+1/(1+DZ/parent[ndim])
+    // dparent[i]_dp[i] = 1
+    // dparent[ndim]_dp[i] = -1;
+    // dtval[leaf,j]_dp[i] = _leaf_tprob[leaf][j][i]*(dparent[i]_dp[i]) + _leaf_tprob[leaf][j][ndim]*(dparent[ndim]_dp[i])
+    // dcost_dp[i] = 2*sum_leaf( sum_state( tval[leaf,j]*dtval[leaf,j]_dp[i]))
+    //
+    // dpenalty_dp[i] = if(psum>1.)  1.1
+    //
+    // dpcost_pd[i] = if(psum>1.) dcost_dp*penalty+1.1*cost;
+
+    const unsigned ndim(dim());
+
+    simple_array<smlfloat> tval(_n_states);
+
+    const smlfloat start_cost(val_int(p,tval.val));
+
+    smlfloat psum(0.);
+    for(unsigned i(0);i<ndim;++i) psum += std::fabs(p[i]);
+
+    //    const smlfloat Aconst(psum+1/(1.+DIV_ZERO_PROTECT_OFFSET()/_parent_key));
+    //    const smlfloat inv_Aconst(1./Aconst);
+
+    const smlfloat sum_scale(2.*cost_scale_factor());
+
+    for(unsigned i(0);i<ndim;++i){
+      //      const smlfloat A(Aconst-p[i]);
+      const smlfloat absp(std::fabs(p[i]));
+      //      const smlfloat dparent_dp((inv_Aconst)*(1.-absp*inv_Aconst));
+
+      const smlfloat* tval_vec(tval.val);
+      const smlfloat* tprob_vec(_tprob+i*_n_states);
+      smlfloat sum(0.);
+      for(unsigned j(0);j<_n_states;++j){
+        sum += tval_vec[j]*(_tprob[j*_n_states+i]);
+        if(psum<=1.) sum -= tval_vec[j]*_tprob[j*_n_states+ndim];
+      }
+      //      const smlfloat sum = array_dot(tval_vec,tprob_vec,_n_states);
+
+      dp[i] = sum*sum_scale;
+      if(p[i]<0.) {
+        std::cerr << "rev " << i << "\n";
+        dp[i] *= -1;
+      }
+
+      // smooth deriv as we approach 0:
+      static const smlfloat edge_dist(1e-5);
+      if(absp<edge_dist){
+        dp[i] *= absp/edge_dist;
+      }
+
+      if(psum>1.){
+        dp[i] = dp[i]*_penalty_factor+10*start_cost;
+      }
+
+      //      std::cerr << "dval2 i,dp: " << i << " " << dp[i] << "\n";
+    }
+
+    return start_cost;
+  }
+#endif
+
+private:
+  static double DIV_ZERO_PROTECT_OFFSET(){
+    static const double d(0.1);
+    return d;
+  }
+
+  smlfloat _parent_key;
+  smlfloat _penalty_factor;
+};
+
+
+
+
+
+struct tbdp_info {
+  tbdp_info(bool is_invalid_prob_init,
+            prob_t* tmp_store_init,
+            prob_t** const branch_down_prob_storage_init,
+            const time_gtor& tgm_init,
+            const unsigned n_states_init,
+            const prob_t* const * const leaf_distro_init,
+            const prob_t* const * const branch_tprob_init,
+            const bool is_leastsq_init)
+    : is_invalid_prob(is_invalid_prob_init),
+      tmp_store(tmp_store_init),
+      branch_down_prob_storage(branch_down_prob_storage_init),
+      tgm(tgm_init),
+      n_states(n_states_init),
+      leaf_distro(leaf_distro_init),
+      branch_tprob(branch_tprob_init),
+      is_leastsq(is_leastsq_init),
+      tprob_tmp(n_states*n_states) {}
+            
+
+  bool is_invalid_prob;
+  prob_t* tmp_store;
+  prob_t** const branch_down_prob_storage;
+  const time_gtor& tgm;
+  const unsigned n_states;
+  const prob_t* const * const leaf_distro;
+  const prob_t* const * const branch_tprob;
+  const bool is_leastsq;
+  simple_array<prob_t> tprob_tmp;
+};
+
+
+// store the P(parent(state)|node,parent(node)) for each non-root node in tree
+//
+static
+void
+tree_branch_down_prob(const bi_tree_node* const b,
+                      const prob_t*& branch_down_prob,
+                      smlfloat& branch_weight,
+                      tbdp_info& ti){
+  
+  const bi_tree_sml_type& tree(ti.tgm.tree());
+  const unsigned branch_id(tree.get_branch_index(b));
+  prob_t* branch_down_prob_tmp(ti.branch_down_prob_storage[branch_id]);
+  branch_down_prob = branch_down_prob_tmp;
+
+  const prob_t* child_distro(0);
+
+  if(b==0){
+    die("tree_branch_down_prob: null tree node");
+
+  } else if(b->child1==0 && b->child2==0){  // leaf node
+    branch_weight=1;
+    const unsigned leaf_id(tree.get_leaf_index(b));
+    child_distro=ti.leaf_distro[leaf_id];
+    linear_solver(ti.branch_tprob[branch_id],child_distro,branch_down_prob_tmp,ti.n_states);
+  } else  if(b->child1==0 || b->child2==0){
+    die("tree_branch_down_prob: Invalid tree graph");
+
+  } else { // interior node
+    const prob_t* child1_prob(0);
+    const prob_t* child2_prob(0);
+    smlfloat child1_bw;
+    smlfloat child2_bw;
+
+    tree_branch_down_prob(b->child1,child1_prob,child1_bw,ti);
+    tree_branch_down_prob(b->child2,child2_prob,child2_bw,ti);
+
+    branch_weight=child1_bw+child2_bw;
+    for(unsigned i(0);i<ti.n_states;++i) { 
+      ti.tmp_store[i] = (child1_prob[i]*child1_bw+child2_prob[i]*child2_bw)/branch_weight; 
+    }
+    child_distro=ti.tmp_store;
+    linear_solver(ti.branch_tprob[branch_id],child_distro,branch_down_prob_tmp,ti.n_states);
+  }
+
+  {
+    bool is_nonzero_prob(false);
+    for(unsigned i(0);i<ti.n_states;++i){
+      if(branch_down_prob_tmp[i]<0.) {
+        //        std::cerr << "NPROB: label,i,p(i): " << b->label << " " << i << " " << branch_down_prob_tmp[i] << "\n";
+
+        // the current prob transition matrix could not have generated
+        // the distro observed at the base node of this branch:
+        branch_down_prob_tmp[i] = 0.;
+        ti.is_invalid_prob=true;
+      } else if(branch_down_prob_tmp[i]>0.) {
+        is_nonzero_prob=true;
+      }
+    }
+
+    if(! is_nonzero_prob) ti.is_invalid_prob=true;
+
+    {
+      prob_t sum(0.);
+      for(unsigned i(0);i<ti.n_states;++i){ sum += branch_down_prob[i]; }
+      if( std::fabs(sum -1.) > 1e-3 ) ti.is_invalid_prob = true;
+    }  
+  
+    if(is_nonzero_prob){
+      pdistro_norm(branch_down_prob_tmp,branch_down_prob_tmp+ti.n_states);
+    } else {
+      pdistro_unif(branch_down_prob_tmp,ti.n_states);
+    }
+
+    if(ti.is_leastsq){// && ti.is_invalid_prob){
+      ti.is_invalid_prob=false;
+      matrix_transpose_copy(ti.branch_tprob[branch_id],ti.tprob_tmp.val,ti.n_states);
+      pdistro_unif(branch_down_prob_tmp,ti.n_states);
+#if 1
+      {
+        parent_prob_leastsq_minfunc_indy ppm(ti.tprob_tmp.val,child_distro,ti.n_states);
+    
+        const unsigned ndim(ppm.dim());
+    
+        simple_array<smlfloat> p(ndim);
+    
+        ppm.parent_prob_to_p(branch_down_prob,p.val);
+    
+        {
+          const smlfloat ntol(1e-28);
+          unsigned iter;
+          smlfloat fmin;
+          unsigned max_iter(1000);
+          minimize_conj_gradient(p.val,ppm,ntol,fmin,iter,max_iter);
+#if 1
+          std::cerr << std::setprecision(20);
+          std::cerr << "ROOT CONJ GRAD MINIMIZER ITERATIONS,fmin: " << std::min(iter+1,max_iter) << " " << fmin << "\n";
+#endif
+          minimize_conj_gradient(p.val,ppm,ntol,fmin,iter,max_iter);
+#if 1
+          std::cerr << std::setprecision(20);
+          std::cerr << "ROOT CONJ GRAD MINIMIZER ITERATIONS,fmin: " << std::min(iter+1,max_iter) << " " << fmin << "\n";
+#endif
+        }
+
+        ppm.p_to_parent_prob(p.val,branch_down_prob_tmp);
+      }
+#else               
+      {
+        parent_prob_leastsq_minfunc ppm(ti.tprob_tmp.val,child_distro,ti.n_states);
+        
+        const unsigned ndim(ppm.dim());
+        
+        simple_array<smlfloat> p(ndim);
+        
+        ppm.parent_prob_to_p(branch_down_prob,p.val);
+        
+        {
+          static const smlfloat line_tol(1e-9);
+          static const smlfloat start_ratio(0.05);
+          static const smlfloat min_start_dist(1e-6);
+          
+          const smlfloat ntol(1e-28);
+          smlfloat start_ntol(ntol);
+          unsigned iter;
+          smlfloat fmin;
+          unsigned max_iter(1000);
+          
+          smlfloat* conj_dir(new smlfloat[ndim*ndim]);
+          std::fill(conj_dir,conj_dir+ndim*ndim,0.);
+          for(unsigned i(0);i<ndim;++i) {
+            const smlfloat start_dist( std::max(std::fabs(p.val[i]*start_ratio),min_start_dist) );
+            conj_dir[i*(ndim+1)] = start_dist;
+          }
+          minimize_conj_direction(p.val,conj_dir,ppm,start_ntol,ntol,line_tol,fmin,iter,max_iter);
+#if 1
+          std::cerr << std::setprecision(20);
+          std::cerr << "CONJ DIR MINIMIZER ITERATIONS, fmin: " << std::min(iter+1,max_iter) << " " << fmin << "\n";
+#endif     
+          delete [] conj_dir;
+        }
+        
+        ppm.p_to_parent_prob(p.val,branch_down_prob_tmp);
+      }
+#endif
+
+    }
+  }
+
+#if DEBUG_BGR
+  smlfloat sum(0.);
+  for(unsigned i(0);i<ti.n_states;++i){
+    sum += branch_down_prob_tmp[i];
+  }
+  std::cerr << "sum " << sum << "\n";
+
+  std::cerr << "PUGGY " << b->label;
+  for(unsigned i(0);i<3;++i){
+    std::cerr << " " << branch_down_prob[i];
+  }
+  std::cerr << "\n";
+#endif
+}
+
+
+
+bool
+subs_ml_model_root_down_prob_single_cat(const subs_ml_model& mdl,
+                                        const unsigned site_category,
+                                        const unsigned group_category,
+                                        prob_t* root_down_prob,
+                                        const bool is_leastsq){
+  
+  if(mdl.opt().is_ppit) die("subs_ml_model_root_down_prob incompatible with ppit mode");
+    
+  const time_gtor& tgm(mdl.get_time_gtor());
+  const bi_tree_sml_type& tree(tgm.tree());
+  const unsigned n_states(mdl.state_size());
+  const prob_t* const * leaf_distro(mdl.obs_seq_state_distro());
+  
+  bool is_invalid_prob(false);
+  
+  if(! tree.root->child1) {
+    for(unsigned i(0);i<n_states;++i) root_down_prob[i] = leaf_distro[0][i];
+    return is_invalid_prob;
+  }
+
+  const unsigned n_branches(tree.n_branches());
+  simple_matrix<prob_t> branch_down_prob_storage(n_branches,n_states);
+
+  simple_matrix<prob_t> branch_tprob(n_branches,n_states*n_states);
+  get_all_branch_subs_prob(branch_tprob.val,mdl,site_category,group_category,0);
+
+  simple_array<prob_t> tmp_store(n_states);
+
+  tbdp_info ti(is_invalid_prob,tmp_store.val,branch_down_prob_storage.val,
+               tgm,n_states,leaf_distro,branch_tprob.val,is_leastsq);  
+
+  const prob_t* child1_prob(0);
+  const prob_t* child2_prob(0);
+  smlfloat child1_bw;
+  smlfloat child2_bw;
+  
+  tree_branch_down_prob(tree.root->child1,child1_prob,child1_bw,ti);
+  tree_branch_down_prob(tree.root->child2,child2_prob,child2_bw,ti);
+  
+  for(unsigned i(0);i<n_states;++i){ root_down_prob[i]=child1_prob[i]*child1_bw+child2_prob[i]*child2_bw; }
+  pdistro_norm(root_down_prob,root_down_prob+n_states);
+  
+  if(is_invalid_prob){
+    std::cerr << "WARNING:: Invalid root distribution generated from current rate matrix\n";
+  }
+
+#ifdef DEBUG_BGR  
+  std::cerr << "PUPPY";
+  for(unsigned i(0);i<3;++i){
+    std::cerr << " " << root_down_prob[i];
+  }
+  std::cerr << "\n";
+#endif
+  
+  return is_invalid_prob;
+}
+
+
+
+bool
+subs_ml_model_root_down_prob(const subs_ml_model& mdl,
+                             prob_t* root_down_prob,
+                             const bool is_leastsq){
+
+  const rate_gtor_base& rg(mdl.get_rate_gtor());
+
+  const unsigned n_group_cats(rg.category_size_group());
+  const unsigned n_site_cats(rg.category_size_site());
+
+  std::vector<prob_t> group_cat_prior_pdistro(n_group_cats);
+  std::vector<prob_t> site_cat_prior_pdistro(n_site_cats);
+
+  rg.get_group_category_pdistro(group_cat_prior_pdistro.begin());
+  rg.get_site_category_pdistro(site_cat_prior_pdistro.begin());
+
+  const unsigned n_states(mdl.state_size());
+  simple_array<prob_t> root_down_prob_cat(n_states);
+
+  std::fill(root_down_prob,root_down_prob+n_states,0.);
+
+  bool is_invalid_prob(false);
+
+  for(unsigned gc(0);gc<n_group_cats;++gc){
+    for(unsigned sc(0);sc<n_site_cats;++sc){
+      const prob_t cat_prob(site_cat_prior_pdistro[sc]*group_cat_prior_pdistro[gc]);
+
+      is_invalid_prob = is_invalid_prob || 
+        subs_ml_model_root_down_prob_single_cat(mdl,sc,gc,root_down_prob_cat.val,is_leastsq);
+
+      for(unsigned i(0);i<n_states;++i){
+        root_down_prob[i] += root_down_prob_cat.val[i]*cat_prob;
+      }
+    }
+  }
+
+  pdistro_norm(root_down_prob,root_down_prob+n_states);
+
+  return is_invalid_prob;
+}

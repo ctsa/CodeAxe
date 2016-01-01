@@ -1,0 +1,233 @@
+
+
+******************design notes************************
+
+assigned cats as planned will be much more general than the previous version, and essentially wipe the traditional unassigned/assigned distinction
+differences are:
+
+1) any assigned data set can be a mixture of sequential categories
+2) those seqeuntial categories may be shared with other assigned data partitions
+  - if they are shared then they have a separate prior in each assigned cat context
+3) the default (previously refered to as ("unassigned") segment) now has no special properties:
+   it can be a mixture or not, just like other assigned data segments -- it is technically just another assigned category, and references to it in the code should disappear
+
+
+
+how to handle gene mixtures and data assignments that mix within genes???
+
+scenarios:
+
+data assingments by sec struct genome wide into 2 categories, which we'd like to link to dN/dS, while mutation is allowed to vary as a gene mixture:
+  1) w/o the gene mixture this is a simple single site per assigned region:
+    [helix{xx}] sh {sss{0}} [non_helix{yy}] sn {sss{1}} [unassigned{zz}] sh sn
+  2) w/ gene mixture:
+    [helix{xx}] sh0 {sss{0}gmm{0}} sh1 {sss{0}gmm{1}} [non_helix{yy}] sn0 {sss{1}gmm{0}} sn1 {sss{1}gmm{1}} [unassigned{zz}] sh0 sh1 sn0 sn1
+
+     what we want for priors (but can't express) -> P(sh0,sh1) = P(sn0,sn1)
+
+  3) espressing the same model if sec structure assignments are unknown:
+    sh0 {sss{0}gmm{0}} sh1 {sss{0}gmm{1}} sn0 {sss{1}gmm{0}} sn1 {sss{1}gmm{1}} 
+
+    what we want for priors (but can't express) -> p(sh0)/p(sh1) = p(sn0)/p(sn1) & p(sh0)/p(sn0) = p(sh1)/p(sn1)
+
+    here's a way we could express 2 and 3 priors:
+
+    2X) [helix{xx}] sh0(g{0}) {sss{0}gmm{0}} sh1(g{1}) {sss{0}gmm{1}} [non_helix{yy}] sn0(g{0}) {sss{1}gmm{0}} sn1(g{1}) {sss{1}gmm{1}} [unassigned{zz}] sh0(s{0}*g{0}) sh1(s{0}*g{1}) sn0(s{1}*g{0}) sn1(s{1}*g{1})
+    3X) sh0(s{0}*g{0}) {sss{0}gmm{0}} sh1(s{0}*g{1}) {sss{0}gmm{1}} sn0(s{1}*g{0}) {sss{1}gmm{0}} sn1(s{1}*g{0}) {sss{1}gmm{1}} 
+
+    in newer proposed format:
+
+    2XX) sh0 {sss{0}gmm{0}} sh1 {sss{0}gmm{1}} sn0 {sss{1}gmm{0}} sn1 {sss{1}gmm{1}} 
+         [helix{xx} sh0(g{a}) sh1(g{b})]
+         [non_helix{yy}] sn0(g{a}) sn1(g{b}) 
+         [unassigned{zz}] sh0(s{0}g{a}) sh1(s{0}g{b}) sn0(s{1}g{a}) sn1(s{1}g{b})
+
+    2XX) sh0 {sss{0}gmm{0}} sh1 {sss{0}gmm{1}} sn0 {sss{1}gmm{0}} sn1 {sss{1}gmm{1}} [helix{xx,yy} sh0 sh1] [non_helix{yy} sn0 sn1]
+
+- grammar -
+data_set_cat_mapping:
+  data_set_cat_map_rule | data_set_cat_map_rule data_set_cat_mapping
+data_set_cat_map_rule:
+ '[' data_set_definition data_set_seq_cats ']'
+data_set_definition:
+  assigned_data_set_label '{' data_class_labels '}'
+data_class_labels:
+  data_class_label | data_class_label ',' data_class_labels
+data_set_seq_cats:
+  seq_cat_label | seq_cat_label data_set_seq_cats
+
+
+    shortcut for no assigned category case:
+
+    2XXX) sh0 {sss{0}gmm{0}} sh1 {sss{0}gmm{1}} sn0 {sss{1}gmm{0}} sn1 {sss{1}gmm{1}} 
+          [] sh0(s{0}g{a}) sh1(s{0}g{b}) sn0(s{1}g{a}) sn1(s{1}g{b})
+
+     (category parameterization) / (data class set assignment) / (assigned data set category usage)
+
+      ...restrictions on priors in this format: no normalization -> each user-input prior distro must already sum to 1, this restricts certain very exotic options, if a compelling test-case comes up, then it can change
+
+    ...as demonstrated in 3) the model has a general problem with expressing restrictions on category priors -> let's not confound this problem with 
+    the assigned data problem! let's take care of assigned data first, and keep naive prior distros, but we can change the data assignments to follow the seq cat definiations, as above
+
+    this actually seems surprisingly straightforward  -- be wary for a trip in here somewhere as you go
+
+   nasty questions:
+     a first pass at example 2 above allows a separte prob distro for each of the three mixtures, 
+     but how is p(gene) calcuated if it had sites from all three cats?
+
+     what if a gene is split into two assigned regions, each of which is a mixture of two gene categories, and the two gene
+     categories in each region are different? this is a more extreme variation of the above problem scenario.
+
+  - if we view data assignments as independently analyzed datasets which happen to have tied parameters, then the gene category
+    solution is simple: a gene probability is calculated for each gene conditioned on an assignment category. This solution excludes
+    the sec structure usage case above and messes up the concept of the gene posterior probability.
+      1. p(gene) = p(helix-gene) * p(non-helix-gene)
+         p(gene) = prior(sh0)*p(helix-gene|gmm{0})    +prior(sh1)*p(helix-gene|gmm{1}) *
+                   prior(sn0)*p(non-helix-gene|gmm{0})+prior(sn1)*p(non-helix-gene|gmm{1})
+
+  - there might be another solution involving 'group ties' of some sort -- to do this w/o some sort of baroque system will require thought
+    what would be overy specific solutions to the usage case, just to get things started? 
+      1. the model at every site could be a combination of parameter sets from various assignment groups --ugly
+      2. modifaction of sec structure usage case -- categories are synced with exactly matching group mixture model parameter sets:
+
+         prior(gene-cat|gene) = prior(gene-cat|helix-gene)*p(helix-gene|gene)+prior(gene-cat|non-helix-gene)*p(non-helix-gene|gene)
+
+         p(gene) = prior(gmm0-gene-cat|gene) * p(helix-gene|gmm{0})*p(non-helix-gene|gmm{0}) +
+                   prior(gmm1-gene-cat|gene) * p(helix-gene|gmm{1})*p(non-helix-gene|gmm{1})
+
+         I'm happy with this -- it's perfectly consistent with the non-assigned functionallity, and the sec struct case can be handled with the prior
+         distro generalizations discussed above.
+
+
+  new design problem:
+    with multiple assigned_data_sets, how do we handle initialization of obs and root cats from data?
+
+*********** root case 
+   
+for a in ads :
+ for root_cat in root_cats(a) : 
+   count[root_cat] += count(a)*prior(root_cat,a)
+
+for root_cat in root_cats() : 
+  distro[root_cat] = norm(count[rooot_cat])
+
+
+  new design problem:
+    try to construct a case where cats cannot be sorted by common groups:
+
+a multi-ads intertwined site mixture:        ads1(s1,s2,s3)  ads2(s2,s3)
+a multi-ads intertwined group mixture:       ads1(g1,g2,g3)  ads2(g2,g3)
+a multi-ads intertwined group/site mixture:  ads1(g1+s1,g1+s2,g2+s1,g2+s2) ads2(g2+s3,g2+s4)
+
+nothing obvious comes up...
+
+
+*******************
+language:
+  data_class -> the different types of sites annotated in the input alignment
+  assigned_data_set -> sets of data_classes which can be assigned separate mixture categories 
+      -- mixture models can be evaluated within an assigned_data_set
+      -- parameters can be tied between assigned_data_sets
+  site mixture category ->
+  group mixture category ->
+
+
+********************implementation notes***********************
+
+
+This is a big change -- what are some sane ways it can be introduced?
+
+1) maybe best to start with lhood_model -- write the lhood function correctly assuming object can supply
+some fantasy interface --- create these methods in objects with null responses for the time being.
+try to take care of the combo probabilities first
+go slow!!!!
+
+2) define a simple user interface and a parser for this iface **done
+
+3) obviously this is going to lean hard on the cat-manager -- think about a new sub-object to encapsulate
+the responsibility for assigned cats
+
+note that the current "obs" categories will become the assigned data categories -- these two concepts really can't co-exist well (they can actually - but w.t.h. is the application?)
+
+
+
+****************** lhood_model modification:
+
+
+
+
+**current method:
+
+[order cats so that group(c) is monotonically increasing]
+
+for c in cats :
+
+  P=prob_all_sites(c)
+
+  if new_group(c) :
+    site_mix_P = [0]
+    group_P = [1]
+    group_mix_P = [0]
+
+  site_mix_P += P*all_cat_prior(c)
+
+  if end_of_group(c) :
+    gc = group_cat(c)
+
+    for s in sites :
+      for group in groups(s) :
+        # group_prior in denominator here just serves as a late normalization to the potentially unnormalized pdf in all_cat_prior:
+        group_P(group) *= (site_mix_P(s)/group_prior(gc))^count(s,group)
+
+    for group in n_groups :
+      group_mix_P(group) += group_P(group)*group_prior(gc)
+
+prob = 1
+for group in groups :
+  prob *= group_mix_P(group)
+
+
+
+
+**new method:
+
+(site cat distribution works analgously, but conditioned on data group)
+
+
+[order cats so that group(c) is monotonically increasing]
+
+for c in cats :
+
+  P=prob_all_sites(c)
+
+  if new_group(c) :
+    site_mix_P = [0][0]
+
+  for ads in assigned_data_sets :
+    site_mix_P(ads) = P*site_cat_prior(c,ads)    # site cat prior is modified to include normalization by groups
+
+  if end_of_group(c) :
+    gc = group_cat(c)
+
+    for s in sites :
+      for ads in ads(s) :
+        for group in groups(s,ads) :
+          group_P(group) *= (site_mix_P(ads,s))^count(s,group,ads)
+
+    for group in n_groups :
+      # group prior changes for each group as a function of P(gc|group) over all gc
+      #
+      group_mix_P(group) += group_P(group)*group_prior(gc,group)
+
+prob = 1
+for group in groups :
+  prob *= group_mix_P(group)
+
+    
+
+
+
+
+
+
+

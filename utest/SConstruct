@@ -1,0 +1,66 @@
+
+# \todo change so that no object files are placed in ../src
+#
+
+import os
+import sys
+
+def usage() :
+  print ""
+  print "CodeAxe/SubsTK unit tests - Default target runs tests, no arguments accepted"
+  print ""
+  sys.exit()
+
+
+if len(COMMAND_LINE_TARGETS) != 0 : usage()
+
+this_dir=os.getcwd()
+head_dir=os.path.dirname(this_dir)
+
+build_dir=os.path.join(head_dir,"build","utest")
+
+
+cxtdir=os.path.join(os.environ['HOME'],"opt","noarch","cxxtest")
+
+srcdir=os.path.join("..","src")
+ugdir=os.path.join(srcdir,"util","general")
+
+include_path=[cxtdir,srcdir,this_dir]
+
+cxtb=Builder(action=os.path.join(cxtdir,"cxxtestgen.py --error-printer")+" $SOURCE > $TARGET")
+env = Environment(ENV = os.environ,CPPPATH=include_path,BUILDERS={'Cxtb':cxtb})
+
+
+tests = []
+
+srccc=["bi_tree","newick_tree_parser"]
+ugcc=["log","die"]
+test_tag="test_bi_tree"
+
+tests.append( (test_tag,srccc,ugcc) )
+
+srccc=["cat_expression_parser","cat_info"]
+ugcc=[]
+test_tag="test_cat_expression_parser"
+
+tests.append( (test_tag,srccc,ugcc) )
+
+#BuildDir(build_dir, this_dir, duplicate=0)
+#BuildDir(os.path.join(build_dir,"src"), srcdir, duplicate=0)
+
+
+for t in tests :
+
+  ccfiles=[t[0]] + [os.path.join(srcdir,x) for x in t[1]] + [os.path.join(ugdir,x) for x in t[2]]
+  ccfiles=[x+".cc" for x in ccfiles]
+
+  env.Cxtb(t[0]+".cc",t[0]+".h")
+  pro=env.Program(target=t[0],source=ccfiles)
+  pro=pro[0]
+
+  phony_target=t[0]
+  env.Alias(phony_target,pro,pro.path)
+  env.Default(phony_target)
+
+
+

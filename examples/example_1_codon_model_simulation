@@ -1,0 +1,72 @@
+#!/bin/bash -x
+#
+# This example creates a simple codon model with randomized
+# parameters. This model uses non-reversible, context-independent
+# mutation rates, a single dN/dS parameter to represent selection on
+# nonsynonymous mutations, and the BLS root (described in our MBE
+# paper). Data are simulated from this model and analyzed by a second
+# model using default starting parameters and the correct phylogenetic
+# tree. Finally, we show an example of how the simulated data can be
+# re-analyzed using an alternate phylogenetic tree.
+#
+
+
+
+# -- write "true" phylogenetic tree
+#
+echo "((A,(B,C)),D);" >| ex1.tree
+
+# -- create a simple codon model with randomized parameters:
+#
+../bin/CodeAxe -create-model -site-model codon -select-model single -root-model least-sq -tree-file ex1.tree -random-param >| ex1.model.random
+
+# -- simulate sequences from the template model
+#
+../bin/CodeAxe -sim -sim-size 100000 -in-model ex1.model.random >| ex1.data.sim 2> /dev/null
+
+# -- get the likelihood & likelihood/codon of the template model
+#
+../bin/CodeAxe -lhood -in-model ex1.model.random -in-data ex1.data.sim >| ex1.model.random.lhood
+
+
+
+# -- create a starting model with default parameter values 
+#
+../bin/CodeAxe -create-model -site-model codon -select-model single -root-model least-sq -tree-file ex1.tree -in-data ex1.data.sim >| ex1.model.start
+
+# -- train model
+#
+# note that a less stringent converge tolerance is used here to reduce example runtime
+#
+../bin/CodeAxe -ml -in-model ex1.model.start -in-data ex1.data.sim -tol 1.e-1 >| ex1.model.trained 2>| ex1.model.ml.stderr
+
+# -- get the likelihood & likelihood/codon of the trained model
+#
+../bin/CodeAxe -lhood -in-model ex1.model.trained -in-data ex1.data.sim >| ex1.model.trained.lhood
+
+# -- summarize parameters from the trained model 
+#
+../bin/CodeAxe -report-model -in-model ex1.model.trained >| ex1.model.trained.report
+
+
+
+# -- write an alternate phylogenetic tree
+#
+echo "((A,(B,D)),C);" >| ex1.tree.2
+
+# -- create a starting model from the alternate tree
+#
+../bin/CodeAxe -create-model -site-model codon -select-model single -root-model least-sq -tree-file ex1.tree.2 -in-data ex1.data.sim >| ex1.model.2.start
+
+# -- train model
+#
+# note that a less stringent converge tolerance is used here to reduce example runtime
+#
+../bin/CodeAxe -ml -in-model ex1.model.2.start -in-data ex1.data.sim -tol 1.e-1 >| ex1.model.2.trained 2>| ex1.model.2.ml.stderr
+
+# -- get the likelihood & likelihood/codon of the alternate trained model
+#
+../bin/CodeAxe -lhood -in-model ex1.model.2.trained -in-data ex1.data.sim >| ex1.model.2.trained.lhood
+
+
+

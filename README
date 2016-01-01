@@ -1,0 +1,26 @@
+CodeAxe -- v2.0-preview
+===============
+
+Christopher Saunders (ctsa@u.washington.edu)
+http://www.phrap.org
+
+Last Updated: September 2007
+
+------------------------------------------------------------------------
+This distribution contains the source code for CodeAxe, a program used
+for phylogenetic analysis of coding sequence using mutation rates that
+approximately depend on flanking nucleotides.  Version 1.0 of the
+program corresponds to the code described and used for the analyses in
+the following publication:
+
+Saunders CT & Green P "Insights from modeling protein evolution with
+context-dependent mutation and asymmetric selection."  Mol Biol Evol
+(forthcoming)
+
+For help with compiling this program, please read the INSTALL file.
+
+For help with usage, please see the examples/ directory
+
+The CodeAxe code itself is distributed under the GNU Public License,
+as described in the COPYING file.
+

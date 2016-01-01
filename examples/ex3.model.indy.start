@@ -1,0 +1,198 @@
+subs_ml_model model_file_version 10
+audit_info cmdline ../bin/CodeAxe -create-model -site-model codon -select-model single -root-model obs-avg -tree-file example_data/bglobinMam.tree -in-data ex3.data.codon
+audit_info binary CodeAxe version D92-r1191
+audit_info random_seed 1206748747
+audit_info write_time Fri Mar 28 16:59:07 2008
+audit_info END
+subs_ml_model tree (marsupial,((hamster,(rat,mouse)node5)node3,((hare,rabbit)node9,((elephseal,(pig,(cow,sheep)node17)node15)node13,(bushbaby,(human,tarsier)node22)node20)node12)node8)node2)node0;
+cat_manager n_cats 1
+cat_manager cat_0_branch_0_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_0_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_1_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_1_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_2_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_2_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_3_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_3_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_4_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_4_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_5_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_5_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_6_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_6_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_7_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_7_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_8_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_8_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_9_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_9_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_10_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_10_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_11_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_11_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_12_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_12_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_13_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_13_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_14_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_14_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_15_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_15_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_16_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_16_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_17_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_17_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_18_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_18_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_19_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_19_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_20_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_20_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_21_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_21_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_22_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_22_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_23_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_23_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_label_0 default_seq_cat
+cat_manager typed_cat_label_smr_0 default_smr_param_set
+cat_manager typed_cat_label_gmr_0 default_gmr_param_set
+cat_manager typed_cat_label_smm_0 default_smm_param_set
+cat_manager typed_cat_label_gmm_0 default_gmm_param_set
+cat_manager typed_cat_label_sss_0 default_sss_param_set
+cat_manager typed_cat_label_gss_0 default_gss_param_set
+cat_manager typed_cat_label_ssm_0 default_ssm_param_set
+cat_manager typed_cat_label_gsm_0 default_gsm_param_set
+cat_manager typed_cat_label_sro_0 default_sro_param_set
+cat_manager typed_cat_label_gro_0 default_gro_param_set
+cat_manager typed_cat_label_sti_0 default_sti_param_set
+cat_manager typed_cat_label_gti_0 default_gti_param_set
+cat_manager typed_cat_label_sob_0 default_sob_param_set
+cat_manager typed_cat_label_gob_0 default_gob_param_set
+cat_manager typed_cat_label_sbg_0 default_sbg_param_set
+cat_manager typed_cat_label_gbg_0 default_gbg_param_set
+cat_manager cat_prob_gtor_param_0 0 1
+cat_manager END
+time_gtor time_cat_0_branch_0 marsupial 1 0.02
+time_gtor time_cat_0_branch_1 node2 1 0.02
+time_gtor time_cat_0_branch_2 node3 1 0.02
+time_gtor time_cat_0_branch_3 hamster 1 0.02
+time_gtor time_cat_0_branch_4 node5 1 0.02
+time_gtor time_cat_0_branch_5 rat 1 0.02
+time_gtor time_cat_0_branch_6 mouse 1 0.02
+time_gtor time_cat_0_branch_7 node8 1 0.02
+time_gtor time_cat_0_branch_8 node9 1 0.02
+time_gtor time_cat_0_branch_9 hare 1 0.02
+time_gtor time_cat_0_branch_10 rabbit 1 0.02
+time_gtor time_cat_0_branch_11 node12 1 0.02
+time_gtor time_cat_0_branch_12 node13 1 0.02
+time_gtor time_cat_0_branch_13 elephseal 1 0.02
+time_gtor time_cat_0_branch_14 node15 1 0.02
+time_gtor time_cat_0_branch_15 pig 1 0.02
+time_gtor time_cat_0_branch_16 node17 1 0.02
+time_gtor time_cat_0_branch_17 cow 1 0.02
+time_gtor time_cat_0_branch_18 sheep 1 0.02
+time_gtor time_cat_0_branch_19 node20 1 0.02
+time_gtor time_cat_0_branch_20 bushbaby 1 0.02
+time_gtor time_cat_0_branch_21 node22 1 0.02
+time_gtor time_cat_0_branch_22 human 1 0.02
+time_gtor time_cat_0_branch_23 tarsier 1 0.02
+time_gtor END
+subs_ml_model rate_gtor_model 3
+obs_info obs_state_source 1
+obs_info obs_0_seq_state_0 0 1 1 2 3 3 2 2 1 2 2 3 3
+obs_info obs_0_seq_state_1 1 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_2 2 1 2 1 4 4 3 1 2 2 2 2 3
+obs_info obs_0_seq_state_3 0 0 0 0 0 0 0 0 0 0 0 1 0
+obs_info obs_0_seq_state_4 0 1 0 0 1 1 1 0 0 0 2 2 1
+obs_info obs_0_seq_state_5 1 2 1 2 0 1 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_6 1 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_7 0 0 0 0 0 0 0 0 1 0 0 0 0
+obs_info obs_0_seq_state_8 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_9 1 2 2 2 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_10 0 0 1 1 0 0 0 1 0 0 0 0 0
+obs_info obs_0_seq_state_11 0 0 1 2 0 0 0 0 2 1 0 0 0
+obs_info obs_0_seq_state_12 0 0 0 0 0 0 1 0 0 0 0 0 1
+obs_info obs_0_seq_state_13 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_14 3 4 5 5 4 4 3 4 4 5 4 5 2
+obs_info obs_0_seq_state_15 4 8 6 5 5 5 4 5 2 6 7 6 6
+obs_info obs_0_seq_state_16 4 5 3 3 3 3 4 6 3 4 5 2 6
+obs_info obs_0_seq_state_17 2 2 3 3 2 2 1 2 1 1 2 1 2
+obs_info obs_0_seq_state_18 4 1 3 3 3 2 3 1 3 3 3 3 3
+obs_info obs_0_seq_state_19 1 2 1 2 0 0 3 2 1 1 0 0 0
+obs_info obs_0_seq_state_20 6 8 8 8 5 6 8 7 7 6 7 9 10
+obs_info obs_0_seq_state_21 2 2 1 1 3 3 4 3 3 2 2 2 2
+obs_info obs_0_seq_state_22 1 1 1 2 0 0 1 1 0 0 1 0 1
+obs_info obs_0_seq_state_23 0 0 0 0 0 0 1 2 1 1 0 0 0
+obs_info obs_0_seq_state_24 3 8 8 7 7 6 7 9 7 8 8 8 7
+obs_info obs_0_seq_state_25 2 0 0 1 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_26 4 4 1 2 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_27 3 2 3 4 2 2 4 5 3 3 2 3 2
+obs_info obs_0_seq_state_28 3 3 1 2 2 2 3 3 2 2 2 2 4
+obs_info obs_0_seq_state_29 2 4 4 3 6 5 3 5 3 4 3 3 3
+obs_info obs_0_seq_state_30 12 11 11 10 9 9 12 9 12 10 10 8 9
+obs_info obs_0_seq_state_31 4 3 3 3 4 4 5 5 3 4 4 3 4
+obs_info obs_0_seq_state_32 6 4 3 5 6 6 4 7 6 6 5 6 4
+obs_info obs_0_seq_state_33 0 0 0 0 0 0 1 0 0 0 0 0 0
+obs_info obs_0_seq_state_34 0 0 0 0 0 0 0 1 1 1 0 0 1
+obs_info obs_0_seq_state_35 0 0 0 1 1 1 1 0 1 0 0 0 0
+obs_info obs_0_seq_state_36 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_37 2 2 3 2 3 3 2 3 2 3 3 3 3
+obs_info obs_0_seq_state_38 0 0 0 1 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_39 2 0 1 0 1 1 1 1 1 1 1 1 1
+obs_info obs_0_seq_state_40 3 2 2 2 2 2 2 2 2 2 2 2 2
+obs_info obs_0_seq_state_41 3 2 2 1 1 1 2 1 2 2 1 1 2
+obs_info obs_0_seq_state_42 6 15 11 11 16 16 13 13 11 12 16 15 12
+obs_info obs_0_seq_state_43 5 8 9 9 11 11 9 10 12 11 11 12 9
+obs_info obs_0_seq_state_44 4 1 2 0 0 0 1 0 1 1 0 0 3
+obs_info obs_0_seq_state_45 2 3 3 2 2 4 5 5 3 3 3 1 3
+obs_info obs_0_seq_state_46 4 2 3 2 3 3 2 2 4 3 1 2 2
+obs_info obs_0_seq_state_47 2 4 6 5 1 1 3 2 6 5 2 5 2
+obs_info obs_0_seq_state_48 1 0 0 0 1 1 1 0 1 1 1 2 1
+obs_info obs_0_seq_state_49 5 3 1 3 3 2 1 1 3 2 2 3 4
+obs_info obs_0_seq_state_50 3 2 4 3 3 3 1 1 2 2 4 5 2
+obs_info obs_0_seq_state_51 5 6 8 7 8 7 3 7 8 9 7 6 9
+obs_info obs_0_seq_state_52 4 2 2 4 3 3 2 1 0 0 2 1 0
+obs_info obs_0_seq_state_53 1 2 2 1 3 4 2 1 2 2 2 2 2
+obs_info obs_0_seq_state_54 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_55 6 1 2 3 5 4 4 3 3 2 3 4 3
+obs_info obs_0_seq_state_56 2 1 2 1 1 1 2 1 1 1 2 2 2
+obs_info obs_0_seq_state_57 1 1 2 1 1 1 1 0 0 0 0 0 0
+obs_info obs_0_seq_state_58 1 1 0 0 0 0 0 1 0 0 0 0 0
+obs_info obs_0_seq_state_59 5 3 3 2 4 4 2 5 4 5 5 3 3
+obs_info obs_0_seq_state_60 5 4 3 4 2 3 6 3 7 5 5 5 5
+obs_info END
+bg_gtor subs_rate_bg_model 0
+bg_gtor END
+rate_gtor_nuc_base is_use_edge_correction 0
+rate_gtor_nuc_base rate_model_0 3
+rate_gtor_nuc_base context_model_0 0
+rate_gtor_nuc_base site_rate_cats_0 0 1
+rate_gtor_nuc_base group_rate_cats_0 0 1
+rate_gtor_nuc_base nuc_mutation_model_0_param_A->C_rate_indy_context_0 1 0.2
+rate_gtor_nuc_base nuc_mutation_model_0_param_A->G_rate_indy_context_1 1 0.6
+rate_gtor_nuc_base nuc_mutation_model_0_param_A->T_rate_indy_context_2 1 0.2
+rate_gtor_nuc_base nuc_mutation_model_0_param_C->A_rate_indy_context_3 1 0.2
+rate_gtor_nuc_base nuc_mutation_model_0_param_C->G_rate_indy_context_4 1 0.2
+rate_gtor_nuc_base nuc_mutation_model_0_param_C->T_rate_indy_context_5 1 0.6
+rate_gtor_nuc_base nuc_mutation_model_0_param_G->A_rate_indy_context_6 1 0.6
+rate_gtor_nuc_base nuc_mutation_model_0_param_G->C_rate_indy_context_7 1 0.2
+rate_gtor_nuc_base nuc_mutation_model_0_param_G->T_rate_indy_context_8 1 0.2
+rate_gtor_nuc_base nuc_mutation_model_0_param_T->A_rate_indy_context_9 1 0.2
+rate_gtor_nuc_base nuc_mutation_model_0_param_T->C_rate_indy_context_10 1 0.6
+rate_gtor_nuc_base nuc_mutation_model_0_param_T->G_rate_indy_context_11 1 0.2
+rate_gtor_nuc_base END
+rate_gtor_nscodon_base codon_bias_model 0
+rate_gtor_nscodon_base select_model_0 1
+rate_gtor_nscodon_base site_select_cats_0 0 1
+rate_gtor_nscodon_base group_select_cats_0 0 1
+rate_gtor_nscodon_base aa_selection_matrix_0_scale_param 1 0.15
+rate_gtor_nscodon_base END
+root_gtor root_gtor_model 7
+root_gtor END
+subs_ml_model_min_options converge_tolerance 0.0001
+subs_ml_model_min_options minimizer_type 2
+subs_ml_model_min_options is_prefer_diag_expm 0
+subs_ml_model_min_options obs_update_mode 0
+subs_ml_model_min_options END
+subs_ml_model END

@@ -1,0 +1,33 @@
+
+mcmc presteps:
+
+need continuous simulation sequence output for mcmc and other uses.
+
+issues -> 
+"sim-size" needs to be size in nucs or codons, explicitely -- "state-size" is going away.
+  keep it implicitely switching between either nucs or codons depending on context
+sequence pad size needs to be handled differently, but how exactly? 
+  does it really matter that much? maybe this should be left be.
+eliminate context-free
+simulator can only represent
+change simulator to internal represent nucs instead of codons? is this necassary? NO... it's 
+already debuged and tested... live with it.
+
+
+is mcmc model file going to change? -- well certainly, the model file only
+represents a single state, and it would do a better job of that if edge-strength
+was removed...
+
+
+most gtor objects are going to have to be elaborated with more direct and meaningful
+paramater access, for the mcmc model, they're "generating" different values -- things that
+appear to be much closer to individual parameters (even if they are leaner under the hood) than what the ML model wants.
+
+limitations
+ -all version inherit limits: gaps treated as 'N's
+ -initial version is nuc only
+
+issues:
+  "state-size" no longer means anything, but there will be a "nuc" and "codon" version of mcmc models
+ maybe we should produce a base class for most objects and subclass
+an mcmc and ml version from there? So many issues I think we just need to start doing it.

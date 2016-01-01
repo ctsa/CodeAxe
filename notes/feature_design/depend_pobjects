@@ -1,0 +1,8 @@
+
+eventually, we need general dependencies between sub-objects,
+ie, I have two asymmetric selection strength matrix categories, and I
+want all degrees of freedom in matrix #1 and matrix #2 to use matrix #1 values with 
+selection strength modifiers for hydrophobic and polar values.
+
+first application can be written in a fairly non-general way (whatever gets it done),
+it will be to get a GC content paramater to scale a root distribution

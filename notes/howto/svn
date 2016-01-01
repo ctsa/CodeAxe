@@ -1,0 +1,7 @@
+new version:
+local:
+svn checkout file:///da21/d02/ctsa/devel/svn_repos/sml/branches/v88
+
+remote
+svn checkout svn+ssh://homer.u.washington.edu/da21/d02/ctsa/devel/svn_repos/sml/branches/v88
+

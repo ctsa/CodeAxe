@@ -1,0 +1,346 @@
+Free parameters: 18
+State Size: 61
+
+node0 prior prob: root_distro_cat_no 0
+nuc distro:
+A : 0.25888 
+C : 0.25056 
+G : 0.24611 
+T : 0.24445 
+
+node0 prior prob: root_distro_cat_no 0
+nuc distro from codon pos 0:
+A : 0.29482 
+C : 0.23150 
+G : 0.28005 
+T : 0.19363 
+
+node0 prior prob: root_distro_cat_no 0
+nuc distro from codon pos 1:
+A : 0.24478 
+C : 0.24806 
+G : 0.24355 
+T : 0.26360 
+
+node0 prior prob: root_distro_cat_no 0
+nuc distro from codon pos 2:
+A : 0.23704 
+C : 0.27212 
+G : 0.21472 
+T : 0.27611 
+
+node0 prior prob: root_distro_cat_no 0
+aa distro:
+A : 0.05968 
+C : 0.03602 
+D : 0.03416 
+E : 0.04584 
+F : 0.02103 
+G : 0.07246 
+H : 0.03137 
+I : 0.04576 
+K : 0.03726 
+L : 0.10864 
+M : 0.02026 
+N : 0.04957 
+P : 0.05358 
+Q : 0.01607 
+R : 0.08433 
+S : 0.09527 
+T : 0.07102 
+V : 0.06792 
+W : 0.01926 
+Y : 0.03052 
+
+node0 prior prob: root_distro_cat_no 0
+nscodon distro:
+AAA: 0.02896
+CAA: 0.00716
+GAA: 0.02136
+ACA: 0.03043
+CCA: 0.01441
+GCA: 0.01539
+TCA: 0.01449
+AGA: 0.02077
+CGA: 0.00278
+GGA: 0.02204
+ATA: 0.00431
+CTA: 0.02947
+GTA: 0.01626
+TTA: 0.00920
+AAC: 0.02376
+CAC: 0.02546
+GAC: 0.02046
+TAC: 0.01600
+ACC: 0.00023
+CCC: 0.00825
+GCC: 0.02267
+TCC: 0.02355
+AGC: 0.01317
+CGC: 0.03365
+GGC: 0.01044
+TGC: 0.01059
+ATC: 0.02587
+CTC: 0.02601
+GTC: 0.00614
+TTC: 0.00587
+AAG: 0.00830
+CAG: 0.00891
+GAG: 0.02447
+ACG: 0.02100
+CCG: 0.00598
+GCG: 0.01787
+TCG: 0.01084
+AGG: 0.01868
+CGG: 0.00572
+GGG: 0.00979
+TGG: 0.01926
+ATG: 0.02026
+CTG: 0.01065
+GTG: 0.01916
+TTG: 0.01382
+AAT: 0.02582
+CAT: 0.00592
+GAT: 0.01369
+TAT: 0.01452
+ACT: 0.01936
+CCT: 0.02493
+GCT: 0.00375
+TCT: 0.01490
+AGT: 0.01831
+CGT: 0.00272
+GGT: 0.03020
+TGT: 0.02543
+ATT: 0.01557
+CTT: 0.01949
+GTT: 0.02636
+TTT: 0.01516
+
+node0 prior prob: root_distro_cat_no 0
+root comparison to obs distro (nuc):
+NURO:              A        C        G        T
+NURO ROOT:   0.25888  0.25056  0.24611  0.24445
+NURO OBS:    0.23619  0.27463  0.23938  0.24980
+NURO dot(ROOT,OBS):  0.9976701
+NURO re(ROOT,OBS):   0.002294783
+
+node0 prior prob: root_distro_cat_no 0
+root comparison to obs distro (nsaa):
+AARO:            A      C      D      E      F      G      H      I      K      L      M      N      P      Q      R      S      T      V      W      Y
+AARO ROOT:  0.0597 0.0360 0.0342 0.0458 0.0210 0.0725 0.0314 0.0458 0.0373  0.109 0.0203 0.0496 0.0536 0.0161 0.0843 0.0953 0.0710 0.0679 0.0193 0.0305
+AARO OBS:   0.0664 0.0358 0.0325 0.0358 0.0293 0.0665 0.0330 0.0472 0.0310  0.106 0.0170 0.0398 0.0692 0.0199 0.0865 0.0993 0.0702 0.0672 0.0167 0.0304
+AARO dot(ROOT,OBS):  0.9945457
+AARO re(ROOT,OBS):   0.007949808
+
+node0 prior prob: root_distro_cat_no 0
+root comparison to obs distro (nscodon):
+NCRO dot(ROOT,OBS):  0.9713656
+NCRO re(ROOT,OBS):   0.04939363
+
+time_cat: 0
+indy_cat_bg_nuc_normalized_branch_time: node1 : 0.2148423
+indy_cat_bg_nuc_normalized_branch_time: A : 0.02461528
+indy_cat_bg_nuc_normalized_branch_time: node3 : 0.02605835
+indy_cat_bg_nuc_normalized_branch_time: B : 0.008691615
+indy_cat_bg_nuc_normalized_branch_time: C : 0.03017759
+indy_cat_bg_nuc_normalized_branch_time: D : 0.01671134
+
+((A:0.02461528,(B:0.008691615,C:0.03017759)node3:0.02605835)node1:0.2148423,D:0.01671134)node0;
+
+
+cat: default_seq_cat branch_cat_set: branch_set_0:node1,A,node3,B,C,D
+stat_nuc_distro:
+A: 0.1583421
+C: 0.3372732
+G: 0.2252974
+T: 0.2790872
+bg_nuc_distro:
+A: 0.2361875
+C: 0.2746275
+G: 0.2393842
+T: 0.2498008
+
+
+######################################################################
+Reporting mutation cat summary for branch [node1]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [A]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [node3]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [B]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [C]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [D]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+
+######################################################################
+BRANCH_SET / GLOBAL_CAT / MUT_MODEL_CAT: [ branch_set_0:node1,A,node3,B,C,D / default_seq_cat / default_smm_param_set ]
+MUT RATE
+        A        C        G        T  
+A  -------A    0.593   0.0690    0.336 A
+C     0.412 -------C    0.285    0.491 C
+G    0.0997    0.376 -------G    0.304 G
+T    0.0239    0.730    0.252 -------T T
+
+CDM_RATE: NAN->C 0.592847
+CDM_RATE: NAN->G 0.0689692
+CDM_RATE: NAN->T 0.335806
+CDM_RATE: NCN->A 0.412257
+CDM_RATE: NCN->G 0.284963
+CDM_RATE: NCN->T 0.491327
+CDM_RATE: NGN->A 0.0997025
+CDM_RATE: NGN->C 0.376403
+CDM_RATE: NGN->T 0.303760
+CDM_RATE: NTN->A 0.0238862
+CDM_RATE: NTN->C 0.729662
+CDM_RATE: NTN->G 0.252369
+CT_TI: 0.357359
+CT_TV: 0.321321
+CT_TI/TV: 1.11216
+
+CT_WS/SW: 1.23222
+######################################################################
+Reporting selection for branch [node1]
+
+branch_expected_dN/dS: 1.1231
+
+SITE SELECTION MATRIX CATEGORIES (1) dN/dS:
+[ default_ssm_param_set ] branch_expected_dN/dS= 1.1231  branch_prior_prob= 1.0000 
+
+SITE SELECTION CATEGORIES (1):
+[ default_sss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 1.1231  branch_prior_prob= 1.0000 
+
+GROUP SELECTION CATEGORIES (1):
+[ default_gss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 1.1231  branch_prior_prob= 1.0000  
+
+######################################################################
+Reporting selection for branch [A]
+
+branch_expected_dN/dS: 1.1231
+
+SITE SELECTION MATRIX CATEGORIES (1) dN/dS:
+[ default_ssm_param_set ] branch_expected_dN/dS= 1.1231  branch_prior_prob= 1.0000 
+
+SITE SELECTION CATEGORIES (1):
+[ default_sss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 1.1231  branch_prior_prob= 1.0000 
+
+GROUP SELECTION CATEGORIES (1):
+[ default_gss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 1.1231  branch_prior_prob= 1.0000  
+
+######################################################################
+Reporting selection for branch [node3]
+
+branch_expected_dN/dS: 1.1231
+
+SITE SELECTION MATRIX CATEGORIES (1) dN/dS:
+[ default_ssm_param_set ] branch_expected_dN/dS= 1.1231  branch_prior_prob= 1.0000 
+
+SITE SELECTION CATEGORIES (1):
+[ default_sss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 1.1231  branch_prior_prob= 1.0000 
+
+GROUP SELECTION CATEGORIES (1):
+[ default_gss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 1.1231  branch_prior_prob= 1.0000  
+
+######################################################################
+Reporting selection for branch [B]
+
+branch_expected_dN/dS: 1.1231
+
+SITE SELECTION MATRIX CATEGORIES (1) dN/dS:
+[ default_ssm_param_set ] branch_expected_dN/dS= 1.1231  branch_prior_prob= 1.0000 
+
+SITE SELECTION CATEGORIES (1):
+[ default_sss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 1.1231  branch_prior_prob= 1.0000 
+
+GROUP SELECTION CATEGORIES (1):
+[ default_gss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 1.1231  branch_prior_prob= 1.0000  
+
+######################################################################
+Reporting selection for branch [C]
+
+branch_expected_dN/dS: 1.1231
+
+SITE SELECTION MATRIX CATEGORIES (1) dN/dS:
+[ default_ssm_param_set ] branch_expected_dN/dS= 1.1231  branch_prior_prob= 1.0000 
+
+SITE SELECTION CATEGORIES (1):
+[ default_sss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 1.1231  branch_prior_prob= 1.0000 
+
+GROUP SELECTION CATEGORIES (1):
+[ default_gss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 1.1231  branch_prior_prob= 1.0000  
+
+######################################################################
+Reporting selection for branch [D]
+
+branch_expected_dN/dS: 1.1231
+
+SITE SELECTION MATRIX CATEGORIES (1) dN/dS:
+[ default_ssm_param_set ] branch_expected_dN/dS= 1.1231  branch_prior_prob= 1.0000 
+
+SITE SELECTION CATEGORIES (1):
+[ default_sss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 1.1231  branch_prior_prob= 1.0000 
+
+GROUP SELECTION CATEGORIES (1):
+[ default_gss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 1.1231  branch_prior_prob= 1.0000  
+

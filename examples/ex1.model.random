@@ -1,0 +1,144 @@
+subs_ml_model model_file_version 10
+audit_info cmdline ../bin/CodeAxe -create-model -site-model codon -select-model single -root-model least-sq -tree-file ex1.tree -random-param
+audit_info binary CodeAxe version D92-r1191
+audit_info random_seed 1206747560
+audit_info write_time Fri Mar 28 16:39:20 2008
+audit_info END
+subs_ml_model tree ((A,(B,C)node3)node1,D)node0;
+cat_manager n_cats 1
+cat_manager cat_0_branch_0_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_0_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_1_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_1_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_2_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_2_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_3_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_3_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_4_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_4_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_5_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_5_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_label_0 default_seq_cat
+cat_manager typed_cat_label_smr_0 default_smr_param_set
+cat_manager typed_cat_label_gmr_0 default_gmr_param_set
+cat_manager typed_cat_label_smm_0 default_smm_param_set
+cat_manager typed_cat_label_gmm_0 default_gmm_param_set
+cat_manager typed_cat_label_sss_0 default_sss_param_set
+cat_manager typed_cat_label_gss_0 default_gss_param_set
+cat_manager typed_cat_label_ssm_0 default_ssm_param_set
+cat_manager typed_cat_label_gsm_0 default_gsm_param_set
+cat_manager typed_cat_label_sro_0 default_sro_param_set
+cat_manager typed_cat_label_gro_0 default_gro_param_set
+cat_manager typed_cat_label_sti_0 default_sti_param_set
+cat_manager typed_cat_label_gti_0 default_gti_param_set
+cat_manager typed_cat_label_sob_0 default_sob_param_set
+cat_manager typed_cat_label_gob_0 default_gob_param_set
+cat_manager typed_cat_label_sbg_0 default_sbg_param_set
+cat_manager typed_cat_label_gbg_0 default_gbg_param_set
+cat_manager cat_prob_gtor_param_0 0 1
+cat_manager END
+time_gtor time_cat_0_branch_0 node1 1 0.218216331333
+time_gtor time_cat_0_branch_1 A 1 0.025300371196
+time_gtor time_cat_0_branch_2 node3 1 0.0267676919633
+time_gtor time_cat_0_branch_3 B 1 0.00889818625123
+time_gtor time_cat_0_branch_4 C 1 0.0306986095312
+time_gtor time_cat_0_branch_5 D 1 0.0151517616754
+time_gtor END
+subs_ml_model rate_gtor_model 3
+obs_info obs_state_source 2
+obs_info obs_0_seq_state_0 0.0255618204565 0.0181465448447 0.0194910739011 0.0181099564862
+obs_info obs_0_seq_state_1 0.00663061303555 0.00607847921343 0.0194161479449 0.00945189194502
+obs_info obs_0_seq_state_2 0.0111378183484 0.0199125400392 0.0243325562744 0.00484622198625
+obs_info obs_0_seq_state_3 0.0251502316215 0.0182978434731 0.0189369404221 0.028541126571
+obs_info obs_0_seq_state_4 0.00692773448493 0.019631603832 0.0231193257749 0.028125603035
+obs_info obs_0_seq_state_5 0.0136343311764 0.0181453888476 0.0162051078819 0.0248330187562
+obs_info obs_0_seq_state_6 0.0161177546636 0.0155399966275 0.0181669857024 0.00305885838755
+obs_info obs_0_seq_state_7 0.022342876372 0.0242252165472 0.0100093195181 0.00465910909488
+obs_info obs_0_seq_state_8 0.00627822554397 0.00361421610641 0.0205506034761 0.00671329870145
+obs_info obs_0_seq_state_9 0.00626481651493 0.0289775883459 0.0221877994399 0.00538468343207
+obs_info obs_0_seq_state_10 0.00413552587492 0.00955782642909 0.00312749378399 0.019569560896
+obs_info obs_0_seq_state_11 0.0335721898263 0.0207578126968 0.0121579535096 0.015086413531
+obs_info obs_0_seq_state_12 0.0101912636684 0.0177678087806 0.0190527353874 0.0141835119453
+obs_info obs_0_seq_state_13 0.00366526523923 0.00511458568188 0.0177767391611 0.0228251627198
+obs_info obs_0_seq_state_14 0.00822008880191 0.0259573091744 0.0214046546783 0.0247584032255
+obs_info obs_0_seq_state_15 0.0211745815257 0.0253820154636 0.0216868378113 0.0114494561773
+obs_info obs_0_seq_state_16 0.0273792679566 0.0156866179208 0.0246837203596 0.00347964763015
+obs_info obs_0_seq_state_17 0.0122031955427 0.0192497101439 0.0184810541342 0.0238863519773
+obs_info obs_0_seq_state_18 0.00497867424302 0.0176355489171 0.0185854037454 0.00298769991732
+obs_info obs_0_seq_state_19 0.00975775549193 0.0254973753263 0.0112380558938 0.0282155470703
+obs_info obs_0_seq_state_20 0.0219125467044 0.0249979158195 0.0212311200456 0.00828551706707
+obs_info obs_0_seq_state_21 0.0179596751275 0.0301474945069 0.019851838676 0.00946494687425
+obs_info obs_0_seq_state_22 0.0195836999478 0.0123997815852 0.015213305471 0.0235287616714
+obs_info obs_0_seq_state_23 0.0287317503223 0.0300246536297 0.0188950633614 0.0173549857303
+obs_info obs_0_seq_state_24 0.0286653010025 0.00535003666647 0.0104867095748 0.025848454813
+obs_info obs_0_seq_state_25 0.0170967711261 0.0102575807456 0.0238390910719 0.0118294156064
+obs_info obs_0_seq_state_26 0.0183173155179 0.0281787026857 0.0200270921081 0.0116151203118
+obs_info obs_0_seq_state_27 0.0342212023845 0.0289108540376 0.0174265236459 0.0274250479926
+obs_info obs_0_seq_state_28 0.00686181780595 0.0162119231707 0.00253711510554 0.0226012389782
+obs_info obs_0_seq_state_29 0.00869025241863 0.00466052349889 0.0130242505974 0.0214147330764
+obs_info obs_0_seq_state_30 0.0143871105063 0.00560771843823 0.00659517459854 0.0166628502152
+obs_info obs_0_seq_state_31 0.0144077682677 0.00397938776094 0.00606287092044 0.0223457724847
+obs_info obs_0_seq_state_32 0.0182539063455 0.0150761807379 0.0252691717387 0.0109623347458
+obs_info obs_0_seq_state_33 0.0277094982065 0.0158592202523 0.0118608759433 0.0102922151034
+obs_info obs_0_seq_state_34 0.00789723913835 0.00693985935747 0.00745491497523 0.0211623881529
+obs_info obs_0_seq_state_35 0.0268441122465 0.00380799199376 0.0220512398242 0.0196585942023
+obs_info obs_0_seq_state_36 0.0092992408216 0.0146828854299 0.0130434992849 0.0213355441966
+obs_info obs_0_seq_state_37 0.0162713461663 0.00450163654679 0.0243635460402 0.00987953322421
+obs_info obs_0_seq_state_38 0.0113655330894 0.0158826073704 0.00550912620234 0.0145314858272
+obs_info obs_0_seq_state_39 0.0175110266115 0.0143352636907 0.00291268529478 0.010703999987
+obs_info obs_0_seq_state_40 0.0240267349527 0.00444157470459 0.0234081367407 0.010944282303
+obs_info obs_0_seq_state_41 0.00911036913175 0.00786772210364 0.0253573470148 0.0287400268335
+obs_info obs_0_seq_state_42 0.0212504969541 0.00565026733723 0.0141291795364 0.0112828159791
+obs_info obs_0_seq_state_43 0.030673413991 0.0166699121468 0.00329122812091 0.024433593377
+obs_info obs_0_seq_state_44 0.00489628441072 0.0256495174341 0.00805872656443 0.0198384917589
+obs_info obs_0_seq_state_45 0.0142412260228 0.0301010572697 0.0130892748947 0.0202431347083
+obs_info obs_0_seq_state_46 0.0112877806451 0.00280641149603 0.0230629635477 0.0102318954326
+obs_info obs_0_seq_state_47 0.0123338624644 0.0146016082584 0.0161542488334 0.0187462444208
+obs_info obs_0_seq_state_48 0.0176836177925 0.0191459571161 0.00966043760239 0.00319809704106
+obs_info obs_0_seq_state_49 0.0248635037791 0.0124613559494 0.0153294183012 0.0277914454731
+obs_info obs_0_seq_state_50 0.0156444427036 0.0287940340623 0.0257732901894 0.0081678074693
+obs_info obs_0_seq_state_51 0.00503649290682 0.00501841744104 0.00751735979368 0.0203308842805
+obs_info obs_0_seq_state_52 0.0118377351494 0.0200318764856 0.0201193443343 0.0292909092748
+obs_info obs_0_seq_state_53 0.00700160487359 0.0246727049978 0.0134564935701 0.0237825944369
+obs_info obs_0_seq_state_54 0.00607590155565 0.00569185253941 0.023665297181 0.00964215792504
+obs_info obs_0_seq_state_55 0.025716950551 0.030006063358 0.0241654909906 0.00533891947064
+obs_info obs_0_seq_state_56 0.0306383542496 0.0208883057902 0.0152474380581 0.0148283126001
+obs_info obs_0_seq_state_57 0.00440794924551 0.0256686142056 0.0158410520659 0.0200381258695
+obs_info obs_0_seq_state_58 0.028549066256 0.029879211807 0.00772855769831 0.019150939489
+obs_info obs_0_seq_state_59 0.0335614351888 0.0153293046475 0.0211185832932 0.0274795566403
+obs_info obs_0_seq_state_60 0.0198516330302 0.00763598451336 0.0255604083883 0.00943130147014
+obs_info END
+bg_gtor subs_rate_bg_model 0
+bg_gtor END
+rate_gtor_nuc_base is_use_edge_correction 0
+rate_gtor_nuc_base rate_model_0 3
+rate_gtor_nuc_base context_model_0 0
+rate_gtor_nuc_base site_rate_cats_0 0 1
+rate_gtor_nuc_base group_rate_cats_0 0 1
+rate_gtor_nuc_base nuc_mutation_model_0_param_A->C_rate_indy_context_0 1 0.599432193283
+rate_gtor_nuc_base nuc_mutation_model_0_param_A->G_rate_indy_context_1 1 0.0690425519172
+rate_gtor_nuc_base nuc_mutation_model_0_param_A->T_rate_indy_context_2 1 0.334663391257
+rate_gtor_nuc_base nuc_mutation_model_0_param_C->A_rate_indy_context_3 1 0.414150508222
+rate_gtor_nuc_base nuc_mutation_model_0_param_C->G_rate_indy_context_4 1 0.289676780231
+rate_gtor_nuc_base nuc_mutation_model_0_param_C->T_rate_indy_context_5 1 0.49076397307
+rate_gtor_nuc_base nuc_mutation_model_0_param_G->A_rate_indy_context_6 1 0.102178404026
+rate_gtor_nuc_base nuc_mutation_model_0_param_G->C_rate_indy_context_7 1 0.380319868353
+rate_gtor_nuc_base nuc_mutation_model_0_param_G->T_rate_indy_context_8 1 0.299574104139
+rate_gtor_nuc_base nuc_mutation_model_0_param_T->A_rate_indy_context_9 1 0.0221958828146
+rate_gtor_nuc_base nuc_mutation_model_0_param_T->C_rate_indy_context_10 1 0.712122120946
+rate_gtor_nuc_base nuc_mutation_model_0_param_T->G_rate_indy_context_11 1 0.259330654331
+rate_gtor_nuc_base END
+rate_gtor_nscodon_base codon_bias_model 0
+rate_gtor_nscodon_base select_model_0 1
+rate_gtor_nscodon_base site_select_cats_0 0 1
+rate_gtor_nscodon_base group_select_cats_0 0 1
+rate_gtor_nscodon_base aa_selection_matrix_0_scale_param 1 1.10999570881
+rate_gtor_nscodon_base END
+root_gtor root_gtor_model 6
+root_gtor END
+subs_ml_model_min_options converge_tolerance 0.0001
+subs_ml_model_min_options minimizer_type 2
+subs_ml_model_min_options is_prefer_diag_expm 0
+subs_ml_model_min_options obs_update_mode 0
+subs_ml_model_min_options END
+subs_ml_model END

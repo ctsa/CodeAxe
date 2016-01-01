@@ -1,0 +1,385 @@
+subs_ml_model model_file_version 10
+audit_info cmdline ../bin/CodeAxe -ml -in-model ex3.model.cpg.start -in-data ex3.data.c4+ -tol 1e-1
+audit_info binary CodeAxe version D92-r1191
+audit_info random_seed 1206748788
+audit_info write_time Fri Mar 28 17:10:21 2008
+audit_info END
+subs_ml_model tree (marsupial,((hamster,(rat,mouse)node5)node3,((hare,rabbit)node9,((elephseal,(pig,(cow,sheep)node17)node15)node13,(bushbaby,(human,tarsier)node22)node20)node12)node8)node2)node0;
+cat_manager n_cats 1
+cat_manager cat_0_branch_0_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_0_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_1_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_1_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_2_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_2_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_3_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_3_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_4_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_4_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_5_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_5_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_6_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_6_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_7_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_7_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_8_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_8_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_9_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_9_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_10_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_10_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_11_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_11_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_12_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_12_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_13_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_13_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_14_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_14_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_15_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_15_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_16_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_16_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_17_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_17_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_18_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_18_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_19_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_19_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_20_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_20_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_21_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_21_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_22_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_22_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_23_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_23_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_label_0 default_seq_cat
+cat_manager typed_cat_label_smr_0 default_smr_param_set
+cat_manager typed_cat_label_gmr_0 default_gmr_param_set
+cat_manager typed_cat_label_smm_0 default_smm_param_set
+cat_manager typed_cat_label_gmm_0 default_gmm_param_set
+cat_manager typed_cat_label_sss_0 default_sss_param_set
+cat_manager typed_cat_label_gss_0 default_gss_param_set
+cat_manager typed_cat_label_ssm_0 default_ssm_param_set
+cat_manager typed_cat_label_gsm_0 default_gsm_param_set
+cat_manager typed_cat_label_sro_0 default_sro_param_set
+cat_manager typed_cat_label_gro_0 default_gro_param_set
+cat_manager typed_cat_label_sti_0 default_sti_param_set
+cat_manager typed_cat_label_gti_0 default_gti_param_set
+cat_manager typed_cat_label_sob_0 default_sob_param_set
+cat_manager typed_cat_label_gob_0 default_gob_param_set
+cat_manager typed_cat_label_sbg_0 default_sbg_param_set
+cat_manager typed_cat_label_gbg_0 default_gbg_param_set
+cat_manager cat_prob_gtor_param_0 0 1
+cat_manager END
+time_gtor time_cat_0_branch_0 marsupial 1 1.13678169181
+time_gtor time_cat_0_branch_1 node2 1 0
+time_gtor time_cat_0_branch_2 node3 1 0.319340446721
+time_gtor time_cat_0_branch_3 hamster 1 0.36752872104
+time_gtor time_cat_0_branch_4 node5 1 0.0829157257652
+time_gtor time_cat_0_branch_5 rat 1 0.123156589393
+time_gtor time_cat_0_branch_6 mouse 1 0.215534361819
+time_gtor time_cat_0_branch_7 node8 1 0.0388437555514
+time_gtor time_cat_0_branch_8 node9 1 0.196439220236
+time_gtor time_cat_0_branch_9 hare 1 0.0336251651099
+time_gtor time_cat_0_branch_10 rabbit 1 0.058993245784
+time_gtor time_cat_0_branch_11 node12 1 0.0179513751512
+time_gtor time_cat_0_branch_12 node13 1 0.0995302887392
+time_gtor time_cat_0_branch_13 elephseal 1 0.250689508953
+time_gtor time_cat_0_branch_14 node15 1 0
+time_gtor time_cat_0_branch_15 pig 1 0.308531998901
+time_gtor time_cat_0_branch_16 node17 1 0.146832026162
+time_gtor time_cat_0_branch_17 cow 1 0.0637482638186
+time_gtor time_cat_0_branch_18 sheep 1 0.0896479010295
+time_gtor time_cat_0_branch_19 node20 1 0.025122499911
+time_gtor time_cat_0_branch_20 bushbaby 1 0.187340162573
+time_gtor time_cat_0_branch_21 node22 1 0.0604381060468
+time_gtor time_cat_0_branch_22 human 1 0.207412927959
+time_gtor time_cat_0_branch_23 tarsier 1 0.181734847395
+time_gtor END
+subs_ml_model rate_gtor_model 5
+obs_info obs_state_source 1
+obs_info obs_0_seq_state_0 0 0 0 2 0 0 0 0 0 0 0 0 1
+obs_info obs_0_seq_state_1 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_2 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_3 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_4 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_5 0 0 0 1 0 1 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_6 1 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_7 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_8 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_9 0 1 1 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_10 0 0 1 1 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_11 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_12 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_13 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_14 0 0 0 0 0 1 0 0 1 1 0 0 0
+obs_info obs_0_seq_state_15 1 1 1 1 1 1 1 1 1 1 1 1 1
+obs_info obs_0_seq_state_16 2 2 2 2 2 2 1 1 0 0 2 2 2
+obs_info obs_0_seq_state_17 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_18 3 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_19 0 1 0 1 0 0 1 1 0 0 0 0 0
+obs_info obs_0_seq_state_20 1 1 1 2 1 1 1 0 1 1 0 1 0
+obs_info obs_0_seq_state_21 0 1 0 0 1 1 0 1 1 1 0 1 1
+obs_info obs_0_seq_state_22 0 0 0 0 0 0 1 0 0 0 0 0 1
+obs_info obs_0_seq_state_23 0 0 0 0 0 0 0 0 1 0 0 0 0
+obs_info obs_0_seq_state_24 2 4 5 5 7 6 6 6 7 7 7 7 7
+obs_info obs_0_seq_state_25 1 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_26 2 2 1 1 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_27 0 0 1 2 1 1 2 1 1 1 1 1 1
+obs_info obs_0_seq_state_28 2 2 0 0 1 1 2 1 1 1 0 0 2
+obs_info obs_0_seq_state_29 1 2 3 2 3 3 2 3 2 2 2 2 2
+obs_info obs_0_seq_state_30 2 1 1 0 1 1 2 1 1 1 2 1 0
+obs_info obs_0_seq_state_31 2 1 2 1 2 2 3 2 2 2 2 2 2
+obs_info obs_0_seq_state_32 2 2 2 2 3 2 2 2 2 2 2 2 2
+obs_info obs_0_seq_state_33 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_34 0 0 0 0 0 0 0 1 0 0 0 0 0
+obs_info obs_0_seq_state_35 0 0 0 1 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_36 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_37 1 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_38 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_39 2 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_40 1 1 1 1 1 1 1 1 1 1 1 1 1
+obs_info obs_0_seq_state_41 0 2 1 0 0 1 1 0 2 2 0 0 1
+obs_info obs_0_seq_state_42 1 4 2 1 2 2 2 2 1 1 3 1 2
+obs_info obs_0_seq_state_43 1 3 4 4 2 2 1 3 2 2 2 2 0
+obs_info obs_0_seq_state_44 2 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_45 1 2 1 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_46 0 1 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_47 0 0 1 1 0 0 0 0 1 1 0 0 0
+obs_info obs_0_seq_state_48 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_49 1 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_50 0 0 1 0 1 1 1 0 1 1 1 1 0
+obs_info obs_0_seq_state_51 1 0 1 1 1 1 2 2 0 0 2 1 3
+obs_info obs_0_seq_state_52 2 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_53 0 0 0 0 0 0 0 0 1 1 0 0 0
+obs_info obs_0_seq_state_54 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_55 1 0 1 1 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_56 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_57 0 0 0 0 0 0 1 0 0 0 0 0 0
+obs_info obs_0_seq_state_58 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_59 0 0 1 0 2 2 0 0 1 1 1 2 1
+obs_info obs_0_seq_state_60 1 0 0 1 0 0 1 0 1 1 1 1 1
+obs_info obs_0_seq_state_61 0 1 1 0 0 0 0 1 0 0 0 0 0
+obs_info obs_0_seq_state_62 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_63 0 1 1 0 1 1 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_64 0 0 0 0 0 0 0 0 0 0 0 1 0
+obs_info obs_0_seq_state_65 0 0 0 0 0 0 1 0 0 0 1 1 0
+obs_info obs_0_seq_state_66 0 1 1 1 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_67 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_68 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_69 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_70 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_71 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_72 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_73 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_74 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_75 1 2 3 3 2 1 2 2 1 1 2 2 1
+obs_info obs_0_seq_state_76 0 1 2 2 1 1 0 0 0 1 2 1 1
+obs_info obs_0_seq_state_77 2 2 1 1 1 1 2 2 1 1 2 0 1
+obs_info obs_0_seq_state_78 2 2 2 2 2 2 1 2 1 1 2 1 2
+obs_info obs_0_seq_state_79 0 1 2 2 2 1 1 0 1 1 2 2 2
+obs_info obs_0_seq_state_80 0 1 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_81 5 4 4 3 2 3 5 4 4 4 4 5 4
+obs_info obs_0_seq_state_82 0 0 0 0 0 0 1 0 0 0 0 0 0
+obs_info obs_0_seq_state_83 0 1 0 1 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_84 0 0 0 0 0 0 1 2 0 1 0 0 0
+obs_info obs_0_seq_state_85 0 2 2 2 0 0 1 3 0 0 1 1 0
+obs_info obs_0_seq_state_86 1 0 0 1 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_87 0 2 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_88 1 2 2 2 1 1 1 2 1 1 1 1 0
+obs_info obs_0_seq_state_89 0 0 0 0 0 0 0 1 0 0 1 0 0
+obs_info obs_0_seq_state_90 0 0 1 1 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_91 3 2 1 1 2 2 2 1 3 2 2 1 1
+obs_info obs_0_seq_state_92 0 0 0 1 0 0 1 1 0 1 0 0 0
+obs_info obs_0_seq_state_93 2 1 0 1 0 0 1 1 1 2 1 1 1
+obs_info obs_0_seq_state_94 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_95 0 0 0 0 0 0 0 0 0 0 0 0 1
+obs_info obs_0_seq_state_96 0 0 0 0 0 0 0 0 1 0 0 0 0
+obs_info obs_0_seq_state_97 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_98 0 0 2 2 2 2 1 2 1 2 2 2 2
+obs_info obs_0_seq_state_99 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_100 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_101 1 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_102 2 0 0 0 0 0 1 0 0 0 0 0 0
+obs_info obs_0_seq_state_103 1 2 2 2 3 3 3 3 4 4 3 3 2
+obs_info obs_0_seq_state_104 1 1 0 1 4 4 3 2 4 4 3 4 3
+obs_info obs_0_seq_state_105 0 1 0 0 0 0 0 0 0 0 0 0 1
+obs_info obs_0_seq_state_106 0 0 0 1 0 1 1 1 0 0 1 0 0
+obs_info obs_0_seq_state_107 0 0 1 0 1 1 0 1 1 1 0 1 1
+obs_info obs_0_seq_state_108 1 1 1 1 1 1 1 1 1 1 0 2 1
+obs_info obs_0_seq_state_109 0 0 0 0 1 1 1 0 1 1 1 2 1
+obs_info obs_0_seq_state_110 1 1 0 0 1 1 1 1 1 1 1 2 1
+obs_info obs_0_seq_state_111 0 0 0 0 1 1 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_112 0 1 2 1 2 2 0 1 1 2 2 2 2
+obs_info obs_0_seq_state_113 1 1 0 0 1 1 1 0 0 0 1 0 0
+obs_info obs_0_seq_state_114 0 0 0 0 1 1 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_115 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_116 0 0 0 0 1 1 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_117 1 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_118 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_119 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_120 1 0 0 0 0 0 0 1 0 0 0 0 1
+obs_info obs_0_seq_state_121 0 1 0 0 0 0 1 1 1 1 0 0 0
+obs_info obs_0_seq_state_122 0 0 0 0 2 2 1 1 1 1 1 3 1
+obs_info obs_0_seq_state_123 1 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_124 1 0 0 1 2 2 2 1 1 1 2 1 2
+obs_info obs_0_seq_state_125 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_126 0 1 0 0 0 0 0 0 0 0 0 1 0
+obs_info obs_0_seq_state_127 1 1 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_128 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_129 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_130 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_131 1 1 1 2 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_132 0 0 0 0 0 0 0 1 0 0 0 0 0
+obs_info obs_0_seq_state_133 0 0 0 1 0 0 0 0 2 1 0 0 0
+obs_info obs_0_seq_state_134 0 0 0 0 0 0 1 0 0 0 0 0 1
+obs_info obs_0_seq_state_135 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_136 0 1 1 1 1 1 0 1 1 2 1 2 1
+obs_info obs_0_seq_state_137 0 2 0 0 1 1 0 2 0 1 2 1 1
+obs_info obs_0_seq_state_138 0 0 0 0 0 0 0 2 0 0 0 0 2
+obs_info obs_0_seq_state_139 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_140 0 0 0 0 0 0 0 0 1 1 0 0 0
+obs_info obs_0_seq_state_141 0 0 0 1 0 0 1 0 0 0 0 0 0
+obs_info obs_0_seq_state_142 0 1 0 0 0 0 1 3 1 1 1 1 3
+obs_info obs_0_seq_state_143 0 0 0 0 1 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_144 0 0 0 0 0 0 0 1 0 0 1 0 0
+obs_info obs_0_seq_state_145 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_146 1 2 1 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_147 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_148 0 0 0 1 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_149 2 0 0 0 0 0 1 2 1 1 0 1 0
+obs_info obs_0_seq_state_150 0 0 0 0 0 0 0 0 0 0 0 0 1
+obs_info obs_0_seq_state_151 1 1 0 0 2 1 0 1 0 0 0 0 0
+obs_info obs_0_seq_state_152 5 7 8 7 5 5 7 6 8 7 6 4 7
+obs_info obs_0_seq_state_153 2 1 1 1 2 2 1 1 1 1 2 1 2
+obs_info obs_0_seq_state_154 2 1 1 2 2 3 1 3 2 2 2 2 1
+obs_info obs_0_seq_state_155 0 0 0 0 0 0 1 0 0 0 0 0 0
+obs_info obs_0_seq_state_156 0 0 0 0 0 0 0 0 1 1 0 0 0
+obs_info obs_0_seq_state_157 0 0 0 0 1 1 1 0 0 0 0 0 0
+obs_info obs_0_seq_state_158 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_159 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_160 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_161 0 0 1 0 1 1 1 1 1 1 1 1 1
+obs_info obs_0_seq_state_162 0 1 1 1 1 1 1 1 1 1 1 1 1
+obs_info obs_0_seq_state_163 0 0 1 1 1 0 0 1 0 0 1 1 1
+obs_info obs_0_seq_state_164 3 6 5 6 7 7 6 5 5 6 7 8 5
+obs_info obs_0_seq_state_165 2 4 4 4 5 5 4 5 6 5 6 6 5
+obs_info obs_0_seq_state_166 1 0 2 0 0 0 0 0 0 0 0 0 2
+obs_info obs_0_seq_state_167 0 1 2 1 2 3 3 4 2 3 2 1 2
+obs_info obs_0_seq_state_168 3 1 2 2 1 1 2 1 2 2 0 1 1
+obs_info obs_0_seq_state_169 0 3 4 2 0 0 2 1 3 3 1 3 1
+obs_info obs_0_seq_state_170 1 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_171 1 2 1 3 2 1 0 0 2 1 1 1 3
+obs_info obs_0_seq_state_172 3 1 2 2 1 1 0 1 1 1 2 3 2
+obs_info obs_0_seq_state_173 3 5 5 5 4 4 1 3 7 7 3 3 4
+obs_info obs_0_seq_state_174 1 1 2 3 2 2 1 1 0 0 1 1 0
+obs_info obs_0_seq_state_175 1 2 2 1 2 3 2 1 1 1 2 2 2
+obs_info obs_0_seq_state_176 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_177 5 1 1 2 4 3 4 3 3 2 3 4 3
+obs_info obs_0_seq_state_178 1 1 2 1 1 1 2 1 1 1 2 2 2
+obs_info obs_0_seq_state_179 1 1 2 1 1 1 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_180 1 1 0 0 0 0 0 1 0 0 0 0 0
+obs_info obs_0_seq_state_181 4 3 2 2 2 2 2 4 3 4 3 1 1
+obs_info obs_0_seq_state_182 3 2 3 3 2 3 4 2 4 3 4 4 4
+obs_info obs_0_seq_state_183 0 0 0 0 1 1 1 0 0 1 1 0 1
+obs_info obs_0_seq_state_184 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_185 1 0 1 0 1 1 1 0 1 1 0 1 1
+obs_info obs_0_seq_state_186 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_187 0 0 0 0 1 1 0 0 0 0 1 0 1
+obs_info obs_0_seq_state_188 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_189 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_190 0 0 0 0 0 0 0 0 1 0 0 0 0
+obs_info obs_0_seq_state_191 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_192 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_193 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_194 0 0 0 1 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_195 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_196 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_197 2 1 1 1 1 1 1 1 1 1 1 1 0
+obs_info obs_0_seq_state_198 2 3 2 1 1 1 2 1 1 2 1 2 2
+obs_info obs_0_seq_state_199 0 1 0 0 0 0 1 1 2 3 1 0 1
+obs_info obs_0_seq_state_200 0 0 1 1 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_201 1 0 1 1 1 1 2 1 1 1 1 1 1
+obs_info obs_0_seq_state_202 1 0 1 0 0 0 1 1 1 1 0 0 0
+obs_info obs_0_seq_state_203 0 2 3 3 2 2 1 0 1 0 2 2 3
+obs_info obs_0_seq_state_204 2 1 1 1 1 2 3 2 2 1 2 1 1
+obs_info obs_0_seq_state_205 1 0 1 1 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_206 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_207 0 0 0 0 0 0 0 0 0 1 0 0 0
+obs_info obs_0_seq_state_208 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_209 2 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_210 0 0 0 0 0 0 0 0 0 0 0 0 1
+obs_info obs_0_seq_state_211 1 1 1 2 1 1 1 1 1 1 1 2 1
+obs_info obs_0_seq_state_212 0 1 0 0 1 1 1 1 1 2 1 1 1
+obs_info obs_0_seq_state_213 2 1 1 2 1 1 1 1 0 0 0 2 1
+obs_info obs_0_seq_state_214 0 1 0 0 0 0 0 1 0 0 0 0 0
+obs_info obs_0_seq_state_215 0 0 0 0 1 1 0 1 1 0 0 1 0
+obs_info obs_0_seq_state_216 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_217 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_218 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_219 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_220 1 2 1 0 1 1 1 1 1 1 1 1 1
+obs_info obs_0_seq_state_221 0 0 0 1 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_222 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_223 1 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_224 1 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_225 1 2 2 1 3 3 2 2 0 0 2 2 2
+obs_info obs_0_seq_state_226 1 0 1 0 0 0 1 0 0 0 0 0 1
+obs_info obs_0_seq_state_227 0 0 0 0 0 0 0 0 1 1 0 0 0
+obs_info obs_0_seq_state_228 1 0 0 0 0 0 1 0 1 0 0 0 1
+obs_info obs_0_seq_state_229 1 0 0 0 1 1 0 0 0 0 1 0 0
+obs_info obs_0_seq_state_230 1 0 0 1 0 0 0 0 1 0 1 0 0
+obs_info obs_0_seq_state_231 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_232 2 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_233 0 1 1 1 0 0 0 0 0 0 1 1 0
+obs_info obs_0_seq_state_234 1 0 0 0 1 0 0 1 0 0 0 0 0
+obs_info obs_0_seq_state_235 0 0 0 1 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_236 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_237 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_238 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_239 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_240 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_241 0 0 0 0 0 0 0 0 0 0 0 0 0
+obs_info obs_0_seq_state_242 0 0 0 0 0 0 0 0 0 0 1 0 0
+obs_info obs_0_seq_state_243 1 1 0 0 0 0 0 0 1 0 0 0 0
+obs_info END
+bg_gtor subs_rate_bg_model 0
+bg_gtor END
+rate_gtor_nuc_base is_use_edge_correction 1
+rate_gtor_nuc_base rate_model_0 3
+rate_gtor_nuc_base context_model_0 5
+rate_gtor_nuc_base site_rate_cats_0 0 1
+rate_gtor_nuc_base group_rate_cats_0 0 1
+rate_gtor_nuc_base nuc_mutation_model_0_param_A->C_rate_0 1 0.359704247689
+rate_gtor_nuc_base nuc_mutation_model_0_param_A->G_rate_1 1 0.357241793427
+rate_gtor_nuc_base nuc_mutation_model_0_param_A->T_rate_2 1 0.287610409322
+rate_gtor_nuc_base nuc_mutation_model_0_param_C->A_rate_3 1 0.167485976922
+rate_gtor_nuc_base nuc_mutation_model_0_param_C->G_rate_4 1 0.131167405238
+rate_gtor_nuc_base nuc_mutation_model_0_param_C->T_rate_5 1 0.243166956685
+rate_gtor_nuc_base nuc_mutation_model_0_param_G->A_rate_6 1 0.229365046991
+rate_gtor_nuc_base nuc_mutation_model_0_param_G->C_rate_7 1 0.213010455777
+rate_gtor_nuc_base nuc_mutation_model_0_param_G->T_rate_8 1 0.195735736993
+rate_gtor_nuc_base nuc_mutation_model_0_param_T->A_rate_9 1 0.0350259474012
+rate_gtor_nuc_base nuc_mutation_model_0_param_T->C_rate_10 1 0.371044169861
+rate_gtor_nuc_base nuc_mutation_model_0_param_T->G_rate_11 1 0.0691373966373
+rate_gtor_nuc_base nuc_mutation_model_0_param_CpG_transversion_rate_12 1 0.616417348411
+rate_gtor_nuc_base nuc_mutation_model_0_param_CpG_transition_rate_13 1 1.66023778855
+rate_gtor_nuc_base edge_strength_0 0 1
+rate_gtor_nuc_base edge_strength_1 0 1
+rate_gtor_nuc_base END
+rate_gtor_nscodon_base codon_bias_model 0
+rate_gtor_nscodon_base select_model_0 1
+rate_gtor_nscodon_base site_select_cats_0 0 1
+rate_gtor_nscodon_base group_select_cats_0 0 1
+rate_gtor_nscodon_base aa_selection_matrix_0_scale_param 1 0.282574108973
+rate_gtor_nscodon_base END
+root_gtor root_gtor_model 7
+root_gtor END
+subs_ml_model_min_options converge_tolerance 0.1
+subs_ml_model_min_options minimizer_type 2
+subs_ml_model_min_options is_prefer_diag_expm 0
+subs_ml_model_min_options obs_update_mode 0
+subs_ml_model_min_options END
+subs_ml_model END

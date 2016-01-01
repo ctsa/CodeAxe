@@ -1,0 +1,40 @@
+goal: make obs iterations guarantee an improvement in the likelihood
+
+must make obs divisions work more like an em mixture model
+
+in either case:
+
+the missing data right now are the partitions of each gene into a set of categories, for 
+C categories and G genes, this partition is G*(C-1) parameters, but these are nuissance
+parameters and don't incur an statistical hit.
+
+made the basic thing happen, and it passes basic tests, now we need a lot of cleanup:
+
+integrity: make sure that model and data match when is_cat_em are turned on and used
+   ...done
+
+problems: likelihood gets worse on expectation step when obs is updated -- this seems like it
+might be theoretically justified. likelihood actually gets worse in the 1e-4 th digit even without
+obs updating too, but I'm willing to write this off as a precision problem -- I guess because the
+obs "estimates" are not optimized in the likelihood step, they can't be expected to behave as if
+em would work.
+
+
+useability: make all the persistent training options enterable in -create-model mode
+
+results:
+  tweak the iteration scheme to run more iterations, also set it to flag a decreasing lhood
+  ...also, increase post p accuracy, probably want to store probs as log values... values start
+  to go up a little bit on the E-step once we're in the 1e-2 level of precision, see if this
+  is primarily explained by precision... if not, you may have done the algorithm incorrectly???
+
+usability: 
+  1) expand post-prob functions to handle simultaneus group and cat probs
+  2) extend cat_em to handle group and cat probs together...
+
+  3) add warning for cases where not having -using-cat-em turned on doesn't make sense
+
+engineering: put g_cat_post_prob somewhere else, like in it's own object, or in the cat manager...
+  do this after the generalization above...
+  also move all these new functions to mdl_util...
+

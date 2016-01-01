@@ -1,0 +1,25 @@
+allow an option for the bg distro used by rate_gtor to be trained from parameters
+
+-- this has to change the model file 
+
+introduce this initially as a sequential only caetegory -- so that it works something like obs
+
+how would this look to the user?
+-bg-model full -cat-model 0{gmm{0}gbg{0}}
+
+where the default was:
+-bg-model obs-avg
+
+
+- make plans to expand this to a full branch category later -- see if you can't get rid of non-cat
+bg distribution altogether
+
+
+-- for now: 
+- get rid of bg_pdistro_nscodon/bg_pdistro_nuc_pos ***done
+- get rid of bg_pdistro_nuc ***done
+
+- make prob_gtor_param load_state() (you'll be using this for the bg param distro)
+- make a CAT_PARAM_TYPE:: for BG (or come up with a better name) -- we'll call these PARAM_BG
+- make an abstract category type for number of bg-distro's (based on obs or based on bg_cats) like the type in root-gtor
+- rate gtor has to become a param_composite!! ouch!

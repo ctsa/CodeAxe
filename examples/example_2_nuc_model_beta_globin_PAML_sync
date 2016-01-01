@@ -1,0 +1,41 @@
+#!/bin/bash -x
+#
+# In this example a reversible nucleotide model with HKY
+# parameterization is used to analyze a mammalian beta-globin
+# alignment (from Z. Yang, see README file). This example should
+# replicate the equivalent analysis by PAML's baseml program, which
+# can be run on the same data if the final line of this file is
+# uncommented and a reference to baseml is provided.
+#
+
+
+# -- convert fasta alignment to CodeAxe nucleotide site data format: 
+#
+../bin/CodeAxe -process-seq -in-seq example_data/bglobinMam.fsa -no-window-filter -no-ambig-gap-filter -no-codon-border -site-model nuc >| ex2.data
+
+# -- create hky nucleotide model with default starting parameters
+#
+# (because this model is reversible we modify it so as to lock the
+# time parameter to zero for one of the two branches connecting to the
+# root of the tree -- CodeAxe has no automated way to do this because
+# it is infrequently used for reversible models.)
+#
+../bin/CodeAxe -create-model -site-model nuc -rate-model hky85 -root-model obs-avg -tree-file example_data/bglobinMam.tree -reversible-tree -in-data ex2.data >| ex2.model.start
+
+# -- train model
+#
+../bin/CodeAxe -ml -in-model ex2.model.start -in-data ex2.data >| ex2.model.trained 2>| ex2.model.stderr
+
+# -- get the likelihood & likelihood/codon of the trained model
+#
+../bin/CodeAxe -lhood -in-model ex2.model.trained -in-data ex2.data >| ex2.model.trained.lhood
+
+# -- summarize parameters from the trained model
+#
+../bin/CodeAxe -report-model -in-model ex2.model.trained >| ex2.model.trained.report
+
+
+
+# -- baseml comparison:
+#
+# $baseml_binary example_data/baseml.ctl

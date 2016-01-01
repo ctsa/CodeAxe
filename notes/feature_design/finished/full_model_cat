@@ -1,0 +1,39 @@
+
+getting to full model group categories
+
+what's needed --
+
+0. move group cats into the cat-manager (started -- getting into issues:)
+
+  0a. move group cat control into cat-manager w/o changing any other flow (done)
+
+  0b. generalize sel matrix,root, and mut model to work on the group level (done)
+    - start with sel matrix : issues -- 
+      specifying which mix type is connected
+      getting the probabilities right
+
+  0c. make generalized param_object that allows handling of locked parameter lists (done)
+    put this above rate_gtor/prob_gtor and now cat_manger & time_gtor
+
+issue 1 -- need to put cat probs into cat_manager
+
+  0a. generalize param-object functions over prob-gtor...  (done)
+
+  0a2. fix any non-general prob-gtor elements. (easy)
+
+  0b. move cat probs into cat-manager using a prob-generator which will eventaully
+     allow the replication of the more resricted (old) parameterization. for more
+     general parameterizations, it should always take the marginal for individual
+     typed parameter probs and this will be the stopgap solution for this phase (done)
+
+  0c. allow recreation of old parameterization (---pass--)
+  
+
+1. we need any type of branch time category, this doesn't exist yet at all (done)
+   and group branch time category
+
+3. new cl inteface for generalized cats
+
+
+
+

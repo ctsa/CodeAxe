@@ -1,0 +1,66 @@
+for nonjoint distros, problem is simple: 
+sum rate matrix with non locked parameters and
+scale by (expect-sum+free_sum)/free_sum
+
+for joint distro w/ one sided locks... ugghh
+
+
+for a single joint parameter:
+
+ p *= sqrt(scale) if both free
+or
+ p *= scale if one free
+
+
+for an N joint-parameter vector w/ only one side lock:
+
+  ....in building the free parameter sum, we have been
+implicitely constructing this relationship:
+
+sum(free_param*X) + sum(locked_param) = expectation
+
+where X=scale, thus...
+
+
+X=(expect - sum(locked))/sum(free)
+
+...which corresponds to the relationship above.
+
+With joint parameters, the expectation equ. above is expanded to:
+
+sum(double_free_param*X) + sum(single_free_param*sqrt(X)) + sum(both_locked_param) = expectation
+
+...but what is sum(locked) here. it means that both sides of the joint are locked
+
+...soooo
+for:
+Y^2=X
+
+the problem is:
+
+Y^2*sum(double_free)+Y*sum(single_free)+sum(locked) = expect
+
+thus Y = (-sum(single) +/- sqrt(sum(single)^2-4*sum(double)*(sum(locked)-expect)))/(2*sum(double))
+
+...if sum(single) is zero, then
+
+Y = -sqrt(4*sum(double)*(sum(locked)-expect))/2*sum(double)
+X = (expect-sum(locked))/sum(double)
+
+..for the toy problem
+
+vec = [ 8 3 1 ] 
+lock = [ 00 01 11 ]
+expect = 10
+
+a=8
+b=3
+c=-9
+
+Y = (-3 +/- sqrt(9-4*8*(-9)))/16
+Y = (-3 +/- 17.23)/16
+Y = 0.889
+
+scaledvec = [ 6.33118 2.6688 1 ]
+
+double scaled parameters take most of the burden, but in a way that makes sense... now lets do it!

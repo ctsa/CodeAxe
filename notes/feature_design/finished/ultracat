@@ -1,0 +1,167 @@
+
+Requirements:
+
+) support all current capabilities independent combinations of
+  unassigned categoires. assigned site categories combined with
+  unassigned group categories.
+
+
+Think About:
+
+) support for continuous cats: param = x * (cat_val)*y
+  applicable to burial and GC%, etc: CAN'T BE DONE (efficiently)
+
+) multiplicative combination of mutation matrices, that is
+  can aa burial helical region be represented by the 
+  marginal matrix of each type?
+
+) assigned cats are not site or group cats, site-ness and group-ness
+  refer to strategies to recover unassigned cats, so each assigned cat
+  set could have it's unassigned members linked to the corresponding
+  site or group cat
+
+) cats on branch subsets
+
+
+
+arbitrary cat layout --
+simple stuff might look like:
+
+"""
+set1=(S1,S2,S3)
+set2=(R1,R2)
+
+cat1=S1,R1
+cat2=S1,R2
+cat3=S2,R1
+cat4=S2,R2
+cat5=S3,R1
+cat6=S3,R2
+"""
+
+
+simple data cat:
+"""
+set:
+S site selection 2 unassigned:inter,buried:buried,exposed:exposed
+R site rate 2
+
+cats:
+S1 R1
+S1 R2
+S2 R1
+S2 R2
+"""
+
+
+or something more structured:
+
+"""
+start set 
+label="S"
+number=3
+type=selection_strength
+end set
+
+start set
+label="R"
+number=2
+type=mutation_rate
+end set
+
+
+start cats
+S1,R1
+S1,R2
+S2,R1
+end cats
+"""
+
+other -- think about training a non-independence parameter, for instance to show that
+mutation rate and selection strength were correlated
+
+
+"""
+tracks: rate ratem ss sm root prob
+cat1     R1    x   S1  x   x   0.1
+"""
+
+----------------------
+new way with three alternate data-freecat combo's
+
+#1 one cat locks to another:
+"""
+<SET r1>
+type=site_mut_rate
+number=1
+
+<SET r2>
+type=site_mut_rate
+number=1
+
+<SET sm>
+type=site_sel_matrix
+datacatmap=buried:buried,exposed:exposed
+
+<CATS>
+sm[1]*r1
+sm[2]*r2
+"""
+
+
+#2 one cat crosses with another:
+"""
+<SET r>
+type=site_mut_rate
+number=2
+
+<SET sm>
+type=site_sel_matrix
+datacatmap=buried:buried,exposed:exposed
+
+<CATS>
+sm*r
+"""
+
+
+#3 one cat crosses each data cat:
+"""
+<SET r1>
+type=site_mut_rate
+number=2
+
+<SET r2>
+type=site_mut_rate
+number=2
+
+<SET sm>
+type=site_sel_matrix
+datacatmap=buried:buried,exposed:exposed
+
+<CATS>
+sm[1]*r1
+sm[2]*r2
+"""
+
+
+#4 one cat locks to another:
+"""
+<SET s>
+type=site_sel_strength
+number=3
+
+<SET sm>
+type=site_sel_matrix
+number=3
+
+
+<CATS>
+sm[1]*s[1]
+sm[2]*s[2]
+sm[3]*s[3]
+"""
+
+
+
+
+

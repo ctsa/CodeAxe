@@ -1,0 +1,144 @@
+subs_ml_model model_file_version 10
+audit_info cmdline ../bin/CodeAxe -ml -in-model ex1.model.start -in-data ex1.data.sim -tol 1.e-1
+audit_info binary CodeAxe version D92-r1191
+audit_info random_seed 1206747561
+audit_info write_time Fri Mar 28 16:40:22 2008
+audit_info END
+subs_ml_model tree ((A,(B,C)node3)node1,D)node0;
+cat_manager n_cats 1
+cat_manager cat_0_branch_0_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_0_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_1_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_1_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_2_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_2_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_3_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_3_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_4_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_4_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_5_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_5_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_label_0 default_seq_cat
+cat_manager typed_cat_label_smr_0 default_smr_param_set
+cat_manager typed_cat_label_gmr_0 default_gmr_param_set
+cat_manager typed_cat_label_smm_0 default_smm_param_set
+cat_manager typed_cat_label_gmm_0 default_gmm_param_set
+cat_manager typed_cat_label_sss_0 default_sss_param_set
+cat_manager typed_cat_label_gss_0 default_gss_param_set
+cat_manager typed_cat_label_ssm_0 default_ssm_param_set
+cat_manager typed_cat_label_gsm_0 default_gsm_param_set
+cat_manager typed_cat_label_sro_0 default_sro_param_set
+cat_manager typed_cat_label_gro_0 default_gro_param_set
+cat_manager typed_cat_label_sti_0 default_sti_param_set
+cat_manager typed_cat_label_gti_0 default_gti_param_set
+cat_manager typed_cat_label_sob_0 default_sob_param_set
+cat_manager typed_cat_label_gob_0 default_gob_param_set
+cat_manager typed_cat_label_sbg_0 default_sbg_param_set
+cat_manager typed_cat_label_gbg_0 default_gbg_param_set
+cat_manager cat_prob_gtor_param_0 0 1
+cat_manager END
+time_gtor time_cat_0_branch_0 node1 1 0.214842347969
+time_gtor time_cat_0_branch_1 A 1 0.0246152797604
+time_gtor time_cat_0_branch_2 node3 1 0.0260583452796
+time_gtor time_cat_0_branch_3 B 1 0.00869161502465
+time_gtor time_cat_0_branch_4 C 1 0.0301775933448
+time_gtor time_cat_0_branch_5 D 1 0.0167113391747
+time_gtor END
+subs_ml_model rate_gtor_model 3
+obs_info obs_state_source 1
+obs_info obs_0_seq_state_0 1953 1928 1859 2831
+obs_info obs_0_seq_state_1 1101 1102 1113 704
+obs_info obs_0_seq_state_2 1556 1548 1508 2080
+obs_info obs_0_seq_state_3 2070 2060 2026 2855
+obs_info obs_0_seq_state_4 1693 1757 1771 1639
+obs_info obs_0_seq_state_5 1641 1632 1616 1470
+obs_info obs_0_seq_state_6 1522 1498 1512 1495
+obs_info obs_0_seq_state_7 1552 1532 1520 2010
+obs_info obs_0_seq_state_8 913 945 949 383
+obs_info obs_0_seq_state_9 1643 1609 1562 2177
+obs_info obs_0_seq_state_10 1067 1073 1115 550
+obs_info obs_0_seq_state_11 2086 2047 2040 2740
+obs_info obs_0_seq_state_12 1466 1462 1457 1677
+obs_info obs_0_seq_state_13 1040 1083 1079 912
+obs_info obs_0_seq_state_14 1909 1881 1860 2278
+obs_info obs_0_seq_state_15 2027 2066 2030 2625
+obs_info obs_0_seq_state_16 1869 1829 1802 2108
+obs_info obs_0_seq_state_17 1686 1676 1685 1625
+obs_info obs_0_seq_state_18 1348 1397 1437 169
+obs_info obs_0_seq_state_19 2054 2056 2171 864
+obs_info obs_0_seq_state_20 2036 2052 2063 2219
+obs_info obs_0_seq_state_21 2163 2159 2109 2256
+obs_info obs_0_seq_state_22 1497 1504 1514 1535
+obs_info obs_0_seq_state_23 2417 2373 2350 3187
+obs_info obs_0_seq_state_24 1527 1538 1538 1105
+obs_info obs_0_seq_state_25 1579 1583 1621 1133
+obs_info obs_0_seq_state_26 2044 2019 1990 2490
+obs_info obs_0_seq_state_27 2477 2522 2497 2690
+obs_info obs_0_seq_state_28 1422 1472 1535 624
+obs_info obs_0_seq_state_29 1482 1460 1496 623
+obs_info obs_0_seq_state_30 1007 996 990 841
+obs_info obs_0_seq_state_31 1015 1030 1027 877
+obs_info obs_0_seq_state_32 1773 1782 1747 2341
+obs_info obs_0_seq_state_33 1712 1660 1658 2126
+obs_info obs_0_seq_state_34 1275 1318 1359 596
+obs_info obs_0_seq_state_35 1745 1738 1722 1818
+obs_info obs_0_seq_state_36 1446 1384 1434 1098
+obs_info obs_0_seq_state_37 1450 1438 1406 1775
+obs_info obs_0_seq_state_38 1066 1103 1118 676
+obs_info obs_0_seq_state_39 1154 1123 1127 946
+obs_info obs_0_seq_state_40 1647 1599 1567 1852
+obs_info obs_0_seq_state_41 1611 1643 1613 1940
+obs_info obs_0_seq_state_42 1437 1432 1468 1085
+obs_info obs_0_seq_state_43 1677 1672 1701 1888
+obs_info obs_0_seq_state_44 1351 1358 1371 1474
+obs_info obs_0_seq_state_45 1871 1828 1733 2546
+obs_info obs_0_seq_state_46 1249 1272 1303 620
+obs_info obs_0_seq_state_47 1341 1358 1350 1326
+obs_info obs_0_seq_state_48 1338 1337 1343 1483
+obs_info obs_0_seq_state_49 1917 1912 1902 1845
+obs_info obs_0_seq_state_50 2223 2261 2275 2363
+obs_info obs_0_seq_state_51 1401 1401 1449 555
+obs_info obs_0_seq_state_52 1857 1881 1887 1552
+obs_info obs_0_seq_state_53 1566 1544 1551 1755
+obs_info obs_0_seq_state_54 1347 1366 1391 335
+obs_info obs_0_seq_state_55 2176 2202 2137 3021
+obs_info obs_0_seq_state_56 1976 1962 1954 2494
+obs_info obs_0_seq_state_57 1637 1647 1661 1579
+obs_info obs_0_seq_state_58 2109 2115 2141 1979
+obs_info obs_0_seq_state_59 2096 2066 2058 2624
+obs_info obs_0_seq_state_60 1690 1709 1732 1536
+obs_info END
+bg_gtor subs_rate_bg_model 0
+bg_gtor END
+rate_gtor_nuc_base is_use_edge_correction 0
+rate_gtor_nuc_base rate_model_0 3
+rate_gtor_nuc_base context_model_0 0
+rate_gtor_nuc_base site_rate_cats_0 0 1
+rate_gtor_nuc_base group_rate_cats_0 0 1
+rate_gtor_nuc_base nuc_mutation_model_0_param_A->C_rate_indy_context_0 1 0.592847153218
+rate_gtor_nuc_base nuc_mutation_model_0_param_A->G_rate_indy_context_1 1 0.0689692036589
+rate_gtor_nuc_base nuc_mutation_model_0_param_A->T_rate_indy_context_2 1 0.33580626955
+rate_gtor_nuc_base nuc_mutation_model_0_param_C->A_rate_indy_context_3 1 0.412256968321
+rate_gtor_nuc_base nuc_mutation_model_0_param_C->G_rate_indy_context_4 1 0.284963253987
+rate_gtor_nuc_base nuc_mutation_model_0_param_C->T_rate_indy_context_5 1 0.491326869683
+rate_gtor_nuc_base nuc_mutation_model_0_param_G->A_rate_indy_context_6 1 0.0997025016341
+rate_gtor_nuc_base nuc_mutation_model_0_param_G->C_rate_indy_context_7 1 0.376403456721
+rate_gtor_nuc_base nuc_mutation_model_0_param_G->T_rate_indy_context_8 1 0.303759525026
+rate_gtor_nuc_base nuc_mutation_model_0_param_T->A_rate_indy_context_9 1 0.0238862285901
+rate_gtor_nuc_base nuc_mutation_model_0_param_T->C_rate_indy_context_10 1 0.729661539314
+rate_gtor_nuc_base nuc_mutation_model_0_param_T->G_rate_indy_context_11 1 0.252368974689
+rate_gtor_nuc_base END
+rate_gtor_nscodon_base codon_bias_model 0
+rate_gtor_nscodon_base select_model_0 1
+rate_gtor_nscodon_base site_select_cats_0 0 1
+rate_gtor_nscodon_base group_select_cats_0 0 1
+rate_gtor_nscodon_base aa_selection_matrix_0_scale_param 1 1.12309345392
+rate_gtor_nscodon_base END
+root_gtor root_gtor_model 6
+root_gtor END
+subs_ml_model_min_options converge_tolerance 0.1
+subs_ml_model_min_options minimizer_type 2
+subs_ml_model_min_options is_prefer_diag_expm 0
+subs_ml_model_min_options obs_update_mode 0
+subs_ml_model_min_options END
+subs_ml_model END

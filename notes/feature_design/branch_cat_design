@@ -1,0 +1,315 @@
+
+todo:
+-----before version cut:
+1) get selection strength (and mutation rate) categories working so that
+they normalize to the selection (mutation) model to which they are coupled
+
+...done
+
+
+2) start introducing the idea of n_seq_cats and n_param_cats separately, up
+until this point they have been the same, but no more!
+ -notice that this puts "time_cat" in sortof a wierd spot: think about how 
+to internally design this change.
+ -also note that probabilities only apply to seq_cats. this changes normalization
+a little bit.. ie. for a single seq cat per-branch dn/ds model with a selection matrix,
+think about how to deal with the extra degree of freedom. The current system depends on
+the probabilites to do this. what if there are to seq cats with per-branch dn/ds and a
+shared selection matrix? in this case there's a probability in one cat dimension only.
+
+...prob won't be necessary
+
+
+3) finish the command-line design, make as many of these changes to the current
+system as possible (that don't affect the model file)
+
+...done
+
+
+4) generalize the design of the newick tree parser to separate the parser from bi-tree
+initialization
+
+...done
+
+
+5) cat prob=0 attractor, similar to zero tree times....
+
+...not doing this yet, moving into long-term todo
+
+
+-----after version cut:
+
+
+1) implement new -cat-model parser (ignoring data-cats, for now)
+  (and ignoring, but parsing, branch cats) 
+
+...DONE
+
+
+0.5) change cat_manager civ struct to directly use name_id_lup, instead of custom labeler
+....done for cat, not for typed_cat yet
+
+2) change code around to store expression labels, and use these properly in reports
+....done except for re-importing the labels from the model file
+
+...got rid of space allowance
+
+ 
+3) write a list of the internal changes necessary to impliment branch cats once the UI is done:
+a) do it first only for selection strength -- don't worry about effecientcy on the first pass
+b) come up with interface changes to cat_manager
+
+  ) setup new branch_cat_set in the rates_func_options...
+
+  ....done
+
+  2) next step is to setup rates() functions to actually use this info
+
+  ...done
+
+  3) finally all the dummy functions in the cat_manager need to be filled in,
+     which means the parse problems described below neeed to be dealt with
+
+  30) move tree parse ahead of cat_manager: tree object is now a first class object in
+     sml model, and does not belong to time_gtor, this causes one sticky problem with
+     initiallization
+
+  ...done
+
+  30b) consolidate sml model init to use a struct
+    ...done
+  30c) reduce the number of objects directly visible from subs_ml_model
+    ...sort of did it, in a compiler firewall sense
+  30d) test privatizaion of opt() non-const
+    ...no
+  30f) get rid of time_gtor.load_state()
+    ...done
+  30e) fix report situation between time_gtor an subs_ml_model
+  30g) consider losing time_gtor.branch_size()
+    ...done
+  30h) consider privatizing const time_gtor.tree()
+    ...done
+  30i) make string case functions to resolve cl arguments in Codeaxe.cc
+    ...done
+  30k) get rid of init() in sml_options1
+    ...done
+  30j) unite the two types of sml_options
+    ...no doing, neatin'd up naming instead
+  30l) separate mode functions in Codeaxe
+    ...done
+
+  31) parse seleection strength branch labels
+  32) store/load these values in the cat manager state
+  33) present normal functions taking a "branch" argument
+  34) temporarily allow old functions to persist with some consistent behaviour
+     (ie. always use the first indexed branch in the tree)
+
+    ...done, branch cats theoretically working
+
+  ...note under the new scheme, the category sort order constraints are similar, we 
+  must sort so that groups are sorted before site categories. where groups used to be
+  equivilent by simply having the same label, now they are equivielent by having the same
+  pattern of labels over all branches.
+
+
+  40a1) oops! first have to finish what appears to be a bug in mut model normalization for
+        serial cats, when multiple mm's are contained in a single set... finding out more.
+    ...done
+  40a1a) eliminating rate_scale() reveals that the nscodon report is not accurate anymore,
+         switching it to maximum branch/cat verbosity so that it's always correct.
+    ...done
+  40a1b) can tighten up the reports a bit by iterating over branch_cat_sets at least:
+    ...done 
+  40a1b1) get rid of branch_cat_set usage outside of the cat_manager as much as possible, that is,
+          convert it to the first branch_id as soon as possible, b/c I don't want other functions
+          to be floating around with a two versions of functions, 1 for branch_id, and 1 for branch_set,
+          that seems error prone
+    /delay/
+  40a1b2) actually convert branch loops in report to work on branch_sets
+    ...done
+
+  40a2) once that's taken care of, then we need to think about eliminationg extraneous
+        rate_scale() usage -- and adding safeguards of the scaling assumptions at the same time.
+    ...done
+  40a3) next step is adapting this scaling to branches. Oh boy!
+    huh???
+
+
+  40) add mut branch cat types
+    ...done
+  41) update param_object to allow disconitinous normalization blocks
+  42) rewrite code in rate-gtor nuc/nscodon to use discontinuous normalziation blocks
+  43) rewrite rate_gtor report code so that it no longer assumes the expect of selstring and mutrate
+      are 1
+  44)
+
+
+
+
+  ) don't forget to review the simulators when you're done!!!
+
+) remember that all of the normalization schemes previously set up, still hold now on 
+  individual branches (at the least), once it's time to make things efficient, we'll have
+  to actually devise a group of branch sets which can be iterated over, and each of which
+  can be treated like you're currently treating all branches.
+
+  -write the interface to the cat-manager using branch-sets now, actually, even if we 
+   temporarily return the naive set division (which is one branch per set)
+
+
+) what is the currency of branch identification in all this, I'm assuming we're going 
+  to be working with the bi_tree branch_id() -- check to make sure that this id is
+  stable across the copy ctor!!
+
+) cat_manager could start needing tree info before it can initialize:
+  if so, separate tree from time_gtor and move it ahead of cat_manager in the modelfile
+
+) meanings of functions in cat_manager are starting to change:
+  cat_size and cat_distro remain the same concepts
+  typed_cat_size now refers to the full set of parameters, 
+  so that typed_cat_pdistro does not make sense,
+  however it could make sense on a per-branch basis -- if we went this route there
+  would need to be a per-branch typed_cat_size,
+
+  in this case we would also need (maybe) a global branch_cat_set function, that defined the
+  (inforamally) "intersection" of all category specifiic branch_cat_sets
+
+  besides this, we'll also need cat-specific branch_cat_set functions, and global branch_cat_set 
+  functions, including lists of categories.
+
+  we'll also need functions that return a list of branch_cat_set names,or ids
+
+// for now, in general, don't worry about this branch_cat_set stuff, just loop all the old code over branch_id
+// for the time being, without worrying about how verbose the output is going to be.
+
+  also note that for some types (obs,time), branch specificity in the typed_cat_size doesn't make sense,
+  so we might want to hard_code two different sets of functions: 
+
+  one for branch_capable categories, and another (the current system) for branch agnostic categories.
+
+
+branch categories:
+  user interface design
+demonstrate how these cases would work:
+
+1) single dn/ds for each branch with no other categories
+
+2) multiple sequence categories, with one seq category allowing single dn/ds per branch
+
+3) one dn/ds per branch, with one branch having multiple seq categories (does this one make any sense?)
+
+
+minimal grammer thinky:
+express pairing A[B]
+express listing [A,B,C]
+cat expression like normal with not tree and no data, except we use []
+
+
+
+*****************************************Proposal 0:
+
+-cat-model cat1{gmm|bungi+gti|foot} cat2{gmm|foo+gti|bar}
+
+-cat-model 0{gmm|0+gti|0} 1{gmm|1+gti|1}
+
+with branch cats, category sets fall down the tree, so rat and mouse here use ss set "banana":
+-cat-model cat1{gmm|bungi+gss|((mm,rn):banana,hs):berry;} cat2{gmm|foo+gti|bar}
+
+with data:
+-cat-model [helix{H}] cat1{gmm|bungi+gss|((mm,rn):banana,hs):berry;} cat2{gmm|foo+gti|bar} [non helix{E+L}] cat3{gmm|foo}
+
+Issues: we don't currently have a way to store paramset labels, but this could be convenient
+
+challange examples:
+
+1) -cat-model 0{gss|((mm:0,rn:1):2,hs:3);}
+
+2) -cat-model 0{gmm|0+gss|((mm:0,rn:1):2,hs:3);} 1{gmm|1}
+
+3) -cat-model 0{gss|((mm:mm0,rn:1):2,hs:3);} 1{gss|((mm:mm1,rn:1):2,hs:3);}
+
+
+
+*****************************************Proposal 1:
+like Prop 0, except that branch cats are specified by node label, with fallthrough, and with a root default, the
+program will require some label to hit every branch (via fallthrough, specifying the root is sufficient)
+
+the "with-data" example above becomes:
+-cat-model [helix{H}] cat1{gmm{bungi}gss{berry,banana:mm_rn}} cat2{gmm{foo}gti{bar}} [non helix{E,L}] cat3{gmm{foo}}
+
+1) -cat-model 0{gss{0:mm,1:rn,2:mm_rn,3:hs}}
+
+2) -cat-model 0{gmm{0}gss{0:mm,1:rn,2:mm_rn,3:hs}} 1{gmm{1}}
+
+3) -cat-model 0{gss{mm0:mm,1:rn,2:mm_rn,3:hs}} 1{gss{mm1:mm,1:rn,2:mm_rn,3:hs}}
+
+
+(winner!!!!!!!!!!!!!!)
+
+
+
+...new way to handle assigned cats:
+
+option1: handle data label names directly: (cons: verbose)
+
+-assigned-cat-model H{cat1} E{cat2} L{cat2} unassigned{cat1,cat2}
+
+option2: invert option1 (cons: unintuitive,verbose)
+
+-assigned-cat-model cat1{H,unassigned} cat2{E,L,unassigned}
+
+option3: assigned cat labels (cons: more syntax to remember) 
+
+-assigned-cat-model helix[H]{cat1} non_helix[E,L]{cat2} unassigned[unassigned]{cat1,cat2}
+
+option4: integrate with the cat expression, sequential cats can be re-referenced in "label-only" form 
+
+-cat-model [helix{H}] cat1{gmm{bungi}gss{berry,banana:mm_rn}} cat2{gmm{foo}gti{bar}} [non_helix{E,L}] cat3{gmm{foo}} [unassigned{unassigned}] cat1 cat2 cat3
+
+
+
+*****************************************Proposal 2:
+
+regular -cat-model interface, with an additional flag: -cat-structure
+
+side change: flags for tree,cat-model,cat-structure,data-model will all have an optional -file
+version, so that they can be input sanely once they become really long under this scheme
+
+example tree:
+((mm,rn),hs);
+
+-cat-model 
+\types
+sc0:   gmm(0)+gti(0)
+sc1b0: gmm(1)+gti(1)+gss(0)
+sc1b1: gmm(1)+gti(1)+gss(1)
+
+\structure
+sc0
+((mm:sc1b0,rn:sc1b0):sc1b0,hs:sc1b1);
+
+\data
+
+1)
+-cat-model bc0:gss(0),bc1:gss(1),bc2:gss(2),bc3:gss(3) -cat-structure ((mm:bc0,rn:bc1):bc2,hs:bc3);
+
+2) 
+-cat-types sc0:gmm(0)+gti(0),sc1b0:gmm(1)+gti(1)+gss(0),sc1b1:gmm(1)+gti(1)+gss(1) -cat-structure sc0,((mm:sc1b0,rn:sc1b0):sc1b0,hs:sc1b1);
+
+
+Think about a dual commandline file language definition:
+-cat-model
+\types
+sc0:   gmm(0)+gti(0)
+sc1b0: gmm(1)+gti(1)+gss(0)
+sc1b1: gmm(1)+gti(1)+gss(1)
+
+\structure
+sc0:
+sc1bo:((mm,rn),hs:sc1b1);
+or:
+:((mm:sc1b0,rn:sc1b0):sc1b0,hs:sc1b1);
+
+\data
+
+

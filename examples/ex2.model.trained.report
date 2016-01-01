@@ -1,0 +1,375 @@
+Free parameters: 24
+State Size: 4
+
+node0 prior prob: root_distro_cat_no 0
+nuc distro:
+A: 0.204594
+C: 0.253383
+G: 0.30146
+T: 0.240563
+
+node0 prior prob: root_distro_cat_no 0
+root comparison to obs distro (nuc):
+NURO:              A        C        G        T
+NURO ROOT:   0.20459  0.25338  0.30146  0.24056
+NURO OBS:    0.20459  0.25338  0.30146  0.24056
+NURO dot(ROOT,OBS):  1.000000
+NURO re(ROOT,OBS):   0.000000
+
+time_cat: 0
+indy_cat_bg_nuc_normalized_branch_time: marsupial : 0.2681648
+indy_cat_bg_nuc_normalized_branch_time: node2 : 0.000000
+indy_cat_bg_nuc_normalized_branch_time: node3 : 0.05546809
+indy_cat_bg_nuc_normalized_branch_time: hamster : 0.1071149
+indy_cat_bg_nuc_normalized_branch_time: node5 : 0.02560273
+indy_cat_bg_nuc_normalized_branch_time: rat : 0.03725043
+indy_cat_bg_nuc_normalized_branch_time: mouse : 0.06195368
+indy_cat_bg_nuc_normalized_branch_time: node8 : 0.04740968
+indy_cat_bg_nuc_normalized_branch_time: node9 : 0.05195066
+indy_cat_bg_nuc_normalized_branch_time: hare : 0.01133215
+indy_cat_bg_nuc_normalized_branch_time: rabbit : 0.01725341
+indy_cat_bg_nuc_normalized_branch_time: node12 : 0.006757630
+indy_cat_bg_nuc_normalized_branch_time: node13 : 0.02975729
+indy_cat_bg_nuc_normalized_branch_time: elephseal : 0.06609108
+indy_cat_bg_nuc_normalized_branch_time: node15 : 0.01531278
+indy_cat_bg_nuc_normalized_branch_time: pig : 0.09751841
+indy_cat_bg_nuc_normalized_branch_time: node17 : 0.04158683
+indy_cat_bg_nuc_normalized_branch_time: cow : 0.02219303
+indy_cat_bg_nuc_normalized_branch_time: sheep : 0.02882846
+indy_cat_bg_nuc_normalized_branch_time: node20 : 0.003073955
+indy_cat_bg_nuc_normalized_branch_time: bushbaby : 0.04929049
+indy_cat_bg_nuc_normalized_branch_time: node22 : 0.02045942
+indy_cat_bg_nuc_normalized_branch_time: human : 0.05522454
+indy_cat_bg_nuc_normalized_branch_time: tarsier : 0.06524444
+
+(marsupial:0.2681648,((hamster:0.1071149,(rat:0.03725043,mouse:0.06195368)node5:0.02560273)node3:0.05546809,((hare:0.01133215,rabbit:0.01725341)node9:0.05195066,((elephseal:0.06609108,(pig:0.09751841,(cow:0.02219303,sheep:0.02882846)node17:0.04158683)node15:0.01531278)node13:0.02975729,(bushbaby:0.04929049,(human:0.05522454,tarsier:0.06524444)node22:0.02045942)node20:0.003073955)node12:0.006757630)node8:0.04740968)node2:0.000000)node0;
+
+
+cat: default_seq_cat branch_cat_set: branch_set_0:marsupial,node2,node3,hamster,node5,rat,mouse,node8,node9,hare,rabbit,node12,node13,elephseal,node15,pig,node17,cow,sheep,node20,bushbaby,node22,human,tarsier
+stat_nuc_distro:
+A: 0.2045940
+C: 0.2533832
+G: 0.3014601
+T: 0.2405627
+bg_nuc_distro:
+A: 0.2045940
+C: 0.2533832
+G: 0.3014601
+T: 0.2405627
+
+
+######################################################################
+Reporting mutation cat summary for branch [marsupial]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [node2]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [node3]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [hamster]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [node5]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [rat]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [mouse]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [node8]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [node9]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [hare]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [rabbit]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [node12]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [node13]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [elephseal]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [node15]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [pig]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [node17]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [cow]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [sheep]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [node20]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [bushbaby]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [node22]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [human]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [tarsier]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+
+######################################################################
+BRANCH_SET / GLOBAL_CAT / MUT_MODEL_CAT: [ branch_set_0:marsupial,node2,node3,hamster,node5,rat,mouse,node8,node9,hare,rabbit,node12,node13,elephseal,node15,pig,node17,cow,sheep,node20,bushbaby,node22,human,tarsier / default_seq_cat / default_smm_param_set ]
+MUT RATE
+        A        C        G        T  
+A  -------A    0.238    0.651    0.226 A
+C     0.192 -------C    0.284    0.520 C
+G     0.442    0.238 -------G    0.226 G
+T     0.192    0.547    0.284 -------T T
+
+CDM_RATE: NAN->C 0.238383
+CDM_RATE: NAN->G 0.651032
+CDM_RATE: NAN->T 0.226322
+CDM_RATE: NCN->A 0.192482
+CDM_RATE: NCN->G 0.283614
+CDM_RATE: NCN->T 0.519518
+CDM_RATE: NGN->A 0.441840
+CDM_RATE: NGN->C 0.238383
+CDM_RATE: NGN->T 0.226322
+CDM_RATE: NTN->A 0.192482
+CDM_RATE: NTN->C 0.547205
+CDM_RATE: NTN->G 0.283614
+CT_TI: 0.529669
+CT_TV: 0.235166
+CT_TI/TV: 2.25232
+
+CT_WS/SW: 1.24640

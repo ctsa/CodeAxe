@@ -1,0 +1,38 @@
+formats:
+1)site
+2)pair
+3)raw - continuous, no state assignments, assumed filtered -- "ready to be converted into any model operation
+4)cont site - might not every actually need such format, or at least no need to write to disk, but something
+  has to go into the HMM's
+workflow:
+) process-seq
+  seq-files->raw w/ quality filtration
+
+) convert-data
+  raw->other
+
+) sim
+  write to raw only -- can be piped staight to convert-data mode if necessary 
+
+
+todo:
+  tighten up raw seq format -- use NUC::index_t, maybe make new struct just to ease the transition
+  rsd io
+
+
+secondary:
+  separate fsa read and filtration, so as to allow filtration to be applied to other file formats
+
+
+just go with totally new format
+n_seqs fixed
+pickup after cat sync issues are worked out -- eventually need tmp info tacked on 
+for the transition -or- move filtration to after the cat read
+structure:
+  monolithic seq*base precludes filtration
+  cat
+  codon_p
+  contuitoy
+  align_no
+
+

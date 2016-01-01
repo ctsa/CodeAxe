@@ -1,0 +1,35 @@
+problem: multiple model cats and multiple tree cats together, how to normalize the dependent paramater?
+
+think of these situations:
+
+0) tr1+mm1
+
+1) tr1+mm1,tr2+mm1
+
+2) tr1+mm1,tr1+mm2
+
+3) tr1+mm1,tr2+mm2
+
+4) tr1+mm1,tr2+mm1,tr1+mm2,tr2+mm2
+
+
+distinguishing 3+4 is the hard part.
+
+so, if we think of normalizing each mm separately:
+  1) each mm must scale all tr's it touches
+
+there's still only one dependent parameter in the general situation,
+however each separate tree/model group introduces a new dependent parameter
+
+test:
+given the mm-ti graph, find the number of subgraphs
+or
+for each mm:
+  check if trs have a set label:
+    if yes, label mm as belonging to the set of its tr's
+    if no, tr's are not label, add a new set, and label all tr's with set no matter what.
+
+
+x+a,a=1,x=x/a
+y+b,
+y+a,

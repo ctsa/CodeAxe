@@ -1,0 +1,57 @@
+
+
+method suggested by pg: use a codon model, where the edge context is taken from pp estimates of neighboring codons,
+note that for each branch this would have to be some average of two tree nodes used for the rate matrix on each branch
+
+naive implementation of this method requires, 1) eval of each site without compression of site types 2) calculationn of 
+transition prob for each branch, for each site! ouch.
+
+for any solution, cut down on the number of transition matrices by using a hack rate matrix clustering technique: for each type
+of neighboring nucleotide context, search for a context distro within distance x and use that matrix, else calc denovo.
+adjust distance according to cpu and storage limits (all the tprobs will have to be stored)
+
+best approximate solution is to stick with independent sites, but record counts of each type of neighbor in both directions.
+edges/gaps can be treated as one count of every node average? this would require average the pp of all internal nodes, is this
+going to suck?
+
+get edge context by averaging the pp of each neighbor, use this to recalc pp, iterate, at convergence calculate lhood.
+
+implementation substeps:
+  - get pair data into site_data structure  ***DONE***
+  - setup pair data i/o                     ***DONE***
+
+  - setup iteration loop w/ pprob calc, ignoring context and using single rate matrix
+    - setup pprob function w/ storage for all sites
+      - create pprob storage function
+      - run single pprob calculation
+      - check pprob values
+    - setup pprob function "minimizer" w/ internal 3 itertion loop
+      - move pprob calc as a prestep to standard minimizer 
+        - setup em treewalk to return lnp
+        - run minimizer in N^2/site mode, calculating and throwing away 3x pprob info at each iteration
+        - determine that runtime is reasonable
+
+  - setup neighbor context at each iteration
+    - create left neighbor counter
+    - create pair info inverter
+      - create right neighbor counter
+    - create left&right neighbor context function
+  
+
+  - set up clustered rate matrix "server" object
+    - setup class sturcture which allows to pass in regular ptrans or server
+    -- nuc context in, some rate matrix comes out
+    -- setup dummy result first
+
+  hook up context to rate server object
+
+  finish rate server
+
+  - BONUS: go back and rerig non-cached lhood function to do posterior probs too! 
+
+    (not sure this is necessary, point is there can be *no* partial site information recycling for the method to work properly)
+
+  -- add cm line to data format
+
+  -- retest nb format with small set -- emphasis on "right-edge" errors
+  

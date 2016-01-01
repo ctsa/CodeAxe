@@ -1,0 +1,4 @@
+simple utility to shorten newick tree float rep, for published trees
+
+g++ tree_format.cc newick_tree_parser.cc -I./ -o ../bin/tree_format
+

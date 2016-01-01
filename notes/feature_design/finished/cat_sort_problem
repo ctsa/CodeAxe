@@ -1,0 +1,23 @@
+
+orig data structure:
+
+f(cat_type,global_cat_no)=typed_cat_no
+
+one (cat_type,typed_cat_no)'s is associated with each global_cat_no
+each cat_type <-> global_cat_no is 1:1
+there are a static number of cat_types such that:
+
+f(vector(cat_type),global_cat_no)=vector(typed_cat_no)
+
+vector(cat_type) is a constant, but each vector(typed_cat_no) must be unique for 
+each global_cat_no
+
+the global_cat_no itself doesn't mean anything except as a category
+
+problem: sort global_cat_nos, such that all equal group(cat_type)'s are
+adjacent
+
+so this is a problem of sorting vector(typed_cat_no)
+
+
+

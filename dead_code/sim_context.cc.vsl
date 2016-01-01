@@ -1,0 +1,1380 @@
+// -*- mode: c++; indent-tabs-mode: nil; -*-
+
+/// \file sim_context.cc
+/// \brief
+
+#include "cat_info.h"
+#include "rate_gtor_nscodon_base.h"
+#include "report_util.h"
+#include "sim_context.h"
+#include "sim_util.h"
+#include "simple_util.h"
+#include "subs_ml_types.h"
+#include "subs_ml_util.h"
+#include "util/bio/bioseq_util.h"
+#include "util/general/die.h"
+#include "util/math/prob_util.h"
+
+#include <cmath>
+
+#include <algorithm>
+#include <iomanip>
+#include <iostream>
+#include <map>
+#include <vector>
+
+
+using namespace std;
+
+
+
+const unsigned NUC3MER_SIZE(NUC::SIZE*NUC::SIZE*NUC::SIZE);
+
+#ifdef USE_VSL
+#include "mkl_vsl.h"
+#include "errcheck.inc"
+
+#include <ctime>
+
+VSLStreamStatePtr stream(0);
+
+static
+long int
+vsl_random_init(long int seed = -1){
+  if(seed==-1) seed = time(0);
+  const int errcode = vslNewStream( &stream, VSL_BRNG_MRG32K3A,  seed );
+  CheckVslError( errcode );
+  return seed;
+}
+#endif
+
+// only for nuc models
+//
+static
+void
+get_discrete_time_prob_nuc_from_single_context(const rate_gtor_nuc_base& r,
+                                               const NUC::index_t n_minus1,
+                                               const NUC::index_t n,
+                                               const NUC::index_t n_plus1,
+                                               prob_t& subprob,
+                                               prob_t* subdist,
+                                               const unsigned site_cat,
+                                               const unsigned group_cat){
+
+  // loop through possible nuc changes at n:
+  //
+  for(unsigned j(0);j<NUC::SIZE;++j){
+    const NUC::index_t nj(static_cast<NUC::index_t>(j));
+    if(nj == n) continue;
+
+    smlfloat this_rate = r.get_category_nuc_context_mut_rate(n_minus1,n,n_plus1,nj,site_cat,group_cat);
+    subdist[nj+(nj<n?0:-1)] = this_rate;
+  }
+  subprob = array_sum(subdist,(NUC::SIZE-1));
+}
+
+
+
+// only for nuc models
+//
+static
+void
+get_discrete_time_prob_nuc_from_all_contexts(const rate_gtor_nuc_base& r,
+                                             prob_t* nucsub,
+                                             prob_t* nucsub_cdf,
+                                             const unsigned site_category,
+                                             const unsigned group_category,
+                                             const bool is_calculate_cdf){
+
+  for(unsigned n0(0);n0<NUC::SIZE;++n0){
+    for(unsigned n1(0);n1<NUC::SIZE;++n1){
+      for(unsigned n2(0);n2<NUC::SIZE;++n2){
+        const unsigned nuc3mer(n0+n1*NUC::SIZE+n2*NUC::SIZE*NUC::SIZE);
+
+        prob_t subdist[(NUC::SIZE-1)];
+        get_discrete_time_prob_nuc_from_single_context(r,
+                                                       static_cast<NUC::index_t>(n0),
+                                                       static_cast<NUC::index_t>(n1),
+                                                       static_cast<NUC::index_t>(n2),
+                                                       nucsub[nuc3mer],subdist,
+                                                       site_category,group_category);
+
+        // load subdist into exported data structure:
+        if( is_calculate_cdf ){
+          prob_t* nucsub_cdf_3mer = nucsub_cdf+nuc3mer*(NUC::SIZE-1);
+          for(unsigned k(0);k<(NUC::SIZE-1);++k){
+            nucsub_cdf_3mer[k] = subdist[k];
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+// time is supplied in subs per site and normed according to the rate
+// matrix
+//
+// a second run with selection turned off is used as part of
+// calculating simulation time
+//
+static
+void
+get_discrete_time_prob_nuc_context(const rate_gtor_nuc_base& r,
+                                   prob_t** nucsub,       // [n_cats][NUC3MER_SIZE]
+                                   prob_t** nucsub_cdf,   // [n_cats][NUC3MER_SIZE*(NUC::SIZE-1)]
+                                   const smlfloat time_unit_normed,
+                                   const unsigned n_site_cats,
+                                   const unsigned n_group_cats,
+                                   const bool is_calculate_cdf = true){
+
+  for(unsigned gc(0);gc<n_group_cats;++gc){
+    for(unsigned sc(0);sc<n_site_cats;++sc){
+      const unsigned cat_num(gc*n_site_cats+sc);
+      prob_t* nucsub_cat = nucsub[cat_num];
+      prob_t* nucsub_cdf_cat(0);
+      if( is_calculate_cdf ) nucsub_cdf_cat = nucsub_cdf[cat_num];
+
+      get_discrete_time_prob_nuc_from_all_contexts(r,nucsub_cat,nucsub_cdf_cat,
+                                                   sc,gc,is_calculate_cdf);
+
+      array_scale(nucsub_cat,NUC3MER_SIZE,time_unit_normed);
+
+      if( is_calculate_cdf ){
+        // convert nucsub_cdf from unnormalized distro to cdf:
+        for(unsigned i(0);i<NUC3MER_SIZE;++i){
+          pdistro_norm(nucsub_cdf_cat+i*(NUC::SIZE-1),nucsub_cdf_cat+(i+1)*(NUC::SIZE-1));
+          pdistro_to_cdf_inplace(nucsub_cdf_cat+i*(NUC::SIZE-1),(NUC::SIZE-1));
+        }
+      }
+    }
+  }
+}
+
+
+
+
+static
+unsigned
+simulate_single_step_nuc(const vector<unsigned>& root_site_cats,
+                         const vector<unsigned>& root_group_cats,
+                         const vector<unsigned>& group_seq,
+                         vector<unsigned>& leaf,
+                         const prob_t* const * nucsub,
+                         const prob_t* const * nucsub_cdf,
+                         const prob_t* bg_nuc_cdf,
+                         const unsigned n_site_cats,
+                         const smlfloat fracstep = 1.){
+
+  // ring buffer (better described as a tiny fifo?) holds the +/-1 codon view
+  // around the current codon
+  static const unsigned RING_SIZE(3);
+
+  unsigned n_mutation(0);
+
+  NUC::index_t n_ring[RING_SIZE];
+
+  unsigned last_position(0);
+  unsigned this_position(0);
+  unsigned next_position(1);
+
+  // bootstrap the process by loading this_position before starting loop:
+  n_ring[this_position] = static_cast<NUC::index_t>(leaf[0]);
+
+  const unsigned lsize(leaf.size());
+
+  for(unsigned i(0);i<lsize;++i){
+
+    // push a new value in at next_position, if next_position exists:
+    if(i!=(lsize-1)){
+      n_ring[next_position] = static_cast<NUC::index_t>(leaf[i+1]);
+    }
+
+    // for the first and last positions, choose the leading and
+    // following nuc at random, which should, over many discrete
+    // steps, have the same effect as averaging them:
+    NUC::index_t last_nuc(NUC::N);
+    if       (i==0 || group_seq[i-1] != group_seq[i]){
+      last_nuc = static_cast<NUC::index_t>(random_cdf_variate(bg_nuc_cdf,NUC::SIZE));
+    } else { last_nuc=n_ring[last_position]; }
+
+    NUC::index_t next_nuc(NUC::N);
+    if(i==(lsize-1) || group_seq[i+1] != group_seq[i]) {
+      next_nuc = static_cast<NUC::index_t>(random_cdf_variate(bg_nuc_cdf,NUC::SIZE));
+    } else { next_nuc=n_ring[next_position]; }
+
+    const unsigned nuc3mer(last_nuc+n_ring[this_position]*NUC::SIZE+next_nuc*(NUC::SIZE*NUC::SIZE));
+
+    // setup the category at this position:
+    const unsigned cat_index(root_site_cats[i]+root_group_cats[i]*n_site_cats);
+
+    const double r(drand48());
+    const prob_t* nucsub_cat = nucsub[cat_index];
+    if(r<(nucsub_cat[nuc3mer]*fracstep)){
+      n_mutation++;
+      const prob_t* nucsub_cdf_cat = nucsub_cdf[cat_index];
+      int nuc = random_cdf_variate(nucsub_cdf_cat+nuc3mer*(NUC::SIZE-1),(NUC::SIZE-1));
+      if(static_cast<int>(n_ring[this_position])<=nuc) nuc += 1;
+      leaf[i] = nuc;
+    }
+
+    // increment positions
+    last_position = this_position;
+    this_position = next_position;
+    next_position = (next_position+1)%RING_SIZE;
+  }
+  return n_mutation;
+}
+
+
+
+
+struct ancestral_seq_callinfo {
+  const root_gtor& root;
+  const unsigned size;
+  const unsigned n_site_cats;
+  const std::vector<unsigned>& site_cats_seq;
+};
+
+
+
+
+// group_seq specifies continuous sequence ranges: sequence
+// dependencies are reset at the boundary between each range
+//
+static
+void
+get_ancestral_seq_nsc4(const ancestral_seq_callinfo& asc,
+                       const vector<unsigned>& group_seq,
+                       const RATE_GTOR_MODEL::index_t c4_type,
+                       vector<unsigned>& seq){
+
+  struct nsc4_root_cdf {
+    nsc4_root_cdf(){
+      for(unsigned i(0);i<NUC::SIZE;++i){
+        nscodon_cdf_by_nx[i] = nscodon_cdf_by_nx_base+NSC4::get_nscodon_offset(static_cast<NUC::index_t>(i));
+      }
+    }
+
+    prob_t cdf[NSC4::SIZE];
+    prob_t* nscodon_cdf_by_nx[NUC::SIZE];
+    prob_t nscodon_cdf_by_nx_base[NSC4::SIZE]; ///< provides storage for nscodon_cdf_by_nx;
+  };
+
+  // prepare root_distro pdf's
+  nsc4_root_cdf* root_cdf(new nsc4_root_cdf[asc.n_site_cats]);
+
+  for(unsigned i(0);i<asc.n_site_cats;++i){
+    const prob_t* root_distro(asc.root.site_cat_distro(i));
+
+    // cdf used for idependent 4mer draws:
+    pdistro_to_cdf(root_distro,root_cdf[i].cdf,NSC4::SIZE);
+
+    // cdf used for draws dependent on the 4mer's extra nuc:
+    for(unsigned j(0);j<NSC4::SIZE;++j){ root_cdf[i].nscodon_cdf_by_nx_base[j] = root_distro[j]; }
+
+    for(unsigned j(0);j<NUC::SIZE;++j){
+      pdistro_norm(root_cdf[i].nscodon_cdf_by_nx[j],root_cdf[i].nscodon_cdf_by_nx[j]+NSCODON::SIZE);
+      pdistro_to_cdf_inplace(root_cdf[i].nscodon_cdf_by_nx[j],NSCODON::SIZE);
+    }
+  }
+
+
+  seq.resize(asc.size);
+
+  {
+    // simulation values for C4PRE:
+    int seq_start(0);
+    int seq_end(asc.size);
+    int seq_increment(1);
+    unsigned dependent_nuc(2);
+
+    // simulation values for C4POST:
+    if(c4_type == RATE_GTOR_MODEL::C4POST){
+      seq_start = asc.size-1;
+      seq_end = -1;
+      seq_increment = -1;
+      dependent_nuc = 0;
+    }
+
+    NUC::index_t n[CODON::BASE_SIZE];
+    for(int i(seq_start); i != seq_end; i += seq_increment){
+
+      const nsc4_root_cdf& r(root_cdf[asc.site_cats_seq[i]]);
+
+      if(i==seq_start || group_seq[i-seq_increment] != group_seq[i]){
+        // for C4PRE(C4POST): first (last) position in each group is
+        // not dependent on nuc from the preceding (following) codon:
+        //
+        seq[i] = NSC4::decode_nscodon(random_cdf_variate(r.cdf,NSC4::SIZE));
+      } else {
+        // for C4PRE(C4POST): all other positions are found as a
+        // function of the dependent_nuc in the preceding (following)
+        // codon:
+        //
+        NSCODON::decode(n,static_cast<NSCODON::index_t>(seq[i-seq_increment]));
+        seq[i] = random_cdf_variate(r.nscodon_cdf_by_nx[n[dependent_nuc]],NSCODON::SIZE);
+      }
+    }
+  }
+
+  delete [] root_cdf;
+}
+
+
+
+
+static
+void
+get_ancestral_seq_nsc5_prepost(const ancestral_seq_callinfo& asc,
+                               const vector<unsigned>& group_seq,
+                               const RATE_GTOR_MODEL::index_t model,
+                               vector<unsigned>& seq){
+
+  struct nsc5pp_root_cdf {
+    nsc5pp_root_cdf(){
+      for(unsigned i(0);i<NUC::SIZE;++i){
+        for(unsigned j(0);j<NUC::SIZE;++j){
+          nscodon_cdf_by_n2x[j+i*NUC::SIZE] =
+            nscodon_cdf_by_n2x_base+NSC5::get_nscodon_offset(static_cast<NUC::index_t>(i),static_cast<NUC::index_t>(j));
+        }
+      }
+    }
+
+    prob_t cdf[NSC5::SIZE];
+    prob_t* nscodon_cdf_by_n2x[NUC::SIZE*NUC::SIZE];
+    prob_t nscodon_cdf_by_n2x_base[NSC5::SIZE]; ///< provides storage for nscodon_cdf_by_nx;
+  };
+
+  // prepare root_distro pdf's
+  nsc5pp_root_cdf* root_cdf(new nsc5pp_root_cdf[asc.n_site_cats]);
+
+  for(unsigned i(0);i<asc.n_site_cats;++i){
+    const prob_t* root_distro(asc.root.site_cat_distro(i));
+
+    // cdf used for idependent 5mer draws:
+    pdistro_to_cdf(root_distro,root_cdf[i].cdf,NSC5::SIZE);
+
+    // cdf used for draws dependent on the 4mer's extra nuc:
+    for(unsigned j(0);j<NSC5::SIZE;++j){ root_cdf[i].nscodon_cdf_by_n2x_base[j] = root_distro[j]; }
+
+    for(unsigned j(0);j<NUC::SIZE*NUC::SIZE;++j){
+      pdistro_norm(root_cdf[i].nscodon_cdf_by_n2x[j],root_cdf[i].nscodon_cdf_by_n2x[j]+NSCODON::SIZE);
+      pdistro_to_cdf_inplace(root_cdf[i].nscodon_cdf_by_n2x[j],NSCODON::SIZE);
+    }
+  }
+
+
+  seq.resize(asc.size);
+
+  {
+    // simulation values for C5PRE:
+    int seq_start(0);
+    int seq_end(asc.size);
+    int seq_increment(1);
+    unsigned n1_cpos(1);
+    unsigned n2_cpos(2);
+
+    // simulation values for C5POST:
+    if(model == RATE_GTOR_MODEL::C5POST){
+      seq_start = asc.size-1;
+      seq_end = -1;
+      seq_increment = -1;
+      n1_cpos = 0;
+      n2_cpos = 1;
+    }
+
+    NUC::index_t n[CODON::BASE_SIZE];
+    for(int i(seq_start); i != seq_end; i += seq_increment){
+
+      const nsc5pp_root_cdf& r(root_cdf[asc.site_cats_seq[i]]);
+
+      if(i==seq_start || group_seq[i-seq_increment] != group_seq[i]){
+        // for C4PRE(C4POST): first (last) position in each group is
+        // not dependent on nuc from the preceding (following) codon:
+        //
+        seq[i] = NSC5::decode_nscodon(random_cdf_variate(r.cdf,NSC5::SIZE));
+      } else {
+        // for C4PRE(C4POST): all other positions are found as a
+        // function of the dependent_nuc in the preceding (following)
+        // codon:
+        //
+        NSCODON::decode(n,static_cast<NSCODON::index_t>(seq[i-seq_increment]));
+        seq[i] = random_cdf_variate(r.nscodon_cdf_by_n2x[n[n2_cpos]+NUC::SIZE*n[n1_cpos]],NSCODON::SIZE);
+      }
+    }
+  }
+
+  delete [] root_cdf;
+}
+
+
+
+
+// group_seq specifies continuous sequence ranges: sequence
+// dependencies are reset at the boundary between each range
+//
+static
+void
+get_ancestral_seq_nsc5(const ancestral_seq_callinfo& asc,
+                       const vector<unsigned>& group_seq,
+                       vector<unsigned>& seq){
+
+  struct nsc5_root_cdf {
+    nsc5_root_cdf() {
+      for(unsigned i(0);i<DINUC::SIZE;++i){
+        for(unsigned j(0);j<TRINUC::SIZE;++j) trinuc_cdf_by_dinuc[i][j] = 0.;
+      }
+    }
+
+    prob_t cdf[NSC5::SIZE]; ///< cdf used for idependent 5mer draws
+    prob_t trinuc_cdf_by_dinuc[DINUC::SIZE][TRINUC::SIZE]; ///< cdf used for draws depedendent on pre_nuc and n0
+  };
+
+
+  // prepare root_distro pdf's
+  nsc5_root_cdf* root_cdf(new nsc5_root_cdf[asc.n_site_cats]);
+
+  for(unsigned i(0);i<asc.n_site_cats;++i){
+    const prob_t* root_distro(asc.root.site_cat_distro(i));
+
+    pdistro_to_cdf(root_distro,root_cdf[i].cdf,NSC5::SIZE);
+
+    NUC::index_t n[CODON::BASE_SIZE];
+    for(unsigned j(0);j<NSC5::SIZE;++j) {
+      NUC::index_t n_pre,n_post;
+      NSCODON::index_t c;
+      NSC5::decode(n_pre,n_post,c,static_cast<NSC5::index_t>(j));
+      NSCODON::decode(n,c);
+      const DINUC::index_t d = DINUC::encode(n_pre,n[0]);
+      const TRINUC::index_t t = TRINUC::encode(n[1],n[2],n_post);
+
+      root_cdf[i].trinuc_cdf_by_dinuc[d][t] = root_distro[j];
+    }
+
+    for(unsigned j(0);j<DINUC::SIZE;++j){
+      pdistro_norm(root_cdf[i].trinuc_cdf_by_dinuc[j],root_cdf[i].trinuc_cdf_by_dinuc[j]+TRINUC::SIZE);
+      pdistro_to_cdf_inplace(root_cdf[i].trinuc_cdf_by_dinuc[j],TRINUC::SIZE);
+    }
+  }
+
+
+  seq.resize(asc.size);
+
+  NUC::index_t n[CODON::BASE_SIZE+1];
+  // initialize to invalid value for safety:
+  for(unsigned i(0);i<(CODON::BASE_SIZE+1);++i) n[i] = NUC::N;
+
+  for(int i(0);i<static_cast<int>(asc.size);++i){
+
+    const nsc5_root_cdf& r(root_cdf[asc.site_cats_seq[i]]);
+
+    if(i==0 || group_seq[i-1] != group_seq[i]){
+      // first position in each group is not dependent on nuc from
+      // the preceding codon:
+      //
+      const NSC5::index_t f(random_cdf_variate(r.cdf,NSC5::SIZE));
+      const NSCODON::index_t c(NSC5::decode_nscodon(f));
+      seq[i] = c;
+
+      NSCODON::decode(n,c);
+      n[3] = NSC5::decode_nuc2(f);
+    } else {
+      const unsigned t = random_cdf_variate(r.trinuc_cdf_by_dinuc[DINUC::encode(n[2],n[3])],TRINUC::SIZE);
+      n[0] = n[3];
+      TRINUC::decode(n+1,static_cast<TRINUC::index_t>(t));
+
+      seq[i] = NSCODON::encode(n);
+    }
+  }
+
+  delete [] root_cdf;
+}
+
+
+
+
+// group_seq specifies continuous sequence ranges: sequence
+// dependencies are reset at the boundary between each range
+//
+static
+void
+get_ancestral_seq_dinuc(const ancestral_seq_callinfo& asc,
+                        const vector<unsigned>& group_seq,
+                        vector<unsigned>& seq){
+
+  struct dinuc_root_cdf {
+    dinuc_root_cdf(){
+      for(unsigned i(0);i<NUC::SIZE;++i){
+        nuc_cdf_by_nx[i] = cdf+(i*NUC::SIZE);
+      }
+    }
+
+    prob_t cdf[DINUC::SIZE];
+    prob_t* nuc_cdf_by_nx[NUC::SIZE];
+    prob_t nuc_cdf_by_nx_base[DINUC::SIZE]; ///< provides storage for nuc_cdf_by_nx;
+  };
+
+  // prepare root_distro pdf's
+  dinuc_root_cdf* root_cdf(new dinuc_root_cdf[asc.n_site_cats]);
+
+  for(unsigned i(0);i<asc.n_site_cats;++i){
+    const prob_t* root_distro(asc.root.site_cat_distro(i));
+
+    pdistro_to_cdf(root_distro,root_cdf[i].cdf,DINUC::SIZE);
+
+    for(unsigned j(0);j<DINUC::SIZE;++j){ root_cdf[i].nuc_cdf_by_nx_base[j] = root_distro[j]; }
+
+    for(unsigned j(0);j<NUC::SIZE;++j){
+      pdistro_norm(root_cdf[i].nuc_cdf_by_nx[j],root_cdf[i].nuc_cdf_by_nx[j]+NUC::SIZE);
+      pdistro_to_cdf_inplace(root_cdf[i].nuc_cdf_by_nx[j],NUC::SIZE);
+    }
+  }
+
+
+  seq.resize(asc.size);
+
+  {
+    int seq_start(0);
+    int seq_end(asc.size);
+    int seq_increment(1);
+
+    for(int i(seq_start); i != seq_end; i += seq_increment){
+
+      const dinuc_root_cdf& r(root_cdf[asc.site_cats_seq[i]]);
+
+      if(i==seq_start || group_seq[i-seq_increment] != group_seq[i]){
+        // first position in each group is not dependent on nuc from
+        // the preceding dinuc:
+        //
+        seq[i] = DINUC::decode_n0(random_cdf_variate(r.cdf,DINUC::SIZE));
+      } else {
+        // all other positions are found as a function of the
+        // dependent_nuc in the preceding dinuc:
+        //
+        int nx = DINUC::decode_nx(seq[i-seq_increment]);
+        seq[i] = random_cdf_variate(r.nuc_cdf_by_nx[nx],NUC::SIZE);
+      }
+    }
+  }
+
+  delete [] root_cdf;
+}
+
+
+
+
+// group_seq specifies continuous sequence ranges: sequence
+// dependencies are reset at the boundary between each range
+//
+static
+void
+get_ancestral_seq_trinuc(const ancestral_seq_callinfo& asc,
+                         const vector<unsigned>& group_seq,
+                         vector<unsigned>& seq){
+
+  struct trinuc_root_cdf {
+    prob_t cdf[TRINUC::SIZE];
+    prob_t dinuc_cdf_by_nuc0[NUC::SIZE][DINUC::SIZE];
+    prob_t nuc_cdf_by_dinuc0[DINUC::SIZE][NUC::SIZE];
+  };
+
+
+  // prepare root_distro pdf's
+  trinuc_root_cdf* root_cdf(new trinuc_root_cdf[asc.n_site_cats]);
+
+  for(unsigned i(0);i<asc.n_site_cats;++i){
+    const prob_t* root_distro(asc.root.site_cat_distro(i));
+
+    pdistro_to_cdf(root_distro,root_cdf[i].cdf,TRINUC::SIZE);
+
+    NUC::index_t nuc[TRINUC::BASE_SIZE];
+    for(unsigned j(0);j<TRINUC::SIZE;++j){
+      TRINUC::decode(nuc,static_cast<TRINUC::index_t>(j));
+      root_cdf[i].dinuc_cdf_by_nuc0[nuc[0]][DINUC::encode(nuc[1],nuc[2])] = root_distro[j];
+    }
+    for(unsigned j(0);j<NUC::SIZE;++j){
+      pdistro_norm(root_cdf[i].dinuc_cdf_by_nuc0[j],root_cdf[i].dinuc_cdf_by_nuc0[j]+DINUC::SIZE);
+      pdistro_to_cdf_inplace(root_cdf[i].dinuc_cdf_by_nuc0[j],DINUC::SIZE);
+    }
+
+    for(unsigned j(0);j<TRINUC::SIZE;++j){
+      TRINUC::decode(nuc,static_cast<TRINUC::index_t>(j));
+      root_cdf[i].nuc_cdf_by_dinuc0[DINUC::encode(nuc[0],nuc[1])][nuc[2]] = root_distro[j];
+    }
+    for(unsigned j(0);j<DINUC::SIZE;++j){
+      pdistro_norm(root_cdf[i].nuc_cdf_by_dinuc0[j],root_cdf[i].nuc_cdf_by_dinuc0[j]+NUC::SIZE);
+      pdistro_to_cdf_inplace(root_cdf[i].nuc_cdf_by_dinuc0[j],NUC::SIZE);
+    }
+  }
+
+
+  seq.resize(asc.size);
+
+  {
+    int seq_start(0);
+    int seq_end(asc.size);
+    int seq_increment(1);
+
+    NUC::index_t nuc[TRINUC::SIZE];
+    for(int i(seq_start); i != seq_end; i += seq_increment){
+
+      const trinuc_root_cdf& r(root_cdf[asc.site_cats_seq[i]]);
+
+      if(i==seq_start || group_seq[i-seq_increment] != group_seq[i]){
+        // first position in each group is not dependent on nuc from
+        // the preceding dinuc:
+        //
+        TRINUC::decode(nuc,static_cast<TRINUC::index_t>(random_cdf_variate(r.cdf,TRINUC::SIZE)));
+        seq[i] = nuc[2];
+      } else if((i-1)==seq_start || group_seq[(i-1)-seq_increment] != group_seq[i-1]) {
+        //
+        //
+        seq[i] = DINUC::decode_n0(random_cdf_variate(r.dinuc_cdf_by_nuc0[seq[i-seq_increment]],DINUC::SIZE));
+      } else {
+        // all other positions are found as a function of the
+        // dependent_dinuc in the preceding trinuc:
+        //
+        const NUC::index_t nx2 = static_cast<NUC::index_t>(seq[(i-1)-seq_increment]);
+        const NUC::index_t nx1 = static_cast<NUC::index_t>(seq[i-seq_increment]);
+        seq[i] = random_cdf_variate(r.nuc_cdf_by_dinuc0[DINUC::encode(nx2,nx1)],NUC::SIZE);
+      }
+    }
+  }
+
+  delete [] root_cdf;
+}
+
+
+
+const unsigned left_nuc_pad_size(2);
+const unsigned right_nuc_pad_size(2);
+const unsigned nuc_pad_size(left_nuc_pad_size+right_nuc_pad_size);
+
+
+
+static
+void
+accumulate_simulated_seq_group_nuc(const bi_tree_sml_type& tree,
+                                   const vector<vector<unsigned > >& treenode_seq,
+                                   const RATE_GTOR_MODEL::index_t rgm,
+                                   const prob_t assigned_cat_prob,
+                                   const vector<unsigned>& site_cats_seq,
+                                   const vector<unsigned>& group_seq,
+                                   site_data& sd,
+                                   const bool is_site_pair){
+
+  assert(RATE_GTOR_MODEL::base_size_conditioned(rgm)==1);
+
+  const unsigned n_leaves(tree.n_leaves());
+  const unsigned full_size(treenode_seq[0].size());
+  const SITE_MODEL::index_t smodel(RATE_GTOR_MODEL::convert_to_site_model(rgm));
+  const unsigned ambig_state(SITE_MODEL::ambig_state(smodel));
+
+  sim_site_data_init(tree,rgm,sd);
+
+  site_code sc(n_leaves);
+  site_code prev_sc(n_leaves);
+  unsigned prev_cat_no(UNASSIGNED_CAT_ID);
+
+  // chop up present day sequences into cq data format:
+  for(unsigned i(0);i<(full_size);++i){
+
+    // skip nuc left and right pads in every group
+    bool is_skip(false);
+
+    if(i<left_nuc_pad_size || (i+right_nuc_pad_size)>=full_size) {
+      is_skip = true;
+    } else {
+      const unsigned this_group(group_seq[i]);
+      for(unsigned j(0);j<left_nuc_pad_size;++j){
+        if(group_seq[i-(j+1)] != this_group) is_skip=true;
+      }
+      for(unsigned j(0);j<right_nuc_pad_size;++j){
+        if(group_seq[i+(j+1)] != this_group) is_skip=true;
+      }
+    }
+
+    if(is_skip || i==0){
+      for(unsigned t(0);t<n_leaves;++t){
+        prev_sc.set_taxid(t,ambig_state);
+      }
+      prev_cat_no = UNASSIGNED_CAT_ID;
+    }
+
+    if(is_skip) continue;
+
+
+    const int offset(RATE_GTOR_MODEL::base_size_repeat_offset(rgm));
+    NUC::index_t nuc[SITE_MODEL::MAX_BASE_SIZE];
+
+    for(unsigned t(0);t<n_leaves;++t){
+      const vector<unsigned>& leaf_seq(treenode_seq[tree.get_node_index_from_leaf_index(t)]);
+      for(int j(0);j<(1-offset);++j){
+        nuc[j] = static_cast<NUC::index_t>(leaf_seq[i+offset+j]);
+      }
+      sc.set_taxid(t,SITE_MODEL::encode_nuc(smodel,nuc));
+    }
+
+    unsigned cat_no(UNASSIGNED_CAT_ID);
+    if(assigned_cat_prob>0.){
+      const prob_t r(drand48());
+      if(r<assigned_cat_prob){ cat_no=site_cats_seq[i]+1; }
+    }
+
+    const unsigned group_no(group_seq[i]);
+
+    sd.site_count[sc][count_data_code(group_no,cat_no)]++;
+
+    if(is_site_pair){
+      sd.pair_count[make_pair(make_pair(prev_sc,sc),make_pair(prev_cat_no,cat_no))]++;
+
+      prev_sc = sc;
+      prev_cat_no = cat_no;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const unsigned NS5MER_SIZE = NSCODON::SIZE*NUC::SIZE*NUC::SIZE;
+const unsigned CODON_CDF_SIZE = CODON::BASE_SIZE*(NUC::SIZE-1);
+
+
+
+
+// only for NSCODON/NSC4 models
+//
+// pos = 1-indexed position of change in the codon
+//
+// this surveys the possible nucleotide changes for one background
+// [nuc-threemer+codon=3or4 nucs] at one position. n[1,2,3] are
+// interpreded as the codon n[0] is interpreted as the preceding
+// nucleotide for pos == 1 or the following nucleotide if pos == 3
+//
+static
+void
+get_discrete_time_prob_codon_context_position_type(const rate_gtor_nuc_base& r,
+                                                   const NUC::index_t n[],
+                                                   prob_t& subprob,
+                                                   prob_t* subdist,
+                                                   const unsigned pos,
+                                                   const unsigned site_cat,
+                                                   const unsigned group_cat,
+                                                   const bool is_include_codon_selection){
+
+  static const unsigned NMER_SIZE(4);
+  if(pos == 0) die("invalid pos arg to get_discrete_time_prob_codon_context_position_type");
+
+  const NSCODON::index_t codon = NSCODON::encode(n+1);
+  const NSAA::index_t aa = codon_trans_known(codon);
+  const NUC::index_t np = n[pos];
+  NUC::index_t ncopy[NMER_SIZE];
+  for(unsigned i(0);i<NMER_SIZE;++i) ncopy[i] = n[i];
+
+  // loop through possible nuc changes at pos:
+  //
+  for(unsigned j(0);j<NUC::SIZE;++j){
+    const NUC::index_t nj = static_cast<NUC::index_t>(j);
+    if(nj == np) continue;
+    ncopy[pos] = nj;
+
+    smlfloat this_rate = r.get_category_nuc_context_mut_rate(ncopy[pos-1],np,ncopy[(pos+1)%NMER_SIZE],nj,site_cat,group_cat);
+    if( is_include_codon_selection ){
+      const rate_gtor_nscodon_base& rcodon(static_cast<const rate_gtor_nscodon_base&>(r));
+      const NSCODON::index_t codon_j = NSCODON::encode(ncopy+1);
+      if( codon_j == NSCODON::NNN ){ // we hit a stop codon -- rate is zero
+        this_rate = 0.;
+      } else {
+        const NSAA::index_t aa_j = codon_trans_known(codon_j);
+        this_rate *= rcodon.get_codon_bias(codon,codon_j);
+        if(aa != aa_j) this_rate *= rcodon.get_category_nsaa_param(aa,aa_j,site_cat,group_cat);
+      }
+    }
+    subdist[nj+(nj<np?0:-1)] = this_rate;
+  }
+  subprob = array_sum(subdist,(NUC::SIZE-1));
+}
+
+
+
+
+
+// only for NSCODON/NSC4 models
+//
+// pos = 1-indexed position of change in the codon
+//
+static
+void
+get_discrete_time_prob_codon_context_position(const rate_gtor_nuc_base& r,
+                                              prob_t* codonsub,
+                                              prob_t* codonsub_cdf,
+                                              const unsigned pos,
+                                              const unsigned site_category,
+                                              const unsigned group_category,
+                                              const bool is_include_codon_selection,
+                                              const bool is_calculate_cdf){
+
+  static const unsigned NMER_SIZE(4);
+  if(pos<1 || pos>3) die("invalid pos arg to get_discrete_time_prob_codon_context_position");
+
+  for(unsigned i(0);i<NSC4::SIZE;++i){
+    NUC::index_t n[NMER_SIZE];
+    {
+      NSCODON::index_t c;
+      NSC4::decode(n[0],c,i);
+      NSCODON::decode(n[1],n[2],n[3],c);
+    }
+
+    prob_t subprob;
+    prob_t subdist[NUC::SIZE-1];
+    get_discrete_time_prob_codon_context_position_type(r,n,subprob,subdist,pos,
+                                                       site_category,group_category,
+                                                       is_include_codon_selection);
+
+    // load local data structures (subprob and subdist) into exported
+    // data structures:
+    for(unsigned j(0);j<NUC::SIZE;++j){
+      unsigned ns5mer;
+      if      ( pos == 1 || pos == 2 ) {
+        const NSC4::index_t pre4mer(i);
+        ns5mer = pre4mer+j*NSC4::SIZE;
+      }else{ // pos == 3
+        const NSCODON::index_t c = NSCODON::encode(n[1],n[2],n[3]);
+        const NSC4::index_t pre4mer = NSC4::encode(static_cast<NUC::index_t>(j),c);
+        ns5mer = pre4mer+n[0]*NSC4::SIZE;
+      }
+
+      // add up codonsub over all positions
+      codonsub[ns5mer] += subprob;
+
+      if( is_calculate_cdf ){
+        prob_t* codonsub_cdf_5mer = codonsub_cdf+ns5mer*CODON_CDF_SIZE;
+        prob_t* codonsub_cdf_5mer_pos = codonsub_cdf_5mer+(pos-1)*(NUC::SIZE-1);
+        for(unsigned k(0);k<(NUC::SIZE-1);++k){
+          codonsub_cdf_5mer_pos[k] = subdist[k];
+        }
+      }
+    }
+  }
+}
+
+
+
+
+// time is supplied in subs per site and normed according to the rate
+// matrix
+//
+// a second run with selection turned off is used as part of
+// calculating simulation time
+//
+static
+void
+get_discrete_time_prob_codon_context(const rate_gtor_nuc_base& r,
+                                     prob_t** codonsub,       // [n_cats][NS5MER_SIZE]
+                                     prob_t** codonsub_cdf,   // [n_cats][NS5MER_SIZE*CODON_CDF_SIZE]
+                                     const smlfloat time_unit_normed,
+                                     const unsigned n_site_cats,
+                                     const unsigned n_group_cats,
+                                     bool is_include_codon_selection = true,
+                                     const bool is_calculate_cdf = true){
+
+  if(is_include_codon_selection){
+    const rate_gtor_nscodon_base* rcodon_ptr(dynamic_cast<const rate_gtor_nscodon_base*>(&r));
+    if(rcodon_ptr==0){ is_include_codon_selection=false; }
+  }
+
+  const unsigned n_cats = n_group_cats*n_site_cats;
+
+  for(unsigned i(0);i<n_cats;++i) memset(codonsub[i],0, NS5MER_SIZE*sizeof(prob_t));
+
+  for(unsigned gc(0);gc<n_group_cats;++gc){
+    for(unsigned sc(0);sc<n_site_cats;++sc){
+      const unsigned cat_num(gc*n_site_cats+sc);
+      prob_t* codonsub_cat = codonsub[cat_num];
+      prob_t* codonsub_cdf_cat(0);
+      if( is_calculate_cdf ) codonsub_cdf_cat = codonsub_cdf[cat_num];
+
+      for(unsigned pos(1);pos<=3;++pos){
+        get_discrete_time_prob_codon_context_position(r,codonsub_cat,codonsub_cdf_cat,
+                                                      pos,sc,gc,is_include_codon_selection,
+                                                      is_calculate_cdf);
+      }
+      array_scale(codonsub_cat,NS5MER_SIZE,time_unit_normed);
+
+      if( is_calculate_cdf ){
+        // convert codonsub_cdf from unnormalized distro to cdf:
+        for(unsigned i(0);i<NS5MER_SIZE;++i){
+          pdistro_norm(codonsub_cdf_cat+i*CODON_CDF_SIZE,codonsub_cdf_cat+(i+1)*CODON_CDF_SIZE);
+          pdistro_to_cdf_inplace(codonsub_cdf_cat+i*CODON_CDF_SIZE,CODON_CDF_SIZE);
+        }
+      }
+    }
+  }
+}
+
+
+
+
+static
+unsigned
+simulate_steps(const vector<unsigned>& site_cats,
+               const vector<unsigned>& group_cats,
+               const vector<unsigned>& group_seq,
+               vector<unsigned>& endseq,
+               const prob_t* const * codonsub,
+               const prob_t* const * codonsub_cdf,
+               const prob_t* bg_nuc_cdf,
+               const unsigned n_site_cats,
+               const bool is_report_sim_time,
+               const prob_t* const * codonsub_neutral,
+               const unsigned n_steps,
+               const smlfloat final_fracstep = 1.){
+ 
+  static const unsigned NUS(NUC::SIZE-1);
+
+  // ring buffer (better described as a tiny fifo?) holds the +/-1 codon view
+  // around the current codon
+  static const unsigned RING_SIZE(3);
+
+  NSCODON::index_t c_ring[RING_SIZE];
+  NUC::index_t cn_ring[RING_SIZE][CODON::BASE_SIZE];
+  const unsigned lsize(endseq.size());
+
+  simple_array<bool> break_5p(lsize);
+  simple_array<bool> break_3p(lsize);
+  simple_array<unsigned> cat_index_(lsize);
+  for(unsigned i(0);i<lsize;++i){
+    break_5p.val[i] = (i==0 || group_seq[i-1] != group_seq[i]);
+    break_3p.val[i] = ((i+1)==lsize || group_seq[i+1] != group_seq[i]);
+    cat_index_.val[i] = (site_cats[i]+group_cats[i]*n_site_cats);
+  }
+
+#ifdef USE_VSL
+  //  simple_array<double> ranvec(lsize);
+#endif
+
+
+  unsigned total_n_mutation(0);
+  smlfloat fracstep(1.);
+  for(unsigned xx(0);xx<(n_steps+1);++xx){
+    if(xx==n_steps) fracstep = final_fracstep;
+  unsigned n_mutation(0);
+
+  unsigned last_position(0);
+  unsigned this_position(0);
+  unsigned next_position(1);
+
+  // bootstrap the process by loading this_position before starting loop:
+  c_ring[this_position] = static_cast<NSCODON::index_t>(endseq[0]);
+  NSCODON::decode(cn_ring[this_position],c_ring[this_position]);
+
+#ifdef USE_VSL
+ {
+   static const int method(0);
+   static const double a(0.);
+   static const double b(1.);
+   //   const int errcode = vdRngUniform( method, stream, lsize, ranvec.val, a, b );
+   //   CheckVslError( errcode );
+ }
+#endif
+ NUC::index_t last_nuc(NUC::N);
+ NUC::index_t next_nuc(NUC::N);
+
+  for(unsigned i(0);i<lsize;++i){
+
+    // for the first and last positions, choose the leading and
+    // following nuc at random, which should, over many discrete
+    // steps, have the same effect as averaging them:
+    if       (break_5p.val[i]){
+      last_nuc = static_cast<NUC::index_t>(random_cdf_variate(bg_nuc_cdf,NUC::SIZE));
+    } else { last_nuc=cn_ring[last_position][2]; }
+
+    // push a new value in at next_position, unless at the last
+    // position:     
+    if((i+1)!=lsize){
+      c_ring[next_position] = static_cast<NSCODON::index_t>(endseq[i+1]);
+      NSCODON::decode(cn_ring[next_position],c_ring[next_position]);
+    }
+
+    if(break_3p.val[i]) {
+      next_nuc = static_cast<NUC::index_t>(random_cdf_variate(bg_nuc_cdf,NUC::SIZE));
+    } else {        
+      next_nuc=cn_ring[next_position][0];
+    }
+
+    const unsigned ns5mer = NSC4::encode(last_nuc,c_ring[this_position])+next_nuc*NSC4::SIZE;
+
+    // setup the category at this position:
+    const unsigned& cat_index(cat_index_.val[i]);
+
+#ifdef USE_VSL
+    const double r(1);//ranvec.val[i]);
+#else
+    const double r(drand48());
+#endif
+    if(is_report_sim_time){
+      const prob_t* codonsub_cat_neutral(codonsub_neutral[cat_index]);
+      if(r<(codonsub_cat_neutral[ns5mer]*fracstep)) n_mutation++;
+    }
+
+    const prob_t* codonsub_cat = codonsub[cat_index];
+    if(r<(codonsub_cat[ns5mer]*fracstep)){
+      const prob_t* codonsub_cdf_cat = codonsub_cdf[cat_index];
+      const unsigned a = random_cdf_variate(codonsub_cdf_cat+ns5mer*CODON_CDF_SIZE,CODON_CDF_SIZE);
+      const unsigned pos = a/NUS;
+      unsigned nuc = a%NUS;
+      if(static_cast<unsigned>(cn_ring[this_position][pos])<=nuc) nuc += 1;
+
+      const NUC::index_t* nref = cn_ring[this_position];
+      NUC::index_t ntmp[CODON::BASE_SIZE] = {nref[0],nref[1],nref[2]};
+      ntmp[pos] = static_cast<NUC::index_t>(nuc);
+
+      endseq[i] = NSCODON::encode(ntmp);
+    }
+
+    // increment positions
+    last_position = this_position;
+    this_position = next_position;
+    next_position = (next_position+1)%RING_SIZE;
+  }
+  total_n_mutation += n_mutation;
+  }
+  return total_n_mutation;
+}
+
+
+
+/// discrete sequence simulation along a single tree branch
+///
+/// \param startseq input sequence
+/// \param endeq output sequence
+/// \param time branch time
+/// \param unit_time time segment used for discrete evolutionary steps
+///
+static
+void
+simulate_discrete_time_branch_context(const vector<unsigned>& startseq,
+                                      const vector<unsigned>& site_cats,
+                                      const vector<unsigned>& group_cats,
+                                      const vector<unsigned>& group_seq,
+                                      vector<unsigned>& endseq,
+                                      const smlfloat time,
+                                      const smlfloat unit_time,
+                                      const prob_t* const * sitesub_prob,
+                                      const prob_t* const * sitesub_cdf,
+                                      const prob_t* bg_nuc_cdf,
+                                      const unsigned n_site_cats,
+                                      smlfloat& sim_time,
+                                      const bool is_codon_site_model,
+                                      const bool is_report_sim_time,
+                                      const prob_t* const * sitesub_prob_neutral){
+
+  const smlfloat tmp(time/unit_time);
+  const unsigned nsteps = static_cast<unsigned>(tmp);
+  const smlfloat fracstep = tmp-static_cast<smlfloat>(nsteps);
+  unsigned n_mutation(0);
+
+  std::cerr << "calc branch: steps,frac: " << nsteps << " " << fracstep << "\n";
+
+  endseq = startseq;
+
+  if(is_codon_site_model){
+    n_mutation = simulate_steps(site_cats,group_cats,group_seq,endseq,sitesub_prob,sitesub_cdf,
+                                bg_nuc_cdf,n_site_cats,is_report_sim_time,sitesub_prob_neutral,
+                                nsteps,fracstep);
+  }else {
+  for(unsigned n(0);n<(nsteps+1);++n){
+    smlfloat this_frac(1.);
+    // on last step, undo this step with probability 1-fracstep:
+    if(n==nsteps) this_frac=fracstep;
+
+      n_mutation += simulate_single_step_nuc(site_cats,group_cats,group_seq,endseq,sitesub_prob,sitesub_cdf,
+                                             bg_nuc_cdf,n_site_cats,this_frac);
+
+  }
+  }
+
+  unsigned time_nuc_factor(1);
+  if(is_codon_site_model) time_nuc_factor=CODON::BASE_SIZE;
+
+  sim_time = static_cast<smlfloat>(n_mutation)/static_cast<smlfloat>((startseq.size())*time_nuc_factor);
+}
+
+
+
+
+const unsigned left_codon_pad_size(1);
+const unsigned right_codon_pad_size(1);
+const unsigned codon_pad_size(left_codon_pad_size+right_codon_pad_size);
+
+
+
+static
+void
+accumulate_simulated_seq_group(const bi_tree_sml_type& tree,
+                               const vector<vector<unsigned > >& treenode_seq,
+                               const RATE_GTOR_MODEL::index_t rgm,
+                               const prob_t assigned_cat_prob,
+                               const vector<unsigned>& site_cats_seq,
+                               const vector<unsigned>& group_seq,
+                               site_data& sd,
+                               const bool is_site_pair){
+
+  assert(RATE_GTOR_MODEL::base_size_conditioned(rgm)==CODON::BASE_SIZE);
+
+  const unsigned n_leaves(tree.n_leaves());
+  const unsigned full_size(treenode_seq[0].size());
+  const SITE_MODEL::index_t smodel(RATE_GTOR_MODEL::convert_to_site_model(rgm));
+  const unsigned ambig_state(SITE_MODEL::ambig_state(smodel));
+
+  sim_site_data_init(tree,rgm,sd);
+
+  site_code sc(n_leaves);
+  site_code prev_sc(n_leaves);
+  unsigned prev_cat_no(UNASSIGNED_CAT_ID);
+
+  // chop up present day sequences into cq data format:
+  for(unsigned i(0);i<(full_size);++i){
+
+    // skip nuc left and right pads in every group
+    bool is_skip(false);
+
+    if(i<left_codon_pad_size || (i+right_codon_pad_size)>=full_size) {
+      is_skip = true;
+    } else {
+      const unsigned this_group(group_seq[i]);
+      for(unsigned j(0);j<left_codon_pad_size;++j){
+        if(group_seq[i-(j+1)] != this_group) is_skip=true;
+      }
+      for(unsigned j(0);j<right_codon_pad_size;++j){
+        if(group_seq[i+(j+1)] != this_group) is_skip=true;
+      }
+    }
+
+    if(is_skip || i==0){
+      for(unsigned t(0);t<n_leaves;++t){
+        prev_sc.set_taxid(t,ambig_state);
+      }
+      prev_cat_no = UNASSIGNED_CAT_ID;
+    }
+
+    if(is_skip) continue;
+
+    const int offset(RATE_GTOR_MODEL::base_size_repeat_offset(rgm));
+
+    NUC::index_t nuc[CODON::BASE_SIZE*(1+codon_pad_size)];
+    const NUC::index_t* nuc_start(nuc+CODON::BASE_SIZE*left_codon_pad_size);
+
+    for(unsigned t(0);t<n_leaves;++t){
+      const vector<unsigned>& leaf_seq(treenode_seq[tree.get_node_index_from_leaf_index(t)]);
+      for(unsigned j(0);j<(1+codon_pad_size);++j){
+        const int codon_offset(j-left_codon_pad_size);
+        NSCODON::decode(nuc+CODON::BASE_SIZE*(j),static_cast<NSCODON::index_t>(leaf_seq[i+codon_offset]));
+      }
+      sc.set_taxid(t,SITE_MODEL::encode_nuc(smodel,nuc_start+offset));
+    }
+
+    unsigned cat_no(UNASSIGNED_CAT_ID);
+
+    if(assigned_cat_prob>0.){
+      const prob_t r(drand48());
+      if(r<assigned_cat_prob){ cat_no=site_cats_seq[i]+1; }
+    }
+    const unsigned group_no(group_seq[i]);
+
+    sd.site_count[sc][count_data_code(group_no,cat_no)]++;
+
+    if(is_site_pair){
+      sd.pair_count[make_pair(make_pair(prev_sc,sc),make_pair(prev_cat_no,cat_no))]++;
+
+      prev_sc = sc;
+      prev_cat_no = cat_no;
+    }
+  }
+}
+
+
+
+
+// discrete time data simulation for codons with context dependent
+// rates
+//
+void
+simulate_data_discrete_context(const sim_options& sim_opt,
+                               const subs_ml_model& mdl,
+                               site_data& sd,
+                               const bool){
+#ifdef USE_VSL
+  if(stream==0) vsl_random_init();
+#endif
+
+
+  static const bool is_report_sim_time(true);
+
+  static const bool is_site_pair(false);
+
+  const unsigned n_site_cats(mdl.get_rate_gtor().category_size_site());
+  const unsigned n_group_cats(mdl.get_rate_gtor().category_size_group());
+
+  const rate_gtor_nuc_base* rgn_ptr(dynamic_cast<const rate_gtor_nuc_base*>(&mdl.get_rate_gtor()));
+  if(rgn_ptr==0){
+    die("simulate_data_discrete_context requires nuc-based model");
+  }
+  const rate_gtor_nuc_base& rgn = *rgn_ptr;
+
+  const bool is_codon_site_model(dynamic_cast<const rate_gtor_nscodon_base*>(&rgn) != 0);
+
+  // site type of simulated model
+  const RATE_GTOR_MODEL::index_t rgm(rgn.model_type());
+  // site type of simulator output
+  const RATE_GTOR_MODEL::index_t output_rgm(sim_opt.output_site_model);
+
+  //nuc site default:
+  unsigned context_state_size(NUC3MER_SIZE);
+  unsigned mutation_state_size(NUC::SIZE-1);
+  if(is_codon_site_model){
+    context_state_size = NS5MER_SIZE;
+    mutation_state_size = CODON_CDF_SIZE;
+  }
+
+  // get subs prob structures for each discrete time unit
+  //
+  // assuming only one substitution can occur per codon, get the
+  // probability of any substitution happening conditioned on the
+  // nucleotide 5-mer (the codon +/- 1 nuc in each direction) -- then
+  // make two separate prob structures, one is the cdf (sitesub_cdf)
+  // for substitution type, given that a substituion will happen
+  // within the inner codon of the 5-mer. the second is the
+  // probability of any change occuring at all within this
+  // codon(sitesub_prob).
+  //
+
+  // todo -- make this time chunk consistent between codons and nucs, by /3 in codon case
+  //
+  const smlfloat time_unit_normed(SIMULATE_DISCRETE_TIME_UNIT/rgn.rate_time_bg_scale());
+
+  const unsigned n_cats(n_group_cats*n_site_cats);
+
+  prob_t** sitesub_prob_neutral(0);
+  if(is_codon_site_model && is_report_sim_time){
+    sitesub_prob_neutral = new prob_t*[n_cats];
+    for(unsigned i(0);i<n_cats;++i) sitesub_prob_neutral[i] = new prob_t[NS5MER_SIZE];
+
+    get_discrete_time_prob_codon_context(rgn,sitesub_prob_neutral,0,time_unit_normed,n_site_cats,n_group_cats,false,false);
+  }
+
+  // use background nuc distro to handle the edges of each group:
+  prob_t bg_nuc_cdf[NUC::SIZE];
+  pdistro_to_cdf(rgn.bg_pdistro_nuc(),bg_nuc_cdf,NUC::SIZE);
+
+  // assign sites to groups, assign groups to group cats:
+  vector<unsigned> group_seq;
+  vector<unsigned> group_cats_seq;
+  get_sim_group_categories(group_seq,group_cats_seq,sim_opt,mdl.get_rate_gtor());
+
+  const unsigned n_groups(group_seq.back()+1);
+
+  // 3. if simlulating 4mers/dinuc(5mers/trinuc), add one (two) extra codon(s) for each group
+  unsigned full_size(0);
+  vector<unsigned> full_group_seq;
+  vector<unsigned> full_group_cats_seq;
+  {
+    //    const unsigned bcsize(RATE_GTOR_MODEL::base_size_conditioned(output_rgm));
+    //    const unsigned left_pad_size((bcsize-1+RATE_GTOR_MODEL::base_overlap_left(output_rgm))/bcsize);
+    //    const unsigned right_pad_size((bcsize-1+RATE_GTOR_MODEL::base_overlap_right(output_rgm))/bcsize);
+
+    // set a uniform pad for all codon site types or all nuc site types, so that sim can be repeated
+    // with the same seed:
+    //
+    const unsigned pad_size(is_codon_site_model ? codon_pad_size : nuc_pad_size );
+
+    full_size = sim_opt.size+(pad_size*n_groups);
+    for(int i(0);i<sim_opt.size;++i) {
+      unsigned copy_num(1);
+      if(i==0 || group_seq[i-1] != group_seq[i]) copy_num=1+pad_size;
+      for(unsigned k(0);k<copy_num;++k) {
+        full_group_seq.push_back(group_seq[i]);
+        full_group_cats_seq.push_back(group_cats_seq[i]);
+      }
+    }
+  }
+
+  // get site categories:
+  vector<unsigned> site_cats_seq;
+  get_sim_site_categories(site_cats_seq,full_size,mdl.get_rate_gtor());
+
+  // get_ancestral seq:
+  const unsigned n_nodes(mdl.tree().n_nodes());
+  const unsigned n_branches(mdl.tree().n_branches());
+  const unsigned root_index(mdl.tree().get_node_index(mdl.tree().root));
+  vector<vector<unsigned> > treenode_seq(n_nodes);
+
+  const ancestral_seq_callinfo asc = { mdl.get_root_gtor(), full_size, n_site_cats, site_cats_seq };
+
+  if       (rgm == RATE_GTOR_MODEL::C4PRE || rgm == RATE_GTOR_MODEL::C4POST){
+    get_ancestral_seq_nsc4(asc,full_group_seq,rgm,treenode_seq[root_index]);
+  } else if(rgm == RATE_GTOR_MODEL::DINUC){
+    get_ancestral_seq_dinuc(asc,full_group_seq,treenode_seq[root_index]);
+  } else if(rgm == RATE_GTOR_MODEL::TRINUC){
+    get_ancestral_seq_trinuc(asc,full_group_seq,treenode_seq[root_index]);
+  } else if(rgm == RATE_GTOR_MODEL::C5PRE || rgm == RATE_GTOR_MODEL::C5POST){
+    get_ancestral_seq_nsc5_prepost(asc,full_group_seq,rgm,treenode_seq[root_index]);
+  } else if(rgm == RATE_GTOR_MODEL::C5){
+    get_ancestral_seq_nsc5(asc,full_group_seq,treenode_seq[root_index]);
+  } else {
+    get_ancestral_seq(mdl,full_size,site_cats_seq,treenode_seq[root_index]);
+  }
+
+  vector<smlfloat> branch_time_sim(n_branches);
+  {
+    simple_matrix<prob_t> sitesub_prob(n_cats,context_state_size);
+    simple_matrix<prob_t> sitesub_cdf(n_cats,context_state_size*mutation_state_size);
+
+    if(is_codon_site_model){
+      get_discrete_time_prob_codon_context(rgn,sitesub_prob.val,sitesub_cdf.val,time_unit_normed,n_site_cats,n_group_cats);
+    } else {
+      get_discrete_time_prob_nuc_context(rgn,sitesub_prob.val,sitesub_cdf.val,time_unit_normed,n_site_cats,n_group_cats);
+    }
+
+    // 3. simulate
+    for(int i(1);i<static_cast<int>(n_nodes);++i){
+      simulate_discrete_time_branch_context(treenode_seq[mdl.tree().get_parent_index(i)],site_cats_seq,full_group_cats_seq,
+                                            full_group_seq,treenode_seq[i],mdl.get_time_gtor().branch_time(i-1),
+                                            time_unit_normed,sitesub_prob.val,sitesub_cdf.val,bg_nuc_cdf,n_site_cats,
+                                            branch_time_sim[i-1],
+                                            is_codon_site_model,is_report_sim_time,sitesub_prob_neutral);
+    }
+  }
+
+  if(is_report_sim_time){
+    if(is_codon_site_model){
+      for(unsigned i(0);i<n_cats;++i) delete [] sitesub_prob_neutral[i];
+      delete [] sitesub_prob_neutral;
+    }
+
+    std::cerr << "\n";
+    report_time_instance("sim_time",branch_time_sim,mdl.tree(),std::cerr);
+  }
+
+  // 4. chop simulation data down to (site) size::
+  if(is_codon_site_model){
+    accumulate_simulated_seq_group(mdl.tree(),treenode_seq,output_rgm,sim_opt.assigned_cat_prob,
+                                   site_cats_seq,full_group_seq,sd,is_site_pair);
+  } else {
+    accumulate_simulated_seq_group_nuc(mdl.tree(),treenode_seq,output_rgm,sim_opt.assigned_cat_prob,
+                                       site_cats_seq,full_group_seq,sd,is_site_pair);
+  }
+}

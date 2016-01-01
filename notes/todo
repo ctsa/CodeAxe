@@ -1,0 +1,71 @@
+
+top priority is to run positive selection tests on genome divisions
+  - work with fewer than 9 divisions: how about 5 (out of the magic hat)
+  - obs update is must less important with the full root now
+    - 1: 1 run of single obs state
+    - 2: 1 run with traditional (maxML) obs updates
+    - 3: 1 run with equilibrium obs updates (ignoring ML effects)
+ 
+    - compare ML of chopped reanalyzed runs using these three methods (and codon split) for real sequences and for simulations,
+      for simulation data, compare accuracy of posterior prob partition under the three schemes
+
+  - get some sort of chromosome location method working
+  - get minimum pos sel test framework working:
+      shouldn't this help out most deep in the lineage?
+      is this really even an important question to ask?
+
+
+lower priority:
+- test ad-hoc context-dependent genome divisions, how does the lhood of after-the-fact divisions compare
+  to those from the codon model?
+- start working with only high-probability partitions for the positive selection followup work, for the 
+  codon division case, there is no need for such a stringent window filter : find out where the previously
+  pursued pos sel test case proteins fall in these divisions, do they disappear with high-prob divisions?
+- scan the test case proteins with branch-specific pos sel tests -- scan all remaining CDS's and highlight
+  the remaining cases.
+- fix data categories (this will allow genome parition cats with a single/fewer selection model/models)
+
+
+new science:
+
+- think about gc-parameters to modify otherwise locked pdistros
+  more generally, think about aribtrary heirarchical parameterizations
+
+
+speedups:
+
+- replacemnt for pr library? mpfr maybe?
+- openmp for categories? for lsroot?
+- enable max's bootstrap idea!
+  more generally think about a progressive parameter enrichment system
+
+
+convenience:
+
+- make a cat-prob 0 attractor, similar to that already setup for branch length, to make categories more robust
+- need to get (say) GC content based on true post-p fractions: one
+  solution would be to allow cat assignments and data to carry floats??
+- add robustification feature, which switches to diag when exp series limit is reached
+- add check in debug mode against sub-optimal model solutions.
+- also change pingpong to output the lowest lnp model so far, and print the current lowest lnp during search
+- fix max-steps to work correctly for obs mode: for that matter get rid of all those static min run variables
+  and replace them with some object
+- allow arbitrary indy sets instead of continuous indy blocks... need this to make fact-trip ci's work
+- cleaner prob-matrix stat disto calculator...
+
+
+finished:
+
+gc-shifted root sequence distros... ***done
+fix obs categories to work exactly like EM. ...tried it!! doesn't work
+study more accurate root-distro overlap restriction **done -- omg what a difference!!
+option to exclude root from ci list **done
+keep tuning root-cycler for 1 cat case **pretty much done
+finish continuous sim option ***done
+need simulations that work per-tree-category **done
+build and test lower parameter c4-roots ***done
+make a trainable obs version, test out w/ simulation, doesn't work! ***done
+check whether ci's can be calculated by fisher with new root scheme.... my god that is slow ***done
+finish up testing c4-3 vs. least-sq root ***done. yes, this kicks ass!
+
+

@@ -1,0 +1,125 @@
+subs_ml_model model_file_version 10
+audit_info cmdline ../bin/CodeAxe -ml -in-model ex2.model.start -in-data ex2.data
+audit_info binary CodeAxe version D92-r1191
+audit_info random_seed 1206748738
+audit_info write_time Fri Mar 28 16:58:59 2008
+audit_info END
+subs_ml_model tree (marsupial,((hamster,(rat,mouse)node5)node3,((hare,rabbit)node9,((elephseal,(pig,(cow,sheep)node17)node15)node13,(bushbaby,(human,tarsier)node22)node20)node12)node8)node2)node0;
+cat_manager n_cats 1
+cat_manager cat_0_branch_0_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_0_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_1_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_1_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_2_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_2_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_3_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_3_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_4_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_4_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_5_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_5_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_6_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_6_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_7_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_7_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_8_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_8_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_9_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_9_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_10_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_10_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_11_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_11_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_12_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_12_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_13_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_13_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_14_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_14_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_15_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_15_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_16_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_16_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_17_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_17_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_18_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_18_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_19_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_19_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_20_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_20_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_21_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_21_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_22_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_22_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_23_site_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_0_branch_23_group_mr_mm_ss_sm_ro_ti_ob_bg 0 0 0 0 0 0 0 0
+cat_manager cat_label_0 default_seq_cat
+cat_manager typed_cat_label_smr_0 default_smr_param_set
+cat_manager typed_cat_label_gmr_0 default_gmr_param_set
+cat_manager typed_cat_label_smm_0 default_smm_param_set
+cat_manager typed_cat_label_gmm_0 default_gmm_param_set
+cat_manager typed_cat_label_sss_0 default_sss_param_set
+cat_manager typed_cat_label_gss_0 default_gss_param_set
+cat_manager typed_cat_label_ssm_0 default_ssm_param_set
+cat_manager typed_cat_label_gsm_0 default_gsm_param_set
+cat_manager typed_cat_label_sro_0 default_sro_param_set
+cat_manager typed_cat_label_gro_0 default_gro_param_set
+cat_manager typed_cat_label_sti_0 default_sti_param_set
+cat_manager typed_cat_label_gti_0 default_gti_param_set
+cat_manager typed_cat_label_sob_0 default_sob_param_set
+cat_manager typed_cat_label_gob_0 default_gob_param_set
+cat_manager typed_cat_label_sbg_0 default_sbg_param_set
+cat_manager typed_cat_label_gbg_0 default_gbg_param_set
+cat_manager cat_prob_gtor_param_0 0 1
+cat_manager END
+time_gtor time_cat_0_branch_0 marsupial 1 0.268164801087
+time_gtor time_cat_0_branch_1 node2 0 0
+time_gtor time_cat_0_branch_2 node3 1 0.0554680909111
+time_gtor time_cat_0_branch_3 hamster 1 0.107114941891
+time_gtor time_cat_0_branch_4 node5 1 0.0256027266284
+time_gtor time_cat_0_branch_5 rat 1 0.0372504268918
+time_gtor time_cat_0_branch_6 mouse 1 0.0619536828483
+time_gtor time_cat_0_branch_7 node8 1 0.0474096839582
+time_gtor time_cat_0_branch_8 node9 1 0.0519506550978
+time_gtor time_cat_0_branch_9 hare 1 0.0113321546634
+time_gtor time_cat_0_branch_10 rabbit 1 0.0172534109301
+time_gtor time_cat_0_branch_11 node12 1 0.00675762998327
+time_gtor time_cat_0_branch_12 node13 1 0.0297572868333
+time_gtor time_cat_0_branch_13 elephseal 1 0.0660910789814
+time_gtor time_cat_0_branch_14 node15 1 0.0153127797839
+time_gtor time_cat_0_branch_15 pig 1 0.0975184121888
+time_gtor time_cat_0_branch_16 node17 1 0.0415868271458
+time_gtor time_cat_0_branch_17 cow 1 0.0221930269791
+time_gtor time_cat_0_branch_18 sheep 1 0.028828462509
+time_gtor time_cat_0_branch_19 node20 1 0.00307395473035
+time_gtor time_cat_0_branch_20 bushbaby 1 0.0492904942304
+time_gtor time_cat_0_branch_21 node22 1 0.0204594208335
+time_gtor time_cat_0_branch_22 human 1 0.0552245430787
+time_gtor time_cat_0_branch_23 tarsier 1 0.0652444382239
+time_gtor END
+subs_ml_model rate_gtor_model 2
+obs_info obs_state_source 1
+obs_info obs_0_seq_state_0 91 90 93 91 87 91 91 83 87 89 85 84 87
+obs_info obs_0_seq_state_1 103 119 109 118 106 103 111 116 99 106 111 112 110
+obs_info obs_0_seq_state_2 121 122 127 124 134 132 128 136 136 134 133 133 133
+obs_info obs_0_seq_state_3 117 101 103 99 105 106 102 97 110 103 103 103 102
+obs_info END
+bg_gtor subs_rate_bg_model 0
+bg_gtor END
+rate_gtor_nuc_base is_use_edge_correction 0
+rate_gtor_nuc_base rate_model_0 5
+rate_gtor_nuc_base context_model_0 0
+rate_gtor_nuc_base site_rate_cats_0 0 1
+rate_gtor_nuc_base group_rate_cats_0 0 1
+rate_gtor_nuc_base nuc_mutation_model_0_param_transversion_rate_indy_context_0 1 0.940800578797
+rate_gtor_nuc_base nuc_mutation_model_0_param_transition_rate_indy_context_1 1 2.15959515026
+rate_gtor_nuc_base END
+root_gtor root_gtor_model 7
+root_gtor END
+subs_ml_model_min_options converge_tolerance 0.0001
+subs_ml_model_min_options minimizer_type 2
+subs_ml_model_min_options is_prefer_diag_expm 0
+subs_ml_model_min_options obs_update_mode 0
+subs_ml_model_min_options END
+subs_ml_model END

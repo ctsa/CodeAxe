@@ -1,0 +1,5 @@
+f <- read.table('model.mouse_rat_human.codon.asymmetric.ci_error')
+png("exact_codon_param_error.png",800,600)
+hist(f[[3]],20,xlab="param estimate error/sd")
+curve(dnorm(x)*length(f[[3]])/2, add=TRUE,col="red")
+dev.off()

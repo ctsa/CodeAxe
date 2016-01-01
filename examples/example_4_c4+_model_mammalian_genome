@@ -1,0 +1,39 @@
+#!/bin/bash -x
+#
+# This example replicates one of the analyses from the CodeAxe MBE
+# paper. In this case we train the fully elaborated C4+ model (using
+# TRIPLET context-dependent mutation and ASYMMETRIC selection) on the
+# mammalian (human/mouse/rat) genomic coding sequence test set
+# described in our MBE paper. Note that the training step of this
+# "example" will take about 9 hours to converge on ca. 2005 pentium-4
+# system. During the likelihood minimization, intermediate model
+# states are alternately written out to the files
+# ex4.model.{ping,pong}.
+#
+
+
+
+# -- write phylogenetic tree:
+#
+echo "((mm,rn),hs);" >| ex4.tree
+
+# -- create a TRIPLET,ASYMMETRIC model with default parameters:
+#
+bzip2 -cd example_data/data.hs_mm_rn_v2.cpgi_mask.c4-post.win15.bz2 |\
+../bin/CodeAxe -create-model -site-model c4-post -context-model triplet -select-model asymmetric -root-model least-sq -tree-file ex4.tree -in-data - >| ex4.model.start
+
+# -- train model
+#
+echo "The following minimization should take ~9hr. on a ca. 2005 processor (w/ native BLAS)"
+bzip2 -cd example_data/data.hs_mm_rn_v2.cpgi_mask.c4-post.win15.bz2 |\
+../bin/CodeAxe -ml -in-model ex4.model.start -in-data - -pingpong ex4.model >| ex4.model.trained 2>| ex4.model.ml.stderr
+
+# -- get the likelihood & likelihood/codon of the trained model
+#
+bzip2 -cd example_data/data.hs_mm_rn_v2.cpgi_mask.c4-post.win15.bz2 |\
+../bin/CodeAxe -lhood -in-model ex4.model.trained -in-data - >| ex4.model.trained.lhood
+
+# -- summarize parameters from the trained model 
+#
+../bin/CodeAxe -report-model -in-model ex4.model.trained >| ex4.model.trained.report
+

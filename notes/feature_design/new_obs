@@ -1,0 +1,159 @@
+current obs system:
+
+--------------------------------------------------
+sml_model holds obs info
+--------------------------------------------------
+obs info set from data where?
+denovo case: set after the ctor through a public method call
+             if not called we go with a uniform distro
+
+ml/lhood case: set from the istream ctor, then immediatly reset
+               from the new data file (from sd structure)
+
+--------------------------------------------------
+for lhood:
+obs info used by rate_gtor for edges and partial codons
+          and by root_gtor for some of the root types
+
+for model reports:
+obs info used for all kinds of things
+--------------------------------------------------
+usage:
+w/o assigned cats is very simple:
+
+mdl.obs()->
+
+in sml:
+cat_seq_state_obs_counts is the parent data structure, I suppose counts are
+being kept so that ci's could be put on data paramaeters eventually,
+combined and assigned cat specific distros are derived from this data.
+
+=============================================================
+
+a lot of the current cat obs structure is setup for efficientcy only: we check
+for observed cats, because making the same cat-specific obs distro for each cat
+in most cases is a gigantic waste (ESPECIALLY for bls root). How can the 
+assigned cat check be lost, while still recognizing cats that are the same??
+
+we could have an obs cat equiv map -> you query this function to find out the 
+number of "obs-cats" and how to map global cats to these cats. this is what's 
+implicitly going on now anyway
+
+can the cat_manager take care of this? how can it fit into the current cat scheme?
+obs cats are fundamentally differnt than regular parameter cats -- they only have 
+meaning in that every global cat no must be tied to one obs-cat number.
+
+ok cat_manager provides the number of obs-cats, and does (or will) provide a map
+form global<->obs cats. Now, for instance, how is bls going to work, for one obs-cat?
+
+what if there are only 2 gobs cats, and (for instance) no root cats, there's a sense
+in which roots could be assigned from global cat no (and we could just use efficientcy
+schemes to pick out which ones were equivilent) -- even w/o the obs issue, how can
+root cats deal with multiple (say) rate cats?
+
+safe solution is to have these guys operate entirely by global cat number w/ some "cloning"
+scheme???, maybe don't need to get that fancy. b/c bls depends on everything, there's never
+a time when you can ignore any category. (done for bls)
+
+ok, what about obs-avg then?? -- we could make the mapping root_gtor's job?? and the prob_gtor's
+only know they're obs-number? but that doesn't work for bls?
+
+ok. prob_gtor stores a global cat number, and prob_gtor's get cloned into place appropriately
+by root_gtor.
+
+==============================================================
+new system changes:
+
+#) design a command-line interface for this mode
+
+#) put in bookkeeping structures
+
+#) all obs calls come with a general cat number
+
+#) (solution assuming assigned cats do not exist:) so now subs_ml_model needs some kind
+#continuous link to the site data.... er the obs refresh is going to need
+
+TODO:::::(RIGHT HERE READ THIS WHEN YOU'RE BACK!!)
+# done:
+#
+#1) ...first off, this has to switch to accept floating point -- maybe in a second function?,
+#secondly, it has to read "counts" based on the number of obs cats, not based on the number of 
+#assigned cats!
+#
+# 2)  get_lnprob_from_param has to return posterior prob information in some structure now instead of
+#   just spilling it to stdout like it has been.
+
+
+##) figure out where the gpostp refresh updates should be, and what
+#data needs to be routed through the call
+#
+##) figure out the refresh function itself
+#
+
+#) fix norm for multi-obs cats - done!
+==============================================================
+what's done:
+
+#) added obs category to the cat manager
+
+#) adapted root to use root cats for parameterized cats, but to divide these
+#cats by all other categories (including obs-cats) for obs-based root categories
+
+#) adapted rate_gtor to use obs cats instead of worrying about the status of 
+#assigned-data cats directly.
+
+#) report_root back in root
+
+#) added sml_model.get_cat_manager().is_train_obs_partition(), started hacking in basic structure
+#in subs_ml_model_train.cc -- see todo above
+
+followup:
+
+#) more efficient creation of distro cats needed in root_gtor, right now if there's an obs root
+
+) obs interaction with assigned cats needs to be written -- obs basically replaces
+what used to be done automatically for assigned cats -- we don't actually need
+different "root" cats (somewhat confusingly -- but it is more consistent after some thought)
+
+) interaction of everything else with assigned cats needs to be rethought and coded back
+to the old behaviour
+
+ok: not using assigned cats, the system is simple:
+
+0:gob0,1:gob1 will automagically do this iterative root thing we're working on.
+
+0:sob0,1:sob1 (together with a 0,1 data asignment, causes non-iterative obs categories -- let's temporarily act like this option doesn't exist) 
+
+
+more followup:
+
+#-random-param should randomize obs distros too!
+#-time parameters should slope -DONE
+#conj grad minimizer doesn't seem to see cat probs
+#fix obs distros used in root report compariso
+#fix bg probs in obs report!!!
+#fix tol scaling in obs mode
+#superbug -- minimization not keeping the lowest value in search!!
+#  debug ideas -- lock parameters one by one, also stop minimzation and see if vec_start still changes
+
+
+design issues:
+
+should the modelfile hold the obs partition? - wait for some large models to 
+converge to decide how to handle this??
+
+interface: is the current system too confusing wrt obs and root categories? should
+superflous root categories be warned out -- NO ? what should mo do now -- ob+ro?
+
+
+branch categories: 
+  user interface design
+demonstrate how three cases would work:
+1) single dn/ds for each branch with no other categories
+
+2) multiple sequence categories, with one seq category allowing single dn/ds per branch
+
+3) one dn/ds per branch, with one branch having multiple seq categories (does this one make any sense?)
+
+
+proposal 1: regular -cat-model interface, with 

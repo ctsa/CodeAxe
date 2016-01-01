@@ -1,0 +1,4 @@
+(
+fast_flags="-O3 -DNDEBUG -finline-limit=6000 -fno-math-errno -fomit-frame-pointer"
+g++ $fast_flags  -I../src -I../src/default_include/boost-1.33.1-hacked.subset test_rspc.cc ../src/util/math/random_util.cc
+)

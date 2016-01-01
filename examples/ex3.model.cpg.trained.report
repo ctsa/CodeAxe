@@ -1,0 +1,1503 @@
+Free parameters: 38
+State Size: 244
+
+node0 prior prob: root_distro_cat_no 0
+nuc distro:
+A : 0.20495 
+C : 0.25045 
+G : 0.30354 
+T : 0.24106 
+
+node0 prior prob: root_distro_cat_no 0
+nuc distro from codon pos 0:
+A : 0.23348 
+C : 0.22156 
+G : 0.40737 
+T : 0.13759 
+
+node0 prior prob: root_distro_cat_no 0
+nuc distro from codon pos 1:
+A : 0.33207 
+C : 0.20748 
+G : 0.15168 
+T : 0.30878 
+
+node0 prior prob: root_distro_cat_no 0
+nuc distro from codon pos 2:
+A : 0.04930 
+C : 0.32232 
+G : 0.35157 
+T : 0.27681 
+
+node0 prior prob: root_distro_cat_no 0
+aa distro:
+A : 0.10672 
+C : 0.01192 
+D : 0.05146 
+E : 0.05255 
+F : 0.05688 
+G : 0.08397 
+H : 0.04821 
+I : 0.01192 
+K : 0.08505 
+L : 0.11593 
+M : 0.01138 
+N : 0.04930 
+P : 0.03304 
+Q : 0.02709 
+R : 0.02221 
+S : 0.04875 
+T : 0.03792 
+V : 0.11268 
+W : 0.01463 
+Y : 0.01842 
+
+node0 prior prob: root_distro_cat_no 0
+nscodon distro:
+AAA: 0.01354
+CAA: 0.00054
+GAA: 0.01571
+ACA: 0.00054
+CCA: 0.00488
+GCA: 0.00379
+TCA: 0.00054
+AGA: 0.00054
+CGA: 0.00000
+GGA: 0.00379
+ATA: 0.00163
+CTA: 0.00271
+GTA: 0.00108
+TTA: 0.00000
+AAC: 0.02817
+CAC: 0.03088
+GAC: 0.02763
+TAC: 0.01300
+ACC: 0.01896
+CCC: 0.00704
+GCC: 0.05146
+TCC: 0.01625
+AGC: 0.00488
+CGC: 0.00271
+GGC: 0.05038
+TGC: 0.00163
+ATC: 0.00596
+CTC: 0.02059
+GTC: 0.01679
+TTC: 0.02600
+AAG: 0.07151
+CAG: 0.02654
+GAG: 0.03684
+ACG: 0.00054
+CCG: 0.00217
+GCG: 0.00271
+TCG: 0.00000
+AGG: 0.01842
+CGG: 0.00054
+GGG: 0.00650
+TGG: 0.01463
+ATG: 0.01138
+CTG: 0.08505
+GTG: 0.06880
+TTG: 0.00596
+AAT: 0.02113
+CAT: 0.01733
+GAT: 0.02384
+TAT: 0.00542
+ACT: 0.01788
+CCT: 0.01896
+GCT: 0.04875
+TCT: 0.01300
+AGT: 0.01408
+CGT: 0.00000
+GGT: 0.02329
+TGT: 0.01029
+ATT: 0.00433
+CTT: 0.00163
+GTT: 0.02600
+TTT: 0.03088
+
+node0 prior prob: root_distro_cat_no 0 (sequence-stationary)
+nscodon distro:
+AAA: 0.01358
+CAA: 0.00054
+GAA: 0.01572
+ACA: 0.00053
+CCA: 0.00486
+GCA: 0.00377
+TCA: 0.00055
+AGA: 0.00055
+CGA: 0.00000
+GGA: 0.00382
+ATA: 0.00165
+CTA: 0.00272
+GTA: 0.00108
+TTA: 0.00000
+AAC: 0.02793
+CAC: 0.03099
+GAC: 0.02765
+TAC: 0.01266
+ACC: 0.01881
+CCC: 0.00712
+GCC: 0.05092
+TCC: 0.01647
+AGC: 0.00489
+CGC: 0.00265
+GGC: 0.05105
+TGC: 0.00160
+ATC: 0.00601
+CTC: 0.02048
+GTC: 0.01702
+TTC: 0.02638
+AAG: 0.07141
+CAG: 0.02678
+GAG: 0.03699
+ACG: 0.00054
+CCG: 0.00216
+GCG: 0.00270
+TCG: 0.00000
+AGG: 0.01820
+CGG: 0.00055
+GGG: 0.00653
+TGG: 0.01477
+ATG: 0.01145
+CTG: 0.08494
+GTG: 0.06861
+TTG: 0.00597
+AAT: 0.02113
+CAT: 0.01725
+GAT: 0.02371
+TAT: 0.00527
+ACT: 0.01771
+CCT: 0.01906
+GCT: 0.04867
+TCT: 0.01294
+AGT: 0.01408
+CGT: 0.00000
+GGT: 0.02331
+TGT: 0.01028
+ATT: 0.00435
+CTT: 0.00163
+GTT: 0.02610
+TTT: 0.03092
+
+node0 prior prob: root_distro_cat_no 0
+root comparison to obs distro (nuc):
+NURO:              A        C        G        T
+NURO ROOT:   0.20495  0.25045  0.30354  0.24106
+NURO OBS:    0.20495  0.25045  0.30354  0.24106
+NURO dot(ROOT,OBS):  1.000000
+NURO re(ROOT,OBS):   1.246946e-16
+
+node0 prior prob: root_distro_cat_no 0
+root comparison to obs distro (nsaa):
+AARO:            A      C      D      E      F      G      H      I      K      L      M      N      P      Q      R      S      T      V      W      Y
+AARO ROOT:   0.107 0.0119 0.0515 0.0525 0.0569 0.0840 0.0482 0.0119 0.0850  0.116 0.0114 0.0493 0.0330 0.0271 0.0222 0.0488 0.0379  0.113 0.0146 0.0184
+AARO OBS:    0.107 0.0119 0.0515 0.0525 0.0569 0.0840 0.0482 0.0119 0.0850  0.116 0.0114 0.0493 0.0330 0.0271 0.0222 0.0488 0.0379  0.113 0.0146 0.0184
+AARO dot(ROOT,OBS):  1.000000
+AARO re(ROOT,OBS):   -9.023720e-16
+
+node0 prior prob: root_distro_cat_no 0
+root comparison to obs distro (nscodon):
+NCRO dot(ROOT,OBS):  1.000000
+NCRO re(ROOT,OBS):   -8.510707e-16
+
+time_cat: 0
+indy_cat_bg_nuc_normalized_branch_time: marsupial : 1.136782
+indy_cat_bg_nuc_normalized_branch_time: node2 : 0.000000
+indy_cat_bg_nuc_normalized_branch_time: node3 : 0.3193404
+indy_cat_bg_nuc_normalized_branch_time: hamster : 0.3675287
+indy_cat_bg_nuc_normalized_branch_time: node5 : 0.08291573
+indy_cat_bg_nuc_normalized_branch_time: rat : 0.1231566
+indy_cat_bg_nuc_normalized_branch_time: mouse : 0.2155344
+indy_cat_bg_nuc_normalized_branch_time: node8 : 0.03884376
+indy_cat_bg_nuc_normalized_branch_time: node9 : 0.1964392
+indy_cat_bg_nuc_normalized_branch_time: hare : 0.03362517
+indy_cat_bg_nuc_normalized_branch_time: rabbit : 0.05899325
+indy_cat_bg_nuc_normalized_branch_time: node12 : 0.01795138
+indy_cat_bg_nuc_normalized_branch_time: node13 : 0.09953029
+indy_cat_bg_nuc_normalized_branch_time: elephseal : 0.2506895
+indy_cat_bg_nuc_normalized_branch_time: node15 : 0.000000
+indy_cat_bg_nuc_normalized_branch_time: pig : 0.3085320
+indy_cat_bg_nuc_normalized_branch_time: node17 : 0.1468320
+indy_cat_bg_nuc_normalized_branch_time: cow : 0.06374826
+indy_cat_bg_nuc_normalized_branch_time: sheep : 0.08964790
+indy_cat_bg_nuc_normalized_branch_time: node20 : 0.02512250
+indy_cat_bg_nuc_normalized_branch_time: bushbaby : 0.1873402
+indy_cat_bg_nuc_normalized_branch_time: node22 : 0.06043811
+indy_cat_bg_nuc_normalized_branch_time: human : 0.2074129
+indy_cat_bg_nuc_normalized_branch_time: tarsier : 0.1817348
+
+(marsupial:1.136782,((hamster:0.3675287,(rat:0.1231566,mouse:0.2155344)node5:0.08291573)node3:0.3193404,((hare:0.03362517,rabbit:0.05899325)node9:0.1964392,((elephseal:0.2506895,(pig:0.3085320,(cow:0.06374826,sheep:0.08964790)node17:0.1468320)node15:0.000000)node13:0.09953029,(bushbaby:0.1873402,(human:0.2074129,tarsier:0.1817348)node22:0.06043811)node20:0.02512250)node12:0.01795138)node8:0.03884376)node2:0.000000)node0;
+
+
+cat: default_seq_cat branch_cat_set: branch_set_0:marsupial,node2,node3,hamster,node5,rat,mouse,node8,node9,hare,rabbit,node12,node13,elephseal,node15,pig,node17,cow,sheep,node20,bushbaby,node22,human,tarsier
+stat_nuc_distro:
+A: 0.1279805
+C: 0.3598250
+G: 0.1431763
+T: 0.3690182
+bg_nuc_distro:
+A: 0.2049476
+C: 0.2504514
+G: 0.3035392
+T: 0.2410618
+
+
+######################################################################
+Reporting mutation cat summary for branch [marsupial]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [node2]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [node3]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [hamster]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [node5]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [rat]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [mouse]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [node8]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [node9]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [hare]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [rabbit]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [node12]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [node13]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [elephseal]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [node15]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [pig]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [node17]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [cow]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [sheep]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [node20]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [bushbaby]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [node22]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [human]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+######################################################################
+Reporting mutation cat summary for branch [tarsier]
+
+mutation model categories (1):
+[ default_smm_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+site rate categories (1):
+[ default_smr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+group rate categories (1):
+[ default_gmr_param_set ]  : scale=1.000000 branch_prior_prob=(1.000000)
+
+
+######################################################################
+BRANCH_SET / GLOBAL_CAT / MUT_MODEL_CAT: [ branch_set_0:marsupial,node2,node3,hamster,node5,rat,mouse,node8,node9,hare,rabbit,node12,node13,elephseal,node15,pig,node17,cow,sheep,node20,bushbaby,node22,human,tarsier / default_seq_cat / default_smm_param_set ]
+MUT RATE : context= AXA->Z
+
+        A        C        G        T  
+A  -------A    0.360    0.357    0.288 A
+C     0.167 -------C    0.131    0.243 C
+G     0.229    0.213 -------G    0.196 G
+T    0.0350    0.371   0.0691 -------T T
+
+CDM_RATE: AAA->C 0.359704
+CDM_RATE: AAA->G 0.357242
+CDM_RATE: AAA->T 0.287610
+CDM_RATE: ACA->A 0.167486
+CDM_RATE: ACA->G 0.131167
+CDM_RATE: ACA->T 0.243167
+CDM_RATE: AGA->A 0.229365
+CDM_RATE: AGA->C 0.213010
+CDM_RATE: AGA->T 0.195736
+CDM_RATE: ATA->A 0.0350259
+CDM_RATE: ATA->C 0.371044
+CDM_RATE: ATA->G 0.0691374
+CT_TI: 0.293183
+CT_TV: 0.178322
+CT_TI/TV: 1.64412
+
+CT_WS/SW: 1.35547
+MUT RATE : context= AXC->Z
+
+        A        C        G        T  
+A  -------A    0.360    0.357    0.288 A
+C     0.167 -------C    0.131    0.243 C
+G     0.229    0.213 -------G    0.196 G
+T    0.0350    0.371   0.0691 -------T T
+
+CDM_RATE: AAC->C 0.359704
+CDM_RATE: AAC->G 0.357242
+CDM_RATE: AAC->T 0.287610
+CDM_RATE: ACC->A 0.167486
+CDM_RATE: ACC->G 0.131167
+CDM_RATE: ACC->T 0.243167
+CDM_RATE: AGC->A 0.229365
+CDM_RATE: AGC->C 0.213010
+CDM_RATE: AGC->T 0.195736
+CDM_RATE: ATC->A 0.0350259
+CDM_RATE: ATC->C 0.371044
+CDM_RATE: ATC->G 0.0691374
+CT_TI: 0.293183
+CT_TV: 0.178322
+CT_TI/TV: 1.64412
+
+CT_WS/SW: 1.35547
+MUT RATE : context= AXG->Z
+
+        A        C        G        T  
+A  -------A    0.360    0.357    0.288 A
+C     0.616 -------C    0.616     1.66 C
+G     0.229    0.213 -------G    0.196 G
+T    0.0350    0.371   0.0691 -------T T
+
+CDM_RATE: AAG->C 0.359704
+CDM_RATE: AAG->G 0.357242
+CDM_RATE: AAG->T 0.287610
+CDM_RATE: ACG->A 0.616417
+CDM_RATE: ACG->G 0.616417
+CDM_RATE: ACG->T 1.66024
+CDM_RATE: AGG->A 0.229365
+CDM_RATE: AGG->C 0.213010
+CDM_RATE: AGG->T 0.195736
+CDM_RATE: ATG->A 0.0350259
+CDM_RATE: ATG->C 0.371044
+CDM_RATE: ATG->G 0.0691374
+CT_TI: 0.648091
+CT_TV: 0.295306
+CT_TI/TV: 2.19464
+
+CT_WS/SW: 0.449513
+MUT RATE : context= AXT->Z
+
+        A        C        G        T  
+A  -------A    0.360    0.357    0.288 A
+C     0.167 -------C    0.131    0.243 C
+G     0.229    0.213 -------G    0.196 G
+T    0.0350    0.371   0.0691 -------T T
+
+CDM_RATE: AAT->C 0.359704
+CDM_RATE: AAT->G 0.357242
+CDM_RATE: AAT->T 0.287610
+CDM_RATE: ACT->A 0.167486
+CDM_RATE: ACT->G 0.131167
+CDM_RATE: ACT->T 0.243167
+CDM_RATE: AGT->A 0.229365
+CDM_RATE: AGT->C 0.213010
+CDM_RATE: AGT->T 0.195736
+CDM_RATE: ATT->A 0.0350259
+CDM_RATE: ATT->C 0.371044
+CDM_RATE: ATT->G 0.0691374
+CT_TI: 0.293183
+CT_TV: 0.178322
+CT_TI/TV: 1.64412
+
+CT_WS/SW: 1.35547
+MUT RATE : context= CXA->Z
+
+        A        C        G        T  
+A  -------A    0.360    0.357    0.288 A
+C     0.167 -------C    0.131    0.243 C
+G      1.66    0.616 -------G    0.616 G
+T    0.0350    0.371   0.0691 -------T T
+
+CDM_RATE: CAA->C 0.359704
+CDM_RATE: CAA->G 0.357242
+CDM_RATE: CAA->T 0.287610
+CDM_RATE: CCA->A 0.167486
+CDM_RATE: CCA->G 0.131167
+CDM_RATE: CCA->T 0.243167
+CDM_RATE: CGA->A 1.66024
+CDM_RATE: CGA->C 0.616417
+CDM_RATE: CGA->T 0.616417
+CDM_RATE: CTA->A 0.0350259
+CDM_RATE: CTA->C 0.371044
+CDM_RATE: CTA->G 0.0691374
+CT_TI: 0.727509
+CT_TV: 0.303394
+CT_TI/TV: 2.39791
+
+CT_WS/SW: 0.395907
+MUT RATE : context= CXC->Z
+
+        A        C        G        T  
+A  -------A    0.360    0.357    0.288 A
+C     0.167 -------C    0.131    0.243 C
+G      1.66    0.616 -------G    0.616 G
+T    0.0350    0.371   0.0691 -------T T
+
+CDM_RATE: CAC->C 0.359704
+CDM_RATE: CAC->G 0.357242
+CDM_RATE: CAC->T 0.287610
+CDM_RATE: CCC->A 0.167486
+CDM_RATE: CCC->G 0.131167
+CDM_RATE: CCC->T 0.243167
+CDM_RATE: CGC->A 1.66024
+CDM_RATE: CGC->C 0.616417
+CDM_RATE: CGC->T 0.616417
+CDM_RATE: CTC->A 0.0350259
+CDM_RATE: CTC->C 0.371044
+CDM_RATE: CTC->G 0.0691374
+CT_TI: 0.727509
+CT_TV: 0.303394
+CT_TI/TV: 2.39791
+
+CT_WS/SW: 0.395907
+MUT RATE : context= CXG->Z
+
+        A        C        G        T  
+A  -------A    0.360    0.357    0.288 A
+C     0.616 -------C    0.616     1.66 C
+G      1.66    0.616 -------G    0.616 G
+T    0.0350    0.371   0.0691 -------T T
+
+CDM_RATE: CAG->C 0.359704
+CDM_RATE: CAG->G 0.357242
+CDM_RATE: CAG->T 0.287610
+CDM_RATE: CCG->A 0.616417
+CDM_RATE: CCG->G 0.616417
+CDM_RATE: CCG->T 1.66024
+CDM_RATE: CGG->A 1.66024
+CDM_RATE: CGG->C 0.616417
+CDM_RATE: CGG->T 0.616417
+CDM_RATE: CTG->A 0.0350259
+CDM_RATE: CTG->C 0.371044
+CDM_RATE: CTG->G 0.0691374
+CT_TI: 1.08242
+CT_TV: 0.420377
+CT_TI/TV: 2.57487
+
+CT_WS/SW: 0.249207
+MUT RATE : context= CXT->Z
+
+        A        C        G        T  
+A  -------A    0.360    0.357    0.288 A
+C     0.167 -------C    0.131    0.243 C
+G      1.66    0.616 -------G    0.616 G
+T    0.0350    0.371   0.0691 -------T T
+
+CDM_RATE: CAT->C 0.359704
+CDM_RATE: CAT->G 0.357242
+CDM_RATE: CAT->T 0.287610
+CDM_RATE: CCT->A 0.167486
+CDM_RATE: CCT->G 0.131167
+CDM_RATE: CCT->T 0.243167
+CDM_RATE: CGT->A 1.66024
+CDM_RATE: CGT->C 0.616417
+CDM_RATE: CGT->T 0.616417
+CDM_RATE: CTT->A 0.0350259
+CDM_RATE: CTT->C 0.371044
+CDM_RATE: CTT->G 0.0691374
+CT_TI: 0.727509
+CT_TV: 0.303394
+CT_TI/TV: 2.39791
+
+CT_WS/SW: 0.395907
+MUT RATE : context= GXA->Z
+
+        A        C        G        T  
+A  -------A    0.360    0.357    0.288 A
+C     0.167 -------C    0.131    0.243 C
+G     0.229    0.213 -------G    0.196 G
+T    0.0350    0.371   0.0691 -------T T
+
+CDM_RATE: GAA->C 0.359704
+CDM_RATE: GAA->G 0.357242
+CDM_RATE: GAA->T 0.287610
+CDM_RATE: GCA->A 0.167486
+CDM_RATE: GCA->G 0.131167
+CDM_RATE: GCA->T 0.243167
+CDM_RATE: GGA->A 0.229365
+CDM_RATE: GGA->C 0.213010
+CDM_RATE: GGA->T 0.195736
+CDM_RATE: GTA->A 0.0350259
+CDM_RATE: GTA->C 0.371044
+CDM_RATE: GTA->G 0.0691374
+CT_TI: 0.293183
+CT_TV: 0.178322
+CT_TI/TV: 1.64412
+
+CT_WS/SW: 1.35547
+MUT RATE : context= GXC->Z
+
+        A        C        G        T  
+A  -------A    0.360    0.357    0.288 A
+C     0.167 -------C    0.131    0.243 C
+G     0.229    0.213 -------G    0.196 G
+T    0.0350    0.371   0.0691 -------T T
+
+CDM_RATE: GAC->C 0.359704
+CDM_RATE: GAC->G 0.357242
+CDM_RATE: GAC->T 0.287610
+CDM_RATE: GCC->A 0.167486
+CDM_RATE: GCC->G 0.131167
+CDM_RATE: GCC->T 0.243167
+CDM_RATE: GGC->A 0.229365
+CDM_RATE: GGC->C 0.213010
+CDM_RATE: GGC->T 0.195736
+CDM_RATE: GTC->A 0.0350259
+CDM_RATE: GTC->C 0.371044
+CDM_RATE: GTC->G 0.0691374
+CT_TI: 0.293183
+CT_TV: 0.178322
+CT_TI/TV: 1.64412
+
+CT_WS/SW: 1.35547
+MUT RATE : context= GXG->Z
+
+        A        C        G        T  
+A  -------A    0.360    0.357    0.288 A
+C     0.616 -------C    0.616     1.66 C
+G     0.229    0.213 -------G    0.196 G
+T    0.0350    0.371   0.0691 -------T T
+
+CDM_RATE: GAG->C 0.359704
+CDM_RATE: GAG->G 0.357242
+CDM_RATE: GAG->T 0.287610
+CDM_RATE: GCG->A 0.616417
+CDM_RATE: GCG->G 0.616417
+CDM_RATE: GCG->T 1.66024
+CDM_RATE: GGG->A 0.229365
+CDM_RATE: GGG->C 0.213010
+CDM_RATE: GGG->T 0.195736
+CDM_RATE: GTG->A 0.0350259
+CDM_RATE: GTG->C 0.371044
+CDM_RATE: GTG->G 0.0691374
+CT_TI: 0.648091
+CT_TV: 0.295306
+CT_TI/TV: 2.19464
+
+CT_WS/SW: 0.449513
+MUT RATE : context= GXT->Z
+
+        A        C        G        T  
+A  -------A    0.360    0.357    0.288 A
+C     0.167 -------C    0.131    0.243 C
+G     0.229    0.213 -------G    0.196 G
+T    0.0350    0.371   0.0691 -------T T
+
+CDM_RATE: GAT->C 0.359704
+CDM_RATE: GAT->G 0.357242
+CDM_RATE: GAT->T 0.287610
+CDM_RATE: GCT->A 0.167486
+CDM_RATE: GCT->G 0.131167
+CDM_RATE: GCT->T 0.243167
+CDM_RATE: GGT->A 0.229365
+CDM_RATE: GGT->C 0.213010
+CDM_RATE: GGT->T 0.195736
+CDM_RATE: GTT->A 0.0350259
+CDM_RATE: GTT->C 0.371044
+CDM_RATE: GTT->G 0.0691374
+CT_TI: 0.293183
+CT_TV: 0.178322
+CT_TI/TV: 1.64412
+
+CT_WS/SW: 1.35547
+MUT RATE : context= TXA->Z
+
+        A        C        G        T  
+A  -------A    0.360    0.357    0.288 A
+C     0.167 -------C    0.131    0.243 C
+G     0.229    0.213 -------G    0.196 G
+T    0.0350    0.371   0.0691 -------T T
+
+CDM_RATE: TAA->C 0.359704
+CDM_RATE: TAA->G 0.357242
+CDM_RATE: TAA->T 0.287610
+CDM_RATE: TCA->A 0.167486
+CDM_RATE: TCA->G 0.131167
+CDM_RATE: TCA->T 0.243167
+CDM_RATE: TGA->A 0.229365
+CDM_RATE: TGA->C 0.213010
+CDM_RATE: TGA->T 0.195736
+CDM_RATE: TTA->A 0.0350259
+CDM_RATE: TTA->C 0.371044
+CDM_RATE: TTA->G 0.0691374
+CT_TI: 0.293183
+CT_TV: 0.178322
+CT_TI/TV: 1.64412
+
+CT_WS/SW: 1.35547
+MUT RATE : context= TXC->Z
+
+        A        C        G        T  
+A  -------A    0.360    0.357    0.288 A
+C     0.167 -------C    0.131    0.243 C
+G     0.229    0.213 -------G    0.196 G
+T    0.0350    0.371   0.0691 -------T T
+
+CDM_RATE: TAC->C 0.359704
+CDM_RATE: TAC->G 0.357242
+CDM_RATE: TAC->T 0.287610
+CDM_RATE: TCC->A 0.167486
+CDM_RATE: TCC->G 0.131167
+CDM_RATE: TCC->T 0.243167
+CDM_RATE: TGC->A 0.229365
+CDM_RATE: TGC->C 0.213010
+CDM_RATE: TGC->T 0.195736
+CDM_RATE: TTC->A 0.0350259
+CDM_RATE: TTC->C 0.371044
+CDM_RATE: TTC->G 0.0691374
+CT_TI: 0.293183
+CT_TV: 0.178322
+CT_TI/TV: 1.64412
+
+CT_WS/SW: 1.35547
+MUT RATE : context= TXG->Z
+
+        A        C        G        T  
+A  -------A    0.360    0.357    0.288 A
+C     0.616 -------C    0.616     1.66 C
+G     0.229    0.213 -------G    0.196 G
+T    0.0350    0.371   0.0691 -------T T
+
+CDM_RATE: TAG->C 0.359704
+CDM_RATE: TAG->G 0.357242
+CDM_RATE: TAG->T 0.287610
+CDM_RATE: TCG->A 0.616417
+CDM_RATE: TCG->G 0.616417
+CDM_RATE: TCG->T 1.66024
+CDM_RATE: TGG->A 0.229365
+CDM_RATE: TGG->C 0.213010
+CDM_RATE: TGG->T 0.195736
+CDM_RATE: TTG->A 0.0350259
+CDM_RATE: TTG->C 0.371044
+CDM_RATE: TTG->G 0.0691374
+CT_TI: 0.648091
+CT_TV: 0.295306
+CT_TI/TV: 2.19464
+
+CT_WS/SW: 0.449513
+MUT RATE : context= TXT->Z
+
+        A        C        G        T  
+A  -------A    0.360    0.357    0.288 A
+C     0.167 -------C    0.131    0.243 C
+G     0.229    0.213 -------G    0.196 G
+T    0.0350    0.371   0.0691 -------T T
+
+CDM_RATE: TAT->C 0.359704
+CDM_RATE: TAT->G 0.357242
+CDM_RATE: TAT->T 0.287610
+CDM_RATE: TCT->A 0.167486
+CDM_RATE: TCT->G 0.131167
+CDM_RATE: TCT->T 0.243167
+CDM_RATE: TGT->A 0.229365
+CDM_RATE: TGT->C 0.213010
+CDM_RATE: TGT->T 0.195736
+CDM_RATE: TTT->A 0.0350259
+CDM_RATE: TTT->C 0.371044
+CDM_RATE: TTT->G 0.0691374
+CT_TI: 0.293183
+CT_TV: 0.178322
+CT_TI/TV: 1.64412
+
+CT_WS/SW: 1.35547
+MUT RATE : context= AXN->Z
+
+        A        C        G        T  
+A  -------A    0.360    0.357    0.288 A
+C     0.194 -------C    0.160    0.328 C
+G     0.229    0.213 -------G    0.196 G
+T    0.0350    0.371   0.0691 -------T T
+
+CDM_RATE: AAN->C 0.359704
+CDM_RATE: AAN->G 0.357242
+CDM_RATE: AAN->T 0.287610
+CDM_RATE: ACN->A 0.194351
+CDM_RATE: ACN->G 0.160205
+CDM_RATE: ACN->T 0.327966
+CDM_RATE: AGN->A 0.229365
+CDM_RATE: AGN->C 0.213010
+CDM_RATE: AGN->T 0.195736
+CDM_RATE: ATN->A 0.0350259
+CDM_RATE: ATN->C 0.371044
+CDM_RATE: ATN->G 0.0691374
+CT_TI: 0.314421
+CT_TV: 0.185322
+CT_TI/TV: 1.69662
+
+CT_WS/SW: 1.20959
+MUT RATE : context= CXN->Z
+
+        A        C        G        T  
+A  -------A    0.360    0.357    0.288 A
+C     0.194 -------C    0.160    0.328 C
+G      1.66    0.616 -------G    0.616 G
+T    0.0350    0.371   0.0691 -------T T
+
+CDM_RATE: CAN->C 0.359704
+CDM_RATE: CAN->G 0.357242
+CDM_RATE: CAN->T 0.287610
+CDM_RATE: CCN->A 0.194351
+CDM_RATE: CCN->G 0.160205
+CDM_RATE: CCN->T 0.327966
+CDM_RATE: CGN->A 1.66024
+CDM_RATE: CGN->C 0.616417
+CDM_RATE: CGN->T 0.616417
+CDM_RATE: CTN->A 0.0350259
+CDM_RATE: CTN->C 0.371044
+CDM_RATE: CTN->G 0.0691374
+CT_TI: 0.748747
+CT_TV: 0.310394
+CT_TI/TV: 2.41225
+
+CT_WS/SW: 0.382435
+MUT RATE : context= GXN->Z
+
+        A        C        G        T  
+A  -------A    0.360    0.357    0.288 A
+C     0.194 -------C    0.160    0.328 C
+G     0.229    0.213 -------G    0.196 G
+T    0.0350    0.371   0.0691 -------T T
+
+CDM_RATE: GAN->C 0.359704
+CDM_RATE: GAN->G 0.357242
+CDM_RATE: GAN->T 0.287610
+CDM_RATE: GCN->A 0.194351
+CDM_RATE: GCN->G 0.160205
+CDM_RATE: GCN->T 0.327966
+CDM_RATE: GGN->A 0.229365
+CDM_RATE: GGN->C 0.213010
+CDM_RATE: GGN->T 0.195736
+CDM_RATE: GTN->A 0.0350259
+CDM_RATE: GTN->C 0.371044
+CDM_RATE: GTN->G 0.0691374
+CT_TI: 0.314421
+CT_TV: 0.185322
+CT_TI/TV: 1.69662
+
+CT_WS/SW: 1.20959
+MUT RATE : context= TXN->Z
+
+        A        C        G        T  
+A  -------A    0.360    0.357    0.288 A
+C     0.194 -------C    0.160    0.328 C
+G     0.229    0.213 -------G    0.196 G
+T    0.0350    0.371   0.0691 -------T T
+
+CDM_RATE: TAN->C 0.359704
+CDM_RATE: TAN->G 0.357242
+CDM_RATE: TAN->T 0.287610
+CDM_RATE: TCN->A 0.194351
+CDM_RATE: TCN->G 0.160205
+CDM_RATE: TCN->T 0.327966
+CDM_RATE: TGN->A 0.229365
+CDM_RATE: TGN->C 0.213010
+CDM_RATE: TGN->T 0.195736
+CDM_RATE: TTN->A 0.0350259
+CDM_RATE: TTN->C 0.371044
+CDM_RATE: TTN->G 0.0691374
+CT_TI: 0.314421
+CT_TV: 0.185322
+CT_TI/TV: 1.69662
+
+CT_WS/SW: 1.20959
+MUT RATE : context= NXA->Z
+
+        A        C        G        T  
+A  -------A    0.360    0.357    0.288 A
+C     0.167 -------C    0.131    0.243 C
+G     0.300    0.233 -------G    0.217 G
+T    0.0350    0.371   0.0691 -------T T
+
+CDM_RATE: NAA->C 0.359704
+CDM_RATE: NAA->G 0.357242
+CDM_RATE: NAA->T 0.287610
+CDM_RATE: NCA->A 0.167486
+CDM_RATE: NCA->G 0.131167
+CDM_RATE: NCA->T 0.243167
+CDM_RATE: NGA->A 0.300015
+CDM_RATE: NGA->C 0.232929
+CDM_RATE: NGA->T 0.216507
+CDM_RATE: NTA->A 0.0350259
+CDM_RATE: NTA->C 0.371044
+CDM_RATE: NTA->G 0.0691374
+CT_TI: 0.314628
+CT_TV: 0.184497
+CT_TI/TV: 1.70533
+
+CT_WS/SW: 1.21060
+MUT RATE : context= NXC->Z
+
+        A        C        G        T  
+A  -------A    0.360    0.357    0.288 A
+C     0.167 -------C    0.131    0.243 C
+G     0.300    0.233 -------G    0.217 G
+T    0.0350    0.371   0.0691 -------T T
+
+CDM_RATE: NAC->C 0.359704
+CDM_RATE: NAC->G 0.357242
+CDM_RATE: NAC->T 0.287610
+CDM_RATE: NCC->A 0.167486
+CDM_RATE: NCC->G 0.131167
+CDM_RATE: NCC->T 0.243167
+CDM_RATE: NGC->A 0.300015
+CDM_RATE: NGC->C 0.232929
+CDM_RATE: NGC->T 0.216507
+CDM_RATE: NTC->A 0.0350259
+CDM_RATE: NTC->C 0.371044
+CDM_RATE: NTC->G 0.0691374
+CT_TI: 0.314628
+CT_TV: 0.184497
+CT_TI/TV: 1.70533
+
+CT_WS/SW: 1.21060
+MUT RATE : context= NXG->Z
+
+        A        C        G        T  
+A  -------A    0.360    0.357    0.288 A
+C     0.616 -------C    0.616     1.66 C
+G     0.300    0.233 -------G    0.217 G
+T    0.0350    0.371   0.0691 -------T T
+
+CDM_RATE: NAG->C 0.359704
+CDM_RATE: NAG->G 0.357242
+CDM_RATE: NAG->T 0.287610
+CDM_RATE: NCG->A 0.616417
+CDM_RATE: NCG->G 0.616417
+CDM_RATE: NCG->T 1.66024
+CDM_RATE: NGG->A 0.300015
+CDM_RATE: NGG->C 0.232929
+CDM_RATE: NGG->T 0.216507
+CDM_RATE: NTG->A 0.0350259
+CDM_RATE: NTG->C 0.371044
+CDM_RATE: NTG->G 0.0691374
+CT_TI: 0.669536
+CT_TV: 0.301481
+CT_TI/TV: 2.22082
+
+CT_WS/SW: 0.432355
+MUT RATE : context= NXT->Z
+
+        A        C        G        T  
+A  -------A    0.360    0.357    0.288 A
+C     0.167 -------C    0.131    0.243 C
+G     0.300    0.233 -------G    0.217 G
+T    0.0350    0.371   0.0691 -------T T
+
+CDM_RATE: NAT->C 0.359704
+CDM_RATE: NAT->G 0.357242
+CDM_RATE: NAT->T 0.287610
+CDM_RATE: NCT->A 0.167486
+CDM_RATE: NCT->G 0.131167
+CDM_RATE: NCT->T 0.243167
+CDM_RATE: NGT->A 0.300015
+CDM_RATE: NGT->C 0.232929
+CDM_RATE: NGT->T 0.216507
+CDM_RATE: NTT->A 0.0350259
+CDM_RATE: NTT->C 0.371044
+CDM_RATE: NTT->G 0.0691374
+CT_TI: 0.314628
+CT_TV: 0.184497
+CT_TI/TV: 1.70533
+
+CT_WS/SW: 1.21060
+MUT RATE : context= NXN->Z
+
+        A        C        G        T  
+A  -------A    0.360    0.357    0.288 A
+C     0.194 -------C    0.160    0.328 C
+G     0.300    0.233 -------G    0.217 G
+T    0.0350    0.371   0.0691 -------T T
+
+CDM_RATE: NAN->C 0.359704
+CDM_RATE: NAN->G 0.357242
+CDM_RATE: NAN->T 0.287610
+CDM_RATE: NCN->A 0.194351
+CDM_RATE: NCN->G 0.160205
+CDM_RATE: NCN->T 0.327966
+CDM_RATE: NGN->A 0.300015
+CDM_RATE: NGN->C 0.232929
+CDM_RATE: NGN->T 0.216507
+CDM_RATE: NTN->A 0.0350259
+CDM_RATE: NTN->C 0.371044
+CDM_RATE: NTN->G 0.0691374
+CT_TI: 0.335866
+CT_TV: 0.191498
+CT_TI/TV: 1.75389
+
+CT_WS/SW: 1.09288
+SUMM_CPGTI: 1.66024
+SUMM_NONCPGTI: 0.296106
+SUMM_CPGTI_RATIO: 5.60691
+SUMM_NONCPGCGTI: 0.235551
+SUMM_CPGCGTI_RATIO: 7.04832
+
+######################################################################
+Reporting selection for branch [marsupial]
+
+branch_expected_dN/dS: 0.28257
+
+SITE SELECTION MATRIX CATEGORIES (1) dN/dS:
+[ default_ssm_param_set ] branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+SITE SELECTION CATEGORIES (1):
+[ default_sss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+GROUP SELECTION CATEGORIES (1):
+[ default_gss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000  
+
+######################################################################
+Reporting selection for branch [node2]
+
+branch_expected_dN/dS: 0.28257
+
+SITE SELECTION MATRIX CATEGORIES (1) dN/dS:
+[ default_ssm_param_set ] branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+SITE SELECTION CATEGORIES (1):
+[ default_sss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+GROUP SELECTION CATEGORIES (1):
+[ default_gss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000  
+
+######################################################################
+Reporting selection for branch [node3]
+
+branch_expected_dN/dS: 0.28257
+
+SITE SELECTION MATRIX CATEGORIES (1) dN/dS:
+[ default_ssm_param_set ] branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+SITE SELECTION CATEGORIES (1):
+[ default_sss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+GROUP SELECTION CATEGORIES (1):
+[ default_gss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000  
+
+######################################################################
+Reporting selection for branch [hamster]
+
+branch_expected_dN/dS: 0.28257
+
+SITE SELECTION MATRIX CATEGORIES (1) dN/dS:
+[ default_ssm_param_set ] branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+SITE SELECTION CATEGORIES (1):
+[ default_sss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+GROUP SELECTION CATEGORIES (1):
+[ default_gss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000  
+
+######################################################################
+Reporting selection for branch [node5]
+
+branch_expected_dN/dS: 0.28257
+
+SITE SELECTION MATRIX CATEGORIES (1) dN/dS:
+[ default_ssm_param_set ] branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+SITE SELECTION CATEGORIES (1):
+[ default_sss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+GROUP SELECTION CATEGORIES (1):
+[ default_gss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000  
+
+######################################################################
+Reporting selection for branch [rat]
+
+branch_expected_dN/dS: 0.28257
+
+SITE SELECTION MATRIX CATEGORIES (1) dN/dS:
+[ default_ssm_param_set ] branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+SITE SELECTION CATEGORIES (1):
+[ default_sss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+GROUP SELECTION CATEGORIES (1):
+[ default_gss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000  
+
+######################################################################
+Reporting selection for branch [mouse]
+
+branch_expected_dN/dS: 0.28257
+
+SITE SELECTION MATRIX CATEGORIES (1) dN/dS:
+[ default_ssm_param_set ] branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+SITE SELECTION CATEGORIES (1):
+[ default_sss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+GROUP SELECTION CATEGORIES (1):
+[ default_gss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000  
+
+######################################################################
+Reporting selection for branch [node8]
+
+branch_expected_dN/dS: 0.28257
+
+SITE SELECTION MATRIX CATEGORIES (1) dN/dS:
+[ default_ssm_param_set ] branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+SITE SELECTION CATEGORIES (1):
+[ default_sss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+GROUP SELECTION CATEGORIES (1):
+[ default_gss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000  
+
+######################################################################
+Reporting selection for branch [node9]
+
+branch_expected_dN/dS: 0.28257
+
+SITE SELECTION MATRIX CATEGORIES (1) dN/dS:
+[ default_ssm_param_set ] branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+SITE SELECTION CATEGORIES (1):
+[ default_sss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+GROUP SELECTION CATEGORIES (1):
+[ default_gss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000  
+
+######################################################################
+Reporting selection for branch [hare]
+
+branch_expected_dN/dS: 0.28257
+
+SITE SELECTION MATRIX CATEGORIES (1) dN/dS:
+[ default_ssm_param_set ] branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+SITE SELECTION CATEGORIES (1):
+[ default_sss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+GROUP SELECTION CATEGORIES (1):
+[ default_gss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000  
+
+######################################################################
+Reporting selection for branch [rabbit]
+
+branch_expected_dN/dS: 0.28257
+
+SITE SELECTION MATRIX CATEGORIES (1) dN/dS:
+[ default_ssm_param_set ] branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+SITE SELECTION CATEGORIES (1):
+[ default_sss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+GROUP SELECTION CATEGORIES (1):
+[ default_gss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000  
+
+######################################################################
+Reporting selection for branch [node12]
+
+branch_expected_dN/dS: 0.28257
+
+SITE SELECTION MATRIX CATEGORIES (1) dN/dS:
+[ default_ssm_param_set ] branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+SITE SELECTION CATEGORIES (1):
+[ default_sss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+GROUP SELECTION CATEGORIES (1):
+[ default_gss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000  
+
+######################################################################
+Reporting selection for branch [node13]
+
+branch_expected_dN/dS: 0.28257
+
+SITE SELECTION MATRIX CATEGORIES (1) dN/dS:
+[ default_ssm_param_set ] branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+SITE SELECTION CATEGORIES (1):
+[ default_sss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+GROUP SELECTION CATEGORIES (1):
+[ default_gss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000  
+
+######################################################################
+Reporting selection for branch [elephseal]
+
+branch_expected_dN/dS: 0.28257
+
+SITE SELECTION MATRIX CATEGORIES (1) dN/dS:
+[ default_ssm_param_set ] branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+SITE SELECTION CATEGORIES (1):
+[ default_sss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+GROUP SELECTION CATEGORIES (1):
+[ default_gss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000  
+
+######################################################################
+Reporting selection for branch [node15]
+
+branch_expected_dN/dS: 0.28257
+
+SITE SELECTION MATRIX CATEGORIES (1) dN/dS:
+[ default_ssm_param_set ] branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+SITE SELECTION CATEGORIES (1):
+[ default_sss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+GROUP SELECTION CATEGORIES (1):
+[ default_gss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000  
+
+######################################################################
+Reporting selection for branch [pig]
+
+branch_expected_dN/dS: 0.28257
+
+SITE SELECTION MATRIX CATEGORIES (1) dN/dS:
+[ default_ssm_param_set ] branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+SITE SELECTION CATEGORIES (1):
+[ default_sss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+GROUP SELECTION CATEGORIES (1):
+[ default_gss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000  
+
+######################################################################
+Reporting selection for branch [node17]
+
+branch_expected_dN/dS: 0.28257
+
+SITE SELECTION MATRIX CATEGORIES (1) dN/dS:
+[ default_ssm_param_set ] branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+SITE SELECTION CATEGORIES (1):
+[ default_sss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+GROUP SELECTION CATEGORIES (1):
+[ default_gss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000  
+
+######################################################################
+Reporting selection for branch [cow]
+
+branch_expected_dN/dS: 0.28257
+
+SITE SELECTION MATRIX CATEGORIES (1) dN/dS:
+[ default_ssm_param_set ] branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+SITE SELECTION CATEGORIES (1):
+[ default_sss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+GROUP SELECTION CATEGORIES (1):
+[ default_gss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000  
+
+######################################################################
+Reporting selection for branch [sheep]
+
+branch_expected_dN/dS: 0.28257
+
+SITE SELECTION MATRIX CATEGORIES (1) dN/dS:
+[ default_ssm_param_set ] branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+SITE SELECTION CATEGORIES (1):
+[ default_sss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+GROUP SELECTION CATEGORIES (1):
+[ default_gss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000  
+
+######################################################################
+Reporting selection for branch [node20]
+
+branch_expected_dN/dS: 0.28257
+
+SITE SELECTION MATRIX CATEGORIES (1) dN/dS:
+[ default_ssm_param_set ] branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+SITE SELECTION CATEGORIES (1):
+[ default_sss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+GROUP SELECTION CATEGORIES (1):
+[ default_gss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000  
+
+######################################################################
+Reporting selection for branch [bushbaby]
+
+branch_expected_dN/dS: 0.28257
+
+SITE SELECTION MATRIX CATEGORIES (1) dN/dS:
+[ default_ssm_param_set ] branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+SITE SELECTION CATEGORIES (1):
+[ default_sss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+GROUP SELECTION CATEGORIES (1):
+[ default_gss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000  
+
+######################################################################
+Reporting selection for branch [node22]
+
+branch_expected_dN/dS: 0.28257
+
+SITE SELECTION MATRIX CATEGORIES (1) dN/dS:
+[ default_ssm_param_set ] branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+SITE SELECTION CATEGORIES (1):
+[ default_sss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+GROUP SELECTION CATEGORIES (1):
+[ default_gss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000  
+
+######################################################################
+Reporting selection for branch [human]
+
+branch_expected_dN/dS: 0.28257
+
+SITE SELECTION MATRIX CATEGORIES (1) dN/dS:
+[ default_ssm_param_set ] branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+SITE SELECTION CATEGORIES (1):
+[ default_sss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+GROUP SELECTION CATEGORIES (1):
+[ default_gss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000  
+
+######################################################################
+Reporting selection for branch [tarsier]
+
+branch_expected_dN/dS: 0.28257
+
+SITE SELECTION MATRIX CATEGORIES (1) dN/dS:
+[ default_ssm_param_set ] branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+SITE SELECTION CATEGORIES (1):
+[ default_sss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000 
+
+GROUP SELECTION CATEGORIES (1):
+[ default_gss_param_set ] scale_factor= 1.0000  branch_expected_dN/dS= 0.28257 branch_prior_prob= 1.0000  
+
